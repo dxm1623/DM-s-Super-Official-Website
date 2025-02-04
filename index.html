@@ -26,36 +26,59 @@
         <input type="button" id="but1" class="buttons" onclick="showAboutMe()" value="About Me">
         <input type="button" id="but2" class="buttons" onclick="showBio()" value="Bio">
         <input type="button" id="but3" class="buttons" onclick="showMyWork()" value="My Work">
+        <input type="button" id="but4" class="buttons" onclick="showQuiz()" value="Quiz">
     </div>
     <div id="tabs-content">
-        <div id="about-me-content" class="tabs-stuff" style="display: none;">This is the content for the About Me tab.</div>
-        <div id="bio-content" class="tabs-stuff" style="display: none;">University of Miami undergraduate student currently in his sophomore year. Pursuing a Bachelors in Interactive Media, as well as a minor in Game Design. Wishes to expose himself to narrative writing and worldbuilding in relation to game design and development. Bit of a web surfer, also.</div>
-        <div id="my-work-content" class="tabs-stuff" style="display: none;">This is the content for the My Work tab.</div>
+        <div id="about-me-content" class="tabs-stuff" style="display: none;">
+            This is the content for the About Me tab.
+        </div>
+        <div id="bio-content" class="tabs-stuff" style="display: none;">
+            University of Miami undergraduate student currently in his sophomore year. Pursuing a Bachelors in Interactive Media, as well as a minor in Game Design. Wishes to expose himself to narrative writing and worldbuilding in relation to game design and development. Bit of a web surfer, also.
+        </div>
+        <div id="my-work-content" class="tabs-stuff" style="display: none;">
+            This is the content for the My Work tab.
+        </div>
+        <div id="quiz-content" class="tabs-stuff" style="display: none;">
+            <div id="quiz-box">
+            <p>QUIZ!</p>
+            <div id="ans-count">Correct Answers: 0</div>
+            <br>
+            <p id="quiz-question">What is 2 + 2?</p>
+            <br>
+            <button id="wrongAns" class="buttons" onclick="alert('Nope!')">2</button>
+            <button id="wrongAns" class="buttons" onclick="alert('Nope!')">3</button>
+            <button id="corrAns" class="buttons" onclick="incrementAnsCount()">4</button>
+            <button id="wrongAns" class="buttons" onclick="alert('Nope!')">5</button>
+            </div>
+        </div>
     </div>
-    <div id="profile-container">
+    <!--<div id="profile-container">
         <div id="profiles" style="border: 1px solid black; padding: 10px;">
             <img src="https://placecats.com/300/200" alt="Placeholder Image">
-            <p>Lorem ipsum dolor sit amet, <strong>consectetur</strong> adipiscing elit. Nullam nec pur.</p>
-            <!--<b> and <i> also work, but not recommended since its HTML. Use STRONG instead.
-            Leave bolding and italics to CSS.-->
+            <p>Lorem ipsum dolor sit amet, <strong>consectetur</strong> adipiscing elit. Nullam nec pur.</p>>
         </div>
         <div id="profiles" style="border: 1px solid black; padding: 10px;">
             <img src="https://placecats.com/300/200" alt="Placeholder Image">
             <p>Lorem ipsum dolor sit amet, <strong>consectetur</strong> adipiscing elit. Nullam nec pur.</p>
         </div>
-    </div>
+    </div><-->
     </div>
     </div>
     <div id="logo-container">
         <div id="logo">
             <img src="images/PersonalLogo.gif" alt="DM's Logo">
         </div>
-
+    </div>
+<!--Scripts used until/unless I can get a separate js working properly-->
 <script>
+
+    let ansCount = 0;
+    
 function hideAllTabs() {
     document.getElementById("about-me-content").style.display = 'none';
     document.getElementById("bio-content").style.display = 'none';
     document.getElementById("my-work-content").style.display = 'none';
+    document.getElementById("quiz-content").style.display = 'none';
     document.body.style.backgroundImage = 'url("images/forestBackground.gif")';
 }
 
@@ -75,6 +98,18 @@ function showMyWork() {
     document.getElementById("my-work-content").style.display = 'block';
     document.body.style.backgroundImage = 'url("images/lampBackground.gif")';
 }
+
+function showQuiz() {
+    hideAllTabs();
+    document.getElementById("quiz-content").style.display = 'block';
+    document.body.style.backgroundImage = 'url("images/simonBackground.gif")';
+}
+
+function incrementAnsCount() {
+    ansCount++;
+    document.getElementById("ans-count").innerHTML = "Correct Answers: " + ansCount;
+}
+
 </script>
 
 </body>
