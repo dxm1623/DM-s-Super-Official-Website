@@ -1,0 +1,227 @@
+h1 {
+    color: red;
+}
+
+a {
+    color: blue;
+    text-decoration: none;
+}
+
+body {
+    background-color: rgb(241 241 241);
+    background-image: url('images/forestBackground.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: antiquewhite;
+    font-family: sans-serif;
+    transition: background-image 0.5s ease-in-out;
+}
+
+img {
+    border: 1px solid black;
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    height: auto;
+}
+
+#profile-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    height: auto;
+}
+
+
+#profiles:hover {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8); /* Add glow effect on hover */
+}
+
+#profiles {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(0, 0, 255, 0.2);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+    color: white;
+    transition: box-shadow 0.5s ease-in-out; /* Add transition for smooth effect */
+    width: 33%; /* Set a width for the text to wrap */
+    margin-top: 20px; /* Add margin to appear underneath the main image */
+    text-align: center; /* Center align the text */
+}
+
+p {
+    transition: text-shadow 0.5s ease-in-out;
+}
+
+p:hover {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+#tab {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid blue;
+    color: lightblue;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(134, 220, 248, 0.5); /* Light blue glow */
+    transition: all 0.3s ease-in-out;
+}
+
+#tabs-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: -webkit-fill-available;
+    padding: 10px;
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 1);
+    gap: 10px;
+}
+
+#tabs-container .buttons {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+#tabs-container .buttons:hover {
+    border: 2px solid black;
+    color: black;
+    box-shadow: rgba(0, 0, 0, 0.8);
+}
+
+#tab:hover {
+    background: rgba(255, 215, 0, 0.2);
+    border: 2px solid gold;
+    color: rgb(0, 0, 0);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+#tabs-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+    color: white;
+    transition: box-shadow 0.5s ease-in-out; /* Add transition for smooth effect */
+    width: 50%;
+    margin-top: 20px;
+    text-align: left;
+}
+
+
+
+#main-content {
+    width: 50vw;
+    position: fixed;
+    right: 0;
+    background: none; /* Remove background from main div */
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: white;
+    overflow: hidden;
+    height: 100vh;
+    z-index: 1; /* Keep content above the pseudo-element */
+}
+
+#main-content::before {
+    content: "";
+    position: fixed; /* Fixes it to the viewport to avoid scrolling issues */
+    top: -50vh; /* Extend far beyond the top of the viewport */
+    right: 0;
+    width: 50%;
+    height: 200vh; /* Covers double the viewport height */
+    background: rgba(0, 0, 0, 0.7);
+    z-index: -1; /* Push it behind the content */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+#logo-container {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
+    height: auto;
+    z-index: 2; /* Ensure it is above other content */
+}
+
+#logo {
+    max-width: 66%; /* Ensure it scales with zoom */
+    max-height: 66; /* Ensure it scales with zoom */
+}
+
+#logo img{
+    width: auto; /* Set a fixed width */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 100%; /* Ensure it scales with zoom */
+    max-height: 100%; /* Ensure it scales with zoom */
+    border-style: none; /* Remove border */
+}
+
+.title {
+    font-family: sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    font-style: oblique;
+    margin-bottom: 10px;
+}
+
+.dms-header {
+    color: #222;
+    padding: 10px 20px;
+    background: linear-gradient(to left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 100) 100%);
+    display: inline-block;
+    width: -webkit-fill-available;
+    box-sizing: border-box;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.tabs-stuff {
+    display: none;
+}
+
+@font-face {
+    font-family: NationalParkThin;
+    src: url(nationalpark-thin.otf);
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DM's Website</title>
+    <link rel="stylesheet" href="style.css">
+    <script rel="scripts" href="functions.js"></script>
+</head>
+<body>
+    <div id="main-content">
+        <h2 class="dms-header">DM's Website</h2>
+    <div id="container">
+        <p class="subtitle"><span lang="es">Hola!</span>
+    <!--This is the Spanish word for "Hello!". To help screenreaders, put it in a span.-->
+    <!--Do NOT use a DIV for this, since that creates a box. Use it to group things.-->
+    <!--Only use DIVs if you want to actually create a block in the layout; Keep it away from text.-->
+
+        This is my website! I hope you enjoy it!
+        </p>
+    </div>
+    <br>
+    <br>
+    <div id="container">
+    <div id="tabs-container">
+        <input type="button" id="but1" class="buttons" onclick="showAboutMe()" value="About Me">
+        <input type="button" id="but2" class="buttons" onclick="showBio()" value="Bio">
+        <input type="button" id="but3" class="buttons" onclick="showMyWork()" value="My Work">
+    </div>
+    <div id="tabs-content">
+        <div id="about-me-content" class="tabs-stuff" style="display: none;">This is the content for the About Me tab.</div>
+        <div id="bio-content" class="tabs-stuff" style="display: none;">University of Miami undergraduate student currently in his sophomore year. Pursuing a Bachelors in Interactive Media, as well as a minor in Game Design. Wishes to expose himself to narrative writing and worldbuilding in relation to game design and development. Bit of a web surfer, also.</div>
+        <div id="my-work-content" class="tabs-stuff" style="display: none;">This is the content for the My Work tab.</div>
+    </div>
+    <div id="profile-container">
+        <div id="profiles" style="border: 1px solid black; padding: 10px;">
+            <img src="https://placecats.com/300/200" alt="Placeholder Image">
+            <p>Lorem ipsum dolor sit amet, <strong>consectetur</strong> adipiscing elit. Nullam nec pur.</p>
+            <!--<b> and <i> also work, but not recommended since its HTML. Use STRONG instead.
+            Leave bolding and italics to CSS.-->
+        </div>
+        <div id="profiles" style="border: 1px solid black; padding: 10px;">
+            <img src="https://placecats.com/300/200" alt="Placeholder Image">
+            <p>Lorem ipsum dolor sit amet, <strong>consectetur</strong> adipiscing elit. Nullam nec pur.</p>
+        </div>
+    </div>
+    </div>
+    </div>
+    <div id="logo-container">
+        <div id="logo">
+            <img src="images/PersonalLogo.gif" alt="DM's Logo">
+        </div>
+
+<script>
+function hideAllTabs() {
+    document.getElementById("about-me-content").style.display = 'none';
+    document.getElementById("bio-content").style.display = 'none';
+    document.getElementById("my-work-content").style.display = 'none';
+    document.body.style.backgroundImage = 'url("images/forestBackground.gif")';
+}
+
+function showAboutMe() {
+    hideAllTabs();
+    document.getElementById("about-me-content").style.display = 'block';
+}
+
+function showBio() {
+    hideAllTabs();
+    document.getElementById("bio-content").style.display = 'block';
+    document.body.style.backgroundImage = 'url("images/shoreChurchBackground.gif")';
+}
+
+function showMyWork() {
+    hideAllTabs();
+    document.getElementById("my-work-content").style.display = 'block';
+    document.body.style.backgroundImage = 'url("images/lampBackground.gif")';
+}
+</script>
+
+</body>
+</html>
