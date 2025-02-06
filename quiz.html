@@ -27,11 +27,14 @@
                     <h3>QUIZ!</h3>
                     <div id="ans-count">Correct Answers: 0</div>
                     <br>
-                    <p id="quiz-question">What is 2 + 2?</p>
+                    <div id="quiz-question">
+                        <div id="ques-count">Question 1</div>
+                        What is 2 + 2?
+                    </div>
                     <br>
                     <button id="wrongAns" class="buttons" onclick="alert('Nope!')">2</button>
                     <button id="wrongAns" class="buttons" onclick="alert('Nope!')">3</button>
-                    <button id="corrAns" class="buttons" onclick="incrementAnsCount()">4</button>
+                    <button id="corrAns" class="buttons" onclick="increment()">4</button>
                     <button id="wrongAns" class="buttons" onclick="alert('Nope!')">5</button>
                 </div>
             </div>
@@ -47,6 +50,7 @@
 <script>
 
     let ansCount = 0;
+    let questionCount = 1;
 
 function hideQuizButton() {
     document.getElementById("but1").style.display = 'none';
@@ -58,8 +62,10 @@ function startQuiz() {
     document.getElementById("quiz-content").style.display = 'block';
 }
 
-function incrementAnsCount() {
+function increment() {
     ansCount++;
+    questionCount++;
+    document.getElementById("ques-count").innerHTML = "Question " + questionCount;
     document.getElementById("ans-count").innerHTML = "Correct Answers: " + ansCount;
     checkEndQuiz();
 }
@@ -76,9 +82,10 @@ function endQuiz() {
     document.getElementById("but1").style.display = 'block';
     document.getElementById("tabs-container").style.display = 'flex';
     ansCount = 0;
+    questionCount = 1;
+    document.getElementById("ques-count").innerHTML = "Question " + questionCount;
     document.getElementById("ans-count").innerHTML = "Correct Answers: " + ansCount;
 }
-
 </script>
 
 </body>
