@@ -1,5 +1,75 @@
+@font-face {
+    font-family: National-Park-Thin;
+    src: url("fonts/NationalPark/NationalPark-Thin.otf");
+}
+
+@font-face {
+    font-family: National-Park;
+    src: url("fonts/NationalPark/NationalPark-Regular.otf");
+}
+
+@font-face {
+    font-family: National-Park-Heavy;
+    src: url("fonts/NationalPark/NationalPark-Heavy.otf");
+}
+
+@font-face {
+    font-family: National-Park-Outline;
+    src: url("fonts/NationalPark/NationalPark-Outline.otf");
+}
+
+@font-face {
+    font-family: Century;
+    src: url("fonts/Century/C059-Roman.otf");
+}
+
+@font-face {
+    font-family: Century-Italic;
+    src: url("fonts/Century/C059-Italic.otf");
+}
+
+@font-face {
+    font-family: Century-Bold;
+    src: url("fonts/Century/C059-Bold.otf");
+}
+
+@font-face {
+    font-family: Century-Bold-Italic;
+    src: url("fonts/Century/C059-BdIta.otf");
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+section {
+    padding: 50px 0;
+    background: rgba(255, 255, 255, 0.2); /* Glass-like transparent background */
+    backdrop-filter: blur(10px); /* Apply blur effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add drop shadow */
+    border-radius: 10px; /* Optional: Add rounded corners */
+    margin: 20px; /* Add gap between sections and from the edges of the parent div */
+    padding: 20px; /* Add gap from the edges of the section */
+}
+
+#about-me-section h3,
+#bio-section h3,
+#my-work-section h3 {
+    color: black;
+    font-family: National-Park-Heavy,Calibri,sans-serif;
+    font-size: 2rem;
+    text-align: left;
+    background-image: linear-gradient(to left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+    padding: 10px;
+    border-radius: 10px;
+}
+
 h1 {
-    color: red;
+    color: black;
+}
+
+h3 {
+    font-family: National-Park-Thin,sans-serif;
 }
 
 a {
@@ -9,14 +79,30 @@ a {
 
 body {
     background-color: rgb(241 241 241);
-    background-image: url('images/forestBackground.webp');
+    background-image: url('images/forestBackground.gif');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     color: antiquewhite;
-    font-family: sans-serif;
+    font-family: Century, serif;
     transition: background-image 0.5s ease-in-out;
+}
+
+#quiz-body {
+    background-image: url('images/simonBackground.gif')
+}
+
+#imgForest {
+    background-image: url('images/forestBackground.gif');
+}
+
+#imgLamp {
+    background-image: url('images/lampBackground.gif');
+}
+
+#imgChurch {
+    background-image: url('images/shoreChurchBackground.gif');
 }
 
 img {
@@ -71,6 +157,7 @@ img {
 }
 
 p {
+    font-family: Century,serif;
     transition: text-shadow 0.5s ease-in-out;
 }
 
@@ -138,7 +225,7 @@ p:hover {
     border-radius: 10px;
     color: white;
     transition: box-shadow 0.5s ease-in-out; /* Add transition for smooth effect */
-    width: 50%;
+    width: 60%;
     margin-top: 20px;
     text-align: left;
 }
@@ -163,14 +250,14 @@ p:hover {
 }
 
 #main-content {
-    width: 50vw;
+    width: 60vw;
     position: fixed;
     right: 0;
     background: none; /* Remove background from main div */
     padding-top: 20px;
     padding-bottom: 20px;
     color: white;
-    overflow: hidden;
+    overflow: scroll;
     height: 100vh;
     z-index: 1; /* Keep content above the pseudo-element */
 }
@@ -180,7 +267,7 @@ p:hover {
     position: fixed; /* Fixes it to the viewport to avoid scrolling issues */
     top: -50vh; /* Extend far beyond the top of the viewport */
     right: 0;
-    width: 50%;
+    width: 60vw;
     height: 200vh; /* Covers double the viewport height */
     background: rgba(0, 0, 0, 0.7);
     z-index: -1; /* Push it behind the content */
@@ -195,14 +282,14 @@ p:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50vw;
+    width: 40vw;
     height: auto;
     z-index: 2; /* Ensure it is above other content */
 }
 
 #logo {
     max-width: 66%; /* Ensure it scales with zoom */
-    max-height: 66; /* Ensure it scales with zoom */
+    max-height: 66%; /* Ensure it scales with zoom */
 }
 
 #logo img{
@@ -214,18 +301,22 @@ p:hover {
 }
 
 .title {
-    font-family: sans-serif;
+    font-family: National-Park,sans-serif;
     font-size: 2.5rem;
     margin-bottom: 20px;
 }
 
 .subtitle {
+    font-family: Century,sans-serif;
     font-size: 1.5rem;
     font-style: oblique;
     margin-bottom: 10px;
 }
 
 .dms-header {
+    font-family: National-Park-Outline,sans-serif;
+    font-size: 75px;
+    font-weight: normal;
     color: #222;
     padding: 10px 20px;
     background: linear-gradient(to left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 100) 100%);
@@ -239,7 +330,3 @@ p:hover {
     display: none;
 }
 
-@font-face {
-    font-family: NationalParkThin;
-    src: url(nationalpark-thin.otf);
-}

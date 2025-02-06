@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DM's Quiz</title>
+    <link rel="stylesheet" href="style.css">
+    <script rel="scripts" href="functions.js"></script>
+</head>
+<body id="quiz-body">
+    <div id="main-content">
+        <h2 class="dms-header">DM's Quiz</h2>
+    <div id="container">
+        <p class="subtitle">
+        Welcome to the <strong>OFFICIAL</strong> DM Quiz!
+        </p>
+    </div>
+    <br>
+    <br>
+    <div id="container">
+        <div id="tabs-container">
+            <input type="button" id="but1" class="buttons" onclick="startQuiz()" value="Start Quiz!">
+        </div>
+        <div id="tabs-content">
+            <div id="quiz-content" class="tabs-stuff" style="display: none;">
+                <div id="quiz-box">
+                    <h3>QUIZ!</h3>
+                    <div id="ans-count">Correct Answers: 0</div>
+                    <br>
+                    <p id="quiz-question">What is 2 + 2?</p>
+                    <br>
+                    <button id="wrongAns" class="buttons" onclick="alert('Nope!')">2</button>
+                    <button id="wrongAns" class="buttons" onclick="alert('Nope!')">3</button>
+                    <button id="corrAns" class="buttons" onclick="incrementAnsCount()">4</button>
+                    <button id="wrongAns" class="buttons" onclick="alert('Nope!')">5</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div id="logo-container">
+        <div id="logo">
+            <img src="images/PersonalLogo.gif" alt="DM's Logo">
+        </div>
+    </div>
+<!--Scripts used until/unless I can get a separate js working properly-->
+<script>
+
+    let ansCount = 0;
+
+function hideQuizButton() {
+    document.getElementById("but1").style.display = 'none';
+    document.getElementById("tabs-container").style.display = 'none';
+}
+
+function startQuiz() {
+    hideQuizButton();
+    document.getElementById("quiz-content").style.display = 'block';
+}
+
+function incrementAnsCount() {
+    ansCount++;
+    document.getElementById("ans-count").innerHTML = "Correct Answers: " + ansCount;
+    checkEndQuiz();
+}
+
+function checkEndQuiz() {
+    if (ansCount >= 10) {
+        alert("Congratulations! You've completed the quiz!");
+        endQuiz();
+    }
+}
+
+function endQuiz() {
+    document.getElementById("quiz-content").style.display = 'none';
+    document.getElementById("but1").style.display = 'block';
+    document.getElementById("tabs-container").style.display = 'flex';
+    ansCount = 0;
+    document.getElementById("ans-count").innerHTML = "Correct Answers: " + ansCount;
+}
+
+</script>
+
+</body>
+</html>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DM's Website</title>
     <link rel="stylesheet" href="style.css">
-    <script rel="scripts" href="functions.js"></script>
+    <!--<script rel="scripts" href="functions.js"></script>-->
 </head>
 <body>
     <div id="main-content">
@@ -15,7 +15,6 @@
     <!--This is the Spanish word for "Hello!". To help screenreaders, put it in a span.-->
     <!--Do NOT use a DIV for this, since that creates a box. Use it to group things.-->
     <!--Only use DIVs if you want to actually create a block in the layout; Keep it away from text.-->
-
         This is my website! I hope you enjoy it!
         </p>
     </div>
@@ -23,24 +22,28 @@
     <br>
     <div id="container">
     <div id="tabs-container">
-        <input type="button" id="but1" class="buttons" onclick="showAboutMe()" value="About Me">
-        <input type="button" id="but2" class="buttons" onclick="showBio()" value="Bio">
+        <input type="button" id="but1" class="buttons" onclick="showBio()" value="Bio">
+        <input type="button" id="but2" class="buttons" onclick="showAboutMe()" value="About Me">
         <input type="button" id="but3" class="buttons" onclick="showMyWork()" value="My Work">
-        <input type="button" id="but4" class="buttons" onclick="showQuiz()" value="Quiz">
+        <input type="button" id="but4" class="buttons" onclick="location.href='quiz.html'" value="Quiz">
     </div>
     <div id="tabs-content">
         <div id="about-me-content" class="tabs-stuff" style="display: none;">
             This is the content for the About Me tab.
         </div>
         <div id="bio-content" class="tabs-stuff" style="display: none;">
-            University of Miami undergraduate student currently in his sophomore year. Pursuing a Bachelors in Interactive Media, as well as a minor in Game Design. Wishes to expose himself to narrative writing and worldbuilding in relation to game design and development. Bit of a web surfer, also.
+            My name is <strong style="font-family: National-Park; font-size: 24px;">Daniele Montefiori</strong>, and I am a <strong style="font-family: National-Park-Thin; font-size: 20px;">University of Miami</strong> undergraduate student currently in his senior year, currently pursuing a <strong style="font-family: National-Park-Thin; font-size: 20px;">Bachelor's in Interactive Media</strong> with a <strong style="font-family: National-Park-Thin; font-size: 20px;">Minor in Game Design</strong>.
+            <br><br>
+            I have helped design and develop digital deliverables in the form of playful experiences as well as interactive tools, including in VR. I am passionate about building immersive and reflective digital experiences that are fun and educational (in a more implicit manner), which has inspired my interest in game development.
+            <br><br>
+            I'm often lost in my imagination and curiosity, finding myself building worlds and narratives all in my head.
         </div>
         <div id="my-work-content" class="tabs-stuff" style="display: none;">
             This is the content for the My Work tab.
         </div>
-        <div id="quiz-content" class="tabs-stuff" style="display: none;">
+        <!--<div id="quiz-content" class="tabs-stuff" style="display: none;">
             <div id="quiz-box">
-            <p>QUIZ!</p>
+            <h3>QUIZ!</h3>
             <div id="ans-count">Correct Answers: 0</div>
             <br>
             <p id="quiz-question">What is 2 + 2?</p>
@@ -50,10 +53,11 @@
             <button id="corrAns" class="buttons" onclick="incrementAnsCount()">4</button>
             <button id="wrongAns" class="buttons" onclick="alert('Nope!')">5</button>
             </div>
+            </div>-->
+        </div>
         </div>
     </div>
     <!--<div id="profile-container">
-        <div id="profiles" style="border: 1px solid black; padding: 10px;">
             <img src="https://placecats.com/300/200" alt="Placeholder Image">
             <p>Lorem ipsum dolor sit amet, <strong>consectetur</strong> adipiscing elit. Nullam nec pur.</p>>
         </div>
@@ -61,7 +65,7 @@
             <img src="https://placecats.com/300/200" alt="Placeholder Image">
             <p>Lorem ipsum dolor sit amet, <strong>consectetur</strong> adipiscing elit. Nullam nec pur.</p>
         </div>
-    </div><-->
+    </div>-->
     </div>
     </div>
     <div id="logo-container">
@@ -78,7 +82,7 @@ function hideAllTabs() {
     document.getElementById("about-me-content").style.display = 'none';
     document.getElementById("bio-content").style.display = 'none';
     document.getElementById("my-work-content").style.display = 'none';
-    document.getElementById("quiz-content").style.display = 'none';
+    /*document.getElementById("quiz-content").style.display = 'none';*/
     document.body.style.backgroundImage = 'url("images/forestBackground.gif")';
 }
 
@@ -99,17 +103,19 @@ function showMyWork() {
     document.body.style.backgroundImage = 'url("images/lampBackground.gif")';
 }
 
+/*
 function showQuiz() {
     hideAllTabs();
     document.getElementById("quiz-content").style.display = 'block';
     document.body.style.backgroundImage = 'url("images/simonBackground.gif")';
 }
 
+
 function incrementAnsCount() {
     ansCount++;
     document.getElementById("ans-count").innerHTML = "Correct Answers: " + ansCount;
 }
-
+*/
 </script>
 
 </body>
