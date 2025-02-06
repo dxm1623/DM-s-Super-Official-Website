@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DM's Quiz</title>
     <link rel="stylesheet" href="style.css">
-    <script rel="scripts" href="functions.js"></script>
+    <!--<script rel="scripts" href="functions.js"></script>-->
 </head>
 <body id="quiz-body">
     <div id="main-content">
@@ -29,13 +29,14 @@
                     <br>
                     <div id="quiz-question">
                         <div id="ques-count">Question 1</div>
-                        What is 2 + 2?
+                        <p id="question">What is 2 + 2?</p>
+                        <button onclick="check(this)">2</button>
+                        <button onclick="check(this)">3</button>
+                        <button onclick="check(this)" class="correct">4</button>
+                        <button onclick="check(this)">5</button>
                     </div>
                     <br>
-                    <button id="wrongAns" class="buttons" onclick="alert('Nope!')">2</button>
-                    <button id="wrongAns" class="buttons" onclick="alert('Nope!')">3</button>
-                    <button id="corrAns" class="buttons" onclick="increment()">4</button>
-                    <button id="wrongAns" class="buttons" onclick="alert('Nope!')">5</button>
+
                 </div>
             </div>
         </div>
@@ -52,18 +53,26 @@
     let ansCount = 0;
     let questionCount = 1;
 
-function hideQuizButton() {
+function startQuiz() {
     document.getElementById("but1").style.display = 'none';
     document.getElementById("tabs-container").style.display = 'none';
+    document.getElementById("quiz-content").style.display = 'block';
+    document.getElementsByClassName("subtitle")[0].style.display = 'none';
 }
 
-function startQuiz() {
-    hideQuizButton();
-    document.getElementById("quiz-content").style.display = 'block';
+function check(button) {
+    console.log(button);
+    if (button.classList.contains("correct")) {
+        ansCount++;
+        button.style.backgroundColor = "green";
+        increment();
+    } else {
+        button.style.backgroundColor = "red";
+        alert("Incorrect! Try again.");
+    }
 }
 
 function increment() {
-    ansCount++;
     questionCount++;
     document.getElementById("ques-count").innerHTML = "Question " + questionCount;
     document.getElementById("ans-count").innerHTML = "Correct Answers: " + ansCount;
@@ -71,7 +80,7 @@ function increment() {
 }
 
 function checkEndQuiz() {
-    if (ansCount >= 10) {
+    if (questionCount = 11) {
         alert("Congratulations! You've completed the quiz!");
         endQuiz();
     }
@@ -79,6 +88,7 @@ function checkEndQuiz() {
 
 function endQuiz() {
     document.getElementById("quiz-content").style.display = 'none';
+    document.getElementsByClassName("subtitle")[0].style.display = 'block';
     document.getElementById("but1").style.display = 'block';
     document.getElementById("tabs-container").style.display = 'flex';
     ansCount = 0;

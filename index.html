@@ -29,7 +29,13 @@
     </div>
     <div id="tabs-content">
         <div id="about-me-content" class="tabs-stuff" style="display: none;">
-            This is the content for the About Me tab.
+            Daniele Montefiori is a lifelong resident of Miami, Florida who is currently an undergraduate student at the University of Miami. Daniele believes in the power of a healthy imagination and a clear conscience, and that there is a place for tough introspection within the realm of playful experiences such as video games.
+            <br><br>
+            Daniele has helped design and develop a number of short experiences during the course of his studies, including both immersive experiences within virtual reality as well as more traditional digital games and playful experiences. He is currently involved in the development of Answer Campus, an interactive visual novel developed by NERDLab as part of their in-house game development initiative, as part of their writing team. He has also helped develop an interactive VR tour of the University of Miami's School of Communication, which was shown off at the Miami XR 2025 exposition hosted by the university.
+            <br><br>
+            In addition to game development, Daniele has an interest in graphic design and has dabbled in web design and coding; this very website was coded by him, and is hosted on Github.
+            <br><br>
+            Daniele is currently studying for a Bachelor's in Interactive Media with a Minor in Game Design.
         </div>
         <div id="bio-content" class="tabs-stuff" style="display: none;">
             My name is <strong style="font-family: National-Park; font-size: 24px;">Daniele Montefiori</strong>, and I am a <strong style="font-family: National-Park-Thin; font-size: 20px;">University of Miami</strong> undergraduate student currently in his senior year, currently pursuing a <strong style="font-family: National-Park-Thin; font-size: 20px;">Bachelor's in Interactive Media</strong> with a <strong style="font-family: National-Park-Thin; font-size: 20px;">Minor in Game Design</strong>.
@@ -83,18 +89,21 @@ function hideAllTabs() {
     document.getElementById("bio-content").style.display = 'none';
     document.getElementById("my-work-content").style.display = 'none';
     /*document.getElementById("quiz-content").style.display = 'none';*/
+    document.getElementById("logo").innerHTML = '<img src="images/PersonalLogo.gif" alt="DM\'s Logo">';
     document.body.style.backgroundImage = 'url("images/forestBackground.gif")';
 }
 
 function showAboutMe() {
     hideAllTabs();
     document.getElementById("about-me-content").style.display = 'block';
+    document.getElementById("logo").innerHTML = '<img src="images/danielepic.gif" alt="The man, DM, himself!">';
 }
 
 function showBio() {
     hideAllTabs();
     document.getElementById("bio-content").style.display = 'block';
     document.body.style.backgroundImage = 'url("images/shoreChurchBackground.gif")';
+    document.getElementById("logo").innerHTML = '<img src="images/danielepic.gif" alt="The man, DM, himself!">';
 }
 
 function showMyWork() {
