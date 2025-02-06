@@ -47,19 +47,6 @@
         <div id="my-work-content" class="tabs-stuff" style="display: none;">
             This is the content for the My Work tab.
         </div>
-        <!--<div id="quiz-content" class="tabs-stuff" style="display: none;">
-            <div id="quiz-box">
-            <h3>QUIZ!</h3>
-            <div id="ans-count">Correct Answers: 0</div>
-            <br>
-            <p id="quiz-question">What is 2 + 2?</p>
-            <br>
-            <button id="wrongAns" class="buttons" onclick="alert('Nope!')">2</button>
-            <button id="wrongAns" class="buttons" onclick="alert('Nope!')">3</button>
-            <button id="corrAns" class="buttons" onclick="incrementAnsCount()">4</button>
-            <button id="wrongAns" class="buttons" onclick="alert('Nope!')">5</button>
-            </div>
-            </div>-->
         </div>
         </div>
     </div>
@@ -81,50 +68,84 @@
     </div>
 <!--Scripts used until/unless I can get a separate js working properly-->
 <script>
-
     let ansCount = 0;
-    
-function hideAllTabs() {
-    document.getElementById("about-me-content").style.display = 'none';
-    document.getElementById("bio-content").style.display = 'none';
-    document.getElementById("my-work-content").style.display = 'none';
-    /*document.getElementById("quiz-content").style.display = 'none';*/
-    document.getElementById("logo").innerHTML = '<img src="images/PersonalLogo.gif" alt="DM\'s Logo">';
-    document.body.style.backgroundImage = 'url("images/forestBackground.gif")';
-}
+    let currentTab = 'index';
 
-function showAboutMe() {
-    hideAllTabs();
-    document.getElementById("about-me-content").style.display = 'block';
-    document.getElementById("logo").innerHTML = '<img src="images/danielepic.gif" alt="The man, DM, himself!">';
-}
+    const tabs = {
+        index: {
+            contentId: '',
+            logoSrc: 'images/PersonalLogo.gif',
+            logoAlt: "DM's Logo",
+            backgroundImage: 'url("images/forestBackground.gif")'
+        },
+        aboutMe: {
+            contentId: 'about-me-content',
+            logoSrc: 'images/danielepic.gif',
+            logoAlt: "The man, DM, himself!",
+            backgroundImage: 'url("images/forestBackground.gif")'
+        },
+        bio: {
+            contentId: 'bio-content',
+            logoSrc: 'images/danielepic.gif',
+            logoAlt: "The man, DM, himself!",
+            backgroundImage: 'url("images/shoreChurchBackground.gif")'
+        },
+        myWork: {
+            contentId: 'my-work-content',
+            logoSrc: 'images/PersonalLogo.gif',
+            logoAlt: "DM's Logo",
+            backgroundImage: 'url("images/lampBackground.gif")'
+        }
+    };
 
-function showBio() {
-    hideAllTabs();
-    document.getElementById("bio-content").style.display = 'block';
-    document.body.style.backgroundImage = 'url("images/shoreChurchBackground.gif")';
-    document.getElementById("logo").innerHTML = '<img src="images/danielepic.gif" alt="The man, DM, himself!">';
-}
+    function hideAllTabs() {
+        for (let tab in tabs) {
+            if (tabs[tab].contentId) {
+                document.getElementById(tabs[tab].contentId).style.display = 'none';
+            }
+        }
+    }
 
-function showMyWork() {
-    hideAllTabs();
-    document.getElementById("my-work-content").style.display = 'block';
-    document.body.style.backgroundImage = 'url("images/lampBackground.gif")';
-}
+    function showTab(tabName) {
+        hideAllTabs();
+        const tab = tabs[tabName];
+        if (tab.contentId) {
+            document.getElementById(tab.contentId).style.display = 'block';
+        }
+        document.body.style.backgroundImage = tab.backgroundImage;
+        changeLogo(tab.logoSrc, tab.logoAlt, tabName);
+    }
 
-/*
-function showQuiz() {
-    hideAllTabs();
-    document.getElementById("quiz-content").style.display = 'block';
-    document.body.style.backgroundImage = 'url("images/simonBackground.gif")';
-}
+    function showAboutMe() {
+        showTab('aboutMe');
+    }
 
+    function showBio() {
+        showTab('bio');
+    }
 
-function incrementAnsCount() {
-    ansCount++;
-    document.getElementById("ans-count").innerHTML = "Correct Answers: " + ansCount;
-}
-*/
+    function showMyWork() {
+        showTab('myWork');
+    }
+
+    function changeLogo(src, alt, tab) {
+        const logo = document.querySelector('#logo img');
+        const currentLogoSrc = logo.src.substring(logo.src.lastIndexOf('/') + 1);
+        const newLogoSrc = src.substring(src.lastIndexOf('/') + 1);
+        if (currentLogoSrc !== newLogoSrc) {
+            logo.classList.add('fade-out');
+            setTimeout(() => {
+                logo.src = src;
+                logo.alt = alt;
+                logo.classList.remove('fade-out');
+                logo.classList.add('fade-in');
+                setTimeout(() => {
+                    logo.classList.remove('fade-in');
+                }, 500);
+            }, 500);
+        }
+        currentTab = tab;
+    }
 </script>
 
 </body>

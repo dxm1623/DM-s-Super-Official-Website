@@ -313,12 +313,23 @@ p:hover {
     max-height: 66%; /* Ensure it scales with zoom */
 }
 
-#logo img{
+#logo img {
     width: auto; /* Set a fixed width */
     height: auto; /* Maintain aspect ratio */
     max-width: 100%; /* Ensure it scales with zoom */
     max-height: 100%; /* Ensure it scales with zoom */
     border-style: none; /* Remove border */
+    transition: opacity 0.5s ease-in-out; /* Add transition for fade effect */
+}
+
+#logo img.fade-out {
+    opacity: 0; /* Fade out effect */
+    transition: opacity 0.5s ease-in-out;
+}
+
+#logo img.fade-in {
+    opacity: 1; /* Fade in effect */
+    transition: opacity 0.5s ease-in-out;
 }
 
 .title {
