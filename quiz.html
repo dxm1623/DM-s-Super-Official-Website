@@ -5,98 +5,126 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DM's Quiz</title>
     <link rel="stylesheet" href="style.css">
-    <!--<script rel="scripts" href="functions.js"></script>-->
 </head>
 <body id="quiz-body">
     <div id="main-content">
         <h2 class="dms-header">DM's Quiz</h2>
-    <div id="container">
-        <p class="subtitle">
-        Welcome to the <strong>OFFICIAL</strong> DM Quiz!
-        </p>
-    </div>
-    <br>
-    <br>
-    <div id="container">
-        <div id="tabs-container">
-            <input type="button" id="but1" class="buttons" onclick="startQuiz()" value="Start Quiz!">
+        <div id="container">
+            <p class="subtitle">
+                Welcome to the <strong>OFFICIAL</strong> DM Quiz!
+            </p>
         </div>
-        <div id="tabs-content">
-            <div id="quiz-content" class="tabs-stuff" style="display: none;">
-                <div id="quiz-box">
-                    <h3>QUIZ!</h3>
-                    <div id="ans-count">Correct Answers: 0</div>
-                    <br>
-                    <div id="quiz-question">
-                        <div id="ques-count">Question 1</div>
-                        <p id="question">What is 2 + 2?</p>
-                        <button onclick="check(this)">2</button>
-                        <button onclick="check(this)">3</button>
-                        <button onclick="check(this)" class="correct">4</button>
-                        <button onclick="check(this)">5</button>
+        <br><br>
+        <div id="container">
+            <div id="tabs-container"><input type="button" id="but1" class="buttons" onclick="startQuiz()" value="Start Quiz!"></div>
+            </div>
+            <div style="display: flex; justify-content: center; align-items: center;">
+                <div id="tabs-content" style="display: flex; justify-content: center; align-items: center;">
+                    <div id="quiz-content" class="tabs-stuff" style="display: none;">
+                        <div id="quiz-box">
+                            <h3>QUIZ!</h3>
+                            <div id="ans-count">Correct Answers: 0</div>
+                            <br>
+                            <div id="quiz-question">
+                                <div id="ques-count">Question HUH</div>
+                                    <p id="question">DEBUG QUESTION</p>
+                                <button onclick="check(this, 0)">A</button>
+                                <button onclick="check(this, 1)">B</button>
+                                <button onclick="check(this, 2)">C</button>
+                                <button onclick="check(this, 3)">D</button>
+                            </div>
+                            <br>
+                        </div>
                     </div>
-                    <br>
-
                 </div>
             </div>
         </div>
-    </div>
     </div>
     <div id="logo-container">
         <div id="logo">
             <img src="images/PersonalLogo.gif" alt="DM's Logo">
         </div>
     </div>
-<!--Scripts used until/unless I can get a separate js working properly-->
-<script>
+    <script>
+        const questions = [
+            { question: "What is 2 + 2?", answers: ["2", "3", "4", "5"], correct: 2 },
+            { question: "What is the capital of France?", answers: ["Berlin", "Madrid", "Paris", "Rome"], correct: 2 },
+            { question: "What is the largest planet in our solar system?", answers: ["Earth", "Jupiter", "Mars", "Saturn"], correct: 1 },
+            { question: "What is the mind killer?", answers: ["Fear", "Doubt", "Hate", "Love"], correct: 0 },
+            { question: "Who wrote 'Romeo and Juliet'?", answers: ["Mark Twain", "Charles Dickens", "William Shakespeare", "Jane Austen"], correct: 2 },
+            { question: "Who is the real Slim Shady?", answers: ["Eminem", "Dr. Dre", "50 Cent", "Snoop Dogg"], correct: 0 },
+            { question: "How many fingers am I holding up?", answers: ["1", "2", "3", "4"], correct: 0 },
+            { question: "What is the airspeed velocity of an unladen swallow?", answers: ["African or European?", "I don't know that!", "Around 11 meters per second", "About 20 miles per hour"], correct: 0 },
+            { question: "What is the meaning of life?", answers: ["42", "To be happy", "To find love", "To make money"], correct: 0 },
+            { question: "What is the best programming language?", answers: ["Python", "JavaScript", "C++", "All of the above"], correct: 3 },
+            { question: "What is x + 1 - the circumference of the Earth / 76 ^the burden of thy sins, sinner?", answers: ["Please stop messing with me.","42","21","Um."], correct: 1},
+            {question: "I like that card, but I'm going over. 1,2,3, brother.", answers: ["Don't work yourself into a shoot, brother.","That doesn't work for me, dude. I'm going over.","Not in front of the 300 million Hulkamanics.","Sure, Terry, whatever you say."], correct: 1}
+        ];
 
-    let ansCount = 0;
-    let questionCount = 1;
+        let ansCount = 0;
+        let questionCount = 1;
 
-function startQuiz() {
-    document.getElementById("but1").style.display = 'none';
-    document.getElementById("tabs-container").style.display = 'none';
-    document.getElementById("quiz-content").style.display = 'block';
-    document.getElementsByClassName("subtitle")[0].style.display = 'none';
-}
+        function loadQuestion() {
+            if (questionCount <= questions.length) {
+                const currentQuestion = questions[questionCount - 1];
+                document.getElementById("question").innerText = currentQuestion.question;
+                const buttons = document.querySelectorAll("#quiz-question button");
+                buttons.forEach((button, index) => {
+                    button.innerText = currentQuestion.answers[index];
+                    button.classList.remove("correct", "wrong", "clicked");
+                    button.classList.add(index === currentQuestion.correct ? "correct" : "wrong");
+                });
+            }
+        }
 
-function check(button) {
-    console.log(button);
-    if (button.classList.contains("correct")) {
-        ansCount++;
-        button.style.backgroundColor = "green";
-        increment();
-    } else {
-        button.style.backgroundColor = "red";
-        alert("Incorrect! Try again.");
-    }
-}
+        function startQuiz() {
+            document.getElementById("but1").style.display = 'none';
+            document.getElementById("tabs-container").style.display = 'none';
+            document.getElementById("quiz-content").style.display = 'block';
+            document.querySelector(".subtitle").style.display = 'none';
+            document.getElementById("ques-count").innerText = "Question " + questionCount;
+            loadQuestion();
+        }
 
-function increment() {
-    questionCount++;
-    document.getElementById("ques-count").innerHTML = "Question " + questionCount;
-    document.getElementById("ans-count").innerHTML = "Correct Answers: " + ansCount;
-    checkEndQuiz();
-}
+        function check(button, index) {
+            const currentQuestion = questions[questionCount - 1];
+            button.classList.add("clicked");
+            if (index === currentQuestion.correct) {
+                ansCount++;
+            }
+            document.querySelectorAll("#quiz-question button").forEach(btn => btn.disabled = true);
+            setTimeout(() => {
+                document.getElementById("ans-count").innerText = "Correct Answers: " + ansCount + " out of " + questions.length;
+                if (questionCount >= questions.length) {
+                    alert("Congratulations! You've completed the quiz!");
+                    endQuiz();
+                } else {
+                    questionCount++;
+                    document.getElementById("ques-count").innerText = "Question " + questionCount;
+                    resetButtons();
+                    loadQuestion();
+                }
+            }, 1000);
+        }
 
-function checkEndQuiz() {
-    if (questionCount = 11) {
-        alert("Congratulations! You've completed the quiz!");
-        endQuiz();
-    }
-}
+        function resetButtons() {
+            document.querySelectorAll("#quiz-question button").forEach(btn => {
+                btn.disabled = false;
+                btn.classList.remove("correct", "wrong", "clicked");
+            });
+        }
 
-function endQuiz() {
-    document.getElementById("quiz-content").style.display = 'none';
-    document.getElementsByClassName("subtitle")[0].style.display = 'block';
-    document.getElementById("but1").style.display = 'block';
-    document.getElementById("tabs-container").style.display = 'flex';
-    ansCount = 0;
-    questionCount = 1;
-    document.getElementById("ques-count").innerHTML = "Question " + questionCount;
-    document.getElementById("ans-count").innerHTML = "Correct Answers: " + ansCount;
-}
-</script>
-
+        function endQuiz() {
+            resetButtons();
+            document.getElementById("quiz-content").style.display = 'none';
+            document.querySelector(".subtitle").style.display = 'block';
+            document.getElementById("but1").style.display = 'block';
+            document.getElementById("tabs-container").style.display = 'flex';
+            ansCount = 0;
+            questionCount = 1;
+            document.getElementById("ques-count").innerText = "Question " + questionCount;
+            document.getElementById("ans-count").innerText = "Correct Answers: " + ansCount;
+        }
+    </script>
 </body>
 </html>

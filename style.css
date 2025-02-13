@@ -351,6 +351,7 @@ p:hover {
     font-weight: normal;
     color: #222;
     padding: 10px 20px;
+    margin-block: 10px;
     background: linear-gradient(to left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 100) 100%);
     display: inline-block;
     width: -webkit-fill-available;
@@ -362,3 +363,23 @@ p:hover {
     display: none;
 }
 
+
+button.clicked.correct {
+    background-color: green;
+    opacity: 1; /* Start fully visible */
+    transition: background-color 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+button.clicked.correct.fade-out {
+    opacity: 0; /* Fade out effect */
+}
+
+button.clicked.wrong {
+    background-color: red;
+    opacity: 1; /* Start fully visible */
+    transition: background-color 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+button.clicked.wrong.fade-out {
+    opacity: 0; /* Fade out effect */
+}
