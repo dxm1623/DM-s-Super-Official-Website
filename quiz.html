@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DM's Quiz</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .valedictorian {
+            color: gold;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body id="quiz-body">
     <div id="main-content">
@@ -13,13 +19,15 @@
             <p class="subtitle">
                 Welcome to the <strong>OFFICIAL</strong> DM Quiz!
             </p>
+            <p id="high-score"></p>
+            <p id="last-result"></p>
         </div>
         <br><br>
         <div id="container">
             <div id="tabs-container"><input type="button" id="but1" class="buttons" onclick="startQuiz()" value="Start Quiz!"></div>
-            </div>
+        </div>
             <div style="display: flex; justify-content: center; align-items: center;">
-                <div id="tabs-content" style="display: flex; justify-content: center; align-items: center;">
+                <div id="tabs-content" style="display: flex; justify-content: center; align-items: center; width: 80%;">
                     <div id="quiz-content" class="tabs-stuff" style="display: none;">
                         <div id="quiz-box">
                             <h3>QUIZ!</h3>
@@ -28,10 +36,10 @@
                             <div id="quiz-question">
                                 <div id="ques-count">Question HUH</div>
                                     <p id="question">DEBUG QUESTION</p>
-                                <button onclick="check(this, 0)">A</button>
-                                <button onclick="check(this, 1)">B</button>
-                                <button onclick="check(this, 2)">C</button>
-                                <button onclick="check(this, 3)">D</button>
+                                    <button onclick="check(this, 0)">A</button>
+                                    <button onclick="check(this, 1)">B</button>
+                                    <button onclick="check(this, 2)">C</button>
+                                    <button onclick="check(this, 3)">D</button>
                             </div>
                             <br>
                         </div>
@@ -58,7 +66,8 @@
             { question: "What is the meaning of life?", answers: ["42", "To be happy", "To find love", "To make money"], correct: 0 },
             { question: "What is the best programming language?", answers: ["Python", "JavaScript", "C++", "All of the above"], correct: 3 },
             { question: "What is x + 1 - the circumference of the Earth / 76 ^the burden of thy sins, sinner?", answers: ["Please stop messing with me.","42","21","Um."], correct: 1},
-            {question: "I like that card, but I'm going over. 1,2,3, brother.", answers: ["Don't work yourself into a shoot, brother.","That doesn't work for me, dude. I'm going over.","Not in front of the 300 million Hulkamanics.","Sure, Terry, whatever you say."], correct: 1}
+            { question: "What color is this text?", answers: ["Blue", "Red", "Green", "Black"], correct: 3},
+            { question: "How is this quiz programmed?", answers: ["Crying for 12 hours straight.","HTML, CSS, but mostly Javascript.", "Sacrosanct sanguinomancy.", "Adobe Flash."], correct: 1}
         ];
 
         let ansCount = 0;
@@ -83,6 +92,7 @@
             document.getElementById("quiz-content").style.display = 'block';
             document.querySelector(".subtitle").style.display = 'none';
             document.getElementById("ques-count").innerText = "Question " + questionCount;
+            document.getElementById("ans-count").innerText = "Correct Answers: " + ansCount;
             loadQuestion();
         }
 
@@ -115,6 +125,12 @@
         }
 
         function endQuiz() {
+            const highScore = localStorage.getItem('highScore') || 0;
+            if (ansCount > highScore) {
+                localStorage.setItem('highScore', ansCount);
+            }
+            localStorage.setItem('lastResult', ansCount);
+            displayHighScore();
             resetButtons();
             document.getElementById("quiz-content").style.display = 'none';
             document.querySelector(".subtitle").style.display = 'block';
@@ -125,6 +141,23 @@
             document.getElementById("ques-count").innerText = "Question " + questionCount;
             document.getElementById("ans-count").innerText = "Correct Answers: " + ansCount;
         }
+
+        function displayHighScore() {
+            const highScore = localStorage.getItem('highScore') || 0;
+            const lastResult = localStorage.getItem('lastResult') || 0;
+            const highScoreElement = document.getElementById('high-score');
+            const lastResultElement = document.getElementById('last-result');
+            if (highScore == questions.length) {
+                highScoreElement.innerHTML = "DM's Quiz VALEDICTORIAN";
+                highScoreElement.classList.add('valedictorian');
+            } else {
+                highScoreElement.innerHTML = "Highest Score: " + highScore + "/" + questions.length;
+                highScoreElement.classList.remove('valedictorian');
+            }
+            lastResultElement.innerHTML = "Last Result: " + lastResult + "/" + questions.length;
+        }
+
+        document.addEventListener('DOMContentLoaded', displayHighScore);
     </script>
 </body>
 </html>

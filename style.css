@@ -207,9 +207,43 @@ p:hover {
     margin-top: 20px;
     background: rgba(255, 255, 255, 1);
     gap: 10px;
+    transition: all 0.3s ease-in-out;
 }
 
-#tabs-container .buttons {
+#tabs-container .buttons, button {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1);
+    transition: all 0.3s ease-in-out;
+}
+
+#tabs-container .buttons:hover, button:hover {
+    border: 2px solid black;
+    color: black;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+    transform: scale(1.05); /* Expand uniformly */
+    transition: transform 0.3s ease-in-out; /* Smooth transition */
+}
+
+#tabs-container .buttons:hover *, button:hover * {
+    transform: scale(1.05); /* Ensure child elements also expand */
+    transition: transform 0.3s ease-in-out; /* Smooth transition for child elements */
+}
+
+#tab:hover {
+    background: rgba(255, 215, 0, 0.2);
+    border: 2px solid gold;
+    color: rgb(0, 0, 0);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+#quiz-question button {
     background: rgba(255, 255, 255, 0.2);
     border: 2px solid rgb(0, 0, 0);
     color: rgb(0, 0, 0);
@@ -221,13 +255,7 @@ p:hover {
     transition: all 0.3s ease-in-out;
 }
 
-#tabs-container .buttons:hover {
-    border: 2px solid black;
-    color: black;
-    box-shadow: rgba(0, 0, 0, 0.8);
-}
-
-#tab:hover {
+#quiz-question button:hover {
     background: rgba(255, 215, 0, 0.2);
     border: 2px solid gold;
     color: rgb(0, 0, 0);
@@ -320,7 +348,15 @@ p:hover {
     max-height: 100%; /* Ensure it scales with zoom */
     border-style: none; /* Remove border */
     transition: opacity 0.5s ease-in-out; /* Add transition for fade effect */
+    transform: scale(1); /* Ensure initial scale is set */
+    transition: transform 0.5s ease-in-out; /* Add transition for smooth effect */
 }
+
+#logo img:hover {
+    transform: scale(1.1); /* Scale up on hover */
+    transition: transform 0.5s ease-in-out; /* Add transition for smooth effect */
+}
+
 
 #logo img.fade-out {
     opacity: 0; /* Fade out effect */
@@ -364,22 +400,32 @@ p:hover {
 }
 
 
-button.clicked.correct {
+#quiz-question button.clicked.correct {
     background-color: green;
     opacity: 1; /* Start fully visible */
-    transition: background-color 1s ease-in-out, opacity 1s ease-in-out;
+    transition: background-color 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
 
-button.clicked.correct.fade-out {
-    opacity: 0; /* Fade out effect */
+#quiz-question button.clicked.correct.fade-out {
+    animation: fadeOut 0.5s forwards;
 }
 
-button.clicked.wrong {
+#quiz-question button.clicked.wrong {
     background-color: red;
     opacity: 1; /* Start fully visible */
-    transition: background-color 1s ease-in-out, opacity 1s ease-in-out;
+    transition: background-color 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
 
-button.clicked.wrong.fade-out {
-    opacity: 0; /* Fade out effect */
+#quiz-question button.clicked.wrong.fade-out {
+    animation: fadeOut 0.5s forwards;
 }
+
+/*@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        background-color: initial; 
+    }
+}*/
