@@ -6,147 +6,137 @@
     <title>DM's Website</title>
     <link rel="stylesheet" href="style.css">
     <!--<script rel="scripts" href="functions.js"></script>-->
+    <style>
+        .section {
+            margin-bottom: 50px;
+        }
+    </style>
 </head>
 <body>
     <div id="main-content">
         <h2 class="dms-header">DM's Website</h2>
-    <div id="container">
-        <p class="subtitle"><span lang="es">Hola!</span>
-    <!--This is the Spanish word for "Hello!". To help screenreaders, put it in a span.-->
-    <!--Do NOT use a DIV for this, since that creates a box. Use it to group things.-->
-    <!--Only use DIVs if you want to actually create a block in the layout; Keep it away from text.-->
-        This is my website! I hope you enjoy it!
-        </p>
-    </div>
-    <br>
-    <br>
-    <div id="container">
-    <div id="tabs-container">
-        <input type="button" id="but1" class="buttons" onclick="showBio()" value="Bio">
-        <input type="button" id="but2" class="buttons" onclick="showAboutMe()" value="About Me">
-        <input type="button" id="but3" class="buttons" onclick="showMyWork()" value="My Work">
-        <input type="button" id="but4" class="buttons" onclick="location.href='quiz.html'" value="Quiz">
-    </div>
-    <div id="tabs-content">
-        <div id="about-me-content" class="tabs-stuff" style="display: none;">
-            Daniele Montefiori is a lifelong resident of Miami, Florida who is currently an undergraduate student at the University of Miami. Daniele believes in the power of a healthy imagination and a clear conscience, and that there is a place for tough introspection within the realm of playful experiences such as video games.
-            <br><br>
-            Daniele has helped design and develop a number of short experiences during the course of his studies, including both immersive experiences within virtual reality as well as more traditional digital games and playful experiences. He is currently involved in the development of Answer Campus, an interactive visual novel developed by NERDLab as part of their in-house game development initiative, as part of their writing team. He has also helped develop an interactive VR tour of the University of Miami's School of Communication, which was shown off at the Miami XR 2025 exposition hosted by the university.
-            <br><br>
-            In addition to game development, Daniele has an interest in graphic design and has dabbled in web design and coding; this very website was coded by him, and is hosted on Github.
-            <br><br>
-            Daniele is currently studying for a Bachelor's in Interactive Media with a Minor in Game Design.
+            <div id="index-section" class="section">
+                <div id="index-content">
+                    <div id="container">
+                        <p class="subtitle"><span lang="es">Hola!</span>
+                        This is my website, coded in conjunction with my studies at the University of Miami as part of both my Front End Fundamentals and Studio/Portfolio courses.
+                        <br><br>
+                        This website is a work in progress, to be completed never. It shall be updated as I build my repertoire.
+                        <br><br>
+                        Please, feel free to look around!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        <div id="container">
+            <div id="tabs-container">
+                <input type="button" id="but1" class="buttons" onclick="scrollToSection('bio-section')" value="Bio">
+                <input type="button" id="but2" class="buttons" onclick="scrollToSection('about-me-section')" value="About Me">
+                <input type="button" id="but3" class="buttons" onclick="scrollToSection('my-work-section')" value="My Work">
+                <input type="button" id="butQuiz" class="buttons" onclick="location.href='quiz.html'" value="Quiz">
+            </div>
+            <div id="tabs-content">
+                <div id="bio-section" class="section">
+                    <h3>Bio</h3>
+                    <div id="bio-content" class="tabs-stuff">
+                        My name is <strong style="font-family: National-Park; font-size: 24px;">Daniele Montefiori</strong>, and I am a <strong style="font-family: National-Park-Thin; font-size: 20px;">University of Miami</strong> undergraduate student currently in his senior year, currently pursuing a <strong style="font-family: National-Park-Thin; font-size: 20px;">Bachelor's in Interactive Media</strong> with a <strong style="font-family: National-Park-Thin; font-size: 20px;">Minor in Game Design</strong>.
+                        <br><br>
+                        I have helped design and develop digital deliverables in the form of playful experiences as well as interactive tools, including in VR. I am passionate about building immersive and reflective digital experiences that are fun and educational (in a more implicit manner), which has inspired my interest in game development.
+                        <br><br>
+                        I'm often lost in my imagination and curiosity, finding myself building worlds and narratives all in my head.
+                        </div>
+                    </div>
+                    <div id="about-me-section" class="section">
+                        <h3>About Me</h3>
+                        <div id="about-me-content" class="tabs-stuff">
+                            Daniele Montefiori is a lifelong resident of Miami, Florida who is currently an undergraduate student at the University of Miami. Daniele believes in the power of a healthy imagination and a clear conscience, and that there is a place for tough introspection within the realm of playful experiences such as video games.
+                            <br><br>
+                            Daniele has helped design and develop a number of short experiences during the course of his studies, including both immersive experiences within virtual reality as well as more traditional digital games and playful experiences. He is currently involved in the development of Answer Campus, an interactive visual novel developed by NERDLab as part of their in-house game development initiative, as part of their writing team. He has also helped develop an interactive VR tour of the University of Miami's School of Communication, which was shown off at the Miami XR 2025 exposition hosted by the university.
+                            <br><br>
+                            In addition to game development, Daniele has an interest in graphic design and has dabbled in web design and coding; this very website was coded by him, and is hosted on Github.
+                            <br><br>
+                            Daniele is currently studying for a Bachelor's in Interactive Media with a Minor in Game Design.
+                        </div>
+                    </div>
+                    <div id="my-work-section" class="section">
+                        <h3>My Work</h3>
+                        <div id="my-work-content" class="tabs-stuff">
+                            This is the content for the My Work tab.
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div id="bio-content" class="tabs-stuff" style="display: none;">
-            My name is <strong style="font-family: National-Park; font-size: 24px;">Daniele Montefiori</strong>, and I am a <strong style="font-family: National-Park-Thin; font-size: 20px;">University of Miami</strong> undergraduate student currently in his senior year, currently pursuing a <strong style="font-family: National-Park-Thin; font-size: 20px;">Bachelor's in Interactive Media</strong> with a <strong style="font-family: National-Park-Thin; font-size: 20px;">Minor in Game Design</strong>.
-            <br><br>
-            I have helped design and develop digital deliverables in the form of playful experiences as well as interactive tools, including in VR. I am passionate about building immersive and reflective digital experiences that are fun and educational (in a more implicit manner), which has inspired my interest in game development.
-            <br><br>
-            I'm often lost in my imagination and curiosity, finding myself building worlds and narratives all in my head.
-        </div>
-        <div id="my-work-content" class="tabs-stuff" style="display: none;">
-            This is the content for the My Work tab.
-        </div>
-        </div>
-        </div>
-    </div>
-    <!--<div id="profile-container">
-            <img src="https://placecats.com/300/200" alt="Placeholder Image">
-            <p>Lorem ipsum dolor sit amet, <strong>consectetur</strong> adipiscing elit. Nullam nec pur.</p>>
-        </div>
-        <div id="profiles" style="border: 1px solid black; padding: 10px;">
-            <img src="https://placecats.com/300/200" alt="Placeholder Image">
-            <p>Lorem ipsum dolor sit amet, <strong>consectetur</strong> adipiscing elit. Nullam nec pur.</p>
-        </div>
-    </div>-->
-    </div>
     </div>
     <div id="logo-container">
         <div id="logo">
             <img src="images/PersonalLogo.gif" alt="DM's Logo">
         </div>
     </div>
-<!--Scripts used until/unless I can get a separate js working properly-->
-<script>
-    let ansCount = 0;
-    let currentTab = 'index';
-
-    const tabs = {
-        index: {
-            contentId: '',
-            logoSrc: 'images/PersonalLogo.gif',
-            logoAlt: "DM's Logo",
-            backgroundImage: 'url("images/forestBackground.gif")'
-        },
-        aboutMe: {
-            contentId: 'about-me-content',
-            logoSrc: 'images/danielepic.gif',
-            logoAlt: "The man, DM, himself!",
-            backgroundImage: 'url("images/forestBackground.gif")'
-        },
-        bio: {
-            contentId: 'bio-content',
-            logoSrc: 'images/danielepic.gif',
-            logoAlt: "The man, DM, himself!",
-            backgroundImage: 'url("images/shoreChurchBackground.gif")'
-        },
-        myWork: {
-            contentId: 'my-work-content',
-            logoSrc: 'images/PersonalLogo.gif',
-            logoAlt: "DM's Logo",
-            backgroundImage: 'url("images/lampBackground.gif")'
-        }
-    };
-
-    function hideAllTabs() {
-        for (let tab in tabs) {
-            if (tabs[tab].contentId) {
-                document.getElementById(tabs[tab].contentId).style.display = 'none';
+    <!--Scripts used until/unless I can get a separate js working properly-->
+    <script>
+        const tabs = {
+            index: {
+                sectionId: 'index-section',
+                contentId: 'index-content',
+                logoSrc: 'images/PersonalLogo.gif',
+                logoAlt: "DM's Logo",
+                backgroundImage: 'url("images/indexBackground.gif")'
+            },
+            aboutMe: {
+                sectionId: 'about-me-section',
+                contentId: 'about-me-content',
+                logoSrc: 'images/danielepic.gif',
+                logoAlt: "The man, DM, himself!",
+                backgroundImage: 'url("images/forestBackground.gif")'
+            },
+            bio: {
+                sectionId: 'bio-section',
+                contentId: 'bio-content',
+                logoSrc: 'images/danielepic.gif',
+                logoAlt: "The man, DM, himself!",
+                backgroundImage: 'url("images/shoreChurchBackground.gif")'
+            },
+            myWork: {
+                sectionId: 'my-work-section',
+                contentId: 'my-work-content',
+                logoSrc: 'images/PersonalLogo.gif',
+                logoAlt: "DM's Logo",
+                backgroundImage: 'url("images/lampBackground.gif")'
             }
+        };
+
+        function changeLogo(src, alt) {
+            const logo = document.querySelector('#logo img');
+            logo.src = src;
+            logo.alt = alt;
         }
-    }
 
-    function showTab(tabName) {
-        hideAllTabs();
-        const tab = tabs[tabName];
-        if (tab.contentId) {
-            document.getElementById(tab.contentId).style.display = 'block';
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({behavior: 'smooth' });
         }
-        document.body.style.backgroundImage = tab.backgroundImage;
-        changeLogo(tab.logoSrc, tab.logoAlt, tabName);
-    }
 
-    function showAboutMe() {
-        showTab('aboutMe');
-    }
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.5
+        };
 
-    function showBio() {
-        showTab('bio');
-    }
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const tab = Object.values(tabs).find(tab => tab.sectionId === entry.target.id);
+                    if (tab) {
+                        document.body.style.backgroundImage = tab.backgroundImage;
+                        changeLogo(tab.logoSrc, tab.logoAlt);
+                    }
+                }
+            });
+        }, observerOptions);
 
-    function showMyWork() {
-        showTab('myWork');
-    }
-
-    function changeLogo(src, alt, tab) {
-        const logo = document.querySelector('#logo img');
-        const currentLogoSrc = logo.src.substring(logo.src.lastIndexOf('/') + 1);
-        const newLogoSrc = src.substring(src.lastIndexOf('/') + 1);
-        if (currentLogoSrc !== newLogoSrc) {
-            logo.classList.add('fade-out');
-            setTimeout(() => {
-                logo.src = src;
-                logo.alt = alt;
-                logo.classList.remove('fade-out');
-                logo.classList.add('fade-in');
-                setTimeout(() => {
-                    logo.classList.remove('fade-in');
-                }, 500);
-            }, 500);
-        }
-        currentTab = tab;
-    }
-</script>
-
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
 </body>
 </html>

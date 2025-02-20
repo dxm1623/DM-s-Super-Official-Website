@@ -10,6 +10,10 @@
             color: gold;
             font-weight: bold;
         }
+        #quiz-body {
+            background-image: url('images/simonBackground.gif');
+            background-size: cover;
+        }
     </style>
 </head>
 <body id="quiz-body">
@@ -22,7 +26,6 @@
             <p id="high-score"></p>
             <p id="last-result"></p>
         </div>
-        <br><br>
         <div id="container">
             <div id="tabs-container"><input type="button" id="but1" class="buttons" onclick="startQuiz()" value="Start Quiz!"></div>
         </div>
@@ -62,10 +65,10 @@
             { question: "Who wrote 'Romeo and Juliet'?", answers: ["Mark Twain", "Charles Dickens", "William Shakespeare", "Jane Austen"], correct: 2 },
             { question: "Who is the real Slim Shady?", answers: ["Eminem", "Dr. Dre", "50 Cent", "Snoop Dogg"], correct: 0 },
             { question: "How many fingers am I holding up?", answers: ["1", "2", "3", "4"], correct: 0 },
-            { question: "What is the airspeed velocity of an unladen swallow?", answers: ["African or European?", "I don't know that!", "Around 11 meters per second", "About 20 miles per hour"], correct: 0 },
+            { question: "What is the airspeed velocity of an unladen swallow?", answers: ["African or European?", "What?!", "Around 11 meters per second", "About 20 miles per hour"], correct: 0 },
             { question: "What is the meaning of life?", answers: ["42", "To be happy", "To find love", "To make money"], correct: 0 },
-            { question: "What is the best programming language?", answers: ["Python", "JavaScript", "C++", "All of the above"], correct: 3 },
-            { question: "What is x + 1 - the circumference of the Earth / 76 ^the burden of thy sins, sinner?", answers: ["Please stop messing with me.","42","21","Um."], correct: 1},
+            { question: "What is the best programming language?", answers: ["Python", "JavaScript", "C++", "None of the above"], correct: 3 },
+            { question: "What is x + 1 - the Earth's circumference / 76 ^ the burden of thy sins?", answers: ["Please stop messing with me.","42","21","3½"], correct: 1},
             { question: "What color is this text?", answers: ["Blue", "Red", "Green", "Black"], correct: 3},
             { question: "How is this quiz programmed?", answers: ["Crying for 12 hours straight.","HTML, CSS, but mostly Javascript.", "Sacrosanct sanguinomancy.", "Adobe Flash."], correct: 1}
         ];
@@ -94,6 +97,7 @@
             document.getElementById("ques-count").innerText = "Question " + questionCount;
             document.getElementById("ans-count").innerText = "Correct Answers: " + ansCount;
             loadQuestion();
+            document.getElementById("quiz-body").style.backgroundImage = 'url("images/simonBackground.gif")';
         }
 
         function check(button, index) {
@@ -101,10 +105,10 @@
             button.classList.add("clicked");
             if (index === currentQuestion.correct) {
                 ansCount++;
+                document.getElementById("ans-count").innerText = "Correct Answers: " + ansCount + " / " + questions.length;
             }
             document.querySelectorAll("#quiz-question button").forEach(btn => btn.disabled = true);
             setTimeout(() => {
-                document.getElementById("ans-count").innerText = "Correct Answers: " + ansCount + " out of " + questions.length;
                 if (questionCount >= questions.length) {
                     alert("Congratulations! You've completed the quiz!");
                     endQuiz();
@@ -136,6 +140,9 @@
             document.querySelector(".subtitle").style.display = 'block';
             document.getElementById("but1").style.display = 'block';
             document.getElementById("tabs-container").style.display = 'flex';
+            if (ansCount === questions.length) {
+                document.getElementById("quiz-body").style.backgroundImage = 'url("images/trophyBackground.gif")';
+            }
             ansCount = 0;
             questionCount = 1;
             document.getElementById("ques-count").innerText = "Question " + questionCount;

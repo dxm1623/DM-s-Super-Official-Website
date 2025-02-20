@@ -42,7 +42,7 @@ html {
     scroll-behavior: smooth;
 }
 
-section {
+.section {
     padding: 50px 0;
     background: rgba(255, 255, 255, 0.2); /* Glass-like transparent background */
     backdrop-filter: blur(10px); /* Apply blur effect */
@@ -50,6 +50,19 @@ section {
     border-radius: 10px; /* Optional: Add rounded corners */
     margin: 20px; /* Add gap between sections and from the edges of the parent div */
     padding: 20px; /* Add gap from the edges of the section */
+}
+
+#index-section {
+    display: flex;
+    justify-content: center;
+}
+
+#index-content {
+    width: 50%;
+}
+
+#index-content .subtitle{
+    text-align: left;
 }
 
 #about-me-section h3,
@@ -85,7 +98,7 @@ a {
 
 body {
     background-color: rgb(241 241 241);
-    background-image: url('images/forestBackground.gif');
+    background-image: url('images/indexBackground.gif');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -319,6 +332,7 @@ p:hover {
     width: 60vw;
     height: 200vh; /* Covers double the viewport height */
     background: rgba(0, 0, 0, 0.7);
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.15));
     z-index: -1; /* Push it behind the content */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
@@ -376,8 +390,7 @@ p:hover {
 
 .subtitle {
     font-family: Century,sans-serif;
-    font-size: 1.5rem;
-    font-style: oblique;
+    font-size: 1rem;
     margin-bottom: 10px;
 }
 
@@ -396,28 +409,44 @@ p:hover {
 }
 
 .tabs-stuff {
-    display: none;
+    display: block;
 }
 
 
 #quiz-question button.clicked.correct {
     background-color: green;
+    color: white;
+    font-weight: bolder;
     opacity: 1; /* Start fully visible */
-    transition: background-color 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    transform: scale(0.95); /* Scale down slightly */
+    transition: background-color 0.5s ease-in-out, color 0.5s, font-weight 0.5s, opacity 0.5s ease-in-out, transform 0.1s ease-in-out;
 }
 
 #quiz-question button.clicked.correct.fade-out {
     animation: fadeOut 0.5s forwards;
 }
 
+#quiz-question button.clicked.correct:active {
+    transform: scale(1); /* Scale back up */
+    transition: transform 0.1s ease-in-out;
+}
+
 #quiz-question button.clicked.wrong {
     background-color: red;
+    color: white;
+    font-weight: bolder;
     opacity: 1; /* Start fully visible */
-    transition: background-color 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    transform: scale(0.95); /* Scale down slightly */
+    transition: background-color 0.5s ease-in-out, color 0.5s, font-weight 0.5s, opacity 0.5s ease-in-out, transform 0.1s ease-in-out;
 }
 
 #quiz-question button.clicked.wrong.fade-out {
     animation: fadeOut 0.5s forwards;
+}
+
+#quiz-question button.clicked.wrong:active {
+    transform: scale(1); /* Scale back up */
+    transition: transform 0.1s ease-in-out;
 }
 
 /*@keyframes fadeOut {
