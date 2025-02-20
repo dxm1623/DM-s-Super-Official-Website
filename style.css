@@ -55,6 +55,9 @@ html {
 #index-section {
     display: flex;
     justify-content: center;
+    align-items: center; /* Center vertically */
+    width: 50%;
+    margin: 0 auto; /* Center horizontally */
 }
 
 #index-content {
@@ -77,6 +80,16 @@ html {
     border-radius: 10px;
 }
 
+#my-work-section h4 {
+    color: black;
+    font-family: National-Park-Heavy,Calibri,sans-serif;
+    font-size: 1.5rem;
+    text-align: left;
+    background-image: linear-gradient(to left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+    padding: 10px;
+    border-radius: 10px;
+}
+
 h1 {
     font-family: National-Park-Heavy,sans-serif;
     color: black;
@@ -89,6 +102,11 @@ h2 {
 
 h3 {
     font-family: National-Park-Thin,sans-serif;
+}
+
+h4 {
+    font-family: National-Park,sans-serif;
+    color: black;
 }
 
 a {

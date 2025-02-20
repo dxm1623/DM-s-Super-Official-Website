@@ -6,17 +6,13 @@
     <title>DM's Website</title>
     <link rel="stylesheet" href="style.css">
     <!--<script rel="scripts" href="functions.js"></script>-->
-    <style>
-        .section {
-            margin-bottom: 50px;
-        }
-    </style>
 </head>
 <body>
     <div id="main-content">
         <h2 class="dms-header">DM's Website</h2>
             <div id="index-section" class="section">
                 <div id="index-content">
+                    <br>
                     <div id="container">
                         <p class="subtitle"><span lang="es">Hola!</span>
                         This is my website, coded in conjunction with my studies at the University of Miami as part of both my Front End Fundamentals and Studio/Portfolio courses.
@@ -26,6 +22,7 @@
                         Please, feel free to look around!
                         </p>
                     </div>
+                    <br>
                 </div>
             </div>
         <div id="container">
@@ -61,7 +58,7 @@
                     <div id="my-work-section" class="section">
                         <h3>My Work</h3>
                         <div id="my-work-content" class="tabs-stuff">
-                            This is the content for the My Work tab.
+                            <h4>"Own Goal" & "Nautilus's Conundrum"</h4>
                         </div>
                     </div>
                 </div>
@@ -96,46 +93,61 @@
                 logoSrc: 'images/danielepic.gif',
                 logoAlt: "The man, DM, himself!",
                 backgroundImage: 'url("images/shoreChurchBackground.gif")'
-            },
-            myWork: {
-                sectionId: 'my-work-section',
-                contentId: 'my-work-content',
-                logoSrc: 'images/PersonalLogo.gif',
-                logoAlt: "DM's Logo",
-                backgroundImage: 'url("images/lampBackground.gif")'
             }
         };
 
         function changeLogo(src, alt) {
             const logo = document.querySelector('#logo img');
-            logo.src = src;
-            logo.alt = alt;
+            logo.classList.add('fade-out');
+            setTimeout(() => {
+                logo.src = src;
+                logo.alt = alt;
+                logo.classList.remove('fade-out');
+                logo.classList.add('fade-in');
+                setTimeout(() => {
+                    logo.classList.remove('fade-in');
+                }, 500);
+            }, 500);
         }
 
         function scrollToSection(sectionId) {
             document.getElementById(sectionId).scrollIntoView({behavior: 'smooth' });
         }
 
+        // Set initial background image and logo
+        document.body.style.backgroundImage = tabs.index.backgroundImage;
+        changeLogo(tabs.index.logoSrc, tabs.index.logoAlt);
+
         const observerOptions = {
             root: null,
             rootMargin: '0px',
-            threshold: 0.5
+            threshold: 0.25
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const tab = Object.values(tabs).find(tab => tab.sectionId === entry.target.id);
-                    if (tab) {
-                        document.body.style.backgroundImage = tab.backgroundImage;
-                        changeLogo(tab.logoSrc, tab.logoAlt);
-                    }
+                const tab = Object.values(tabs).find(tab => tab.sectionId === entry.target.id || tab.contentId === entry.target.id);
+                if (entry.isIntersecting && tab) {
+                    document.body.style.backgroundImage = tab.backgroundImage;
+                    changeLogo(tab.logoSrc, tab.logoAlt);
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('.section').forEach(section => {
-            observer.observe(section);
+        document.querySelectorAll('.section, .tabs-stuff').forEach(element => {
+            observer.observe(element);
+        });
+
+        window.addEventListener('load', () => {
+            document.body.style.backgroundImage = tabs.index.backgroundImage;
+            const logo = document.querySelector('#logo img');
+            logo.src = tabs.index.logoSrc;
+            logo.alt = tabs.index.logoAlt;
+        });
+
+        window.addEventListener('load', () => {
+            document.body.style.backgroundImage = tabs.index.backgroundImage;
+            changeLogo(tabs.index.logoSrc, tabs.index.logoAlt);
         });
     </script>
 </body>
