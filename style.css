@@ -81,13 +81,81 @@ html {
 }
 
 #my-work-section h4 {
-    color: black;
+    color: rgb(255, 255, 255);
     font-family: National-Park-Heavy,Calibri,sans-serif;
     font-size: 1.5rem;
     text-align: left;
-    background-image: linear-gradient(to left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+    background-image: linear-gradient(to left, rgba(220, 115, 115, 1) 0%, rgba(220, 115, 115, 1) 100%);
     padding: 10px;
     border-radius: 10px;
+}
+
+#my-work-section img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#studyShowcase {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    padding: 10px 20px;
+}
+
+#workImageContainer{
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+}
+
+#workImageContainer {
+    position: relative;
+}
+
+#workImageContainer img {
+    width: 100%;
+    height: auto;
+    border-width: 5px;
+    border-radius: 10px;
+    border: white 2px solid;
+}
+
+#workImageContainer button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+#workImageContainer button.left {
+    left: 10px;
+}
+
+#workImageContainer button.right {
+    right: 10px;
+}
+
+#workImageContainer button{
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
 }
 
 h1 {
@@ -112,6 +180,13 @@ h4 {
 a {
     color: blue;
     text-decoration: none;
+}
+
+#tabs-container a {
+    color: black;
+    text-decoration: underline;
+    font-family: National-Park,sans-serif;
+    font-size: 1.5rem;
 }
 
 body {

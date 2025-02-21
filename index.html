@@ -25,6 +25,7 @@
                     <br>
                 </div>
             </div>
+            <br>
         <div id="container">
             <div id="tabs-container">
                 <input type="button" id="but1" class="buttons" onclick="scrollToSection('bio-section')" value="Bio">
@@ -32,33 +33,61 @@
                 <input type="button" id="but3" class="buttons" onclick="scrollToSection('my-work-section')" value="My Work">
                 <input type="button" id="butQuiz" class="buttons" onclick="location.href='quiz.html'" value="Quiz">
             </div>
+            <br>
             <div id="tabs-content">
                 <div id="bio-section" class="section">
                     <h3>Bio</h3>
                     <div id="bio-content" class="tabs-stuff">
-                        My name is <strong style="font-family: National-Park; font-size: 24px;">Daniele Montefiori</strong>, and I am a <strong style="font-family: National-Park-Thin; font-size: 20px;">University of Miami</strong> undergraduate student currently in his senior year, currently pursuing a <strong style="font-family: National-Park-Thin; font-size: 20px;">Bachelor's in Interactive Media</strong> with a <strong style="font-family: National-Park-Thin; font-size: 20px;">Minor in Game Design</strong>.
+                        <p>My name is <strong style="font-family: National-Park; font-size: 24px;">Daniele Montefiori</strong>, and I am a <strong style="font-family: National-Park-Thin; font-size: 20px;">University of Miami</strong> undergraduate student currently in his senior year, currently pursuing a <strong style="font-family: National-Park-Thin; font-size: 20px;">Bachelor's in Interactive Media</strong> with a <strong style="font-family: National-Park-Thin; font-size: 20px;">Minor in Game Design</strong>.
                         <br><br>
                         I have helped design and develop digital deliverables in the form of playful experiences as well as interactive tools, including in VR. I am passionate about building immersive and reflective digital experiences that are fun and educational (in a more implicit manner), which has inspired my interest in game development.
                         <br><br>
-                        I'm often lost in my imagination and curiosity, finding myself building worlds and narratives all in my head.
+                        I'm often lost in my imagination and curiosity, finding myself building worlds and narratives all in my head.</p>
                         </div>
                     </div>
                     <div id="about-me-section" class="section">
                         <h3>About Me</h3>
                         <div id="about-me-content" class="tabs-stuff">
-                            Daniele Montefiori is a lifelong resident of Miami, Florida who is currently an undergraduate student at the University of Miami. Daniele believes in the power of a healthy imagination and a clear conscience, and that there is a place for tough introspection within the realm of playful experiences such as video games.
+                            <p>Daniele Montefiori is a lifelong resident of Miami, Florida who is currently an undergraduate student at the University of Miami. Daniele believes in the power of a healthy imagination and a clear conscience, and that there is a place for tough introspection within the realm of playful experiences such as video games.
                             <br><br>
                             Daniele has helped design and develop a number of short experiences during the course of his studies, including both immersive experiences within virtual reality as well as more traditional digital games and playful experiences. He is currently involved in the development of Answer Campus, an interactive visual novel developed by NERDLab as part of their in-house game development initiative, as part of their writing team. He has also helped develop an interactive VR tour of the University of Miami's School of Communication, which was shown off at the Miami XR 2025 exposition hosted by the university.
                             <br><br>
                             In addition to game development, Daniele has an interest in graphic design and has dabbled in web design and coding; this very website was coded by him, and is hosted on Github.
                             <br><br>
-                            Daniele is currently studying for a Bachelor's in Interactive Media with a Minor in Game Design.
+                            Daniele is currently studying for a Bachelor's in Interactive Media with a Minor in Game Design.</p>
                         </div>
                     </div>
                     <div id="my-work-section" class="section">
                         <h3>My Work</h3>
                         <div id="my-work-content" class="tabs-stuff">
-                            <h4>"Own Goal" & "Nautilus's Conundrum"</h4>
+                                <div id="studyShowcase">
+                                <h4>"Own Goal" & "Nautilus's Conundrum"</h4>
+                                <br>
+                                <div id="workImageContainer">
+                                    <img id="workImage" src="images/projectImages/dpeImgs/Project 2 FINAL pic1.PNG" alt="Own Goal" style="width: 100%; max-width: 600px;">
+                                    <button class="left" onclick="changeWorkImage(-1)">←</button>
+                                    <button class="right" onclick="changeWorkImage(1)">→</button>
+                                </div>
+                                <script>
+                                    const workImages = [
+                                    "images/projectImages/dpeImgs/Project 2 FINAL pic1.PNG",
+                                    "images/projectImages/dpeImgs/Project 2 FINAL pic2.PNG",
+                                    "images/projectImages/dpeImgs/Project 2 FINAL pic3.PNG"
+                                    ];
+                                    let currentImageIndex = 0;
+
+                                    function changeWorkImage(direction) {
+                                        currentImageIndex = (currentImageIndex + direction + workImages.length) % workImages.length;
+                                        document.getElementById('workImage').src = workImages[currentImageIndex];
+                                    }
+                                </script>
+                                <p>These were my second and third projects for my Designing Playful Experiences course at UM, which were designed and coded in GameSalad. These functional prototypes are among some of my first forays into game design and development.
+                                <br><br>
+                                <strong>Own Goal</strong> is a game where the player controls a 'goal' and is tasked with making sure the ball does not go past them.
+                                <br><br>
+                                <strong>Nautilus's Conundrum</strong> is a game where the player is a canine astronaut traversing an interstellar maze using only their head and a webcam.
+                                </p>
+                                </div>
                         </div>
                     </div>
                 </div>
@@ -93,15 +122,30 @@
                 logoSrc: 'images/danielepic.gif',
                 logoAlt: "The man, DM, himself!",
                 backgroundImage: 'url("images/shoreChurchBackground.gif")'
+            },
+            myWork: {
+                sectionId: 'my-work-section',
+                contentId: 'my-work-content',
+                logoSrc: '',
+                logoAlt: '',
+                backgroundImage: 'url("images/lampBackground.gif")'
             }
         };
-
+    
         function changeLogo(src, alt) {
             const logo = document.querySelector('#logo img');
+            if (src === '' || src === undefined) {
+                src = 'images/blank.gif';
+                alt = 'Blank Logo';
+             }
+            if (logo.src.includes(src)) {
+                return; // Do not change the image if it's the same
+            }
             logo.classList.add('fade-out');
             setTimeout(() => {
                 logo.src = src;
                 logo.alt = alt;
+                logo.style.display = 'block';
                 logo.classList.remove('fade-out');
                 logo.classList.add('fade-in');
                 setTimeout(() => {
@@ -109,45 +153,43 @@
                 }, 500);
             }, 500);
         }
-
+    
         function scrollToSection(sectionId) {
             document.getElementById(sectionId).scrollIntoView({behavior: 'smooth' });
         }
-
+    
         // Set initial background image and logo
         document.body.style.backgroundImage = tabs.index.backgroundImage;
         changeLogo(tabs.index.logoSrc, tabs.index.logoAlt);
-
+    
         const observerOptions = {
             root: null,
             rootMargin: '0px',
             threshold: 0.25
         };
-
+    
+        let initialLoad = { 'index-section': true, 'about-me-section': true, 'bio-section': true, 'my-work-section': true };
+    
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 const tab = Object.values(tabs).find(tab => tab.sectionId === entry.target.id || tab.contentId === entry.target.id);
                 if (entry.isIntersecting && tab) {
+                    if (initialLoad[tab.sectionId]) {
+                        initialLoad[tab.sectionId] = false;
+                        return;
+                    }
                     document.body.style.backgroundImage = tab.backgroundImage;
                     changeLogo(tab.logoSrc, tab.logoAlt);
                 }
             });
         }, observerOptions);
-
+    
         document.querySelectorAll('.section, .tabs-stuff').forEach(element => {
             observer.observe(element);
         });
-
+    
         window.addEventListener('load', () => {
             document.body.style.backgroundImage = tabs.index.backgroundImage;
-            const logo = document.querySelector('#logo img');
-            logo.src = tabs.index.logoSrc;
-            logo.alt = tabs.index.logoAlt;
-        });
-
-        window.addEventListener('load', () => {
-            document.body.style.backgroundImage = tabs.index.backgroundImage;
-            changeLogo(tabs.index.logoSrc, tabs.index.logoAlt);
         });
     </script>
 </body>
