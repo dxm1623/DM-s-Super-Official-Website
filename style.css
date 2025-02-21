@@ -128,13 +128,13 @@ html {
     top: 50%;
     transform: translateY(-50%);
     background: rgba(255, 255, 255, 0.2);
-    border: 2px solid rgb(0, 0, 0);
-    color: rgb(0, 0, 0);
+    border: 2px solid rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
     padding: 10px 20px;
     border-radius: 5px;
     text-align: center;
     cursor: pointer;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
     transition: all 0.3s ease-in-out;
 }
 
@@ -175,6 +175,10 @@ h3 {
 h4 {
     font-family: National-Park,sans-serif;
     color: black;
+}
+
+hr {
+    width: -webkit-fill-available;
 }
 
 a {
@@ -378,7 +382,7 @@ p:hover {
     padding: 20px;
     margin: 10px;
     border-radius: 10px;
-    color: white;
+    color: rgb(0, 0, 0);
     transition: box-shadow 0.5s ease-in-out; /* Add transition for smooth effect */
     width: 60%;
     margin-top: 20px;
@@ -485,6 +489,40 @@ p:hover {
     font-family: Century,sans-serif;
     font-size: 1rem;
     margin-bottom: 10px;
+}
+
+.toPersona {
+    font-family: Century,sans-serif;
+    color: pink;
+    text-align: center;
+    text-shadow: 0 0 10px rgba(255, 200, 255, 0.8);
+    font-weight: bold;
+    font-size: 1.5rem;
+    animation: blink 1s infinite;
+    transition: text-shadow 0.5s ease-in-out, transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.toPersona:hover {
+    color: white;
+    text-shadow: 0 0 20px rgba(0, 0, 255, 1);
+    transform: scale(1.1); /* Grow the text */
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out, text-shadow 0.3s ease-in-out; /* Smooth transition */
+    cursor: pointer; /* Change mouse icon to pointer */
+}
+
+@keyframes blink {
+    0% {
+        color: pink;
+        text-shadow: 0 0 10px rgba(255, 200, 255, 0.8);
+    }
+    50% {
+        color: red;
+        text-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+    }
+    100% {
+        color: pink;
+        text-shadow: 0 0 10px rgba(255, 200, 255, 0.8);
+    }
 }
 
 .dms-header {
