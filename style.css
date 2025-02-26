@@ -68,9 +68,32 @@ html {
     text-align: left;
 }
 
+#case-study-section {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center vertically */
+    width: 100%;
+    margin: 0 auto; /* Center horizontally */
+}
+
+#case-study-content {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    text-align: left;
+}
+
+#case-study-content .subtitle{
+    text-align: left;
+}
+
+
 #about-me-section h3,
 #bio-section h3,
-#my-work-section h3 {
+#my-work-section h3,
+#case-study-section h3 {
     color: black;
     font-family: National-Park-Heavy,Calibri,sans-serif;
     font-size: 2rem;
@@ -106,13 +129,11 @@ html {
 }
 
 #workImageContainer{
+    color: white;
+    position: relative;
     display: flex;
     align-items: center;
     margin: 0 auto;
-}
-
-#workImageContainer {
-    position: relative;
 }
 
 #workImageContainer img {
@@ -144,18 +165,6 @@ html {
 
 #workImageContainer button.right {
     right: 10px;
-}
-
-#workImageContainer button{
-    background: rgba(255, 255, 255, 0.2);
-    border: 2px solid rgb(0, 0, 0);
-    color: rgb(0, 0, 0);
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-align: center;
-    cursor: pointer;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease-in-out;
 }
 
 h1 {
@@ -240,6 +249,24 @@ img {
     height: auto;
 }
 
+.case-point {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+    color: white;
+    transition: box-shadow 0.5s ease-in-out; /* Add transition for smooth effect */
+    width: -webkit-fill-available;
+    text-align: left;
+}
+
+.case-point:hover {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8); /* Add glow effect on hover */
+}
+
+
 #profile-container {
     display: flex;
     flex-wrap: wrap;
@@ -294,6 +321,7 @@ p:hover {
     border-radius: 10px;
     padding: 10px;
     width: fit-content;
+    font-size: 1.1rem;
 }
 
 #tab {
@@ -353,6 +381,31 @@ p:hover {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
 }
 
+.buttons#toCaseStudy {
+    background: rgba(155, 0, 0, 0.2); /* Reddish background */
+    border: 2px solid red;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(128, 0, 0, 0.3); /* Red glow */
+    transform: scale(1);
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    font-weight: bolder;
+}
+
+.buttons#toCaseStudy:hover {
+    background: rgba(255, 0, 0, 0.2); /* Lighter red background on hover */
+    border: 2px solid red;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.8); /* Brighter red glow */
+    transform: scale(1.05); /* Expand uniformly */
+    transition: all 0.3s ease-in-out; /* Smooth transition */
+}
+
 #quiz-question button {
     background: rgba(255, 255, 255, 0.2);
     border: 2px solid rgb(0, 0, 0);
@@ -392,6 +445,11 @@ p:hover {
 #quiz-content {
     display: block;
     width: -webkit-fill-available;
+    font-size: 1rem;
+}
+
+#quiz-content p{
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
 }
 
 #quiz-box {
@@ -406,7 +464,27 @@ p:hover {
     transition: box-shadow 0.5s ease-in-out; /* Add transition for smooth effect */
     width: -webkit-fill-available;
     text-align: left;
+    font-size: 1.05rem;
 }
+
+#quiz-box p {
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+#quiz-hint-box {
+    display: block;
+    background: rgba(255, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 10px;
+    color: rgb(255, 255, 255);
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+    width: -webkit-fill-available;
+    text-align: left;
+}
+
 
 #main-content {
     width: 60vw;
@@ -522,6 +600,15 @@ p:hover {
     100% {
         color: pink;
         text-shadow: 0 0 10px rgba(255, 200, 255, 0.8);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
     }
 }
 

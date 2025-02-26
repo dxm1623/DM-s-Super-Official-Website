@@ -37,19 +37,18 @@
             'persona.html': {
                 tabs: ['aboutMe', 'bio'],
                 defaultTab: 'aboutMe'
-            },
+            }
             // Add more pages as needed
         };
 
         function changeLogo(src, alt) {
             const logo = document.querySelector('#logo img');
-            if (src === '' || src === undefined) {
+            if (!src) {
                 src = 'images/blank.gif';
                 alt = 'Blank Logo';
             }
-            if (logo.src.includes(src)) {
-                return; // Do not change the image if it's the same
-            }
+            if (logo.src.includes(src)) return; // Do not change the image if it's the same
+
             logo.classList.add('fade-out');
             setTimeout(() => {
                 logo.src = src;
@@ -57,9 +56,7 @@
                 logo.style.display = 'block';
                 logo.classList.remove('fade-out');
                 logo.classList.add('fade-in');
-                setTimeout(() => {
-                    logo.classList.remove('fade-in');
-                }, 500);
+                setTimeout(() => logo.classList.remove('fade-in'), 500);
             }, 500);
         }
 
@@ -67,53 +64,40 @@
             document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
+        function initializePage() {
             const currentPage = window.location.pathname.split('/').pop();
             const pageConfig = pages[currentPage];
 
-            if (pageConfig) {
-                const defaultTab = tabs[pageConfig.defaultTab];
-                document.body.style.backgroundImage = defaultTab.backgroundImage;
-                changeLogo(defaultTab.logoSrc, defaultTab.logoAlt);
+            if (!pageConfig) return;
 
-                const observerOptions = {
-                    root: null,
-                    rootMargin: '0px',
-                    threshold: 0.25
-                };
+            const defaultTab = tabs[pageConfig.defaultTab];
+            document.body.style.backgroundImage = defaultTab.backgroundImage;
+            changeLogo(defaultTab.logoSrc, defaultTab.logoAlt);
 
-                let initialLoad = {};
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.25
+            };
 
-                pageConfig.tabs.forEach(tabKey => {
-                    initialLoad[tabs[tabKey].sectionId] = true;
-                });
+            let initialLoad = {};
+            pageConfig.tabs.forEach(tabKey => initialLoad[tabs[tabKey].sectionId] = true);
 
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        const tab = Object.values(tabs).find(tab => tab.sectionId === entry.target.id || tab.contentId === entry.target.id);
-                        if (entry.isIntersecting && tab) {
-                            if (initialLoad[tab.sectionId]) {
-                                initialLoad[tab.sectionId] = false;
-                                return;
-                            }
-                            document.body.style.backgroundImage = tab.backgroundImage;
-                            changeLogo(tab.logoSrc, tab.logoAlt);
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const tab = Object.values(tabs).find(tab => tab.sectionId === entry.target.id || tab.contentId === entry.target.id);
+                    if (entry.isIntersecting && tab) {
+                        if (initialLoad[tab.sectionId]) {
+                            initialLoad[tab.sectionId] = false;
+                            return;
                         }
-                    });
-                }, observerOptions);
-
-                document.querySelectorAll('.section, .tabs-stuff').forEach(element => {
-                    observer.observe(element);
+                        document.body.style.backgroundImage = tab.backgroundImage;
+                        changeLogo(tab.logoSrc, tab.logoAlt);
+                    }
                 });
-            }
-        });
+            }, observerOptions);
 
-        window.addEventListener('load', () => {
-            const currentPage = window.location.pathname.split('/').pop();
-            const pageConfig = pages[currentPage];
+            document.querySelectorAll('.section, .tabs-stuff').forEach(element => observer.observe(element));
+        }
 
-            if (pageConfig) {
-                const defaultTab = tabs[pageConfig.defaultTab];
-                document.body.style.backgroundImage = defaultTab.backgroundImage;
-            }
-        });
+        window.addEventListener('load', initializePage);

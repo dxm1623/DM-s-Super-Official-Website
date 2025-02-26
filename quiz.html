@@ -34,7 +34,7 @@
                     <div id="quiz-content" class="tabs-stuff" style="display: none;">
                         <div id="quiz-box">
                             <h3>QUIZ!</h3>
-                            <div id="ans-count">Correct Answers: 0</div>
+                            <div id="ans-count">Correct Answers: 0 / 13</div>
                             <br>
                             <div id="quiz-question">
                                 <div id="ques-count">Question HUH</div>
@@ -45,6 +45,10 @@
                                     <button onclick="check(this, 3)">D</button>
                             </div>
                             <br>
+                            <div id="quiz-hint-box" style="display: none;">
+                                <p><i>On that last question...</i></p>
+                                <p id="hint-text">Hint: </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -58,23 +62,24 @@
     </div>
     <script>
         const questions = [
-            { question: "What is 2 + 2?", answers: ["2", "3", "4", "5"], correct: 2 },
-            { question: "What is the capital of France?", answers: ["Berlin", "Madrid", "Paris", "Rome"], correct: 2 },
-            { question: "What is the largest planet in our solar system?", answers: ["Earth", "Jupiter", "Mars", "Saturn"], correct: 1 },
-            { question: "What is the mind killer?", answers: ["Fear", "Doubt", "Hate", "Love"], correct: 0 },
-            { question: "Who wrote 'Romeo and Juliet'?", answers: ["Mark Twain", "Charles Dickens", "William Shakespeare", "Jane Austen"], correct: 2 },
-            { question: "Who is the real Slim Shady?", answers: ["Eminem", "Dr. Dre", "50 Cent", "Snoop Dogg"], correct: 0 },
-            { question: "How many fingers am I holding up?", answers: ["1", "2", "3", "4"], correct: 0 },
-            { question: "What is the airspeed velocity of an unladen swallow?", answers: ["African or European?", "What?!", "Around 11 meters per second", "About 20 miles per hour"], correct: 0 },
-            { question: "What is the meaning of life?", answers: ["42", "To be happy", "To find love", "To make money"], correct: 0 },
-            { question: "What is the best programming language?", answers: ["Python", "JavaScript", "C++", "None of the above"], correct: 3 },
-            { question: "What is x + 1 - the Earth's circumference / 76 ^ the burden of thy sins?", answers: ["Please stop messing with me.","42","21","3½"], correct: 1},
-            { question: "What color is this text?", answers: ["Blue", "Red", "Green", "Black"], correct: 3},
-            { question: "How was this quiz programmed?", answers: ["Crying for 12 hours straight.","HTML, CSS & Javascript.", "Accursed sanguinomancy.", "Adobe Flash."], correct: 1}
+            { question: "What is 2 + 2?", answers: ["2", "3", "4", "5"], correct: 2, hint: "I really can't help you if you got that wrong." },
+            { question: "What is the capital of France?", answers: ["Berlin", "Madrid", "Paris", "Rome"], correct: 2, hint: "Next time, think of a tower. No, not one that leans." },
+            { question: "What is the largest planet in our solar system?", answers: ["Earth", "Jupiter", "Mars", "Saturn"], correct: 1, hint: "It ain't got a ring on it (I think). Maybe it's the other big one?" },
+            { question: "What is the mind killer?", answers: ["Fear", "Doubt", "Hate", "Love"], correct: 0, hint: "It'd probably be something that'd freak you out." },
+            { question: "Who wrote 'Romeo and Juliet'?", answers: ["Mark Twain", "Charles Dickens", "William Shakespeare", "Jane Austen"], correct: 2, hint: "Bard of Avon? Bane of High Schoolers? Ring a bell?" },
+            { question: "Who is the real Slim Shady?", answers: ["Eminem", "Dr. Dre", "50 Cent", "Snoop Dogg"], correct: 0, hint: "That was wrong, and you should have felt it." },
+            { question: "How many fingers am I holding up?", answers: ["1", "2", "3", "4"], correct: 0, hint: "What was the least I could do?" },
+            { question: "What is the airspeed velocity of an unladen swallow?", answers: ["African or European?", "What?!", "Around 11 meters per second", "About 20 miles per hour"], correct: 0, hint: "That felt like it was missing some context, right?" },
+            { question: "What is the meaning of life?", answers: ["42", "To be happy", "To find love", "To make money"], correct: 0, hint: "I mean, they got a supercomputer to calculate it over billions of years." },
+            { question: "What is the best programming language?", answers: ["Python", "JavaScript", "C++", "None of the above"], correct: 3, hint: "Any decent, sane, reasonable coder would happily tell you the answer." },
+            { question: "What is x + 1 - the Earth's circumference / 76 ^ the burden of thy sins?", answers: ["Please stop messing with me.","42","21","3½"], correct: 1, hint: "That wasn't that hard. You already saw the answer before."},
+            { question: "What color is this text?", answers: ["Blue", "Red", "Green", "Black"], correct: 3, hint: "I couldn't change this text to anything else. Also, get your eyes checked."},
+            { question: "How was this quiz programmed?", answers: ["Crying for 12 hours straight.","HTML, CSS & Javascript.", "Accursed sanguinomancy.", "Adobe Flash."], correct: 1, hint: "If you're reading this, something went terribly wrong."}
         ];
 
         let ansCount = 0;
         let questionCount = 1;
+        let lastHint = "";
 
         function loadQuestion() {
             if (questionCount <= questions.length) {
@@ -86,6 +91,9 @@
                     button.classList.remove("correct", "wrong", "clicked");
                     button.classList.add(index === currentQuestion.correct ? "correct" : "wrong");
                 });
+                document.getElementById("quiz-hint-box").style.display = lastHint ? 'block' : 'none';
+                document.getElementById("hint-text").innerText = lastHint;
+                lastHint = "";
             }
         }
 
@@ -106,6 +114,8 @@
             if (index === currentQuestion.correct) {
                 ansCount++;
                 document.getElementById("ans-count").innerText = "Correct Answers: " + ansCount + " / " + questions.length;
+            } else {
+                lastHint = currentQuestion.hint;
             }
             document.querySelectorAll("#quiz-question button").forEach(btn => btn.disabled = true);
             setTimeout(() => {
@@ -147,6 +157,8 @@
             questionCount = 1;
             document.getElementById("ques-count").innerText = "Question " + questionCount;
             document.getElementById("ans-count").innerText = "Correct Answers: " + ansCount;
+            document.getElementById("quiz-hint-box").style.display = 'none';
+            lastHint = "";
         }
 
         function displayHighScore() {
