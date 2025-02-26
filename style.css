@@ -473,6 +473,8 @@ p:hover {
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
 }
 
+/*For some reason, this box does not want to be shown as red.*/
+
 #quiz-hint-box {
     display: block;
     background: rgba(255, 0, 0, 0.5);
