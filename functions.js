@@ -31,7 +31,7 @@
 
         const pages = {
             'index.html': {
-                tabs: ['index', 'aboutMe', 'bio', 'myWork'],
+                tabs: ['index', 'myWork'],
                 defaultTab: 'index'
             },
             'persona.html': {

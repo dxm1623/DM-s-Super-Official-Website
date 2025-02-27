@@ -173,7 +173,7 @@ html {
 
 #workImageContainer button:hover::before {
     transform: linear-gradient(to right, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6));
-    transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
 }
 
 #workImageContainer button:hover {
@@ -425,6 +425,11 @@ p:hover {
 
 .buttons#butQuiz {
     background: rgba(0, 0, 255, 0.2); /* Blue background */
+    color: white;
+}
+
+.buttons#butCursor {
+    background: rgba(185, 0, 255, 0.2); /* Purple background */
     color: white;
 }
 
