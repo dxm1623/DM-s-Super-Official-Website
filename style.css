@@ -121,14 +121,14 @@ html {
     margin-bottom: 10px;
 }
 
-#studyShowcase {
+.studyShowcase {
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
     border-radius: 10px;
     padding: 10px 20px;
 }
 
-#workImageContainer{
+#workImageContainer {
     color: white;
     position: relative;
     display: flex;
@@ -142,29 +142,43 @@ html {
     border-width: 5px;
     border-radius: 10px;
     border: white 2px solid;
+    margin: 0 auto;
 }
 
 #workImageContainer button {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.2);
-    border: 2px solid rgb(255, 255, 255);
+    top: 0;
+    bottom: 0;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2));
     color: rgb(255, 255, 255);
     padding: 10px 20px;
-    border-radius: 5px;
+    border: none;
     text-align: center;
     cursor: pointer;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
     transition: all 0.3s ease-in-out;
+    box-shadow: none; /* Remove drop shadow */
 }
 
 #workImageContainer button.left {
-    left: 10px;
+    transform: none;
+    left: 0px;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
 }
 
 #workImageContainer button.right {
-    right: 10px;
+    transform: none;
+    right: -4px; /* For some godforsaken reason, this is the only way I can get it to align properly. */
+    background: linear-gradient(to left, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+}
+
+#workImageContainer button:hover::before {
+    transform: linear-gradient(to right, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6));
+    transition: all 0.3s ease-in-out;
+}
+
+#workImageContainer button:hover {
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6));
+    transition: all 0.3s ease-in-out;
 }
 
 h1 {
@@ -345,6 +359,7 @@ p:hover {
     width: -webkit-fill-available;
     padding: 10px;
     margin-top: 20px;
+    margin: 0 auto;
     background: rgba(255, 255, 255, 1);
     gap: 10px;
     transition: all 0.3s ease-in-out;
@@ -408,6 +423,11 @@ p:hover {
     transition: all 0.3s ease-in-out; /* Smooth transition */
 }
 
+.buttons#butQuiz {
+    background: rgba(0, 0, 255, 0.2); /* Blue background */
+    color: white;
+}
+
 #quiz-question button {
     background: rgba(255, 255, 255, 0.2);
     border: 2px solid rgb(0, 0, 0);
@@ -435,7 +455,7 @@ p:hover {
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     padding: 20px;
-    margin: 10px;
+    margin: 0 auto;
     border-radius: 10px;
     color: rgb(0, 0, 0);
     transition: box-shadow 0.5s ease-in-out; /* Add transition for smooth effect */
@@ -492,6 +512,7 @@ p:hover {
 
 #main-content {
     width: 60vw;
+    margin: 0 auto;
     position: fixed;
     right: 0;
     background: none; /* Remove background from main div */

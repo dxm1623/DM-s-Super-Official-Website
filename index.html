@@ -10,11 +10,11 @@
 <body>
     <div id="main-content">
         <h2 class="dms-header">DM's Website</h2>
-            <div id="index-section" class="section">
-                <div id="index-content">
-                    <br>
-                    <div id="container">
-                        <p class="subtitle">
+        <div id="index-section" class="section">
+            <div id="index-content">
+                <br>
+                <div id="container">
+                    <p class="subtitle">
                         This is my website, coded in conjunction with my studies at the University of Miami as part of both my Front End Fundamentals and Studio/Portfolio courses.
                         <br><br>
                         I am diving head first into the world of game design and development, on a mission to communicate engaging and deeply introspective messages through the ever enthralling medium of gaming. Beyond that, I have an affinity for graphic design and web design, and always willing to learn in any field I approach.
@@ -22,58 +22,58 @@
                         This website is a work in progress, to be completed never. It shall be updated as I build my repertoire.
                         <br><br>
                         Please, feel free to look around!
-                        </p>
-                        <hr>
-                        <p class="toPersona" onClick="location.href='persona.html'">
+                    </p>
+                    <hr>
+                    <p class="toPersona" onClick="location.href='persona.html'">
                         <strong>WANT TO LEARN MORE ABOUT ME?</strong>
-                        </p>
-                    </div>
-                    <br>
+                    </p>
                 </div>
+                <br>
             </div>
-            <br>
+        </div>
+        <br>
         <div id="container">
             <div id="tabs-container">
-                <input type="button" id="but1" class="buttons" onclick="scrollToSection('bio-section')" value="Bio">
-                <input type="button" id="but2" class="buttons" onclick="scrollToSection('my-work-section')" value="My Work">
+                <input type="button" id="but1" class="buttons" onclick="scrollToSection('my-work-section')" value="My Work">
                 <input type="button" id="butQuiz" class="buttons" onclick="location.href='quiz.html'" value="Quiz">
             </div>
             <br>
             <div id="tabs-content">
-                   <div id="my-work-section" class="section">
-                        <h3>My Work</h3>
-                        <div id="my-work-content" class="tabs-stuff">
-                                <div id="studyShowcase">
-                                <h4>"Own Goal" & "Nautilus's Conundrum"</h4>
-                                <div id="workImageContainer">
-                                    <img id="workImage" src="images/projectImages/dpeImgs/Project 2 FINAL pic1.PNG" alt="Own Goal" style="width: 100%; max-width: 600px;">
-                                    <button class="left" onclick="changeWorkImage(-1)">←</button>
-                                    <button class="right" onclick="changeWorkImage(1)">→</button>
-                                </div>
-                                <div>
-                                    <button class="buttons" id="toCaseStudy" onclick="location.href='caseGoalAndSpace.html'" class="buttons" style="margin-top: 10px;">View Case Study</button>
-                                </div>
-                                <script>
-                                    const workImages = [
-                                    "images/projectImages/dpeImgs/Project 2 FINAL pic1.PNG",
-                                    "images/projectImages/dpeImgs/Project 2 FINAL pic2.PNG",
-                                    "images/projectImages/dpeImgs/Project 2 FINAL pic3.PNG"
-                                    ];
-                                    let currentImageIndex = 0;
-
-                                    function changeWorkImage(direction) {
-                                        currentImageIndex = (currentImageIndex + direction + workImages.length) % workImages.length;
-                                        document.getElementById('workImage').src = workImages[currentImageIndex];
-                                    }
-                                </script>
-                                <p>These were my second and third projects for my Designing Playful Experiences course at UM, which were designed and coded in GameSalad. These functional prototypes are among some of my first forays into game design and development.
+                <div id="my-work-section" class="section">
+                    <h3>My Work</h3>
+                    <div id="my-work-content" class="tabs-stuff">
+                        <div class="studyShowcase" id="studyOne">
+                            <h4>"Own Goal" & "Nautilus's Conundrum"</h4>
+                            <div id="workImageContainer">
+                                <img id="workImage" src="images/projectImages/dpeImgs/Project 2 FINAL pic1.PNG" alt="Own Goal" style="width: 100%; max-width: 600px;">
+                                <button class="left" onclick="changeWorkImage('studyOne', -1)">←</button>
+                                <button class="right" onclick="changeWorkImage('studyOne', 1)">→</button>
+                            </div>
+                            <div>
+                                <button class="buttons" id="toCaseStudy" onclick="location.href='caseGoalAndSpace.html'" style="margin-top: 10px;">View Case Study</button>
+                            </div>
+                            <p>These were my second and third projects for my Designing Playful Experiences course at UM, which were designed and coded in GameSalad. These functional prototypes are among some of my first forays into game design and development.
                                 <br><br>
                                 <strong>Own Goal</strong> is a game where the player controls a 'goal' and is tasked with making sure the ball does not go past them.
                                 <br><br>
                                 <strong>Nautilus's Conundrum</strong> is a game where the player is a canine astronaut traversing an interstellar maze using only their head and a webcam.
-                                </p>
-                                </div>
+                            </p>
                         </div>
+                        <br>
+                        <div class="studyShowcase" id="studyTwo">
+                            <h4>"Answer Campus - First Semester"</h4>
+                            <div id="workImageContainer">
+                                <img id="workImage" src="images/projectImages/dpeImgs/Project 3 FINAL pic1.PNG" alt="Answer Campus" style="width: 100%; max-width: 600px;">
+                                <button class="left" onclick="changeWorkImage('studyTwo', -1)">←</button>
+                                <button class="right" onclick="changeWorkImage('studyTwo', 1)">→</button>
+                            </div>
+                            <div>
+                                <button class="buttons" id="toCaseStudy" onclick="location.href='caseAnswerCampus.html'" style="margin-top: 10px;">View Case Study</button>
+                            </div>
+                            <p>Answer Campus is an interactive visual novel developed by NERDLab as part of their in-house game development initiative, as part of their writing team. It is a game that explores the themes of mental health and the college experience.
+                                <br><br>
+                                I have helped develop the narrative and dialogue for the game, as well as some of the characters.
+                            </p>
                     </div>
                 </div>
             </div>
@@ -84,6 +84,31 @@
             <img src="images/PersonalLogo.gif" alt="DM's Logo">
         </div>
     </div>
-    <script src="functions.js"></script>
 </body>
+<script src="functions.js"></script>
+<script>
+    const imageSets = {
+        studyOne: [
+            "images/projectImages/dpeImgs/Project 2 FINAL pic1.PNG",
+            "images/projectImages/dpeImgs/Project 2 FINAL pic2.PNG",
+            "images/projectImages/dpeImgs/Project 2 FINAL pic3.PNG"
+        ],
+        studyTwo: [
+            "images/projectImages/dpeImgs/Project 3 FINAL pic1.PNG",
+            "images/projectImages/dpeImgs/Project 3 FINAL pic2.PNG",
+            "images/projectImages/dpeImgs/Project 3 FINAL pic3.PNG"
+        ]
+    };
+
+    let currentImageIndices = {
+        studyOne: 0,
+        studyTwo: 0
+    };
+
+    function changeWorkImage(study, direction) {
+        currentImageIndices[study] = (currentImageIndices[study] + direction + imageSets[study].length) % imageSets[study].length;
+        document.querySelector(`#${study} img`).src = imageSets[study][currentImageIndices[study]];
+    }
+</script>
+</script>
 </html>
