@@ -14,20 +14,89 @@
         <div id="case-study-section" class="section">
             <div id="case-study-content">
                 <div id="tabs-content">
-                    <div id="container" style="text-align: left;">
+                    <div id="container" style="text-align: left; margin: 0 auto;">
                         <h3>Case Study: "Own Goal" & "Nautilus's Conundrum"</h3>
                         <hr>
-                        <div id="container" style="text-align: left; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px; padding: 10px;">
-                        <p>"Own Goal" and "Nautilus's Conundrum" are two unique game design projects aimed at creating engaging and introspective gaming experiences. These projects were part of my Designing Playful Experiences course at UM, where I was responsible for all aspects of design and development. "Own Goal" challenges players to control a 'goal' and prevent the ball from passing them, while "Nautilus's Conundrum" involves a canine astronaut navigating an interstellar maze using head movements detected by a webcam.</p>
+                        <div id="own-goal" style="display: none; text-align: left; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px; padding: 10px;">
+                            <p>As part of my Designing Playful Experiences course at the University of Miami, I was tasked with the creation of three separate game experiences that dealt with tackling a certain theme or challenge, two of them being developed in GameSalad. "Own Goal" was the second project that I developed independently, following the prompt <strong>"I've done that before, but not in this way."</strong></p>
+                            <p>I had immediately gotten the image of a basketball hoop in my head and got the idea of a game where a player bends a basketball hoop in order to catch a ball across various levels, which after paper prototyping manifested as a game where the player controls a "goal" that has to catch various balls of three separate kinds, with different properties between each that affected how they travelled. Levels were designed with different layouts and later on were given 'quirks', with some having multiple balls be release and others having the player switch between multiple goals. Levels were adjusted and added, along with new features, per both peer and professor feedback as well as through playtesting.</p>
+                            <p>The final product was a functional game prototype comprised of 16 different levels, with the player task with catching every ball in a level with a set number of misses allowed. It was my first major experience with designing a game independently and the product, while aesthetically barebones, ended up being very adaptable in regards to inserting new mechanics and features. I found that I did not focus much on visuals or sound design when under time contraints, which, coupled with my affinity for modularity, inspired my design process for my third project.</p>
+                        </div>
+                        <div id="nautilus-conundrum" style="display: none; text-align: left; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px; padding: 10px;">
+                            <p>My third project, serving as my final deliverable for my Designing Playful Experiences course, covered the prompt, <strong>"I never thought <i>that</i> interaction could be playful, until now,</strong> which had our class focusing on finding ways to design a game with heterodox controls and premises. Tinkering with various controllers and inputs, I settled on a game that took away conventional directional input from the player except for acceleration; instead, the player would have to move their head to guide themselves. Thus, "Nautilus's Conundrum" came to be, tasking the player to navigate a maze under a time limit using the spacebar to accelerate and their own head to change direction via webcam.</p>
+                            <p>The game went through various stages of development, which were more distinct than my prior project. A more ambitious faux-3D design was quickly discarded for a practical 2D one, and the aesthetic shifted between oceanic and intersteller, eventually settling on the latter which later inspired the game to be themed around dog-astronauts (inspired by Cold War programs that shot animals, like dogs, into space) and helped play into the barebones aesthetic by allowing it to have a more retro appearance. As had been implemented with the various balls and 'gizmos' in "Own Goal", a modular workflow was utilized which enabled me to quickly implement new items and obstacles to the game.</p>
+                            <p>After an initial release and redesign following feedback, the final product contained 13 levels alongside numerous illustrated assets and some elements of world-building (including a descriptive intro, a cutscene for reaching the end, and multiple endings). Building on my work in "Own Goal", I was able to refine my methods when designing "Nautilus's Conundrum". I once again found an affinity for modular workflows, as they dramatically sped up development time. Due to being subject to more feedback, I found myself being receptive to revision; When given descriptive suggestions and feedback, I was able to effectively implement them into the game, helped by the modular workflow.</p>
                         </div>
                         <hr>
-                        <div id="container" style="text-align: left; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px; padding: 10px;">
-                        <p>The UX process began with identifying the problem of creating games that communicate meaningful messages while being engaging. The target audience was gamers interested in thoughtful and unique experiences. The ideation process involved iterative design and development, starting with concept creation, followed by prototyping, testing, and refinement. GameSalad was used for development, and playtesting provided valuable feedback for iterative improvements.</p>
+                        <div id="video-container" style="display: none; text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px;">
+                            <video id="case-study-video" style="width: 100%; height: auto;" controls></video>
                         </div>
+                        <br>
+                        <button id="toggle-video-button" onclick="toggleVideo()">Show Video</button>
+                        <br>
+                        <script>
+                            function toggleVideo() {
+                                var videoContainer = document.getElementById('video-container');
+                                var video = document.getElementById('case-study-video');
+                                var ownGoal = document.getElementById('own-goal');
+                                var nautilusConundrum = document.getElementById('nautilus-conundrum');
+                                var toggleVideoButton = document.getElementById('toggle-video-button');
+
+                                if (videoContainer.style.display === "none") {
+                                    videoContainer.style.display = "block";
+                                    if (ownGoal.style.display === "block") {
+                                        video.src = "videos/projectVideos/dpeVideos/Project 2 FULL video.mp4";
+                                    } else if (nautilusConundrum.style.display === "block") {
+                                        video.src = "videos/projectVideos/dpeVideos/FinalProjectVideo.mp4";
+                                    }
+                                    video.play();
+                                    toggleVideoButton.innerHTML = "Hide Video";
+                                } else {
+                                    videoContainer.style.display = "none";
+                                    video.pause();
+                                    video.src = "";
+                                    toggleVideoButton.innerHTML = "Show Video";
+                                }
+                            }
+
+                            function toggleCaseStudy() {
+                                document.body.style.backgroundImage = "url('images/projectImages/dpeImgs/ogBackground.gif')";
+                                var ownGoal = document.getElementById('own-goal');
+                                var nautilusConundrum = document.getElementById('nautilus-conundrum');
+                                var button = document.getElementById('toggle-button');
+                                var videoContainer = document.getElementById('video-container');
+                                var video = document.getElementById('case-study-video');
+                                var toggleVideoButton = document.getElementById('toggle-video-button');
+
+                                // Pause and reset video
+                                video.pause();
+                                video.src = "";
+
+                                if (ownGoal.style.display === "none") {
+                                    ownGoal.style.display = "block";
+                                    nautilusConundrum.style.display = "none";
+                                    button.innerHTML = 'View Nautilus\'s Conundrum →';
+                                    document.body.style.backgroundImage = "url('images/projectImages/dpeImgs/ogBackground.gif')";
+                                } else {
+                                    ownGoal.style.display = "none";
+                                    nautilusConundrum.style.display = "block";
+                                    button.innerHTML = '← View Own Goal';
+                                    document.body.style.backgroundImage = "url('images/projectImages/dpeImgs/ncBackground.gif')";
+                                }
+
+                                // Hide video container and reset button text
+                                videoContainer.style.display = "none";
+                                toggleVideoButton.innerHTML = "Show Video";
+                            }
+
+                            // Set default view
+                            document.addEventListener('DOMContentLoaded', function() {
+                                document.getElementById('own-goal').style.display = "block";
+                                document.getElementById('nautilus-conundrum').style.display = "none";
+                            });
+                        </script>
                         <hr>
-                        <div id="container" style="text-align: left; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px; padding: 10px;">
-                        <p>The final products were functional game prototypes accompanied by project documentation and a case study report. Throughout the development, challenges such as refining gameplay mechanics and ensuring intuitive controls were addressed. These projects provided valuable insights into game design and development, highlighting the importance of iterative testing and user feedback in creating engaging gaming experiences.</p>
-                        </div>
+                    <button id="toggle-button" onclick="toggleCaseStudy()">View Nautilus's Conundrum →</button>
                     </div>
                 </div>
                 </div>

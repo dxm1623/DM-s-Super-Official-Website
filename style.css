@@ -433,6 +433,30 @@ p:hover {
     color: white;
 }
 
+#toggle-button {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+#toggle-video-button {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
 #quiz-question button {
     background: rgba(255, 255, 255, 0.2);
     border: 2px solid rgb(0, 0, 0);
