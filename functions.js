@@ -37,8 +37,11 @@
             'persona.html': {
                 tabs: ['aboutMe', 'bio'],
                 defaultTab: 'aboutMe'
-            }
-            // Add more pages as needed
+            },
+            'caseGoalAndSpace.html': {
+                tabs: ['own-goal', 'nautilus-conundrum'],
+                defaultTab: 'own-goal'
+            },
         };
 
         function changeLogo(src, alt) {
