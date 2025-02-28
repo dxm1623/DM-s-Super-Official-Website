@@ -73,10 +73,6 @@
 
             if (!pageConfig) return;
 
-            const defaultTab = tabs[pageConfig.defaultTab];
-            document.body.style.backgroundImage = defaultTab.backgroundImage;
-            changeLogo(defaultTab.logoSrc, defaultTab.logoAlt);
-
             const observerOptions = {
                 root: null,
                 rootMargin: '0px',
