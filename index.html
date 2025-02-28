@@ -15,11 +15,11 @@
                 <br>
                 <div id="container">
                     <p class="subtitle">
-                        This is my website, coded in conjunction with my studies at the University of Miami as part of both my Front End Fundamentals and Studio/Portfolio courses.
+                        This is my website, coded in conjunction with my studies at the <strong>University of Miami</strong> as part of both my Front End Fundamentals and Studio / Portfolio courses.
                         <br><br>
-                        I am diving head first into the world of game design and development, on a mission to communicate engaging and deeply introspective messages through the ever enthralling medium of gaming. Beyond that, I have an affinity for graphic design and web design, and always willing to learn in any field I approach.
+                        I am diving head first into the world of <strong>game design and development</strong>, on a mission to <strong>communicate engaging and deeply introspective messages</strong> through the ever enthralling medium of <strong>gaming</strong>. Beyond that, I have an affinity for <strong>graphic design and web design</strong>, and always <strong>willing to learn</strong> in any field I approach.
                         <br><br>
-                        This website is a work in progress, to be completed <strong><i>never</i></strong>. It shall be updated as I build my repertoire.
+                        This website is a work in progress, to be completed <strong style="font-size: 1rem; color: pink; text-shadow: red;"><i>never</i></strong>. It shall be updated as I build my repertoire.
                         <br><br>
                         Please, feel free to look around!
                     </p>
@@ -34,19 +34,18 @@
         <br>
         <div id="container">
             <div id="tabs-container">
-                <input type="button" id="but1" class="buttons" onclick="scrollToSection('my-work-section')" value="My Work">
-                <input type="button" id="butQuiz" class="buttons" onclick="location.href='quiz.html'" value="Quiz">
-                <input type="button" id="butCursor" class="buttons" onclick="location.href='mouseFun.html'" value="Cursor Fun">
+            <input type="button" id="but1" class="buttons" onclick="showContent('tabs-content')" value="My Work">
             </div>
+        </div>
             <br>
-            <div id="tabs-content">
+            <div id="tabs-content" style="display: none;">
                 <div id="my-work-section" class="section">
                     <h3>My Work</h3>
                     <div id="my-work-content" class="tabs-stuff">
                         <div class="studyShowcase" id="studyOne">
                             <h4>"Own Goal" & "Nautilus's Conundrum"</h4>
                             <div id="workImageContainer">
-                                <img id="workImage" src="images/projectImages/dpeImgs/Project 2 FINAL pic1.PNG" alt="Own Goal" style="width: 100%; max-width: 600px;">
+                                <img id="workImage-studyOne" src="images/projectImages/dpeImgs/Project 2 FINAL pic1.PNG" alt="Own Goal" style="width: 100%; max-width: 600px;">
                                 <button class="left" onclick="changeWorkImage('studyOne', -1)">←</button>
                                 <button class="right" onclick="changeWorkImage('studyOne', 1)">→</button>
                             </div>
@@ -64,7 +63,7 @@
                         <div class="studyShowcase" id="studyTwo">
                             <h4>"Answer Campus - First Semester"</h4>
                             <div id="workImageContainer">
-                                <img id="workImage" src="images/projectImages/dpeImgs/Project 3 FINAL pic1.PNG" alt="Answer Campus" style="width: 100%; max-width: 600px;">
+                                <img id="workImage-studyTwo" src="images/projectImages/dpeImgs/Project 3 FINAL pic1.PNG" alt="Answer Campus" style="width: 100%; max-width: 600px;">
                                 <button class="left" onclick="changeWorkImage('studyTwo', -1)">←</button>
                                 <button class="right" onclick="changeWorkImage('studyTwo', 1)">→</button>
                             </div>
@@ -79,8 +78,13 @@
                 </div>
             </div>
         </div>
+        <br><br>
+        <div id="misc-tabs-container">
+            <input type="button" id="butMisc" class="buttons" onclick="location.href='misc.html'" value="Miscellaneous Projects">
+        </div>
+        <br><br><br>
     </div>
-    <div id="logo-container">
+    <div id="logo-container" style="cursor: pointer;" onclick="showHomeAlert()">
         <div id="logo">
             <img src="images/PersonalLogo.gif" alt="DM's Logo">
         </div>
@@ -111,8 +115,19 @@
 
     function changeWorkImage(study, direction) {
         currentImageIndices[study] = (currentImageIndices[study] + direction + imageSets[study].length) % imageSets[study].length;
-        document.querySelector(`#${study} img`).src = imageSets[study][currentImageIndices[study]];
+        document.querySelector(`#${study} #workImage-${study}`).src = imageSets[study][currentImageIndices[study]];
     }
-</script>
+    function showHomeAlert() {
+        alert("Don't worry, you're already home!");
+    }
+
+    function showContent(id) {
+        const content = document.getElementById(id);
+        if (content.style.display === "none") {
+            content.style.display = "block";
+        } else {
+            content.style.display = "none";
+        }
+    }
 </script>
 </html>

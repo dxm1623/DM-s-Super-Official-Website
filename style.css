@@ -56,12 +56,12 @@ html {
     display: flex;
     justify-content: center;
     align-items: center; /* Center vertically */
-    width: 50%;
+    width: 60%;
     margin: 0 auto; /* Center horizontally */
 }
 
 #index-content {
-    width: 50%;
+    width: 60%;
 }
 
 #index-content .subtitle{
@@ -624,42 +624,54 @@ p:hover {
     margin-bottom: 10px;
 }
 
+.subtitle strong {
+    font-family: National-Park,sans-serif;
+    font-size: .85rem;
+}
+
 .toPersona {
     font-family: Century, sans-serif;
-    color: lightblue;
+    color: lightgreen;
+    width: 10em;
     text-align: center;
-    text-shadow: 0 0 10px rgba(173, 216, 230, 0.8);
+    text-shadow: 0 0 10px rgba(144, 238, 144, 0.8);
     font-weight: bold;
     font-size: 1.25rem;
-    background: rgba(173, 216, 230, 0.5); /* Light blue background */
+    background: rgba(0, 80, 0, 0.5); /* Dark green background */
     border-radius: 10px; /* Rounded corners */
     padding: 10px 20px; /* Padding for better appearance */
-    box-shadow: 0 0 10px rgba(173, 216, 230, 0.8); /* Drop shadow glow effect */
+    box-shadow: 0 0 10px rgba(0, 80, 0, 0.8); /* Drop shadow glow effect */
     animation: blink 1s infinite;
-    transition: text-shadow 0.5s ease-in-out, transform 0.3s ease-in-out, color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    transition: text-shadow 0.5s ease-in-out, transform 0.3s ease-in-out, color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background 0.3s ease-in-out;
 }
 
 .toPersona:hover {
     color: white;
-    text-shadow: 0 0 20px rgba(0, 0, 255, 1);
+    text-shadow: 0 0 20px rgba(0, 128, 0, 1);
     transform: scale(1.1); /* Grow the text */
-    box-shadow: 0 0 20px rgba(173, 216, 230, 1); /* Intensified drop shadow glow effect */
-    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out, text-shadow 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transition */
+    box-shadow: 0 0 20px rgba(144, 238, 144, 1); /* Intensified drop shadow glow effect */
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out, text-shadow 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background 0.3s ease-in-out; /* Smooth transition */
     cursor: pointer; /* Change mouse icon to pointer */
 }
 
 @keyframes blink {
     0% {
-        color: pink;
-        text-shadow: 0 0 10px rgba(255, 200, 255, 0.8);
+        color: lightgreen;
+        text-shadow: 0 0 10px rgba(144, 238, 144, 0.8);
+        background: rgba(0, 80, 0, 0.5); /* Dark green background */
+        box-shadow: 0 0 10px rgba(0, 80, 0, 0.8); /* Dark green shadow */
     }
     50% {
-        color: red;
-        text-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+        color: green;
+        text-shadow: 0 0 10px rgba(0, 128, 0, 0.8);
+        background: rgba(144, 238, 144, 0.5); /* Light green background */
+        box-shadow: 0 0 10px rgba(144, 238, 144, 0.8); /* Light green shadow */
     }
     100% {
-        color: pink;
-        text-shadow: 0 0 10px rgba(255, 200, 255, 0.8);
+        color: lightgreen;
+        text-shadow: 0 0 10px rgba(144, 238, 144, 0.8);
+        background: rgba(0, 80, 0, 0.5); /* Dark green background */
+        box-shadow: 0 0 10px rgba(0, 80, 0, 0.8); /* Dark green shadow */
     }
 }
 
@@ -690,6 +702,44 @@ p:hover {
     display: block;
 }
 
+#misc-tabs-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: -webkit-fill-available;
+    padding: 10px;
+    margin-top: 20px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 1);
+    gap: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+#misc-tabs-container .buttons, button {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1);
+    transition: all 0.3s ease-in-out;
+}
+
+#misc-tabs-container .buttons:hover, button:hover {
+    border: 2px solid black;
+    color: black;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+    transform: scale(1.05); /* Expand uniformly */
+    transition: transform 0.3s ease-in-out; /* Smooth transition */
+}
+
+#misc-tabs-container .buttons:hover *, button:hover * {
+    transform: scale(1.05); /* Ensure child elements also expand */
+    transition: transform 0.3s ease-in-out; /* Smooth transition for child elements */
+}
 
 #quiz-question button.clicked.correct {
     background-color: green;
