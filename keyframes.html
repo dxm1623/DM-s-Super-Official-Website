@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyframes</title>
+    <style>
+        .block {
+            width: 200px;
+            height: 100px;
+            background: rebeccapurple;
+            place-self: center;
+            transition: all 1s ease-in-out;
+        }
+
+        .block:hover {
+            animation: shake 0.5s ease-in-out;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes shake {
+            0% {
+                translate: 0;
+            }
+            25% {
+                translate: -10px;
+            }
+            50% {
+                translate: 10px;
+            }
+            75% {
+                translate: -10px;
+            }
+            100% {
+                translate: 0;
+            }
+        }
+    </style>
+    <!--CHECK WEIRDNESS WITH PUSHING SITE-->
+</head>
+<body>
+    <div class="block"></div>
+</body>
+</html>

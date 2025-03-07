@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DM's Website</title>
+    <link rel="stylesheet" href="style.css">
+    <!--CHECK CONTRAST-->
+    <!--SITE PUSH ACTING WEIRD-->
+</head>
+<body>
+    <div id="main-content">
+        <h2 class="dms-header">DM's Website</h2>
+        <div id="case-study-section" class="section">
+            <div id="case-study-content">
+                <div id="tabs-content">
+                    <div id="container" style="text-align: left; margin: 0 auto;">
+                        <h3>Case Study: "Own Goal"</h3>
+                        <hr>
+                        <div id="ans-camp" style="text-align: left; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px; padding: 10px;">
+                            <p><strong>Answer Campus</strong> is an in-development visual novel that has been worked on by Professor <strong>Clay Ewing</strong> as well as members of both his CIM-444 course and, to a greater extent, the newly formed <strong>NERDLab</strong>, an in-house game development studio operating within the <strong>University of Miami</strong> where I study. I was introduced to Answer Campus through Ewing's CIM-444 course and later would involve myself directly with the development of the game through NERDLab as part of my practicum works.</p>
+                            <p>Answer Campus is a <strong>social impact game</strong> aimed at simulating <strong>the average university student's experience.</strong></p>
+                        </div>
+                        <hr>
+                        <div id="image-container" style="display: none; text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px;">
+                            <img id="case-study-image" src="images/projectImages/dpeImgs/ogImage.jpg" alt="Case Study Image" style="width: 100%; height: auto;">
+                            <p>Image Caption: This is a caption for the case study image.</p>
+                        </div>
+                        <br>
+                        <button id="toggle-content-button" onclick="toggleContent()">Show Image</button>
+                        <br>
+                        <script>
+                            function toggleContent() {
+                                var ansCamp = document.getElementById('ans-camp');
+                                var imageContainer = document.getElementById('image-container');
+                                var toggleContentButton = document.getElementById('toggle-content-button');
+
+                                if (ansCamp.style.display === "none") {
+                                    ansCamp.style.display = "block";
+                                    imageContainer.style.display = "none";
+                                    toggleContentButton.innerHTML = "Show Image";
+                                } else {
+                                    ansCamp.style.display = "none";
+                                    imageContainer.style.display = "block";
+                                    toggleContentButton.innerHTML = "Show Text";
+                                }
+                            }
+
+                            // Set default background image
+                            document.addEventListener('DOMContentLoaded', function() {
+                                document.body.style.backgroundImage = "url('images/projectImages/acImgs/acBackground.gif')";
+                            });
+                        </script>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="logo-container" style="cursor: pointer;" onclick="location.href='index.html';">
+        <div id="logo">
+            <img src="images/PersonalLogo.gif" alt="DM's Logo">
+        </div>
+    </div>
+    <script src="functions.js"></script>
+</body>
+</html>
