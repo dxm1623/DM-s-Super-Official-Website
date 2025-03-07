@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DM's Website</title>
     <link rel="stylesheet" href="style.css">
-    <!--CHECK CONTRAST-->
-    <!--SITE PUSH ACTING WEIRD-->
 </head>
 <body>
     <div id="main-content">
@@ -20,49 +18,60 @@
                         <p>WORK IN PROGRESS - WILL FINISH UP</p>
                         <div id="ans-camp" style="text-align: left; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px; padding: 10px;">
                             <p><strong>Answer Campus</strong> is an in-development visual novel that has been worked on by Professor <strong>Clay Ewing</strong> as well as members of both his CIM-444 course and, to a greater extent, the newly formed <strong>NERDLab</strong>, an in-house game development studio operating within the <strong>University of Miami</strong> where I study. I was introduced to Answer Campus through Ewing's CIM-444 course and later would involve myself directly with the development of the game through NERDLab as part of my practicum works.</p>
-                            <p>Answer Campus is a <strong>social impact game</strong> aimed at simulating <strong>the average university student's experience.</strong></p>
+                            <p>Answer Campus is a <strong>social impact game</strong> aimed at simulating <strong>a university student's social and .</strong></p>
+                            <div id="image-container" style="text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px;">
+                                <img id="case-study-image" src="images/projectImages/acImgs/ac img1.png" alt="Case Study Image" style="width: 100%; height: auto;">
+                                <hr style="color: black;">
+                                <p id="case-study-caption">An excerpt from a deliverable I produced involving Breanna, one of AC's characters. This is not reflective of the final product and is subject to revision.</p>
+                            </div>
                         </div>
                         <hr>
-                        <div id="image-container" style="display: none; text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px;">
-                            <img id="case-study-image" src="images/projectImages/dpeImgs/ogImage.jpg" alt="Case Study Image" style="width: 100%; height: auto;">
-                            <p>Image Caption: This is a caption for the case study image.</p>
-                        </div>
-                        <br>
-                        <button id="toggle-content-button" onclick="toggleContent()">Show Image</button>
-                        <br>
-                        <script>
-                            function toggleContent() {
-                                var ansCamp = document.getElementById('ans-camp');
-                                var imageContainer = document.getElementById('image-container');
-                                var toggleContentButton = document.getElementById('toggle-content-button');
-
-                                if (ansCamp.style.display === "none") {
-                                    ansCamp.style.display = "block";
-                                    imageContainer.style.display = "none";
-                                    toggleContentButton.innerHTML = "Show Image";
-                                } else {
-                                    ansCamp.style.display = "none";
-                                    imageContainer.style.display = "block";
-                                    toggleContentButton.innerHTML = "Show Text";
-                                }
-                            }
-
-                            // Set default background image
-                            document.addEventListener('DOMContentLoaded', function() {
-                                document.body.style.backgroundImage = "url('images/projectImages/acImgs/acBackground.gif')";
-                            });
-                        </script>
                         <hr>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div id="logo-container" style="cursor: pointer;" onclick="location.href='index.html';">
-        <div id="logo">
-            <img src="images/PersonalLogo.gif" alt="DM's Logo">
-        </div>
+    <div id="overlay">
+        <img id="overlay-img" src="" alt="Zoomed Image">
+        <p id="overlay-caption"></p>
     </div>
-    <script src="functions.js"></script>
+    <script>
+        const imageContainer = document.getElementById('image-container');
+        const overlay = document.getElementById('overlay');
+        const overlayImg = document.getElementById('overlay-img');
+        const overlayCaption = document.getElementById('overlay-caption');
+        const caseStudyCaption = document.getElementById('case-study-caption');
+
+        imageContainer.addEventListener('click', function(event) {
+            if (event.target.tagName === 'IMG') {
+                overlayImg.src = event.target.src;
+                overlayImg.alt = event.target.alt;
+
+                overlayCaption.textContent = caseStudyCaption.textContent;
+                overlay.style.display = 'flex';
+            }
+        });
+
+        overlay.addEventListener('click', function(event) {
+            if (event.target !== overlayImg) {
+                overlay.style.display = 'none';
+            }
+        });
+
+        overlayImg.addEventListener('click', function() {
+            if (overlayImg.style.width === '50%') {
+                overlayImg.style.width = '100%';
+                overlayImg.style.cursor = 'zoom-out';
+            } else {
+                overlayImg.style.width = '50%';
+                overlayImg.style.cursor = 'zoom-in';
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+                                document.body.style.backgroundImage = "url('images/projectImages/acImgs/acBackground.gif')";
+                            });
+    </script>
 </body>
 </html>
