@@ -69,7 +69,7 @@ html {
     font-size: 0.75rem;
 }
 
-#case-study-images {
+.case-study-image {
     cursor: pointer;
 }
 
