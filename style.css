@@ -69,6 +69,10 @@ html {
     font-size: 0.75rem;
 }
 
+#case-study-images {
+    cursor: pointer;
+}
+
 #case-study-section {
     display: flex;
     justify-content: center;
@@ -145,7 +149,6 @@ html {
     flex-direction: column;
     text-align: center;
     padding: 20px;
-    margin-top: 20px;
     z-index: 1000;
 }
 
@@ -596,7 +599,6 @@ p:hover {
     position: fixed;
     right: 0;
     background: none; /* Remove background from main div */
-    padding-top: 20px;
     padding-bottom: 20px;
     color: white;
     overflow: scroll;

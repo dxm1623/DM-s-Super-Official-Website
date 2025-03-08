@@ -15,15 +15,31 @@
                     <div id="container" style="text-align: left; margin: 0 auto;">
                         <h3>Case Study: "Answer Campus"</h3>
                         <hr>
-                        <p>WORK IN PROGRESS - WILL FINISH UP</p>
                         <div id="ans-camp" style="text-align: left; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px; padding: 10px;">
-                            <p><strong>Answer Campus</strong> is an in-development visual novel that has been worked on by Professor <strong>Clay Ewing</strong> as well as members of both his CIM-444 course and, to a greater extent, the newly formed <strong>NERDLab</strong>, an in-house game development studio operating within the <strong>University of Miami</strong> where I study. I was introduced to Answer Campus through Ewing's CIM-444 course and later would involve myself directly with the development of the game through NERDLab as part of my practicum works.</p>
-                            <p>Answer Campus is a <strong>social impact game</strong> aimed at simulating <strong>a university student's social and .</strong></p>
-                            <div id="image-container" style="text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px;">
-                                <img id="case-study-image" src="images/projectImages/acImgs/ac img1.png" alt="Case Study Image" style="width: 100%; height: auto;">
+                            <hr>
+                            <div class="image-container" style="text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px;">
+                                <img class="case-study-image" src="images/projectImages/acImgs/ac img3.png" alt="Case Study Image" style="width: 100%; height: auto;">
                                 <hr style="color: black;">
-                                <p id="case-study-caption">An excerpt from a deliverable I produced involving Breanna, one of AC's characters. This is not reflective of the final product and is subject to revision.</p>
+                                <p class="case-study-caption">A snippet of one of the deliverables I created for NERDLab, featuring writing I did for one of the main characters.</p>
                             </div>
+                            <hr>
+                            <div style="color: white; background-color: black; border-radius: 8px; padding: 4px;"><p>Type: <strong>Writing & Narrative Design, Project Coordination</strong> |  Duration: <strong>Ongoing</strong></p><p>Product: <strong>Narrative Deliverables for Visual Novel</strong></p></div>
+                            <hr>
+                            <p><strong>Answer Campus</strong> is an in-development visual novel that has been worked on by members of the newly formed <strong>NERDLab</strong>, an in-house game development studio operating within the <strong>University of Miami</strong> where I study. I was introduced to Answer Campus through my coursework and later would involve myself directly with the development of the game through NERDLab as part of my practicum works.</p>
+                            <p>Answer Campus is a <strong>social impact game</strong> aimed at simulating <strong>a university student's social and academic experiences</strong>. Eager to delve deeper into such topics as well as to <strong>build my development and design skills</strong>, I joined NERDLab, entering the writing team for Answer Campus. Since then, I have contributed a number of <strong>deliverables</strong> in the form of <strong>written scripts</strong> for potential set pieces as well as <strong>playable prototypes</strong> within <strong>Unity</strong>. On top of this, I have helped contribute to the plotting and development of Answer Campus through frequent in-person and virtual discussions.</p>
+                            <div class="image-container" style="text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px;">
+                                <img class="case-study-image" src="images/projectImages/acImgs/ac img1.png" alt="Case Study Image" style="width: 100%; height: auto;">
+                                <hr style="color: black;">
+                                <p class="case-study-caption">An excerpt from a deliverable I produced involving one of AC's characters, subject to revision.</p>
+                            </div>
+                            <p>Much of my work within NERDLab has been focused on <strong>building the game's narrative and world</strong>, especially as development has moved towards a complete overhaul of the game's storyline and structure. Currently, work is focused on producing the first major 'episode' of the game in the form of "<strong>Answer Campus - First Semester</strong>", which will serve as an introduction to the Answer Campus universe and its characters. In accomplishing this, I have built a strong relationship with both the team's leadership and my fellow writers.</p>
+                            <p>Work is <strong>ongoing</strong>, and so I am not at liberty to share much of my work at this time, beyond some snippets. However, I am excited to see how the game will turn out and to continue working on it as part of NERDLab.</p>
+                            <div class="image-container" style="text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px;">
+                                <img class="case-study-image" src="images/projectImages/acImgs/ac img1.png" alt="Case Study Image" style="width: 100%; height: auto;">
+                                <hr style="color: black;">
+                                <p class="case-study-caption">Another excerpt from one of the deliverables I produced for AC.</p>
+                            </div>
+
                         </div>
                         <hr>
                         <hr>
@@ -37,20 +53,21 @@
         <p id="overlay-caption"></p>
     </div>
     <script>
-        const imageContainer = document.getElementById('image-container');
         const overlay = document.getElementById('overlay');
         const overlayImg = document.getElementById('overlay-img');
         const overlayCaption = document.getElementById('overlay-caption');
-        const caseStudyCaption = document.getElementById('case-study-caption');
 
-        imageContainer.addEventListener('click', function(event) {
-            if (event.target.tagName === 'IMG') {
+        document.querySelectorAll('.case-study-image').forEach(image => {
+            image.addEventListener('click', function(event) {
                 overlayImg.src = event.target.src;
                 overlayImg.alt = event.target.alt;
 
-                overlayCaption.textContent = caseStudyCaption.textContent;
+                const caption = event.target.parentElement.querySelector('.case-study-caption');
+                overlayCaption.textContent = caption ? caption.textContent : '';
+                overlayImg.style.width = '50%';
+                overlayImg.style.cursor = 'zoom-in';
                 overlay.style.display = 'flex';
-            }
+            });
         });
 
         overlay.addEventListener('click', function(event) {
@@ -70,8 +87,13 @@
         });
 
         document.addEventListener('DOMContentLoaded', function() {
-                                document.body.style.backgroundImage = "url('images/projectImages/acImgs/acBackground.gif')";
-                            });
+            document.body.style.backgroundImage = "url('images/projectImages/acImgs/acBackground.gif')";
+        });
     </script>
+    <div id="logo-container" style="cursor: pointer;" onclick="location.href='index.html';">
+        <div id="logo">
+            <img src="images/PersonalLogo.gif" alt="DM's Logo">
+        </div>
+    </div>
 </body>
 </html>
