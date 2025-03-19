@@ -711,11 +711,11 @@ p:hover {
     0% {
         color: lightgreen;
         text-shadow: 0 0 10px rgba(144, 238, 144, 0.8);
-        background: rgba(0, 80, 0, 0.5); /* Dark green background */
-        box-shadow: 0 0 10px rgba(0, 80, 0, 0.8); /* Dark green shadow */
+        background: rgba(0, 80, 0, 0);
+        box-shadow: 0 0 10px rgba(0, 80, 0, 0);
     }
     50% {
-        color: green;
+        color: rgb(0, 78, 0);
         text-shadow: 0 0 10px rgba(0, 128, 0, 0.8);
         background: rgba(144, 238, 144, 0.5); /* Light green background */
         box-shadow: 0 0 10px rgba(144, 238, 144, 0.8); /* Light green shadow */
@@ -723,8 +723,8 @@ p:hover {
     100% {
         color: lightgreen;
         text-shadow: 0 0 10px rgba(144, 238, 144, 0.8);
-        background: rgba(0, 80, 0, 0.5); /* Dark green background */
-        box-shadow: 0 0 10px rgba(0, 80, 0, 0.8); /* Dark green shadow */
+        background: rgba(0, 80, 0, 0);
+        box-shadow: 0 0 10px rgba(0, 80, 0, 0);
     }
 }
 
