@@ -40,7 +40,7 @@
                             </div>
                             <p>The final product was a functional game prototype comprised of <strong>16 different levels</strong>, with the player tasked with catching every ball in a level with a set number of misses allowed. It was my first major experience with designing a game independently and the product, while aesthetically barebones, ended up being very <strong>adaptable</strong> in regards to <strong>inserting new mechanics and features</strong>. I found that I did not focus much on visuals or sound design when under time constraints, which, coupled with my affinity for <strong>modularity</strong>, inspired my design process for my third project.</p>
                             <div class="image-container" style="text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px;">
-                                <img class="case-study-image" src="images/projectImages/dpeImgs/Project 2 FINAL pic6.png alt="Case Study Image" style="width: 100%; height: auto;">
+                                <img class="case-study-image" src="images/projectImages/dpeImgs/Project 2 FINAL pic6.png" alt="Case Study Image" style="width: 100%; height: auto;">
                                 <hr style="color: black;">
                                 <p class="case-study-caption">Another excerpt from one of the deliverables I produced for AC.</p>
                             </div>
@@ -59,32 +59,64 @@
                             <p>After an initial release and redesign following feedback, the final product contained <strong>13 levels</strong> alongside numerous illustrated assets and some elements of world-building (including a descriptive intro, a cutscene for reaching the end, and multiple endings). Building on my work in "Own Goal", I was able to refine my methods when designing "Nautilus's Conundrum". I once again found an <strong>affinity for modular workflows</strong>, as they dramatically sped up development time. Due to being subject to more feedback, I found myself being receptive to revision; When given <strong>descriptive suggestions and feedback</strong>, I was able to <strong>effectively implement them</strong> into the game, helped by the modular workflow.</p>
                         </div>
                         <hr>
-                        <script>
-                            function toggleCaseStudy() {
-                                var ownGoal = document.getElementById('own-goal');
-                                var nautilusConundrum = document.getElementById('nautilus-conundrum');
-                                var button = document.getElementById('toggle-button');
+<script>
+    function toggleCaseStudy() {
+        var ownGoal = document.getElementById('own-goal');
+        var nautilusConundrum = document.getElementById('nautilus-conundrum');
+        var button = document.getElementById('toggle-button');
 
-                                if (ownGoal.style.display === "none") {
-                                    ownGoal.style.display = "block";
-                                    nautilusConundrum.style.display = "none";
-                                    button.innerHTML = 'View Nautilus\'s Conundrum →';
-                                    document.body.style.backgroundImage = "url('images/projectImages/dpeImgs/ogBackground.gif')";
-                                } else {
-                                    ownGoal.style.display = "none";
-                                    nautilusConundrum.style.display = "block";
-                                    button.innerHTML = '← View Own Goal';
-                                    document.body.style.backgroundImage = "url('images/projectImages/dpeImgs/ncBackground.gif')";
-                                }
-                            }
+        if (ownGoal.style.display === "none") {
+            ownGoal.style.display = "block";
+            nautilusConundrum.style.display = "none";
+            button.innerHTML = 'View Nautilus\'s Conundrum →';
+            document.body.style.backgroundImage = "url('images/projectImages/dpeImgs/ogBackground.gif')";
+        } else {
+            ownGoal.style.display = "none";
+            nautilusConundrum.style.display = "block";
+            button.innerHTML = '← View Own Goal';
+            document.body.style.backgroundImage = "url('images/projectImages/dpeImgs/ncBackground.gif')";
+        }
+    }
 
-                            // Set default view
-                            document.addEventListener('DOMContentLoaded', function() {
-                                document.getElementById('own-goal').style.display = "block";
-                                document.getElementById('nautilus-conundrum').style.display = "none";
-                                document.body.style.backgroundImage = "url('images/projectImages/dpeImgs/ogBackground.gif')";
-                            });
-                        </script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('own-goal').style.display = "block";
+        document.getElementById('nautilus-conundrum').style.display = "none";
+        document.body.style.backgroundImage = "url('images/projectImages/dpeImgs/ogBackground.gif')";
+
+        const overlay = document.getElementById('overlay');
+        const overlayImg = document.getElementById('overlay-img');
+        const overlayCaption = document.getElementById('overlay-caption');
+
+        document.querySelectorAll('.case-study-image').forEach(image => {
+            image.addEventListener('click', function(event) {
+                overlayImg.src = event.target.src;
+                overlayImg.alt = event.target.alt;
+
+                const caption = event.target.parentElement.querySelector('.case-study-caption');
+                overlayCaption.textContent = caption ? caption.textContent : '';
+                overlayImg.style.width = '50%';
+                overlayImg.style.cursor = 'zoom-in';
+                overlay.style.display = 'flex';
+            });
+        });
+
+        overlay.addEventListener('click', function(event) {
+            if (event.target !== overlayImg) {
+                overlay.style.display = 'none';
+            }
+        });
+
+        overlayImg.addEventListener('click', function() {
+            if (overlayImg.style.width === '50%') {
+                overlayImg.style.width = '100%';
+                overlayImg.style.cursor = 'zoom-out';
+            } else {
+                overlayImg.style.width = '50%';
+                overlayImg.style.cursor = 'zoom-in';
+            }
+        });
+    });
+</script>
                     <button id="toggle-button" onclick="toggleCaseStudy()">View Nautilus's Conundrum →</button>
                     </div>
                 </div>
@@ -96,6 +128,12 @@
         <div id="logo">
             <img src="images/PersonalLogo.gif" alt="DM's Logo">
         </div>
+    </div>
+
+    <!-- Overlay for image zoom -->
+    <div id="overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); justify-content: center; align-items: center; z-index: 1000;">
+        <img id="overlay-img" style="max-width: 90%; max-height: 90%; cursor: zoom-in;" alt="Zoomed Image">
+        <p id="overlay-caption" style="color: white; text-align: center; margin-top: 10px;"></p>
     </div>
     <script src="functions.js"></script>
 </body>

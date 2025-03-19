@@ -148,7 +148,6 @@ p {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    transform: translateZ(0); /* Force GPU rendering to preserve blur */
 }
 
 .scrollContainerBox#clickableBox, .scrollContainerBox#clickableBoxSmall {
