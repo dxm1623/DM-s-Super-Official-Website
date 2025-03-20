@@ -10,10 +10,10 @@
 </head>
 <body>
     <div class="scrollContent">
-        <div class="scrollContainer" id="scrollC1">
+        <div class="scrollContainerStatic" id="scrollC1">
             <div class="scrollContainerParent" id="scrollC1">
                 <div class="scrollContainerBox">
-                    <h1 style="font-size: 6vw;">Div'd Up Backgrounds</h1>
+                    <h1>Div'd Up Backgrounds</h1>
                     <p>Scroll down to see the different backgrounds on this page, and how they move!
                     <br>
                     The page is divided into sections, each with its own background image. The images are set to move as such to create a sort of parallax effect when scrolling through the page.
@@ -28,7 +28,7 @@
                 </div>
             </div>
         </div>
-        <div class="scrollContainer" id="scrollC2">
+        <div class="scrollContainerStatic" id="scrollC2">
             <div class="scrollContainerParent" id="scrollC2">
                 <div class="scrollContainerBox">
                     <h2>Scroll Containers</h2>
@@ -44,7 +44,7 @@
                 </div>
             </div>
         </div>
-        <div class="scrollContainer" id="scrollC3">
+        <div class="scrollContainerStatic" id="scrollC3">
             <div class="scrollContainerParent" id="scrollC3">
                 <div class="scrollContainerBox">
                     <h3>Why so much nesting?</h3>
@@ -86,12 +86,10 @@
         </div>
         <div class="scrollContainer" id="scrollC4">
             <div class="scrollContainerParent" id="scrollC4">
-                <!-- <div class="scrollContainerBox" id="clickableBoxSmall" onclick="location.href='scrollTestStatic.html';">
+                <div class="scrollContainerBox" id="clickableBoxSmall" onclick="location.href='scrollTest.html';">
                     <h4>Static Backgrounds Test Here!</h4>
                     <p>Click here to see what this page looks like with static backgrounds!</p>
-                </div> -->
-                <h4 style="font-size: 4vw; color: black; mix-blend-mode: hard-light;">Remember</h4>
-                <p style="font-size: 2vw;">It's fine to have a little fun!</p>
+                </div>
             </div>
     </div>
 
@@ -99,7 +97,7 @@
         // Function to move images slightly when scrolling per --scroll-offset
         // Keeps images from showing div's background color by not moving beyond their height
         window.addEventListener('scroll', function() {
-            const scrollContainers = document.querySelectorAll('.scrollContainer');
+            const scrollContainers = document.querySelectorAll('.scrollContainer', '.scrollContainerStatic');
 
             scrollContainers.forEach(container => {
             const scrollPosition = window.scrollY;

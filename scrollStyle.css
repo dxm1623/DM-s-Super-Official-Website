@@ -1,3 +1,4 @@
+/* Custom Fonts */
 @font-face {
     font-family: National-Park-Thin;
     src: url("fonts/NationalPark/NationalPark-Thin.otf");
@@ -38,6 +39,7 @@
     src: url("fonts/Century/C059-BdIta.otf");
 }
 
+/* Global Styles */
 html {
     scroll-behavior: smooth;
     scrollbar-color: #000 #991616;
@@ -56,14 +58,18 @@ p, h1, h2, h3, h4 {
     text-shadow: #f00 -2px 0 1px, #00f 2px 0 1px;
 }
 
+/* Responsive Typography */
 h1, h2, h3, h4 {
     font-family: National-Park-Heavy, National-Park, Century-Bold, sans-serif;
+    font-size: clamp(0.75vw, 1.2vw, 1.5vw); /* Scales dynamically with viewport width */
 }
 
 p {
     font-family: Century, Century-Bold, Century-Italic, Century-Bold-Italic, serif;
+    font-size: clamp(0.5vw, 1vw, 1.2vw); /* Scales dynamically with viewport width */
 }
 
+/* Scrollable Content */
 .scrollContent {
     width: 100%;
     height: 100%;
@@ -72,96 +78,118 @@ p {
     z-index: 1;
 }
 
-:root {
-    --scroll-offset: 0px;
-}
-
+/* Scrollable Containers */
 .scrollContainer {
-    background-attachment: fixed;
+    background-attachment: fixed; /* Enables parallax effect */
     background-position-x: center;
     background-position-y: var(--scroll-offset);
-    background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-    opacity: var(--text-scroll-opacity);
+    opacity: var(--text-scroll-opacity, 1);
     transition: opacity 0.3s ease;
     width: 100%;
-    height: 100vh;
+    height: 100vh; /* Full viewport height */
     box-sizing: border-box;
+    overflow: hidden; /* Ensure no overflow issues */
 }
 
-.scrollContainer#scrollC1 {
+.scrollContainerStatic {
+    background-attachment: fixed; /* Enables parallax effect */
+    background-position: center var(--scroll-offset);
+    background-size: cover;
+    position: relative;
+    opacity: var(--text-scroll-opacity, 1);
+    transition: opacity 0.3s ease;
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    box-sizing: border-box;
+    overflow: hidden; /* Ensure no overflow issues */
+}
+
+
+/* Background Images for Sections */
+.scrollContainer#scrollC1, .scrollContainerStatic#scrollC1 {
     background-image: url('images/indexBackground.gif');
 }
 
-.scrollContainer#scrollC2 {
+.scrollContainer#scrollC2, .scrollContainerStatic#scrollC2 {
     background-image: url('images/forestBackground.gif');
 }
 
-.scrollContainer#scrollC3 {
+.scrollContainer#scrollC3, .scrollContainerStatic#scrollC3 {
     background-image: url('images/lampBackground.gif');
 }
 
-.scrollContainer#scrollC4 {
+.scrollContainer#scrollC4, .scrollContainerStatic#scrollC4 {
     background-image: url('images/shoreChurchBackground.gif');
-}
-
-.scrollContainerParent {
     display: flex;
     flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+
+/* Parent Containers */
+.scrollContainerParent {
+    display: flex;
+    flex-wrap: nowrap;
     justify-content: space-between;
+    align-content: center;
     transition: opacity 0.3s ease;
+    padding: 2%; /* Relative padding */
+    box-sizing: border-box;
+    align-items: stretch;
+    flex-direction: row;
 }
 
 .scrollContainerParent#scrollC1 {
     opacity: 1;
 }
 
-.scrollContainerParent#scrollC2 {
-    opacity: 0;
-}
-
-.scrollContainerParent#scrollC3 {
-    opacity: 0;
-}
-
+.scrollContainerParent#scrollC2,
+.scrollContainerParent#scrollC3,
 .scrollContainerParent#scrollC4 {
     opacity: 0;
-    /* center child elements vertically and horizontally */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
 }
 
+/* Scrollable Boxes */
 .scrollContainerBox {
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0.125));
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.95), rgba(155, 155, 155, 0.225));
     backdrop-filter: blur(5px);
-    margin: 20px;
-    padding: 10px;
+    margin: 2%; /* Relative margin */
+    padding: 1%; /* Relative padding */
     border-style: solid;
-    border-width: 2px;
+    border-width: 0.2vw; /* Scales with viewport width */
     border-color: #000;
-    border-radius: 10px;
-    flex: 1 1 calc(33.33% - 40px); /* Adjust width as needed */
-    height: calc(100% - 60px);
+    border-radius: 1vw; /* Scales with viewport width */
+    flex: 1 1 calc(33.33% - 4%); /* Adjust width dynamically */
+    height: auto; /* Allow height to adjust dynamically */
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
 }
 
 .scrollContainerBox#clickableBox, .scrollContainerBox#clickableBoxSmall {
+    background-image: linear-gradient(to right, rgba(15, 100, 15, 0.85), rgba(155, 255, 155, 0.125));
+    border-color: rgb(123, 161, 17);
+    font-size: 1.5vw; /* Scales with viewport width */
+    text-align: center;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-image 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0); /* Initial glow effect */
 }
 
 .scrollContainerBox#clickableBox:hover, .scrollContainerBox#clickableBoxSmall:hover {
     transform: scale(1.05);
+    background-image: linear-gradient(to right, rgba(15, 125, 15, 0.85), rgba(175, 255, 175, 0.225));     
+    border-color: yellowgreen;
+    box-shadow: 0 0 20px rgba(50, 205, 50, 0.8); /* Glow effect on hover */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-image 0.3s ease;
 }
 
 .scrollContainerBox#clickableBoxSmall {
-    flex: 1 1 calc(50% - 40px); /* Adjust width as needed */
-    height: calc(50% - 60px);
+    flex: 1 1 calc(50% - 4%); /* Adjust width dynamically */
+    height: auto; /* Allow height to adjust dynamically */
     margin: 0 auto;
-    
+    transition: transform all 0.3s ease;
 }
