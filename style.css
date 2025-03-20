@@ -90,41 +90,45 @@ html {
     text-align: left;
 }
 
-#case-study-content .subtitle{
+#case-study-content .subtitle {
     text-align: left;
+    color: #e0e0e0; /* Light gray text for readability */
 }
 
 
+/* Section Headings */
 #about-me-section h3,
 #bio-section h3,
 #my-work-section h3,
 #case-study-section h3 {
-    color: black;
-    font-family: National-Park-Heavy,Calibri,sans-serif;
-    font-size: 2rem;
+    color: #000000; /* Bright white for headings */
+    font-family: National-Park-Heavy, Calibri, sans-serif;
     text-align: left;
-    background-image: linear-gradient(to left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+    font-size: 2rem; /* Adjust font size for better visibility */
+    background-image: linear-gradient(to left, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.9) 100%);
     padding: 10px;
     border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Add shadow for better contrast */
 }
 
+/* My Work Section */
 #my-work-section h4 {
-    color: rgb(255, 255, 255);
-    font-family: National-Park-Heavy,Calibri,sans-serif;
-    font-size: 1.5rem;
+    color: #ffffff; /* Bright white for headings */
+    font-family: National-Park-Heavy, Calibri, sans-serif;
     text-align: left;
     background-image: linear-gradient(to left, rgba(220, 115, 115, 1) 0%, rgba(220, 115, 115, 1) 100%);
     padding: 10px;
     border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Add shadow for better contrast */
 }
 
 #my-work-section img {
     width: 100%;
-    height: auto;
+    border: 2px solid #ffffff; /* Add a white border for better contrast */
     border-radius: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Add shadow for better visibility */
 }
+
 
 #case-study-section img {
     width: 100%;
@@ -252,6 +256,7 @@ h3 {
 h4 {
     font-family: National-Park,sans-serif;
     color: black;
+    font-size: 1.75rem;
 }
 
 hr {
@@ -259,8 +264,13 @@ hr {
 }
 
 a {
-    color: blue;
+    color: #FFD700;
     text-decoration: none;
+}
+
+a:hover, a:focus {
+    color: #FFA500; /* Orange on hover for better contrast */
+    text-decoration: underline;
 }
 
 #tabs-container a {
@@ -271,13 +281,15 @@ a {
 }
 
 body {
-    background-color: rgb(241 241 241);
+    background-color: #121212;
     background-image: url('images/indexBackground.gif');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    color: antiquewhite;
+    color: #f5f5f5;
+    margin: 0;
+    padding: 0;
     font-family: Century, serif;
     transition: background-image 0.5s ease-in-out;
 }
@@ -414,15 +426,15 @@ p:hover {
     padding: 10px;
     margin-top: 20px;
     margin: 0 auto;
-    background: rgba(255, 255, 255, 1);
+    background: rgba(200, 200, 200, 1);
     gap: 10px;
     transition: all 0.3s ease-in-out;
 }
 
 #tabs-container .buttons, button {
-    background: rgba(255, 255, 255, 0.2);
-    border: 2px solid rgb(0, 0, 0);
-    color: rgb(0, 0, 0);
+    background: #007BFF; /* Bright blue background */
+    border: 2px solid #0056b3;
+    color: #ffffff; /* White text */
     padding: 10px 20px;
     border-radius: 5px;
     text-align: center;
@@ -433,11 +445,12 @@ p:hover {
 }
 
 #tabs-container .buttons:hover, button:hover {
-    border: 2px solid black;
-    color: black;
+    border: 2px solid #2299f5;
+    color: white;
+    text-shadow: #c9c9ff 0px 0px 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
     transform: scale(1.05); /* Expand uniformly */
-    transition: transform 0.3s ease-in-out; /* Smooth transition */
+    transition: transform all 0.3s ease-in-out; /* Smooth transition */
 }
 
 #tabs-container .buttons:hover *, button:hover * {
@@ -534,7 +547,7 @@ p:hover {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.33);
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     padding: 20px;
@@ -763,7 +776,7 @@ p:hover {
     padding: 10px;
     margin-top: 20px;
     margin: 0 auto;
-    background: rgba(255, 255, 255, 1);
+    background: rgba(200, 200, 200, 1);
     gap: 10px;
     transition: all 0.3s ease-in-out;
 }
