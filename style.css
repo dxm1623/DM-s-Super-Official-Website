@@ -669,6 +669,10 @@ p:hover {
     overflow: scroll;
     height: 100vh;
     z-index: 1; /* Keep content above the pseudo-element */
+    @media screen and (max-width: 1000px) {
+        width: 100vw; /* Full width on smaller screens */
+        margin-top: 0; /* Reset margin on smaller screens */
+    }
 }
 
 #main-content::before {
@@ -696,6 +700,17 @@ p:hover {
     width: 40vw;
     height: auto;
     z-index: 2; /* Ensure it is above other content */
+
+    @media screen and (max-width: 1000px) {
+        width: 10vw; /* Full width on smaller screens */
+        left: 0; /* Reset left position on smaller screens */
+        top: 90%; /* Reset top position on smaller screens */
+        transform: translateY(0); /* Reset transform on smaller screens */
+        background: rgba(255, 255, 255, 0.2); /* Add a semi-transparent background */
+        border-radius: 10px; /* Add rounded borders */
+        padding: 5px; /* Add padding for better spacing */
+        margin: 0 auto; /* Center the logo on smaller screens */
+    }
 }
 
 #logo {
