@@ -11,11 +11,27 @@
 <body>
     <div id="main-content">
         <h2 class="dms-header">Here's some fun things!</h2>
-        <div id="container" style="background-color: rgba(255, 255, 255, 0.2);">
-            <button class="buttons" id="butQuiz"onclick="location.href='quiz.html';">Go to Quiz</button>
-            <button class="buttons" id="butCursor"onclick="location.href='mouseFun.html';">Go to Mouse Fun</button>
-            <br>
+        <div id="container">
+            <div id="tabs-content">
+            <div id="miscMenu">
+                <div style="background-color: white; color: black; border-radius: 10px; padding: 10px; margin-bottom: 10px; text-align: center;">
+                <h1 style="font-size: 2rem; font-weight: bolder;">Fun Stuff</h1>
+                <div id="bio-content" class="tabs-stuff">
+                    <p>Here are some fun things I have made! Click on the buttons to check them out!
+                    </p>
                 </div>
+                </div>
+            <div class="miscContainerParent">
+                
+            <div class="miscContainer" style="text-align: center;">
+                <img src="images/thumbnails/quizImg.gif" alt="Quiz Preview" style="width: 150px; height: auto; margin-bottom: 10px;">
+                <button class="buttons" id="butQuiz" onclick="location.href='quiz.html';">Go to Quiz</button>
+            </div>
+            <div class="miscContainer" style="text-align: center;">
+                <img src="images/thumbnails/mouseFunImg.gif" alt="Mouse Fun Preview" style="width: 150px; height: auto; margin-bottom: 10px;">
+                <button class="buttons" id="butCursor" onclick="location.href='mouseFun.html';">Go to Mouse Fun</button>
+            </div>
+            </div>
             </div>
         </div>
     </div>

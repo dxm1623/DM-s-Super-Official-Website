@@ -39,6 +39,12 @@
     src: url("fonts/Century/C059-BdIta.otf");
 }
 
+:root {
+    --scroll-y: 0;
+    --scroll-offset: 0;
+    --text-scroll-opacity: 1;
+}
+
 /* Global Styles */
 html {
     scroll-behavior: smooth;
@@ -95,7 +101,7 @@ p {
 
 .scrollContainerStatic {
     background-attachment: fixed; /* Enables parallax effect */
-    background-position: center var(--scroll-offset);
+    background-position: center;
     background-size: cover;
     position: relative;
     opacity: var(--text-scroll-opacity, 1);

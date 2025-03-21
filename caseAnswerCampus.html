@@ -37,10 +37,9 @@
                             <div class="image-container" style="text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px;">
                                 <img class="case-study-image" src="images/projectImages/acImgs/ac img4.png" alt="Case Study Image" style="width: 100%; height: auto;">
                                 <hr style="color: black;">
-                                <p class="case-study-caption">Another excerpt from one of the deliverables I produced for AC.</p>
+                                <p class="case-study-caption">Another excerpt from one of the deliverables I produced.</p>
                             </div>
                         </div>
-                        <hr>
                         <hr>
                     </div>
                 </div>
@@ -72,16 +71,31 @@
         overlay.addEventListener('click', function(event) {
             if (event.target !== overlayImg) {
                 overlay.style.display = 'none';
+                overlayImg.style.transform = 'translate(0, 0)'; // Reset position
             }
         });
 
         overlayImg.addEventListener('click', function() {
             if (overlayImg.style.width === '50%') {
-                overlayImg.style.width = '100%';
+                overlayImg.style.width = 'fit-content';
+                overlayImg.style.maxWidth = '100%';
+                overlayImg.style.maxHeight = '100%';
                 overlayImg.style.cursor = 'zoom-out';
             } else {
                 overlayImg.style.width = '50%';
+                overlayImg.style.maxWidth = 'fit-content';
+                overlayImg.style.maxHeight = 'fit-content';
+                overlayImg.style.transform = 'translate(0, 0)'; // Reset position
                 overlayImg.style.cursor = 'zoom-in';
+            }
+        });
+
+        overlayImg.addEventListener('mousemove', function(event) {
+            if (overlayImg.style.width === 'fit-content') { // Check for zoomed-in state
+                const rect = overlay.getBoundingClientRect();
+                const offsetX = Math.min(Math.max((event.clientX - rect.left) / rect.width, 0), 1) * 100;
+                const offsetY = Math.min(Math.max((event.clientY - rect.top) / rect.height, 0), 1) * 100;
+                overlayImg.style.transform = `translate(${50 - offsetX}%, ${50 - offsetY}%)`;
             }
         });
 

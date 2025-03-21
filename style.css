@@ -207,36 +207,38 @@ html {
     position: absolute;
     top: 0;
     bottom: 0;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2));
+    background: linear-gradient(to right, rgba(0, 0, 255, 0.2), rgba(0, 0, 255, 0.2));
     color: rgb(255, 255, 255);
     padding: 10px 20px;
     border: none;
     text-align: center;
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    box-shadow: none; /* Remove drop shadow */
+    transition: background 0.5s ease, transform 0.5s ease, opacity 0.5s ease, box-shadow 0.5s ease; /* Smooth transitions */
+    box-shadow: 0 0 10px rgba(0, 0, 255, 0.5); /* Add bluish glow */
+    z-index: 1; /* Ensure buttons are above the image */
 }
 
 #workImageContainer button.left {
-    transform: none;
-    left: 0px;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+    left: 0;
+    background: linear-gradient(to right, rgba(0, 0, 255, 0.4), rgba(0, 0, 255, 0));
 }
 
 #workImageContainer button.right {
-    transform: none;
-    right: -4px; /* For some godforsaken reason, this is the only way I can get it to align properly. */
-    background: linear-gradient(to left, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
-}
-
-#workImageContainer button:hover::before {
-    transform: linear-gradient(to right, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6));
-        transition: all 0.3s ease-in-out;
+    right: 0;
+    background: linear-gradient(to left, rgba(0, 0, 255, 0.4), rgba(0, 0, 255, 0));
 }
 
 #workImageContainer button:hover {
-    background: linear-gradient(to right, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6));
-    transition: all 0.3s ease-in-out;
+    background: linear-gradient(to right, rgba(0, 0, 255, 0.6), rgba(0, 0, 255, 0.6));
+    transform: scale(1.1); /* Slightly enlarge on hover */
+    box-shadow: 0 0 20px rgba(0, 0, 255, 0.8); /* Intensify bluish glow on hover */
+    transition: background 0.5s ease, transform 0.5s ease, opacity 0.5s ease, box-shadow 0.5s ease; /* Smooth transitions */
+}
+
+#workImageContainer button:active {
+    transform: scale(1); /* Reset scale on click */
+    box-shadow: 0 0 15px rgba(0, 0, 255, 0.7); /* Slightly reduce glow on click */
+    transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out; /* Quick transition for click effect */
 }
 
 h1 {
@@ -327,6 +329,52 @@ img {
     text-align: center;
     align-items: center;
     height: auto;
+}
+
+#miscMenu {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    height: auto;
+    margin: 0 auto;
+    width: -webkit-fill-available;
+}
+
+.miscContainerParent {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    height: auto;
+    margin: 0 auto;
+    gap: 10px;
+}
+
+.miscContainer {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    height: auto;
+    padding: 10px;
+    margin: 0 auto;
+    width: 200px;
+}
+
+.miscContainer img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin: 0 auto;
 }
 
 /*For Case Studies*/
@@ -466,14 +514,14 @@ p:hover {
 }
 
 .buttons#toCaseStudy {
-    background: rgba(155, 0, 0, 0.2); /* Reddish background */
-    border: 2px solid red;
+    background: #8B0000; /* Duller red background */
+    border: 2px solid #660000; /* Darker red border for visibility */
     color: white;
     padding: 10px 20px;
     border-radius: 5px;
     text-align: center;
     cursor: pointer;
-    box-shadow: 0 0 10px rgba(128, 0, 0, 0.3); /* Red glow */
+    box-shadow: none; /* Remove glow effect */
     transform: scale(1);
     transition: all 0.3s ease-in-out;
     display: flex;
@@ -483,9 +531,10 @@ p:hover {
 }
 
 .buttons#toCaseStudy:hover {
-    background: rgba(255, 0, 0, 0.2); /* Lighter red background on hover */
-    border: 2px solid red;
-    box-shadow: 0 0 15px rgba(255, 0, 0, 0.8); /* Brighter red glow */
+    background: #FF6F91; /* Pinkish background on hover */
+    border: 2px solid #FF4D6A; /* Pinkish border for visibility */
+    color: white; /* Ensure text remains visible */
+    box-shadow: 0 0 15px rgba(255, 105, 135, 0.8); /* Pinkish glow */
     transform: scale(1.05); /* Expand uniformly */
     transition: all 0.3s ease-in-out; /* Smooth transition */
 }
@@ -610,6 +659,7 @@ p:hover {
     width: 60vw;
     margin: 0 auto;
     margin-top: -10px; /* Adjust to align with the top of the viewport, for some weird reason. */
+    padding-top: 20px; /* Add padding to the top */
     position: fixed;
     right: 0;
     background: none; /* Remove background from main div */
@@ -657,25 +707,24 @@ p:hover {
     max-width: 100%; /* Ensure it scales with zoom */
     max-height: 100%; /* Ensure it scales with zoom */
     border-style: none; /* Remove border */
-    transition: opacity 0.5s ease-in-out; /* Add transition for fade effect */
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out, filter 0.5s ease-in-out; /* Add transition for fade and shadow effect */
     transform: scale(1); /* Ensure initial scale is set */
-    transition: transform 0.5s ease-in-out; /* Add transition for smooth effect */
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 1)); /* Make shadow more noticeable */
 }
 
 #logo img:hover {
     transform: scale(1.25); /* Scale up on hover */
-    transition: transform 0.5s ease-in-out; /* Add transition for smooth effect */
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 1)); /* Intensify shadow on hover */
 }
-
 
 #logo img.fade-out {
     opacity: 0; /* Fade out effect */
-    transition: opacity 0.5s ease-in-out;
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0)); /* Remove shadow during fade-out */
 }
 
 #logo img.fade-in {
     opacity: 1; /* Fade in effect */
-    transition: opacity 0.5s ease-in-out;
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 1)); /* Restore shadow during fade-in */
 }
 
 .title {

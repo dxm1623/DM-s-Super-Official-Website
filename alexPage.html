@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Homepage</title>
+        <link rel="stylesheet" href="alexStyle.css">
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+            :root{
+            --scroll-y: 0;
+            --scroll-offset: 0;
+            }
+
+            html {
+              scroll-behavior: smooth;
+            }
+
+            .header-background {
+              position: relative;
+              background-image: url('images/lampBackground.gif');
+              background-size: cover;
+              background-position-x: center;
+              background-position-y: var(--scroll-offset);
+              background-attachment: fixed; /* Enables parallax effect */
+              padding: 50px 0;
+              text-align: center;
+              color: white;
+              margin-top: -10px;
+              margin-left: -10px;
+              margin-right: -10px;
+              margin-bottom: 20px;
+              padding-bottom: 100px;
+              z-index: 0;
+            }
+
+          .header-background h1, .header-background h2 {
+            margin: 0;
+            padding: 10px 0;
+            z-index: 2;
+          }
+
+        
+          .header-background::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 300px; /* Adjust height as needed */
+          background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+          z-index: 1;
+}
+          .logo {
+                top: 10px;
+                width: 400px;
+                padding-top: 50px;
+                filter: drop-shadow(10px 15px 4px #eeeeff);
+            }
+
+            h1 {
+              font-family: 'Nunito', sans-serif;  
+              font-size: 100px;
+                text-shadow: darkred 3px 3px;
+                margin: .25em;
+            }
+
+            h2 {
+                font-family: 'Nunito', sans-serif;
+                font-size: 50px;
+                text-shadow: darkred 3px 3px;
+                margin-bottom: 10px;
+            }
+
+            h3 {
+              font-family: 'Nunito', sans-serif;
+            }
+
+            #bio {
+                font-family: 'nunito', sans-serif;
+                font-size: 20px;
+                padding-left: 200px;
+                padding-right: 200px;
+
+            }
+
+            .wrapper {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                margin: 0 auto;
+            }
+
+            .container {
+                position: relative;
+                width: 40%;
+                margin: 10px;
+                justify-content: center;
+            }
+
+            #Project-1, #Project-2, #Project-3, #Project-4 {
+              display: flex;
+              align-content: space-evenly;
+              flex-wrap: wrap;
+            }
+
+            .image {
+                opacity: 1;
+                display: block;
+                width: 100%;
+                height: auto;
+                transition: .5s ease;
+                backface-visibility: hidden;
+            }
+
+            .middle {
+                transition: .5s ease;
+                align-content: center;
+                opacity: 0;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%)
+            }
+
+            .container:hover .image {
+                opacity: 0.3;
+            }
+
+            .container:hover .middle {
+                opacity: 1;
+            }
+
+            .text {
+                font-family: 'Nunito', sans-serif;
+                background-color: #4CAF50;
+                color: white;
+                font-size: 32px;
+                padding: 16px 32px;
+            }
+
+            .subtitle {
+                color: white;
+                font-family: 'Nunito', sans-serif;
+                font-weight: bold;
+                font-size: 16px;
+                padding: 16px 32px;
+            }
+
+            * {
+                box-sizing: border-box;
+            }
+
+            img {
+                vertical-align: middle;
+            }
+
+            /* Position the image container (needed to position the left and right arrows) */
+            .container {
+                position: relative;
+            }
+
+            /* Hide the images by default */
+            .mySlides {
+                display: none;
+            }
+
+            /* Add a pointer when hovering over the thumbnail images */
+            .cursor {
+                cursor: pointer;
+            }
+
+            /* Next & previous buttons */
+            .prev,
+            .next {
+                cursor: pointer;
+                position: absolute;
+                top: 40%;
+                width: auto;
+                padding: 16px;
+                margin-top: -50px;
+                color: white;
+                font-weight: bold;
+                font-size: 20px;
+                border-radius: 0 3px 3px 0;
+                user-select: none;
+                -webkit-user-select: none;
+                display: flex;
+                justify-content: space-between;
+            }
+
+            /* Position the "next button" to the right */
+            .next {
+                right: 0;
+                border-radius: 3px 0 0 3px;
+            }
+
+            .prev:hover,
+            .next:hover {
+                background-color: rgba(0, 0, 0, 0.8);
+            }
+
+            .numbertext {
+                color: #f2f2f2;
+                font-size: 12px;
+                padding: 8px 12px;
+                position: absolute;
+                top: 0;
+            }
+
+            /* Container for image text */
+            .caption-container {
+                text-align: center;
+                background-color: #222;
+                padding: 2px 16px;
+                color: white;
+            }
+
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+
+            /* Six columns side by side */
+            .column {
+                float: left;
+                width: 16.66%;
+            }
+
+            .active,
+            .demo:hover {
+                opacity: 1;
+            }
+
+            .portrait {
+                width: 300px;
+                border: 10px solid rgb(255, 217, 0);
+                border-radius: 50%;
+                justify-self: center;
+                transition: transform 0.3s ease-in-out;
+            }
+
+            .portrait:hover {
+                transform: scale(1.2); /* Grows the image by 20% */
+            }
+
+            #skills {
+                font-family: 'nunito', sans-serif;
+                font-size: 20px;
+                width: 50%;
+                display: flex;
+                flex-wrap: nowrap;
+                justify-content: center;
+                margin: 0 auto;
+            }
+
+            #email {
+              font-family: 'nunito', sans-serif;
+              font-size: 20px;
+              font-style: bold;
+            }
+
+            #linkedin {
+              font-family: 'nunito', sans-serif;
+              font-size: 20px;
+              font-style: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="buttons">
+            <a id="tabs" href="about-me.html">About Me</a>
+            <a id="tabs" href="projects.html">Projects</a>
+            <a id="tabs" href="contact.html">Contact</a>
+        </div>
+
+        <div class="header-background" id="headerBackground">
+          <div style="position: relative; z-index: 1;">
+              <a href="index.html"><img src="images/AG-Website-Logo.svg" alt="Alejandro Galego Logo" class="logo"></a>
+          </div>
+          <div style="position: relative; z-index: 2;">
+              <h1>Alejandro Galego</h1>
+              <h2>Creative Visual Storyteller</h2>
+              <div id="bio">
+                  <h3>Hi! I'm Alejandro Galego, an illustrator and graphic designer with an interest in storytelling.
+                  I'm currently studying at the University of Miami and learning how to code by building this website.</h3>
+              </div>
+          </div>
+      </div>
+
+        <h2>Projects</h2>
+        <div class="wrapper">
+          <div class="container" id="Project-1" style="cursor: pointer;" onclick="location.href='case-study-1.html'">
+              <img src="images/FF Video Thumbnail.jpg" alt="Final Four Video Thumbnail" class="image" style="width:80%">
+              <div class="middle">
+                <div class="text">Final Four Music Video</div>
+                <div class="subtitle">Music Video</div>
+              </div>
+            </div>
+          </style>
+            <div class="container" id="Project-2" style="cursor: pointer;" onclick="location.href='case-study-2.html'">
+              <img src="images/Atzok the Deserter Thumbnail.png" alt="Atzok the Deserter Thumbnail" class="image" style="width:80%">
+              <div class="middle">
+                <div class="text">Atzok the Deserter</div>
+                <div class="subtitle">Original Story Pitch</div>
+              </div>
+            </div>
+             <div class="container" id="Project-3">
+              <img src="images/Death of Innocence Thumbnail.png" alt="Death of Innocence Thumbnail" class="image" style="width:80%">
+              <div class="middle">
+                <div class="text">Death of Innocence</div>
+                <div class="subtitle">Animated Short Film</div>
+              </div>
+            </div>
+             <div class="container" id="Project-4">
+              <img src="images/SoC Tour Thumbnail.png" alt="SoC VR Tour Thumbnail" class="image" style="width:80%">
+              <div class="middle">
+                <div class="text">School of Comm VR Tour</div>
+                <div class="subtitle">Virtual Reality Experience</div>
+              </div>
+            </div>
+          </div>
+
+        <section id="illustrations">
+          <h2>Illustrations</h2>
+          <h3>One of the things I like to do in my free time is draw. Here is some of the digital art I've created.</h3>
+          <div id="container">
+              <div id="row">
+                <div id="illustrations">
+                  <div class="container">
+                    <div class="slideshow-container">
+                      <div class="mySlides fade">
+                        <img src="images/Specter VHS (final).png" style="width:100%">
+                      </div>
+                      <div class="mySlides fade">
+                        <img src="images/Eonite Full Body.png" style="width:100%">
+                      </div>
+                      <div class="mySlides fade">
+                        <img src="images/Walter Gameboy Palette.jpeg" style="width:100%">
+                      </div>
+                      <div class="mySlides fade">
+                        <img src="images/Imperial Klorn Guard.png" style="width:100%">
+                      </div>
+                  </div>
+                  <!-- Next and previous buttons -->
+                  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+              </div>
+              <br>
+              
+              <!-- The dots/circles -->
+              <div style="text-align:center">
+                  <span class="dot" onclick="currentSlide(1)"></span>
+                  <span class="dot" onclick="currentSlide(2)"></span>
+                  <span class="dot" onclick="currentSlide(3)"></span>
+                  <span class="dot" onclick="currentSlide(4)"></span>
+              </div>
+              </div>
+              </div>
+            </div>
+        </section>
+        <br>
+        <section>
+        <h2>My Skills</h2>
+        <img src="images/My_Portrait.jpeg" alt="My Portrait" class="portrait">
+          <div id="skills">
+            <ul>
+              <li class="skill-level-1">Illustration</li>
+              <li class="skill-level-2">Graphic Design</li>
+              <li class="skill-level-3">Video Editing</li>
+              <li class="skill-level-4">HTML/CSS</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="contact">
+          <h2>Contact Me</h2>
+          <div id="email">amg9350@miami.edu</div>
+          <a id="linkedin" href="https://www.linkedin.com/">LinkedIn</a>
+        </section>
+
+        <script>
+            let slideIndex = 1;
+            showSlides(slideIndex);
+            
+            function plusSlides(n) {
+              showSlides(slideIndex += n);
+            }
+            
+            function currentSlide(n) {
+              showSlides(slideIndex = n);
+            }
+            
+            function showSlides(n) {
+              let i;
+              let slides = document.getElementsByClassName("mySlides");
+              let dots = document.getElementsByClassName("demo");
+              let captionText = document.getElementById("caption");
+              if (n > slides.length) {slideIndex = 1}
+              if (n < 1) {slideIndex = slides.length}
+              for (i = 0; i < slides.length; i++) {
+              slides[i].style.display = "none";
+              }
+              if (dots.length > 0) { // Check if dots exist
+              for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+              }
+              dots[slideIndex-1].className += " active";
+              captionText.innerHTML = dots[slideIndex-1].alt;
+              }
+              slides[slideIndex-1].style.display = "block";
+            }
+
+                // Add parallax effect to the header-background
+                window.addEventListener('scroll', function () {
+                  const header = document.getElementById('headerBackground');
+                  const scrollPosition = window.scrollY;
+                  const offset = -scrollPosition * 0.5; // Adjust multiplier for parallax intensity
+                  header.style.backgroundPositionY = `${offset}px`;
+                });
+            </script>
+
+            <footer>
+                <p>&copy; 2025 Alejandro Galego. All rights reserved.</p>
+                <p>Contact: <a href="mailto:amg9350@gmail.com">amg9350@gmail.com</a></p>
+            </footer>
+    </body>

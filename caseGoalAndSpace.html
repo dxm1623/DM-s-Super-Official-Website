@@ -58,19 +58,19 @@
                             <div class="image-container" style="text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px;">
                                 <img class="case-study-image" src="images/projectImages/dpeImgs/Project 3 pic1.PNG" alt="Case Study Image" style="width: 100%; height: auto;">
                                 <hr style="color: black;">
-                                <p class="case-study-caption">One of the levels in the MVP deliverable, with the player controlling 2 goals. Currently, the Green goal is selected.</p>
+                                <p class="case-study-caption">The opening screen of the MVP, including a brief setup written by me. The game is contextualized as a training program for dog astronauts, inspired by early space race orbital flights involving animals (including dogs).</p>
                             </div>
                             <p>The game went through various stages of development, which were more distinct than my prior project. A more ambitious faux-3D design was quickly discarded for a practical 2D one, and the aesthetic shifted between oceanic and intersteller, eventually settling on the latter which later inspired the game to be themed around <strong>dog-astronauts</strong> (inspired by Cold War programs that shot animals, like dogs, into space) and helped <strong>play into the barebones aesthetic</strong> by allowing it to have a <strong>more retro appearance</strong>. As had been implemented with the various balls and 'gizmos' in "Own Goal", a <strong>modular workflow</strong> was utilized which enabled me to quickly implement new items and obstacles to the game.</p>
                             <div class="image-container" style="text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px;">
                                 <img class="case-study-image" src="images/projectImages/dpeImgs/Project 3 pic2.PNG" alt="Case Study Image" style="width: 100%; height: auto;">
                                 <hr style="color: black;">
-                                <p class="case-study-caption">One of the levels in the MVP deliverable, with the player controlling 2 goals. Currently, the Green goal is selected.</p>
+                                <p class="case-study-caption">The opening level of the MVP deliverable, with the player controlling the green ship/square and the target direction marked. Air, Fuel, the current level, and the thruster's overheat timer are all shown.</p>
                             </div>
                             <p>After an initial release and redesign following feedback, the final product contained <strong>13 levels</strong> alongside numerous illustrated assets and some elements of world-building (including a descriptive intro, a cutscene for reaching the end, and multiple endings). Building on my work in "Own Goal", I was able to refine my methods when designing "Nautilus's Conundrum". I once again found an <strong>affinity for modular workflows</strong>, as they dramatically sped up development time. Due to being subject to more feedback, I found myself being receptive to revision; When given <strong>descriptive suggestions and feedback</strong>, I was able to <strong>effectively implement them</strong> into the game, helped by the modular workflow.</p>
                             <div class="image-container" style="text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px;">
                                 <img class="case-study-image" src="images/projectImages/dpeImgs/Project 3 pic3.PNG" alt="Case Study Image" style="width: 100%; height: auto;">
                                 <hr style="color: black;">
-                                <p class="case-study-caption">One of the levels in the MVP deliverable, with the player controlling 2 goals. Currently, the Green goal is selected.</p>
+                                <p class="case-study-caption">Another level included in the deliverable, showing the player alongside an Air pickup and a Fuel pickup.</p>
                             </div>
                         </div>
                         <hr>
@@ -121,20 +121,35 @@
         overlay.addEventListener('click', function(event) {
             if (event.target !== overlayImg) {
                 overlay.style.display = 'none';
+                overlayImg.style.transform = 'translate(0, 0)'; // Reset position
             }
         });
 
         overlayImg.addEventListener('click', function() {
             if (overlayImg.style.width === '50%') {
-                overlayImg.style.width = '100%';
+                overlayImg.style.width = 'fit-content';
+                overlayImg.style.maxWidth = '100%';
+                overlayImg.style.maxHeight = '100%';
                 overlayImg.style.cursor = 'zoom-out';
             } else {
                 overlayImg.style.width = '50%';
+                overlayImg.style.maxWidth = 'fit-content';
+                overlayImg.style.maxHeight = 'fit-content';
+                overlayImg.style.transform = 'translate(0, 0)'; // Reset position
                 overlayImg.style.cursor = 'zoom-in';
             }
         });
+
+        overlayImg.addEventListener('mousemove', function(event) {
+            if (overlayImg.style.width === 'fit-content') { // Check for zoomed-in state
+                const rect = overlay.getBoundingClientRect();
+                const offsetX = Math.min(Math.max((event.clientX - rect.left) / rect.width, 0), 1) * 100;
+                const offsetY = Math.min(Math.max((event.clientY - rect.top) / rect.height, 0), 1) * 100;
+                overlayImg.style.transform = `translate(${50 - offsetX}%, ${50 - offsetY}%)`;
+            }
+        });
     });
-</script>
+    </script>
                     <button id="toggle-button" onclick="toggleCaseStudy()">View Nautilus's Conundrum →</button>
                     </div>
                 </div>
