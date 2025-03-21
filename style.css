@@ -709,7 +709,7 @@ p:hover {
     max-width: 100%; /* Ensure it scales with zoom */
     max-height: 100%; /* Ensure it scales with zoom */
     border-style: none; /* Remove border */
-    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out, filter 0.5s ease-in-out; /* Add transition for fade and shadow effect */
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; filter: 0.5s ease-in-out; /* Add transition for fade and shadow effect */
     transform: scale(1); /* Ensure initial scale is set */
     filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 1)); /* Make shadow more noticeable */
 }
