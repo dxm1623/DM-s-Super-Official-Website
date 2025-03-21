@@ -684,6 +684,7 @@ p:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
+/* for some reason Github really likes to not include this stuff when pushing */
 #logo-container {
     position: fixed;
     left: 0;
