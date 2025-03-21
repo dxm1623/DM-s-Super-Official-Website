@@ -65,38 +65,41 @@
 
         function scrollToSection(sectionId) {
             document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
-        }
+                }
 
-        function initializePage() {
-            const currentPage = window.location.pathname.split('/').pop();
-            const pageConfig = pages[currentPage];
+                function initializePage() {
+                    const currentPage = window.location.pathname.split('/').pop();
+                    const pageConfig = pages[currentPage];
 
-            if (!pageConfig) return;
+                    if (!pageConfig) return;
 
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.25
-            };
+                    const observerOptions = {
+                    root: null,
+                    rootMargin: '0px',
+                    threshold: 0.25
+                    };
 
-            let initialLoad = {};
-            pageConfig.tabs.forEach(tabKey => initialLoad[tabs[tabKey].sectionId] = true);
+                    let initialLoad = {};
+                    pageConfig.tabs.forEach(tabKey => {
+                    if (tabs[tabKey]) {
+                        initialLoad[tabs[tabKey].sectionId] = true;
+                    }
+                    });
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    const tab = Object.values(tabs).find(tab => tab.sectionId === entry.target.id || tab.contentId === entry.target.id);
-                    if (entry.isIntersecting && tab) {
+                    const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        const tab = Object.values(tabs).find(tab => tab.sectionId === entry.target.id || tab.contentId === entry.target.id);
+                        if (entry.isIntersecting && tab) {
                         if (initialLoad[tab.sectionId]) {
                             initialLoad[tab.sectionId] = false;
                             return;
                         }
                         document.body.style.backgroundImage = tab.backgroundImage;
                         changeLogo(tab.logoSrc, tab.logoAlt);
-                    }
-                });
-            }, observerOptions);
+                        }
+                    });
+                    }, observerOptions);
 
-            document.querySelectorAll('.section, .tabs-stuff').forEach(element => observer.observe(element));
-        }
-
+                    document.querySelectorAll('.section, .tabs-stuff').forEach(element => observer.observe(element));
+                }
         window.addEventListener('load', initializePage);
