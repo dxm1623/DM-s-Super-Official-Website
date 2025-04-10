@@ -1,0 +1,200 @@
+/* Custom Fonts */
+@font-face {
+    font-family: National-Park-Thin;
+    src: url("fonts/NationalPark/NationalPark-Thin.otf");
+}
+
+@font-face {
+    font-family: National-Park;
+    src: url("fonts/NationalPark/NationalPark-Regular.otf");
+}
+
+@font-face {
+    font-family: National-Park-Heavy;
+    src: url("fonts/NationalPark/NationalPark-Heavy.otf");
+}
+
+@font-face {
+    font-family: National-Park-Outline;
+    src: url("fonts/NationalPark/NationalPark-Outline.otf");
+}
+
+@font-face {
+    font-family: Century;
+    src: url("fonts/Century/C059-Roman.otf");
+}
+
+@font-face {
+    font-family: Century-Italic;
+    src: url("fonts/Century/C059-Italic.otf");
+}
+
+@font-face {
+    font-family: Century-Bold;
+    src: url("fonts/Century/C059-Bold.otf");
+}
+
+@font-face {
+    font-family: Century-Bold-Italic;
+    src: url("fonts/Century/C059-BdIta.otf");
+}
+
+html {
+    scroll-behavior: smooth;
+    font-family: 'Century', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #000;
+    background-color: #fff;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'Century', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #000;
+    background-color: #fff;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+#butterflyTop {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px;
+    padding-bottom: 10%;
+    background: linear-gradient(to bottom, rgb(255, 213, 0) 0%, rgb(255, 213, 0) 50%, rgba(255, 122, 14, 0) 100%);
+    z-index: 1;
+    width: -webkit-fill-available;
+}
+
+#beHeader {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    gap: 16px;
+    padding: 20px;
+    z-index: 1;
+    width: -webkit-fill-available;
+}
+
+#beHeader h1 {
+    font-family: 'National-Park', sans-serif;
+    font-size: 2.5em;
+    font-weight: 400;
+    font-style: oblique;
+    line-height: 1.5;
+    color: #000;
+    text-align: center;
+}
+
+#beHeaderSubtitle {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    z-index: 1;
+    position: relative;
+}
+
+#events {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    gap: 20px;
+    z-index: 0; /* Ensure the timeline line is behind the events */
+}
+
+#events::before {
+    z-index: -1; /* Place the timeline line behind the events */
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 4px;
+    background-color: #000;
+}
+
+.butterfly, .event {
+    z-index: 1;
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    justify-content: center;
+    position: relative;
+    width: 25rem;
+    height: fit-content;
+    margin: 2rem 0; /* Add spacing between butterflies */
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.event {
+    background: rgba(0,0,0,.3);
+    position: relative; /* Ensure proper stacking context */
+}
+
+.butterfly {
+    background: rgba(9, 46, 0, 0.3);
+    transition: ease-in-out 0.3s;
+}
+
+.butterfly:hover {
+    background: rgba(9, 46, 0, 0.5);
+    transform: scale(1.05);
+    transition: ease-in-out 0.3s;
+}
+
+.butterfly:nth-child(odd), .event:nth-child(odd) {
+    align-self: center; /* Center align odd butterflies */
+}
+.butterfly:nth-child(even), .event:nth-child(even) {
+    align-self: center; /* Center align even butterflies */
+}
+
+.butterfly::before, .event::before {
+    content: '';
+    position: absolute;
+    background-color: #000;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.butterfly:nth-child(even)::before, .event:nth-child(even)::before {
+    left: auto;
+    right: -10px;
+}
+
+.butterflyTitle, .eventTitle {
+    font-family: 'National-Park', sans-serif;
+    font-size: 2em;
+    font-weight: 400;
+    font-style: oblique;
+    line-height: 1.5;
+    color: #000;
+    text-align: center;
+}
+
+.butterflySubtitle, .eventSubtitle {
+    font-family: 'National-Park', sans-serif;
+    font-size: 1em;
+    font-weight: 400;
+    font-style: oblique;
+    line-height: 1.5;
+    color: #000;
+    text-align: center;
+}
