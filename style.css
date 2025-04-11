@@ -688,6 +688,29 @@ p:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
+.externalLink {
+    text-decoration: underline;
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.externalLink:hover {
+    transform: scale(1.1); /* Grow slightly on hover */
+}
+
+#LinkedIn {
+    color: #68b1ff;
+    text-shadow: 0 0 5px #c9c9ff;
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out color 0.3s ease-in-out; text-shadow: 0.3s ease-in-out;
+}
+
+#LinkedIn:hover {
+    color: #cde5ff;
+    text-shadow: 0 0 10px #edf7ff;
+    transform: scale(1.1); /* Grow slightly on hover */
+}
+
 /* for some reason Github really likes to not include this stuff when pushing */
 #logo-container {
     position: fixed;
