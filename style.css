@@ -605,7 +605,7 @@ p:hover {
     border-radius: 10px;
     color: rgb(0, 0, 0);
     transition: box-shadow 0.5s ease-in-out; /* Add transition for smooth effect */
-    width: 60%;
+    width: 80%;
     margin-top: 20px;
     text-align: left;
 }
