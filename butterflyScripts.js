@@ -746,6 +746,13 @@ const internetEventsByYear = [
 ];
 
 // function to replace any mention of YouTube (after 2005) with Vimeo in the txt property of each event UNLESS title of the event includes "YouTube", as to not replace post-humous mentions of YouTube in the Vimeo timeline.
+
+let youtube = true;
+
+if (!youtube) {
+    replaceYouTubeWithVimeo();
+}
+
 function replaceYouTubeWithVimeo() {
     internetEventsByYear.forEach(year => 
         year.months.forEach(month => 
@@ -793,10 +800,19 @@ function updateTimeline() {
     timelineContainer.appendChild(eventsContainer); // Ensure eventsContainer is inside timelineContainer
 }
 
-function arePreReqsFulfilled(event) {
-    if (!event.preReq) return true;
+function arePreReqsFulfilled(event, cache = {}) {
+    if (!event.preReq) return true; // No prerequisites, event is valid
     const preReqs = Array.isArray(event.preReq) ? event.preReq : [event.preReq];
-    return preReqs.every(preReqId => isEventActive(preReqId));
+
+    return preReqs.every(preReqId => {
+        if (cache[preReqId] !== undefined) return cache[preReqId]; // Use cached result if available
+        const isActive = isEventActive(preReqId, cache);
+        cache[preReqId] = isActive;
+        if (!isActive) {
+            console.log(`Prerequisite not fulfilled for event ${event.id}: ${preReqId} is inactive.`);
+        }
+        return isActive;
+    });
 }
 
 function isEventActive(eventId) {
@@ -808,47 +824,32 @@ function isEventActive(eventId) {
 }
 
 function toggleButterfly(event, selectedYear, selectedMonth) {
-    // check clicked butterfly and corresponding event
     console.log("A butterfly event was clicked.");
     console.log("butterfly clicked:", event);
+
     const correspondingEvent = findEventById(event.corrButterfly);
     if (!correspondingEvent) {
         console.error(`Corresponding butterfly event not found for ID: ${event.id}`);
         return;
-    } else {
-        console.log("corresponding event:", correspondingEvent);
     }
 
-    // Track the original butterfly and corresponding butterfly IDs before the click
-    const originalButterflyId = event.id;
-    const originalCorrespondingId = correspondingEvent.id;
+    console.log("corresponding event:", correspondingEvent);
 
-    // Toggle the butterfly events
+    // Deactivate the current event and activate the corresponding butterfly event
     event.active = false;
     correspondingEvent.active = true;
 
-    // Update subsequent events after the selected butterfly's year and month
+    // Update all subsequent events
     updateSubsequentEvents(selectedYear, selectedMonth);
 
-    // Update the timeline directly
+    // Refresh the timeline
     updateTimeline();
 
-    // Check if the butterfly was successfully switched
-    const newButterfly = findEventById(originalButterflyId);
-    const newCorresponding = findEventById(originalCorrespondingId);
-
-    if (newButterfly.active || !newCorresponding.active) {
-        console.error("Error: Butterfly event did not change due to a logic error.");
-        console.error("Debugging Information:");
-        console.error("Original Butterfly ID:", originalButterflyId);
-        console.error("Original Corresponding ID:", originalCorrespondingId);
-        console.error("New Butterfly State:", newButterfly ? newButterfly.active : "Not Found");
-        console.error("New Corresponding State:", newCorresponding ? newCorresponding.active : "Not Found");
-        console.error("Selected Year:", selectedYear);
-        console.error("Selected Month:", selectedMonth);
-        console.error("Full Event Data:", { event, correspondingEvent });
+    // Debugging: Verify the toggle
+    if (!correspondingEvent.active || event.active) {
+        console.error("Error: Butterfly toggle failed.");
     } else {
-        console.log("Success: Butterfly event was successfully switched.");
+        console.log("Success: Butterfly event toggled.");
     }
 }
 
@@ -884,7 +885,25 @@ function updateSubsequentEvents(selectedYear, selectedMonth) {
     });
 }
 
+function validateDependencies() {
+    internetEventsByYear.forEach(year => {
+        year.months.forEach(month => {
+            month.events.forEach(event => {
+                if (event.preReq) {
+                    const preReqs = Array.isArray(event.preReq) ? event.preReq : [event.preReq];
+                    preReqs.forEach(preReqId => {
+                        if (!findEventById(preReqId)) {
+                            console.error(`Invalid prerequisite ID: ${preReqId} for event ${event.id}`);
+                        }
+                    });
+                }
+            });
+        });
+    });
+}
+
 // Create Timeline on Page Load
 document.addEventListener("DOMContentLoaded", () => {
+    validateDependencies();
     updateTimeline();
 });

@@ -53,6 +53,7 @@ html {
 }
 
 body {
+    z-index: -2;
     margin: 0;
     padding: 0;
     width: 100%;
@@ -119,15 +120,15 @@ body {
     z-index: 0; /* Ensure the timeline line is behind the events */
 }
 
-#events::before {
-    z-index: -1; /* Place the timeline line behind the events */
-    content: '';
-    position: absolute;
+#line {
+    position: fixed;
+    width: 4px;
+    background-color: black;
     top: 0;
     bottom: 0;
     left: 50%;
-    width: 4px;
-    background-color: #000;
+    transform: translateX(-50%);
+    z-index: -1; /* Ensure it stays behind the events and butterflies */
 }
 
 .butterfly, .event {

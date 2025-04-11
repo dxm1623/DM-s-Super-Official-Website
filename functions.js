@@ -30,20 +30,26 @@
         };
 
         const pages = {
-            'index.html': {
+            'index': {
                 tabs: ['index', 'myWork'],
                 defaultTab: 'index'
             },
-            'persona.html': {
+            'persona': {
                 tabs: ['aboutMe', 'bio'],
                 defaultTab: 'aboutMe'
             },
-            'caseGoalAndSpace.html': {
+            'caseGoalAndSpace': {
                 tabs: ['own-goal', 'nautilus-conundrum'],
                 defaultTab: 'own-goal'
             },
         };
 
+        // Ensure the currentPage key works without .html
+        Object.keys(pages).forEach(key => {
+            if (!pages[key + '.html']) {
+                pages[key + '.html'] = pages[key];
+            }
+        });
         function changeLogo(src, alt) {
             const logo = document.querySelector('#logo img');
             if (!src) {
@@ -63,7 +69,7 @@
             }, 500);
         }
 
-        
+
         function scrollToSection(sectionId) {
             document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
                 }
