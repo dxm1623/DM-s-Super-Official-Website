@@ -725,14 +725,23 @@ p:hover {
     z-index: 2; /* Ensure it is above other content */
 
     @media screen and (max-width: 1000px) {
-        width: 10vw; /* Full width on smaller screens */
-        left: 0; /* Reset left position on smaller screens */
-        top: 90%; /* Reset top position on smaller screens */
+        width: 15vw; /* Adjust width for smaller screens */
+        top: 0; /* Position at the top */
+        right: 0; /* Align to the right */
         transform: translateY(0); /* Reset transform on smaller screens */
         background: rgba(255, 255, 255, 0.2); /* Add a semi-transparent background */
         border-radius: 10px; /* Add rounded borders */
         padding: 5px; /* Add padding for better spacing */
-        margin: 0 auto; /* Center the logo on smaller screens */
+        margin: 0; /* Remove auto-centering */
+        transition: all 0.3s ease-in-out; /* Smooth transition for all properties */
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    #logo-container:hover {
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.8); /* Add glow effect on hover */
+        border: 2px solid rgba(255, 255, 255, 0.8); /* Add visible border glow */
+        transition: all 0.3s ease-in-out; /* Smooth transition for hover effect */
     }
 }
 
@@ -840,7 +849,7 @@ p:hover {
 }
 
 .dms-header {
-    font-family: National-Park-Outline,sans-serif;
+    font-family: National-Park-Outline, sans-serif;
     font-size: 75px;
     font-weight: normal;
     color: #222;
@@ -851,6 +860,13 @@ p:hover {
     width: -webkit-fill-available;
     box-sizing: border-box;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+@media screen and (max-width: 1000px) {
+    .dms-header {
+        text-align: center;
+        font-size: 50px; /* Adjust font size for smaller screens */
+    }
 }
 
 .tabs-stuff {
