@@ -246,7 +246,7 @@ const internetEventsByYear = [
                     title: "Google Acquires YouTube",
                     txt: "Google acquires YouTube for $1.65 billion in stock. The deal cements YouTube's position as the dominant online video platform and marks a major milestone in the history of internet acquisitions. Importantly, it grants the nascent site an immense amount of financial and logistical resources.",
                     active: true,
-                    preReq: "youtube3",
+                    preReq: ["zuckerberg0", "youtube3"],
                     priority: 0
                 },
                 {
@@ -255,18 +255,27 @@ const internetEventsByYear = [
                     title: "Facing Financial Woes, YouTube Shuts Down",
                     txt: "After a deal for Google to potentially buy out YouTube falls through due to concerns over the video sharing site's recent legal troubles, YouTube is forced to shut down. The closure leaves a void in the online video sharing market, with competitors such as Vimeo scrambling to fill the gap.",
                     active: false,
-                    preReq: "youtubeC3",
+                    preReq: ["zuckerberg0", "youtube3"],
                     youtube: false,
                     priority: 1
                 },
                 // if NBC does not drop the lawsuit against YouTube
                 {
                     id: "youtubeA4",
-                    date: "October 9, 2006",
+                    date: "October 11, 2006",
                     title: "Facebook Matchmaker lawsuit settled for undisclosed amount; spun off into separate company, Matchmaker.",
                     txt: "After months of legal battles, Facebook settles the lawsuit over its matchmaking feature for an undisclosed amount. The feature is spun off into a separate company called Matchmaker, which quickly gains popularity as a dating platform. The settlement allows Facebook to focus on its core social networking features while still capitalizing on the success of the matchmaking concept.",
                     active: false,
                     preReq: ["zuckerberg0", "youtubeA2"],
+                    priority: 2
+                },
+                {
+                    id: "noYoutubeNoZucc3",
+                    date: "October 15, 2006",
+                    title: "Mark Cuban Purchases MySpace.",
+                    txt: "With the runaway success of MySpace, enjoying a recent influx of corporate partnerships and a growing user base, Mark Cuban purchases the site for an undisclosed amount in a move harkening back to his days as a tech entrepreneur. Cuban's acquisition of MySpace marks a significant shift in the social media landscape, as the site begins to explore new revenue streams and partnerships under his leadership. The move is seen as a bold bet on the future of social media and online content distribution.",
+                    active: false,
+                    preReq: "noYoutubeNoZucc2",
                     priority: 2
                 }
             ] },
@@ -689,7 +698,7 @@ const internetEventsByYear = [
                     title: "Rooster Teeth celebrates final birthday on eve of closure.",
                     txt: "Rooster Teeth, the pioneering online entertainment company, celebrates its final birthday before closing its doors, after its impending shutdown was announced the previous month. The company, known for its diverse content and dedicated fanbase, faced financial difficulties and internal strife, leading to its ultimate demise. The closure marks the end of an era in online entertainment and leaves a void in the hearts of fans worldwide.",
                     active: true,
-                    preReq: ["roosterteeth0", "oum0"],
+                    preReq: ["roosterteeth0", "creatures0", "oum0"],
                     priority: 0
                 },
                 {
@@ -698,7 +707,7 @@ const internetEventsByYear = [
                     title: "Rooster Teeth celebrates 21 years, old enough to drink!",
                     txt: "Rooster Teeth celebrates its 21st anniversary, marking two decades of online content creation and community building. A number of special events and collaborations occur throughout the year, culminating in a massive fan convention in Austin, Texas. The company's founders, Burnie Burns and Geoff Ramsey, reflect on the journey and express gratitude to the fans who have supported them over the years.",
                     active: false,
-                    preReq: ["roosterteeth0", "oumA0"],
+                    preReq: ["roosterteeth0", "creatures0", "oumA0"],
                     priority: 1
                     // If Geoff and Burnie decline to join Warner Bros. and do not fail by either finding another company or scoring a big success, i.e. Netflix deal.
                 },
@@ -706,10 +715,10 @@ const internetEventsByYear = [
                     id: "roosterteethFINALGREAT",
                     date: "April 1, 2024",
                     title: "Rooster Teeth / Achievement Hunter split; Geoff and Burnie announce 'divorce'.",
-                    txt: "With Rooster Teeth's Hollywood success and monolithic size, internal conflicts and brushes with anti-monopoly laws lead to Geoff Ramsey and Burnie Burns spinning off Achievement Hunter into its own company, with Geoff as CEO and fellow creator Gavin Free as CCO. Naturally disbelieved due to the date, the suprising announcement is made all the more humorous in the form it takes: an improv livestream with Geoff melodramatically 'breaking up' with Burnie.",
+                    txt: "With Rooster Teeth's Hollywood success and monolithic size, internal conflicts and brushes with anti-monopoly laws lead to Geoff Ramsey and Burnie Burns spinning off Achievement Hunter into its own company, with Geoff as CEO and fellow creator Gavin Free as CCO. Naturally disbelieved due to the date, the surprising announcement, made on RT's 21st birthday, is made all the more humorous in the form it takes: an improv livestream with Geoff melodramatically 'breaking up' with Burnie.",
                     active: false,
                     // If early on, Burnie focuses on approaching Hollywood and getting film experience AND Monty Oum is still alive AND Lazer Team is a success.
-                    preReq: ["creaturesA0","roosterteeth0", "oumA0"],
+                    preReq: ["roosterteeth0", "creaturesA0", "oumA0"],
                     priority: 3
                 },
                 {
@@ -749,16 +758,13 @@ const internetEventsByYear = [
 
 let youtube = true;
 
-if (!youtube) {
-    replaceYouTubeWithVimeo();
-}
-
 function replaceYouTubeWithVimeo() {
     internetEventsByYear.forEach(year => 
         year.months.forEach(month => 
             month.events.forEach(event => {
-                if (!event.title.includes("YouTube")) {
+                if (!event.title.includes("YouTube" || "Youtube")) {
                     event.txt = event.txt.replace(/YouTube/g, "Vimeo");
+                    event.txt = event.txt.replace(/Youtube/g, "Vimeo");
                 }
             })
         )
