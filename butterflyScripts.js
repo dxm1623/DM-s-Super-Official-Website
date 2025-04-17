@@ -366,7 +366,7 @@ const internetEventsByYear = [
                     active: true,
                     isButterfly: true,
                     corrButterfly: "creaturesA0",
-                    preReq: "youtube3",
+                    preReq: ["roosterteeth0","youtube3"],
                     priority: 0
                 },
                 {
@@ -377,7 +377,7 @@ const internetEventsByYear = [
                     active: false,
                     isButterfly: true,
                     corrButterfly: "creatures0",
-                    preReq: "youtube3",
+                    preReq: ["roosterteeth0","youtube3"],
                     priority: 1
                 }
             ] }
@@ -441,7 +441,7 @@ const internetEventsByYear = [
                     title: "PewDiePie becomes most subscribed YouTuber.",
                     txt: "In an unprecedented rise to fame, Felix \"PewDiePie\" Kjellberg becomes the most subscribed YouTuber in a matter of months. His Let's Play videos and energetic personality resonate with viewers, propelling him to internet stardom and propelling the Let's Play genre to new heights. Kjellberg's success inspires a new generation of content creators and solidifies YouTube as a platform for gaming content.",
                     active: true,
-                    preReq: ["youtube0", "youtube3"],
+                    preReq: ["youtube0", "youtube3", "creatures0"],
                     priority: 0
                 },
                 {
@@ -790,8 +790,11 @@ function updateTimeline() {
                     <p>${activeEvent.txt}</p>
                 `;
                 if (activeEvent.isButterfly) {
-                    eventDiv.addEventListener("click", () => toggleButterfly(activeEvent, year, month));
+                    console.log(`Butterfly event detected: ${activeEvent.id}`);
+                    eventDiv.addEventListener("click", () => 
+                    toggleButterfly(activeEvent, year, month));
                 }
+                console.log(eventsContainer , eventDiv);
                 eventsContainer.appendChild(eventDiv);
             }
         })
@@ -805,9 +808,9 @@ function arePreReqsFulfilled(event, cache = {}) {
     const preReqs = Array.isArray(event.preReq) ? event.preReq : [event.preReq];
 
     return preReqs.every(preReqId => {
-        if (cache[preReqId] !== undefined) return cache[preReqId]; // Use cached result if available
+        // if (cache[preReqId] !== undefined) return cache[preReqId]; // Use cached result if available
         const isActive = isEventActive(preReqId, cache);
-        cache[preReqId] = isActive;
+        // cache[preReqId] = isActive;
         if (!isActive) {
             console.log(`Prerequisite not fulfilled for event ${event.id}: ${preReqId} is inactive.`);
         }
@@ -836,11 +839,12 @@ function toggleButterfly(event, selectedYear, selectedMonth) {
     console.log("corresponding event:", correspondingEvent);
 
     // Deactivate the current event and activate the corresponding butterfly event
-    event.active = false;
     correspondingEvent.active = true;
 
     // Update all subsequent events
-    updateSubsequentEvents(selectedYear, selectedMonth);
+    updateSubsequentEvents(selectedYear, selectedMonth, event);
+
+    event.active = false;
 
     // Refresh the timeline
     updateTimeline();
@@ -863,7 +867,7 @@ function findEventById(eventId) {
     return null;
 }
 
-function updateSubsequentEvents(selectedYear, selectedMonth) {
+function updateSubsequentEvents(selectedYear, selectedMonth, currentEvent) {
     let startUpdating = false;
 
     internetEventsByYear.forEach(year => {
@@ -874,6 +878,12 @@ function updateSubsequentEvents(selectedYear, selectedMonth) {
                 if (year === selectedYear && month === selectedMonth) startUpdating = true;
                 if (startUpdating) {
                     month.events.forEach(event => {
+                        
+                        if (event === currentEvent) {
+                            currentEvent.active = false;
+                            return
+                        }
+
                         if (event.preReq) {
                             const preReqs = Array.isArray(event.preReq) ? event.preReq : [event.preReq];
                             event.active = preReqs.every(preReqId => isEventActive(preReqId));
