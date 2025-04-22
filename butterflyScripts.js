@@ -255,7 +255,7 @@ const internetEventsByYear = [
                     title: "Facing Financial Woes, YouTube Shuts Down",
                     txt: "After a deal for Google to potentially buy out YouTube falls through due to concerns over the video sharing site's recent legal troubles, YouTube is forced to shut down. The closure leaves a void in the online video sharing market, with competitors such as Vimeo scrambling to fill the gap.",
                     active: false,
-                    preReq: ["zuckerberg0", "youtube3"],
+                    preReq: ["zuckerberg0", "youtubeC3"],
                     youtube: false,
                     priority: 1
                 },
