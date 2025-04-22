@@ -154,9 +154,10 @@ body {
 }
 
 .butterfly:hover {
-    background: rgb(141, 160, 136);
+    background: rgb(116, 139, 110);
     transform: scale(1.05);
     transition: ease-in-out 0.3s;
+    color: #fff; /* Change text color on hover */
 }
 
 .butterfly:nth-child(odd), .event:nth-child(odd) {
