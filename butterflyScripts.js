@@ -620,6 +620,7 @@ const internetEventsByYear = [
                     txt: "Jimmy Donaldson, known online as MrBeast, counts to 100,000 in a single video. The feat takes over 40 hours to complete and earns Donaldson a place in the Guinness World Records for the longest continuous video on YouTube. The video goes viral, propelling Donaldson to internet stardom. He takes advantage of his newfound fame to launch a series of philanthropic challenges and giveaways, further solidifying his reputation as a creator with a heart of gold (at the moment).",
                     active: true,
                     isButterfly: true,
+                    preReq: "youtube0", // this event requires YouTube to exist
                     corrButterfly: "mrbeastA0",
                     priority: 0
                 },
@@ -630,9 +631,32 @@ const internetEventsByYear = [
                     txt: "After being told off by his parents for spending too much time on YouTube, Jimmy Donaldson decides to channel his passion for content creation into a degree in Interactive Media at East Carolina University. Studying the technical, algorithmic, and creative factors towards viral content, Donaldson quickly becomes a standout student and quickly becomes a sought-after consultant for various companies.",
                     active: false,
                     isButterfly: true,
+                    preReq: "youtube0",
                     corrButterfly: "mrbeast0",
                     // BUTTERFLY, user chooses this.
                     priority: 1
+                },
+                {
+                    id: "mrbeastNoYoutube0",
+                    date: "January 8, 2017",
+                    title: "Jimmy Donaldson counts to 100,000, goes viral on Vimeo.",
+                    txt: "Jimmy Donaldson, known online as MrBeast, counts to 100,000 in a single video on Vimeo. The feat takes over 40 hours to complete and earns Donaldson a place in the Guinness World Records for the longest continuous video on Vimeo. The video goes viral, propelling Donaldson to internet stardom. He takes advantage of his newfound fame to launch a series of philanthropic challenges and giveaways, further solidifying his reputation as a creator with a heart of gold (at the moment).",
+                    active: false,
+                    isButterfly: true,
+                    preReq: "youtubeA3", // this event requires Vimeo to exist
+                    corrButterfly: "mrbeastNoYoutubeA0",
+                    priority: 2
+                },
+                {
+                    id: "mrbeastNoYoutubeA0",
+                    date: "January 17, 2017",
+                    title: "Jimmy Donaldson begins Interactive Media studies at East Carolina University.",
+                    txt: "After being told off by his parents for spending too much time on Vimeo, Jimmy Donaldson decides to channel his passion for content creation into a degree in Interactive Media at East Carolina University. Studying the technical, algorithmic, and creative factors towards viral content, Donaldson quickly becomes a standout student and quickly becomes a sought-after consultant for various companies.",
+                    active: false,
+                    isButterfly: true,
+                    preReq: "youtubeA3", // this event requires Vimeo to exist
+                    corrButterfly: "mrbeastNoYoutube0",
+                    priority: 3
                 }
             ]},
             { month: "February", events: [] },
