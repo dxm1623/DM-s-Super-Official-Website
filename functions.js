@@ -109,4 +109,6 @@
 
                     document.querySelectorAll('.section, .tabs-stuff').forEach(element => observer.observe(element));
                 }
+
+        // Ensure the initializePage function runs after the DOM is fully loaded
         window.addEventListener('load', initializePage);

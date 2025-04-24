@@ -4,8 +4,38 @@
     <title>DM's Butterfly Effect</title>
   </head>
   <link rel="stylesheet" href="butterflyStyle.css">
+  <style>
+    :root {
+    --scroll-y: 0;
+    --scroll-offset: 0;
+    }
+
+    body::after {
+    content: '';
+    z-index: -4; /* Ensures the background is behind other content */
+    pointer-events: none; /* Allows clicks to pass through */
+    background-image: url('images/timelineBackground.gif'); /* Replace with your image URL */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed; /* Keeps the background fixed during scroll */
+    background-position-x: center;
+    background-position-y: var(--scroll-offset); /* Interacts with scroll behavior */
+    position: fixed; /* Keeps the background fixed */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Full viewport width */
+    height: 100%; /* Full viewport height */
+    box-sizing: border-box;
+    overflow: hidden; /* Prevents overflow issues */
+}
+
+    html {
+        scroll-behavior: smooth;
+        --scroll-y: 0;
+    }
+
+</style>
   <body>
-    
     <div id="butterflyTop">
     <div id="beHeader">DM's <h1>Butterfly Effect</h1></div>
     <div id="beHeaderSubtitle"><p>Want to take a shot at rethinking Internet history?
@@ -53,5 +83,22 @@
         </div>
     </div>
     <script src="butterflyScripts.js"></script>
+    <script>
+        // Function to move images slightly when scrolling per --scroll-offset
+        // Keeps images from showing div's background color by not moving beyond their height
+        // Function to move the background slightly when scrolling
+        window.addEventListener('scroll', function () {
+            const scrollPosition = window.scrollY;
+            const documentHeight = document.documentElement.scrollHeight;
+            const windowHeight = window.innerHeight;
+
+            // Calculate the scroll offset as a percentage
+            const offset = (scrollPosition / (documentHeight - windowHeight)) * 100;
+
+            // Update the --scroll-offset CSS variable on the body
+            document.body.style.setProperty('--scroll-offset', `${offset}%`);
+            console.log("Scroll offset set to: " + offset + "%");
+        });
+    </script>
   </body>
 </html>
