@@ -61,7 +61,7 @@ html {
     display: flex;
     justify-content: center;
     align-items: center; /* Center vertically */
-    width: 60%;
+    width: 80%;
     margin: 0 auto; /* Center horizontally */
 }
 
@@ -71,7 +71,7 @@ html {
 
 #index-content .subtitle{
     text-align: left;
-    font-size: 0.75rem;
+    font-size: 0.9rem;
 }
 
 .case-study-image {
@@ -217,40 +217,43 @@ html {
 
 #workImageContainer button {
     position: absolute;
-    top: 0;
-    bottom: 0;
-    background: linear-gradient(to right, rgba(255, 0, 128, 0.2), rgba(255, 0, 128, 0.2));
-    color: rgb(255, 255, 255);
+    top: 50%;
+    transform: translateY(-50%); /* Center vertically within the image */
+    background: linear-gradient(to bottom, #CCFFCC, #66FF66); /* Glossy green gradient */
+    color: #000000; /* Black text */
     padding: 10px 20px;
-    border: none;
+    border: 2px solid #009900; /* Dark green border */
     text-align: center;
     cursor: pointer;
-    transition: background 0.5s ease, transform 0.5s ease, opacity 0.5s ease, box-shadow 0.5s ease; /* Smooth transitions */
-    box-shadow: 0 0 10px rgba(255, 0, 128, 0.5); /* Add pink glow */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.5); /* Outer shadow and inner highlight */
+    transform: scale(1);
+    transition: all 0.3s ease-in-out;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5); /* Subtle text shadow */
     z-index: 1; /* Ensure buttons are above the image */
 }
 
 #workImageContainer button.left {
-    left: 0;
-    background: linear-gradient(to right, rgba(255, 0, 128, 0.4), rgba(255, 0, 128, 0));
+    left: 10px; /* Add some spacing from the left edge */
 }
 
 #workImageContainer button.right {
-    right: 0;
-    background: linear-gradient(to left, rgba(255, 0, 128, 0.4), rgba(255, 0, 128, 0));
+    right: 10px; /* Add some spacing from the right edge */
 }
 
 #workImageContainer button:hover {
-    background: linear-gradient(to right, rgba(255, 0, 128, 0.6), rgba(255, 0, 128, 0.6));
-    transform: scale(1.1); /* Slightly enlarge on hover */
-    box-shadow: 0 0 20px rgba(255, 192, 203, 0.8); /* Glow pink on hover */
-    transition: background 0.5s ease, transform 0.5s ease, opacity 0.5s ease, box-shadow 0.5s ease; /* Smooth transitions */
+    background: linear-gradient(to bottom, #99FF99, #33CC33); /* Brighter green gradient */
+    color: #FFFFFF; /* White text on hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.7); /* Stronger shadow and highlight */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+    transition: all 0.3s ease-in-out;
 }
 
 #workImageContainer button:active {
-    transform: scale(1); /* Reset scale on click */
-    box-shadow: 0 0 15px rgba(255, 192, 203, 0.7); /* Slightly reduce glow on click */
-    transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out; /* Quick transition for click effect */
+    background: linear-gradient(to bottom, #66FF66, #009900); /* Darker green gradient on click */
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3); /* Inner highlight and outer shadow */
+    transform: scale(0.95); /* Slightly shrink on click */
+    transition: all 0.1s ease-in-out;
 }
 
 h1 {
@@ -564,27 +567,46 @@ p:hover {
 }
 
 #toggle-button {
-    background: rgba(255, 255, 255, 0.2);
-    border: 2px solid rgb(255, 255, 255);
-    color: rgb(255, 255, 255);
+    background: linear-gradient(to bottom, #CCFFCC, #66FF66); /* Glossy green gradient */
+    border: 2px solid #009900; /* Dark green border */
+    color: #000000; /* Black text */
     padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 3px; /* Slightly rounded corners */
     text-align: center;
     cursor: pointer;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.5); /* Outer shadow and inner highlight */
+    font-size: 14px;
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5); /* Subtle text shadow */
+    transition: all 0.3s ease-in-out;
+}
+
+#toggle-button:hover {
+    background: linear-gradient(to bottom, #99FF99, #33CC33); /* Brighter green gradient */
+    color: #000000; /* Keep text black on hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.7); /* Stronger shadow and highlight */
+    transform: scale(1.05); /* Slightly enlarge on hover */
     transition: all 0.3s ease-in-out;
 }
 
 #toggle-video-button {
-    background: rgba(255, 255, 255, 0.2);
-    border: 2px solid rgb(255, 255, 255);
-    color: rgb(255, 255, 255);
+    background: linear-gradient(to bottom, #e0e0e0, #a0a0a0); /* Glossy gradient */
+    border: 2px solid #808080; /* Gray border */
+    color: #000000; /* Black text */
     padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 3px; /* Slightly rounded corners */
     text-align: center;
     cursor: pointer;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-    transition: all 0.3s ease-in-out;
+    box-shadow: inset 1px 1px 2px #ffffff, inset -1px -1px 2px #808080, 2px 2px 5px rgba(0, 0, 0, 0.5); /* Inner and outer shadows */
+    /* font-family: Arial, sans-serif; */
+    font-size: 14px;
+    text-shadow: 1px 1px 0 #ffffff; /* Subtle text shadow */
+    transition: all 0.2s ease-in-out;
+}
+
+#toggle-video-button:hover {
+    background: linear-gradient(to bottom, #ffffff, #c0c0c0); /* Lighter gradient on hover */
+    box-shadow: inset 1px 1px 2px #ffffff, inset -1px -1px 2px #a0a0a0, 3px 3px 6px rgba(0, 0, 0, 0.6); /* Stronger shadow on hover */
+    color: #000000; /* Ensure text remains black */
 }
 
 #quiz-question button {
@@ -816,7 +838,7 @@ p:hover {
     font-size: 1.25rem;
     border-radius: 10px;
     padding: 10px 20px;
-    background: linear-gradient(to bottom, rgba(252, 188, 188, 1), rgba(245, 101, 101, 1)); /* Consistent gradient */
+    background: linear-gradient(to bottom, rgb(255, 158, 158), rgba(245, 101, 101, 1)); /* Consistent gradient */
     background-size: 200% 200%; /* Enlarged background for smooth animation */
     border: 2px solid rgb(200, 0, 0); /* Dark red border */
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3); /* Inner highlight and outer shadow */
@@ -828,7 +850,7 @@ p:hover {
     color: white;
     text-shadow: 0 0 15px rgba(255, 202, 202, 0.9); /* Stronger red glow */
     transform: scale(1.1); /* Grow the text */
-    background: linear-gradient(to bottom, rgb(241, 171, 171), rgb(228, 56, 56)); /* Keep gradient consistent */
+    background: linear-gradient(to bottom, rgb(255, 145, 145), rgb(228, 56, 56)); /* Keep gradient consistent */
     background-size: 200% 200%; /* Ensure smooth hover effect */
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7), 0 6px 8px rgba(0, 0, 0, 0.5); /* Stronger shadow and highlight */
     transition: transform 0.3s ease-in-out, color 0.3s ease-in-out, text-shadow 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background 0.3s ease-in-out; /* Smooth transition */
@@ -838,7 +860,7 @@ p:hover {
 @keyframes blink {
     0% {
         text-shadow: 0 0 10px rgba(255, 0, 0, 0.5); /* Subtle red glow */
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3); /* Consistent shadow */
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3); /* Inner highlight and outer shadow */
         background-position: 0% 0%; /* Start position */
     }
     50% {
@@ -848,7 +870,7 @@ p:hover {
     }
     100% {
         text-shadow: 0 0 10px rgba(255, 0, 0, 0.5); /* Subtle red glow */
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3); /* Consistent shadow */
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3); /* Inner highlight and outer shadow */
         background-position: 0% 0%; /* Reset position */
     }
 }
