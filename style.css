@@ -41,11 +41,38 @@
 :root {
     --scroll-y: 0;
     --scroll-offset: 0;
-    }
+}
 
 html {
     scroll-behavior: smooth;
 }
+
+body {
+    min-height: 100vh;
+    margin: 0;
+}
+
+::-webkit-scrollbar {
+    position: fixed;
+    z-index: 9999;
+    width: 20px;
+    height: 9px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #FF9999, #FF3333);
+    border: 4px solid #461010;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #FFCCCC, #FF6666);
+}
+
+::-webkit-scrollbar-track {
+    background: #461010;
+    border: 1px solid #690101;
+}
+
 
 .section {
     padding: 50px 0;
@@ -60,16 +87,18 @@ html {
 #index-section {
     display: flex;
     justify-content: center;
-    align-items: center; /* Center vertically */
+    align-items: center;
+    /* Center vertically */
     width: 80%;
-    margin: 0 auto; /* Center horizontally */
+    margin: 0 auto;
+    /* Center horizontally */
 }
 
 #index-content {
     width: 60%;
 }
 
-#index-content .subtitle{
+#index-content .subtitle {
     text-align: left;
     font-size: 1rem;
 }
@@ -81,9 +110,11 @@ html {
 #case-study-section {
     display: flex;
     justify-content: center;
-    align-items: center; /* Center vertically */
+    align-items: center;
+    /* Center vertically */
     width: 80%;
-    margin: 0 auto; /* Center horizontally */
+    margin: 0 auto;
+    /* Center horizontally */
 }
 
 #case-study-content {
@@ -91,17 +122,20 @@ html {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    align-items: stretch; /* Take up more space within the parent */
+    align-items: stretch;
+    /* Take up more space within the parent */
     text-align: left;
 }
 
-#case-study-content .subtitle{
+#case-study-content .subtitle {
     text-align: left;
 }
 
-#case-study-content .subtitle, .case-study-caption {
+#case-study-content .subtitle,
+.case-study-caption {
     /* color: #e0e0e0; */
-    font-size: 0.85rem; /* Smaller font size for subtitles */
+    font-size: 0.85rem;
+    /* Smaller font size for subtitles */
     font-style: oblique;
 }
 
@@ -111,32 +145,39 @@ html {
 #bio-section h3,
 #my-work-section h3,
 #case-study-section h3 {
-    color: #000000; /* Bright white for headings */
+    color: #000000;
+    /* Bright white for headings */
     font-family: National-Park-Heavy, Calibri, sans-serif;
     text-align: left;
-    font-size: 2rem; /* Adjust font size for better visibility */
+    font-size: 2rem;
+    /* Adjust font size for better visibility */
     background-image: linear-gradient(to left, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.9) 100%);
     padding: 10px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Add shadow for better contrast */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    /* Add shadow for better contrast */
 }
 
 /* My Work Section */
 #my-work-section h4 {
-    color: #ffffff; /* Bright white for headings */
+    color: #ffffff;
+    /* Bright white for headings */
     font-family: National-Park-Heavy, Calibri, sans-serif;
     text-align: left;
     background-image: linear-gradient(to left, rgba(220, 115, 115, 1) 0%, rgba(220, 115, 115, 1) 100%);
     padding: 10px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Add shadow for better contrast */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    /* Add shadow for better contrast */
 }
 
 #my-work-section img {
     width: 100%;
-    border: 2px solid #ffffff; /* Add a white border for better contrast */
+    border: 2px solid #ffffff;
+    /* Add a white border for better contrast */
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Add shadow for better visibility */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    /* Add shadow for better visibility */
 }
 
 
@@ -144,7 +185,7 @@ html {
     width: 100%;
     height: auto;
     border-style: solid;
-    border-color: rgba(255,255,255,0.2);
+    border-color: rgba(255, 255, 255, 0.2);
     border-radius: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -218,60 +259,76 @@ html {
 #workImageContainer button {
     position: absolute;
     top: 50%;
-    transform: translateY(-50%); /* Center vertically within the image */
-    background: linear-gradient(to bottom, #CCFFCC, #66FF66); /* Glossy green gradient */
-    color: #000000; /* Black text */
+    transform: translateY(-50%);
+    /* Center vertically within the image */
+    background: linear-gradient(to bottom, #CCFFCC, #66FF66);
+    /* Glossy green gradient */
+    color: #000000;
+    /* Black text */
     padding: 10px 20px;
-    border: 2px solid #009900; /* Dark green border */
+    border: 2px solid #009900;
+    /* Dark green border */
     text-align: center;
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.5); /* Outer shadow and inner highlight */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    /* Outer shadow and inner highlight */
     transform: scale(1);
     transition: all 0.3s ease-in-out;
     font-weight: bold;
-    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5); /* Subtle text shadow */
-    z-index: 1; /* Ensure buttons are above the image */
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
+    /* Subtle text shadow */
+    z-index: 1;
+    /* Ensure buttons are above the image */
 }
 
 #workImageContainer button.left {
-    left: 10px; /* Add some spacing from the left edge */
+    left: 10px;
+    /* Add some spacing from the left edge */
 }
 
 #workImageContainer button.right {
-    right: 10px; /* Add some spacing from the right edge */
+    right: 10px;
+    /* Add some spacing from the right edge */
 }
 
 #workImageContainer button:hover {
-    background: linear-gradient(to bottom, #99FF99, #33CC33); /* Brighter green gradient */
-    color: #FFFFFF; /* White text on hover */
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.7); /* Stronger shadow and highlight */
-    transform: scale(1.05); /* Slightly enlarge on hover */
+    background: linear-gradient(to bottom, #99FF99, #33CC33);
+    /* Brighter green gradient */
+    color: #FFFFFF;
+    /* White text on hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    /* Stronger shadow and highlight */
+    transform: scale(1.05);
+    /* Slightly enlarge on hover */
     transition: all 0.3s ease-in-out;
 }
 
 #workImageContainer button:active {
-    background: linear-gradient(to bottom, #66FF66, #009900); /* Darker green gradient on click */
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3); /* Inner highlight and outer shadow */
-    transform: scale(0.95); /* Slightly shrink on click */
+    background: linear-gradient(to bottom, #66FF66, #009900);
+    /* Darker green gradient on click */
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3);
+    /* Inner highlight and outer shadow */
+    transform: scale(0.95);
+    /* Slightly shrink on click */
     transition: all 0.1s ease-in-out;
 }
 
 h1 {
-    font-family: National-Park-Heavy,sans-serif;
+    font-family: National-Park-Heavy, sans-serif;
     color: black;
 }
 
 h2 {
-    font-family: National-Park,sans-serif;
+    font-family: National-Park, sans-serif;
     color: black;
 }
 
 h3 {
-    font-family: National-Park-Thin,sans-serif;
+    font-family: National-Park-Thin, sans-serif;
 }
 
 h4 {
-    font-family: National-Park,sans-serif;
+    font-family: National-Park, sans-serif;
     color: black;
     font-size: 1.75rem;
 }
@@ -285,15 +342,17 @@ a {
     text-decoration: none;
 }
 
-a:hover, a:focus {
-    color: #FFA500; /* Orange on hover for better contrast */
+a:hover,
+a:focus {
+    color: #FFA500;
+    /* Orange on hover for better contrast */
     text-decoration: underline;
 }
 
 #tabs-container a {
     color: rgb(255, 255, 255);
     text-decoration: underline;
-    font-family: National-Park,sans-serif;
+    font-family: National-Park, sans-serif;
     font-size: 1.5rem;
 }
 
@@ -402,13 +461,15 @@ img {
     margin: 10px;
     border-radius: 10px;
     color: white;
-    transition: box-shadow 0.5s ease-in-out; /* Add transition for smooth effect */
+    transition: box-shadow 0.5s ease-in-out;
+    /* Add transition for smooth effect */
     width: -webkit-fill-available;
     text-align: left;
 }
 
 .case-point:hover {
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8); /* Add glow effect on hover */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    /* Add glow effect on hover */
 }
 
 
@@ -424,7 +485,8 @@ img {
 
 
 #profiles:hover {
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8); /* Add glow effect on hover */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    /* Add glow effect on hover */
 }
 
 #profiles {
@@ -438,14 +500,18 @@ img {
     margin: 10px;
     border-radius: 10px;
     color: white;
-    transition: box-shadow 0.5s ease-in-out; /* Add transition for smooth effect */
-    width: 33%; /* Set a width for the text to wrap */
-    margin-top: 20px; /* Add margin to appear underneath the main image */
-    text-align: center; /* Center align the text */
+    transition: box-shadow 0.5s ease-in-out;
+    /* Add transition for smooth effect */
+    width: 33%;
+    /* Set a width for the text to wrap */
+    margin-top: 20px;
+    /* Add margin to appear underneath the main image */
+    text-align: center;
+    /* Center align the text */
 }
 
 p {
-    font-family: Century,serif;
+    font-family: Century, serif;
     transition: text-shadow 0.5s ease-in-out;
 }
 
@@ -477,7 +543,8 @@ p:hover {
     border-radius: 5px;
     text-align: center;
     cursor: pointer;
-    box-shadow: 0 0 10px rgba(134, 220, 248, 0.5); /* Light blue glow */
+    box-shadow: 0 0 10px rgba(134, 220, 248, 0.5);
+    /* Light blue glow */
     transition: all 0.3s ease-in-out;
 }
 
@@ -494,10 +561,13 @@ p:hover {
     transition: all 0.3s ease-in-out;
 }
 
-#tabs-container .buttons, button {
-    background: #007BFF; /* Bright blue background */
+#tabs-container .buttons,
+button {
+    background: #007BFF;
+    /* Bright blue background */
     border: 2px solid #0056b3;
-    color: #ffffff; /* White text */
+    color: #ffffff;
+    /* White text */
     padding: 10px 20px;
     border-radius: 5px;
     text-align: center;
@@ -507,18 +577,24 @@ p:hover {
     transition: all 0.3s ease-in-out;
 }
 
-#tabs-container .buttons:hover, button:hover {
+#tabs-container .buttons:hover,
+button:hover {
     border: 2px solid #2299f5;
     color: white;
     text-shadow: #c9c9ff 0px 0px 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
-    transform: scale(1.05); /* Expand uniformly */
-    transition: transform all 0.3s ease-in-out; /* Smooth transition */
+    transform: scale(1.05);
+    /* Expand uniformly */
+    transition: transform all 0.3s ease-in-out;
+    /* Smooth transition */
 }
 
-#tabs-container .buttons:hover *, button:hover * {
-    transform: scale(1.05); /* Ensure child elements also expand */
-    transition: transform 0.3s ease-in-out; /* Smooth transition for child elements */
+#tabs-container .buttons:hover *,
+button:hover * {
+    transform: scale(1.05);
+    /* Ensure child elements also expand */
+    transition: transform 0.3s ease-in-out;
+    /* Smooth transition for child elements */
 }
 
 #tab:hover {
@@ -529,14 +605,19 @@ p:hover {
 }
 
 .buttons#toCaseStudy {
-    background: linear-gradient(to bottom, #FF6666, #FF0000); /* Gradient from lighter red to bright red */
-    border: 2px solid #CC0000; /* Slightly darker red border for contrast */
+    background: linear-gradient(to bottom, #FF6666, #FF0000);
+    /* Gradient from lighter red to bright red */
+    border: 2px solid #CC0000;
+    /* Slightly darker red border for contrast */
     color: white;
-    padding: 12px 15px; /* Adjust padding for better button appearance */
-    border-radius: 8px; /* Slightly more rounded corners */
+    padding: 12px 15px;
+    /* Adjust padding for better button appearance */
+    border-radius: 8px;
+    /* Slightly more rounded corners */
     text-align: center;
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Add subtle shadow for depth */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    /* Add subtle shadow for depth */
     transform: scale(1);
     transition: all 0.3s ease-in-out;
     display: flex;
@@ -544,70 +625,99 @@ p:hover {
     align-items: center;
     margin: 0 auto;
     font-weight: bold;
-    font-size: 1rem; /* Slightly larger font size */
+    font-size: 1rem;
+    /* Slightly larger font size */
 }
 
 .buttons#toCaseStudy:hover {
-    background: linear-gradient(to bottom, #FF9999, #FF4D4D); /* Gradient from lighter red to lighter bright red */
-    border: 2px solid #FF1A1A; /* Brighter red border */
-    color: white; /* Ensure text remains visible */
-    box-shadow: 0 6px 12px rgba(255, 77, 77, 0.8); /* Stronger red glow */
-    transform: scale(1.1); /* Slightly enlarge on hover */
-    transition: all 0.3s ease-in-out; /* Smooth transition */
+    background: linear-gradient(to bottom, #FF9999, #FF4D4D);
+    /* Gradient from lighter red to lighter bright red */
+    border: 2px solid #FF1A1A;
+    /* Brighter red border */
+    color: white;
+    /* Ensure text remains visible */
+    box-shadow: 0 6px 12px rgba(255, 77, 77, 0.8);
+    /* Stronger red glow */
+    transform: scale(1.1);
+    /* Slightly enlarge on hover */
+    transition: all 0.3s ease-in-out;
+    /* Smooth transition */
 }
 
 .buttons#butQuiz {
-    background: rgba(0, 0, 255, 0.2); /* Blue background */
+    background: rgba(0, 0, 255, 0.2);
+    /* Blue background */
     color: white;
 }
 
 .buttons#butCursor {
-    background: rgba(185, 0, 255, 0.2); /* Purple background */
+    background: rgba(185, 0, 255, 0.2);
+    /* Purple background */
     color: white;
 }
+
 /* gi!!!!! */
 
 #toggle-button {
-    background: linear-gradient(to bottom, #CCFFCC, #66FF66); /* Glossy green gradient */
-    border: 2px solid #009900; /* Dark green border */
-    color: #000000; /* Black text */
+    background: linear-gradient(to bottom, #CCFFCC, #66FF66);
+    /* Glossy green gradient */
+    border: 2px solid #009900;
+    /* Dark green border */
+    color: #000000;
+    /* Black text */
     padding: 10px 20px;
-    border-radius: 3px; /* Slightly rounded corners */
+    border-radius: 3px;
+    /* Slightly rounded corners */
     text-align: center;
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.5); /* Outer shadow and inner highlight */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    /* Outer shadow and inner highlight */
     font-size: 14px;
-    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5); /* Subtle text shadow */
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
+    /* Subtle text shadow */
     transition: all 0.3s ease-in-out;
 }
 
 #toggle-button:hover {
-    background: linear-gradient(to bottom, #99FF99, #33CC33); /* Brighter green gradient */
-    color: #000000; /* Keep text black on hover */
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.7); /* Stronger shadow and highlight */
-    transform: scale(1.05); /* Slightly enlarge on hover */
+    background: linear-gradient(to bottom, #99FF99, #33CC33);
+    /* Brighter green gradient */
+    color: #000000;
+    /* Keep text black on hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    /* Stronger shadow and highlight */
+    transform: scale(1.05);
+    /* Slightly enlarge on hover */
     transition: all 0.3s ease-in-out;
 }
 
 #toggle-video-button {
-    background: linear-gradient(to bottom, #e0e0e0, #a0a0a0); /* Glossy gradient */
-    border: 2px solid #808080; /* Gray border */
-    color: #000000; /* Black text */
+    background: linear-gradient(to bottom, #e0e0e0, #a0a0a0);
+    /* Glossy gradient */
+    border: 2px solid #808080;
+    /* Gray border */
+    color: #000000;
+    /* Black text */
     padding: 10px 20px;
-    border-radius: 3px; /* Slightly rounded corners */
+    border-radius: 3px;
+    /* Slightly rounded corners */
     text-align: center;
     cursor: pointer;
-    box-shadow: inset 1px 1px 2px #ffffff, inset -1px -1px 2px #808080, 2px 2px 5px rgba(0, 0, 0, 0.5); /* Inner and outer shadows */
+    box-shadow: inset 1px 1px 2px #ffffff, inset -1px -1px 2px #808080, 2px 2px 5px rgba(0, 0, 0, 0.5);
+    /* Inner and outer shadows */
     /* font-family: Arial, sans-serif; */
     font-size: 14px;
-    text-shadow: 1px 1px 0 #ffffff; /* Subtle text shadow */
+    text-shadow: 1px 1px 0 #ffffff;
+    /* Subtle text shadow */
     transition: all 0.2s ease-in-out;
 }
 
 #toggle-video-button:hover {
-    background: linear-gradient(to bottom, #ffffff, #c0c0c0); /* Lighter gradient on hover */
-    box-shadow: inset 1px 1px 2px #ffffff, inset -1px -1px 2px #a0a0a0, 3px 3px 6px rgba(0, 0, 0, 0.6); /* Stronger shadow on hover */
-    color: #000000; /* Ensure text remains black */
+    background: linear-gradient(to bottom, #ffffff, #c0c0c0);
+    /* Lighter gradient on hover */
+    box-shadow: inset 1px 1px 2px #ffffff, inset -1px -1px 2px #a0a0a0, 3px 3px 6px rgba(0, 0, 0, 0.6);
+    /* Stronger shadow on hover */
+    color: #000000;
+    /* Ensure text remains black */
 }
 
 #quiz-question button {
@@ -640,7 +750,8 @@ p:hover {
     margin: 0 auto;
     border-radius: 10px;
     color: rgb(255, 255, 255);
-    transition: box-shadow 0.5s ease-in-out; /* Add transition for smooth effect */
+    transition: box-shadow 0.5s ease-in-out;
+    /* Add transition for smooth effect */
     width: 80%;
     margin-top: 20px;
     text-align: left;
@@ -652,7 +763,7 @@ p:hover {
     font-size: 1rem;
 }
 
-#quiz-content p{
+#quiz-content p {
     text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
 }
 
@@ -665,7 +776,8 @@ p:hover {
     margin: 10px;
     border-radius: 10px;
     color: white;
-    transition: box-shadow 0.5s ease-in-out; /* Add transition for smooth effect */
+    transition: box-shadow 0.5s ease-in-out;
+    /* Add transition for smooth effect */
     width: -webkit-fill-available;
     text-align: left;
     font-size: 1.05rem;
@@ -695,33 +807,39 @@ p:hover {
 #main-content {
     width: 60vw;
     margin: 0 auto;
-    margin-top: -10px; /* Adjust to align with the top of the viewport, for some weird reason. */
-    padding-top: 20px; /* Add padding to the top */
+    margin-top: -10px;
+    padding-top: 20px;
     position: fixed;
     right: 0;
-    background: none; /* Remove background from main div */
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2));
     padding-bottom: 20px;
     color: white;
-    overflow: scroll;
+    overflow-y: auto;
+    overflow-x: hidden;
     height: 100vh;
-    z-index: 1; /* Keep content above the pseudo-element */
+    z-index: 1;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    /* Semi-transparent border for a glassy edge */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    /* Subtle shadow for depth */
+    backdrop-filter: blur(10px);
+
     @media screen and (max-width: 1000px) {
-        width: 100vw; /* Full width on smaller screens */
-        margin-top: 0; /* Reset margin on smaller screens */
+        width: 100vw;
+        /* Full width on smaller screens */
+        margin-top: 0;
+        /* Reset margin on smaller screens */
     }
 }
 
 #main-content::before {
     content: "";
-    position: fixed; /* Fixes it to the viewport to avoid scrolling issues */
-    top: 0; /* Start from the top of the viewport */
+    /* position: fixed; */
+    top: 0;
     right: 0;
     width: 60vw;
-    height: 200vh; /* Covers double the viewport height */
-    background: rgba(56, 56, 56, 0.7);
-    background: linear-gradient(to right, rgba(85, 85, 85, 0.7), rgba(34, 34, 34, 0.45));
-    z-index: -1; /* Push it behind the content */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    height: 200vh;
+    z-index: -1;
 }
 
 .externalLink {
@@ -731,20 +849,23 @@ p:hover {
 }
 
 .externalLink:hover {
-    transform: scale(1.1); /* Grow slightly on hover */
+    transform: scale(1.1);
+    /* Grow slightly on hover */
 }
 
 #LinkedIn {
     color: #68b1ff;
     text-shadow: 0 0 5px #c9c9ff;
     transform: scale(1);
-    transition: transform 0.3s ease-in-out color 0.3s ease-in-out; text-shadow: 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out color 0.3s ease-in-out;
+    text-shadow: 0.3s ease-in-out;
 }
 
 #LinkedIn:hover {
     color: #cde5ff;
     text-shadow: 0 0 10px #edf7ff;
-    transform: scale(1.1); /* Grow slightly on hover */
+    transform: scale(1.1);
+    /* Grow slightly on hover */
 }
 
 /* for some reason Github really likes to not include this stuff when pushing */
@@ -758,121 +879,175 @@ p:hover {
     align-items: center;
     width: 40vw;
     height: auto;
-    z-index: 2; /* Ensure it is above other content */
+    z-index: 2;
+    /* Ensure it is above other content */
 
     @media screen and (max-width: 1000px) {
-        width: 15vw; /* Adjust width for smaller screens */
-        top: 0; /* Position at the top */
-        right: 0; /* Align to the right */
-        transform: translateY(0); /* Reset transform on smaller screens */
-        background: rgba(255, 255, 255, 0.2); /* Add a semi-transparent background */
-        border-radius: 10px; /* Add rounded borders */
-        padding: 5px; /* Add padding for better spacing */
-        margin: 0; /* Remove auto-centering */
-        transition: all 0.3s ease-in-out; /* Smooth transition for all properties */
+        width: 15vw;
+        /* Adjust width for smaller screens */
+        top: 0;
+        /* Position at the top */
+        right: 0;
+        /* Align to the right */
+        transform: translateY(0);
+        /* Reset transform on smaller screens */
+        background: rgba(255, 255, 255, 0.2);
+        /* Add a semi-transparent background */
+        border-radius: 10px;
+        /* Add rounded borders */
+        padding: 5px;
+        /* Add padding for better spacing */
+        margin: 0;
+        /* Remove auto-centering */
+        transition: all 0.3s ease-in-out;
+        /* Smooth transition for all properties */
     }
 }
 
 @media screen and (max-width: 1000px) {
     #logo-container:hover {
-        box-shadow: 0 0 15px rgba(255, 255, 255, 0.8); /* Add glow effect on hover */
-        border: 2px solid rgba(255, 255, 255, 0.8); /* Add visible border glow */
-        transition: all 0.3s ease-in-out; /* Smooth transition for hover effect */
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+        /* Add glow effect on hover */
+        border: 2px solid rgba(255, 255, 255, 0.8);
+        /* Add visible border glow */
+        transition: all 0.3s ease-in-out;
+        /* Smooth transition for hover effect */
     }
 }
 
 #logo {
-    max-width: 66%; /* Ensure it scales with zoom */
-    max-height: 66%; /* Ensure it scales with zoom */
+    max-width: 66%;
+    /* Ensure it scales with zoom */
+    max-height: 66%;
+    /* Ensure it scales with zoom */
 }
 
 #logo img {
-    width: auto; /* Set a fixed width */
-    height: auto; /* Maintain aspect ratio */
-    max-width: 100%; /* Ensure it scales with zoom */
-    max-height: 100%; /* Ensure it scales with zoom */
-    border-style: none; /* Remove border */
-    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; filter: 0.5s ease-in-out; /* Add transition for fade and shadow effect */
-    transform: scale(1); /* Ensure initial scale is set */
-    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 1)); /* Make shadow more noticeable */
+    width: auto;
+    /* Set a fixed width */
+    height: auto;
+    /* Maintain aspect ratio */
+    max-width: 100%;
+    /* Ensure it scales with zoom */
+    max-height: 100%;
+    /* Ensure it scales with zoom */
+    border-style: none;
+    /* Remove border */
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    filter: 0.5s ease-in-out;
+    /* Add transition for fade and shadow effect */
+    transform: scale(1);
+    /* Ensure initial scale is set */
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 1));
+    /* Make shadow more noticeable */
 }
 
 #logo img:hover {
-    transform: scale(1.25); /* Scale up on hover */
-    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 1)); /* Intensify shadow on hover */
+    transform: scale(1.25);
+    /* Scale up on hover */
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 1));
+    /* Intensify shadow on hover */
 }
 
 #logo img.fade-out {
-    opacity: 0; /* Fade out effect */
-    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0)); /* Remove shadow during fade-out */
+    opacity: 0;
+    /* Fade out effect */
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0));
+    /* Remove shadow during fade-out */
 }
 
 #logo img.fade-in {
-    opacity: 1; /* Fade in effect */
-    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 1)); /* Restore shadow during fade-in */
+    opacity: 1;
+    /* Fade in effect */
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 1));
+    /* Restore shadow during fade-in */
 }
 
 .title {
-    font-family: National-Park,sans-serif;
+    font-family: National-Park, sans-serif;
     font-size: 2.5rem;
     margin-bottom: 20px;
 }
 
 .subtitle {
-    font-family: Century,sans-serif;
+    font-family: Century, sans-serif;
     font-size: 1rem;
     margin-bottom: 10px;
 }
 
 .subtitle strong {
-    font-family: National-Park,sans-serif;
+    font-family: National-Park, sans-serif;
     font-size: .85rem;
 }
 
 .toPersona {
     font-family: Century, sans-serif;
-    color: rgb(255, 255, 255); /* Bright red */
+    color: rgb(255, 255, 255);
+    /* Bright red */
     width: 10em;
     text-align: center;
-    text-shadow: 0 0 10px rgba(199, 0, 0, 0.8); /* Subtle red glow */
+    text-shadow: 0 0 10px rgba(199, 0, 0, 0.8);
+    /* Subtle red glow */
     font-weight: bold;
     font-size: 1.25rem;
     border-radius: 10px;
     padding: 10px 20px;
-    background: linear-gradient(to bottom, rgb(255, 158, 158), rgba(245, 101, 101, 1)); /* Consistent gradient */
-    background-size: 200% 200%; /* Enlarged background for smooth animation */
-    border: 2px solid rgb(200, 0, 0); /* Dark red border */
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3); /* Inner highlight and outer shadow */
+    background: linear-gradient(to bottom, rgb(255, 158, 158), rgba(245, 101, 101, 1));
+    /* Consistent gradient */
+    background-size: 200% 200%;
+    /* Enlarged background for smooth animation */
+    border: 2px solid rgb(200, 0, 0);
+    /* Dark red border */
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3);
+    /* Inner highlight and outer shadow */
     animation: blink 2s ease-in-out infinite;
     transition: text-shadow 0.5s ease-in-out, transform 0.3s ease-in-out, color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background 0.3s ease-in-out;
 }
 
 .toPersona:hover {
     color: white;
-    text-shadow: 0 0 15px rgba(255, 202, 202, 0.9); /* Stronger red glow */
-    transform: scale(1.1); /* Grow the text */
-    background: linear-gradient(to bottom, rgb(255, 145, 145), rgb(228, 56, 56)); /* Keep gradient consistent */
-    background-size: 200% 200%; /* Ensure smooth hover effect */
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7), 0 6px 8px rgba(0, 0, 0, 0.5); /* Stronger shadow and highlight */
-    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out, text-shadow 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background 0.3s ease-in-out; /* Smooth transition */
-    cursor: pointer; /* Change mouse icon to pointer */
+    text-shadow: 0 0 15px rgba(255, 202, 202, 0.9);
+    /* Stronger red glow */
+    transform: scale(1.1);
+    /* Grow the text */
+    background: linear-gradient(to bottom, rgb(255, 145, 145), rgb(228, 56, 56));
+    /* Keep gradient consistent */
+    background-size: 200% 200%;
+    /* Ensure smooth hover effect */
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7), 0 6px 8px rgba(0, 0, 0, 0.5);
+    /* Stronger shadow and highlight */
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out, text-shadow 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background 0.3s ease-in-out;
+    /* Smooth transition */
+    cursor: pointer;
+    /* Change mouse icon to pointer */
 }
 
 @keyframes blink {
     0% {
-        text-shadow: 0 0 10px rgba(255, 0, 0, 0.5); /* Subtle red glow */
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3); /* Inner highlight and outer shadow */
-        background-position: 0% 0%; /* Start position */
+        text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+        /* Subtle red glow */
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3);
+        /* Inner highlight and outer shadow */
+        background-position: 0% 0%;
+        /* Start position */
     }
+
     50% {
-        text-shadow: 0 0 15px rgba(255, 150, 150, 0.9); /* Stronger glow */
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 5px 7px rgba(0, 0, 0, 0.4); /* Slightly stronger shadow */
-        background-position: 100% 100%; /* Middle position */
+        text-shadow: 0 0 15px rgba(255, 150, 150, 0.9);
+        /* Stronger glow */
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 5px 7px rgba(0, 0, 0, 0.4);
+        /* Slightly stronger shadow */
+        background-position: 100% 100%;
+        /* Middle position */
     }
+
     100% {
-        text-shadow: 0 0 10px rgba(255, 0, 0, 0.5); /* Subtle red glow */
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3); /* Inner highlight and outer shadow */
-        background-position: 0% 0%; /* Reset position */
+        text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+        /* Subtle red glow */
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3);
+        /* Inner highlight and outer shadow */
+        background-position: 0% 0%;
+        /* Reset position */
     }
 }
 
@@ -880,6 +1055,7 @@ p:hover {
     0% {
         opacity: 0;
     }
+
     100% {
         opacity: 1;
     }
@@ -902,7 +1078,8 @@ p:hover {
 @media screen and (max-width: 1000px) {
     .dms-header {
         text-align: center;
-        font-size: 50px; /* Adjust font size for smaller screens */
+        font-size: 50px;
+        /* Adjust font size for smaller screens */
     }
 }
 
@@ -923,39 +1100,56 @@ p:hover {
     transition: all 0.3s ease-in-out;
 }
 
-#misc-tabs-container .buttons, button {
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.2)); /* Glossy gradient */
-    border: 2px solid rgb(0, 0, 0); /* Black border */
-    color: rgb(0, 0, 0); /* Black text */
+#misc-tabs-container .buttons,
+button {
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.2));
+    /* Glossy gradient */
+    border: 2px solid rgb(0, 0, 0);
+    /* Black border */
+    color: rgb(0, 0, 0);
+    /* Black text */
     padding: 10px 20px;
-    border-radius: 10px; /* Rounded corners */
+    border-radius: 10px;
+    /* Rounded corners */
     text-align: center;
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.5); /* Outer shadow and inner highlight */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    /* Outer shadow and inner highlight */
     transform: scale(1);
     transition: all 0.3s ease-in-out;
     font-weight: bold;
-    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.25); /* Subtle text shadow */
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.25);
+    /* Subtle text shadow */
 }
 
-#misc-tabs-container .buttons:hover, button:hover {
+#misc-tabs-container .buttons:hover,
+button:hover {
     border: 2px solid black;
     color: black;
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.7); /* Stronger shadow and highlight */
-    transform: scale(1.05); /* Expand uniformly */
-    transition: transform 0.3s ease-in-out; /* Smooth transition */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    /* Stronger shadow and highlight */
+    transform: scale(1.05);
+    /* Expand uniformly */
+    transition: transform 0.3s ease-in-out;
+    /* Smooth transition */
 }
-#misc-tabs-container .buttons:hover *, button:hover * {
-    transform: scale(1.05); /* Ensure child elements also expand */
-    transition: transform 0.3s ease-in-out; /* Smooth transition for child elements */
+
+#misc-tabs-container .buttons:hover *,
+button:hover * {
+    transform: scale(1.05);
+    /* Ensure child elements also expand */
+    transition: transform 0.3s ease-in-out;
+    /* Smooth transition for child elements */
 }
 
 #quiz-question button.clicked.correct {
     background-color: green;
     color: white;
     font-weight: bolder;
-    opacity: 1; /* Start fully visible */
-    transform: scale(0.95); /* Scale down slightly */
+    opacity: 1;
+    /* Start fully visible */
+    transform: scale(0.95);
+    /* Scale down slightly */
     transition: background-color 0.5s ease-in-out, color 0.5s, font-weight 0.5s, opacity 0.5s ease-in-out, transform 0.1s ease-in-out;
 }
 
@@ -964,7 +1158,8 @@ p:hover {
 }
 
 #quiz-question button.clicked.correct:active {
-    transform: scale(1); /* Scale back up */
+    transform: scale(1);
+    /* Scale back up */
     transition: transform 0.1s ease-in-out;
 }
 
@@ -972,8 +1167,10 @@ p:hover {
     background-color: red;
     color: white;
     font-weight: bolder;
-    opacity: 1; /* Start fully visible */
-    transform: scale(0.95); /* Scale down slightly */
+    opacity: 1;
+    /* Start fully visible */
+    transform: scale(0.95);
+    /* Scale down slightly */
     transition: background-color 0.5s ease-in-out, color 0.5s, font-weight 0.5s, opacity 0.5s ease-in-out, transform 0.1s ease-in-out;
 }
 
@@ -982,7 +1179,8 @@ p:hover {
 }
 
 #quiz-question button.clicked.wrong:active {
-    transform: scale(1); /* Scale back up */
+    transform: scale(1);
+    /* Scale back up */
     transition: transform 0.1s ease-in-out;
 }
 
