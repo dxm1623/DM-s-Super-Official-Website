@@ -409,17 +409,16 @@ const internetEventsByYear = [
             { month: "August", events: [] },
             { month: "September", events: [] },
             {
-                month: "October",
-                events: [
-                    {
-                        id: "instagram0",
-                        date: "October 6, 2010",
-                        title: "Instagram Launches",
-                        txt: "Instagram launches as a photo-sharing app, quickly gaining popularity and becoming a major player in social media.",
-                        active: true
-                    }
-                ]
-            },
+            month: "October",
+            events: [
+                {
+                    id: "instagram0",
+                    date: "October 6, 2010",
+                    title: "Instagram Launches",
+                    txt: "Instagram launches as a photo-sharing app, quickly gaining popularity and becoming a major player in social media.",
+                    active: true
+                }
+            ] },
             { month: "November", events: [] },
             { month: "December", events: [
                 {
@@ -475,11 +474,20 @@ const internetEventsByYear = [
                 {
                     id: "mySpaceInstagram",
                     date: "April 9, 2012",
-                    title: "MySpace Acquires Instagram",
-                    txt: "MySpace acquires Instagram for $1 billion, hoping to expand its range. The acquisition allows MySpace to integrate Instagram's photo-sharing features into its platform, a move that would likely be paired with its existing video sharing features. ",
+                    title: "Cuban's MySpace Acquires Instagram",
+                    txt: "MySpace acquires Instagram for a monstrous $3 billion, courtesy of new frontman Mark Cuban and his hopes to expand the blooming social media site's range. The acquisition allows MySpace to integrate Instagram's photo-sharing features into its platform, a move that would likely be paired with its existing video sharing features. ",
                     active: false,
                     preReq: "noYoutubeNoZucc1",
                     priority: 0
+                },
+                {
+                    id: "instagramAlone",
+                    date: "April 18, 2012",
+                    title: "Instagram Turns Down Twitter, Google Offers",
+                    txt: "Despite fruitful and personal negotiations between Jack Dorsey and Kevin Systrom, and later a lucrative 1$ billion offer from Google that doubled Twitter's 500$ million, Instagram's founders decide to turn down both offers in favor of remaining independent, with the company stating that they wanted to focus on their product and community rather than being absorbed into a larger company. The decision is met with mixed reactions, as some see it as a bold move while others question the long-term viability of the platform without the backing of a major tech giant.",
+                    active: false,
+                    preReq: "zuckerbergA0",
+                    priority: 1
                 }
             ] },
             { month: "May", events: [] },
@@ -541,6 +549,7 @@ const internetEventsByYear = [
                 },
                 // if Youtube no longer exists
                 {
+                    id: "pewdiepieVimeo",
                     date: "August 15, 2013",
                     title: "PewDiePie becomes most followed Vimeo creator.",
                     txt: "In an unprecedented rise to fame, Felix \"PewDiePie\" Kjellberg becomes the most followed creator on Vimeo in a matter of months. His Let's Play videos and energetic personality resonate with viewers, propelling him to internet stardom and propelling the Let's Play genre to new heights. Kjellberg's success inspires a new generation of content creators and solidifies Vimeo as a platform for gaming content.",
@@ -870,7 +879,7 @@ const internetEventsByYear = [
                     txt: "Burnie Burns, host of the popular podcast Morning Somewhere, reflects on the lessons to be learned from the rise and fall of Rooster Teeth in the 2010s. Attributing the rapid decline of the company to a combination of poor management decisions, lack of creative innovation, and a toxic work environment, Burns finds hope in the success of some former employees, including Geoff Ramsey and Gavin Free, who have gone on to host their own podcast: F*CKFACE.",
                     active: false,
                     preReq: [noYouTube, "oum0"],
-                    priority: 2
+                    priority: 1
                 },
                 {
                     id: "roosterteethFINALNOVA",
@@ -905,12 +914,11 @@ const internetEventsByYear = [
 ];
 
 function noYouTube() {
-    return (
-        // 1) the Viacom/NBC lawsuit path that ends with Google walking away:
-        isEventActive("youtubeC4") ||
-        // 2) the “never created" timeline if the 2004 Superbowl Wardrobe Malfunction doesn't happen:
-        isEventActive("youtubeA0")
-    );
+    const yt0Active = isEventActive("youtube0");
+    const yt4Active = isEventActive("youtube4");
+    const ytShutdown = isEventActive("youtubeC4");
+    console.log("noYouTube check - youtube0:", yt0Active, "youtube4:", yt4Active, "youtubeC4:", ytShutdown);
+    return ytShutdown || (!yt0Active && !yt4Active);
 }
 
 // Updated prerequisite check to properly handle function‐type prereqs (like noYouTube)
@@ -918,9 +926,17 @@ function noYouTube() {
 function arePreReqsFulfilled(evt) {
     if (!evt.preReq) return true;
     const reqs = Array.isArray(evt.preReq) ? evt.preReq : [evt.preReq];
-    return reqs.every(req =>
-        typeof req === "function" ? req() : isEventActive(req)
-    );
+    return reqs.every(req => {
+        if (typeof req === "function") {
+            return req();
+        } else {
+            const isActive = isEventActive(req);
+            if (!isActive) {
+                console.log(`Prerequisite not fulfilled for event ${evt.id}: ${req} is inactive.`);
+            }
+            return isActive;
+        }
+    });
 }
 
 function updateTimeline () {
@@ -1000,20 +1016,20 @@ function findEventById(eventId) {
     return null;
 }
 
-function updateSubsequentEvents (startYearIdx, startMonthIdx, currentEvt) {
+function updateSubsequentEvents(startYearIdx, startMonthIdx, currentEvt) {
     for (let y = startYearIdx; y < internetEventsByYear.length; y++) {
-      const months = internetEventsByYear[y].months;
-      for (let m = (y === startYearIdx ? startMonthIdx : 0); m < months.length; m++) {
-        months[m].events.forEach(evt => {
-          if (evt === currentEvt) return; // skip the current event
-          if (!evt.preReq) return; // no prereqs to check
-  
-          const reqs = Array.isArray(evt.preReq) ? evt.preReq : [evt.preReq];
-          evt.active = reqs.every(r => typeof r === "function" ? r() : isEventActive(r));
-        });
-      }
+        const months = internetEventsByYear[y].months;
+        for (let m = (y === startYearIdx ? startMonthIdx : 0); m < months.length; m++) {
+            months[m].events.forEach(evt => {
+                // Only skip recalculating the current event when one is provided.
+                if (currentEvt && evt === currentEvt) return;
+                if (!evt.preReq) return; // Skip if no prerequisites
+                const reqs = Array.isArray(evt.preReq) ? evt.preReq : [evt.preReq];
+                evt.active = reqs.every(r => typeof r === "function" ? r() : isEventActive(r));
+            });
+        }
     }
-  }
+}
 
   function validateDependencies() {
     internetEventsByYear.forEach(year => {
