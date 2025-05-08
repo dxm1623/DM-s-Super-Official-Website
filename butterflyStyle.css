@@ -139,40 +139,74 @@ body {
     position: relative;
     width: 25rem;
     height: fit-content;
-    margin: 2rem 0; /* Add spacing between butterflies */
+    margin: 2rem 0; /* Add spacing between butterflies/events */
     padding: 2rem;
     border-radius: 1rem;
+    /* Use a subtle gradient and shadow for a early 2010s feel */
+    background: linear-gradient(to bottom, inherit, inherit);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .event {
-    background: rgb(214, 214, 214);
+    /* Preserve the original gray but add a slight gradient effect */
+    background: linear-gradient(to bottom, rgb(214, 214, 214), rgb(194, 194, 194));
     position: relative; /* Ensure proper stacking context */
 }
 
 .butterfly {
-    background: rgb(181 192 178);
-    transition: ease-in-out 0.3s;
+    position: relative; /* ensure the pseudo-element is positioned relative to the butterfly */
+    background: linear-gradient(to bottom, rgb(181, 192, 178), rgb(161, 172, 158));
+    transition: transform 0.3s ease-in-out;
+}
+
+.butterfly::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit; /* match the parent */
+    background: linear-gradient(to bottom, rgb(116, 139, 110), rgb(96, 119, 90));
+    opacity: 0;
+    z-index: -1; /* behind the butterfly content */
+    transition: opacity 0.3s ease-in-out;
+}
+
+.butterfly ul, .event ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .butterfly:hover {
-    background: rgb(116, 139, 110);
     transform: scale(1.05);
-    transition: ease-in-out 0.3s;
     color: #fff; /* Change text color on hover */
 }
 
+.butterfly:hover::after {
+    opacity: 1;
+}
+
 .butterfly:nth-child(odd), .event:nth-child(odd) {
-    align-self: center; /* Center align odd butterflies */
+    align-self: center; /* Center align odd items */
 }
 .butterfly:nth-child(even), .event:nth-child(even) {
-    align-self: center; /* Center align even butterflies */
+    align-self: center; /* Center align even items */
 }
+
 
 .butterfly::before, .event::before {
     content: '';
     position: absolute;
     background-color: #000;
     border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    top: 10px;
+    left: -10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     z-index: 1;
 }
 
@@ -199,4 +233,9 @@ body {
     line-height: 1.5;
     color: #000;
     text-align: center;
+}
+
+.butterfly::before, 
+.event::before {
+    display: none !important;
 }
