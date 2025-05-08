@@ -157,7 +157,7 @@ body {
 .butterfly {
     position: relative; /* ensure the pseudo-element is positioned relative to the butterfly */
     background: linear-gradient(to bottom, rgb(181, 192, 178), rgb(161, 172, 158));
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 .butterfly::after {
