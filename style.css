@@ -606,18 +606,13 @@ button:hover * {
 
 .buttons#toCaseStudy {
     background: linear-gradient(to bottom, #FF6666, #FF0000);
-    /* Gradient from lighter red to bright red */
     border: 2px solid #CC0000;
-    /* Slightly darker red border for contrast */
     color: white;
     padding: 12px 15px;
-    /* Adjust padding for better button appearance */
     border-radius: 8px;
-    /* Slightly more rounded corners */
     text-align: center;
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    /* Add subtle shadow for depth */
     transform: scale(1);
     transition: all 0.3s ease-in-out;
     display: flex;
@@ -626,37 +621,67 @@ button:hover * {
     margin: 0 auto;
     font-weight: bold;
     font-size: 1rem;
-    /* Slightly larger font size */
 }
 
 .buttons#toCaseStudy:hover {
     background: linear-gradient(to bottom, #FF9999, #FF4D4D);
-    /* Gradient from lighter red to lighter bright red */
     border: 2px solid #FF1A1A;
-    /* Brighter red border */
     color: white;
-    /* Ensure text remains visible */
     box-shadow: 0 6px 12px rgba(255, 77, 77, 0.8);
-    /* Stronger red glow */
     transform: scale(1.1);
-    /* Slightly enlarge on hover */
     transition: all 0.3s ease-in-out;
-    /* Smooth transition */
 }
 
 .buttons#butQuiz {
-    background: rgba(0, 0, 255, 0.2);
-    /* Blue background */
+    box-sizing: border-box;
+    background: linear-gradient(to bottom, rgba(0, 0, 255, 0.2), rgba(0, 0, 255, 0.2));
     color: white;
+    border: 1px solid rgba(0, 0, 255, 0.5);
+    border-radius: 4px;
+    padding: 8px 16px;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+.buttons#butQuiz:hover {
+    background: linear-gradient(to bottom, rgba(0, 0, 255, 0.4), rgba(0, 0, 255, 0.4));
+    color: #e0e0ff;
+    transition: all 0.3s ease-in-out;
 }
 
 .buttons#butCursor {
-    background: rgba(185, 0, 255, 0.2);
-    /* Purple background */
+    box-sizing: border-box;
+    background: linear-gradient(to bottom, rgba(185, 0, 255, 0.2), rgba(185, 0, 255, 0.2));
     color: white;
+    border: 1px solid rgba(185, 0, 255, 0.5);
+    border-radius: 4px;
+    padding: 8px 16px;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
 }
 
-/* gi!!!!! */
+.buttons#butCursor:hover {
+    background: linear-gradient(to bottom, rgba(185, 0, 255, 0.4), rgba(185, 0, 255, 0.4));
+    color: #f0e0ff;
+    transition: all 0.3s ease-in-out;
+}
+
+.buttons#butButterfly {
+    box-sizing: border-box;
+    background: linear-gradient(to bottom, rgba(255, 255, 0, 0.2), rgba(255, 255, 0, 0.2));
+    color: white;
+    border: 1px solid rgba(255, 255, 0, 0.5);
+    border-radius: 4px;
+    padding: 8px 16px;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+.buttons#butButterfly:hover {
+    background: linear-gradient(to bottom, rgba(255, 255, 0, 0.4), rgba(255, 255, 0, 0.4));
+    color: #ffffe0;
+    transition: all 0.3s ease-in-out;
+}
 
 #toggle-button {
     background: linear-gradient(to bottom, #CCFFCC, #66FF66);
