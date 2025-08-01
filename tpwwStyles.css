@@ -1,11 +1,13 @@
 html {
     height: 100%;
-}
-
-html::before {
     background-image: url('images/tpwwBG.gif');
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
+}
+
+html::before {
+    background-color: black;
 }
 
 body {
