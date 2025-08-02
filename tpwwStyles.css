@@ -21,13 +21,14 @@ body {
 
 p {
     color: white;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Sue Ellen Francisco', cursive;
     font-size: 16px;
     text-align: center;
 }
 
 p#hurt {
     color: rgb(238, 34, 34);
+    font-family: 'Pangolin', cursive;
     font-weight: bold;
     position: relative;
     animation: hurt 0.15s infinite, hurtShadow 0.05s infinite;
@@ -35,26 +36,77 @@ p#hurt {
 }
 
 
-
 #pain {
     animation: painReveal 120s;
+}
+
+#tpww1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
 
 #tpwwIntro {
     display: flex;
     flex-direction: column;
-    z-index: 0;
-    float: left;
+    align-items: stretch;
     width: 45%;
-    position: relative;
-    left: 50%;
-    transform: translate(-50%, 50%);
-    background: linear-gradient(135deg, #ffcc00 0%, #ff3300 100%);
-    border: 5px groove #000;
+    border: 5px ridge #ffffff;
     padding: 15px;
     font-family: 'Comic Sans MS', cursive;
     color: #000;
-    box-shadow: 3px 3px 0 #000;
+    box-shadow: 3px 3px 0 #22184e;
+}
+
+#tpwwIntroG1,
+#tpwwIntroG2 {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    display: block;
+}
+
+#tpwwIntroG1 {
+    z-index: -1;
+    background: linear-gradient(135deg, #ffcc00 0%, #ff3300 100%);
+    animation: fadeOut120 120s forwards;
+}
+
+#tpwwIntroG2 {
+    z-index: -2;
+    background: linear-gradient(135deg, #ac0000 0%, #35008b 100%);
+}
+
+@keyframes fadeOut120 {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+
+#tpwwHome {
+    display: none;
+    margin: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.sidebar {
+    flex: 1;
+    margin: 10px;
+    border: 8px ridge #ffffff;
+    padding: 10px;
+    background-image: linear-gradient(135deg, #cfa600 0%, #ad0000 100%);
+}
+
+.main-column {
+    flex: 2;
+    margin: 10px;
+    border: 8px ridge #ffffff;
+    padding: 10px;
+    background-image: linear-gradient(135deg, #260057 0%, #520000 100%);
 }
 
 button {
@@ -96,4 +148,15 @@ button:hover {
 @keyframes painReveal {
     0%   { opacity: 0; }
     100% { opacity: 1; }
+}
+
+/* FONTS */
+@font-face {
+    font-family: 'Sue Ellen Francisco';
+    src: url('https://fonts.gstatic.com/s/sueellenfrancisco/v15/3q8b2c4a5f1d7e6f9c5b0e4c5f1d7e6f.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Pangolin';
+    src: url('https://fonts.gstatic.com/s/pangolin/v12/6xK3c4a5f1d7e6f9c5b0e4c5f1d7e6f.woff2') format('woff2');
 }

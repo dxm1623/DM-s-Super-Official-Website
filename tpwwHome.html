@@ -4,20 +4,59 @@
     <meta charset="UTF-8" />
     <title>TPWW</title>
     <link rel="stylesheet" href="tpwwStyles.css" />
+
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Pangolin&family=Sue+Ellen+Francisco&display=swap" rel="stylesheet">
+
+    
 </head>
 <body>
-    <div id="tpwwIntro">
+<!-- TPWW Intro -->
+<div id="tpww1">
+    <div id="tpwwIntro" style="position: relative;">
         <h1>TPWW</h1>
         <p>Welcome to TPWW (The Paths We Walk).</p>
         <p>A reflection on coming of age, and the challenges that come with it,</p>
         <p>from the perspective of cute, cuddly critters!</p>
-        <button onclick="document.getElementById('tpwwContent').style.display='block'; document.getElementById('tpwwIntro').style.display='none';" style="align-self: center;">Walk the Path!</button>
+        <button onclick="document.getElementById('tpwwHome').style.display='flex'; document.getElementById('tpww1').style.display='none';" style="align-self: center;">Walk the Path!</button>
         <p id="hurt"><span id="pain">The hurt is normal.</span></p>
         <p id="hurt"><span id="pain">The pain is worth it.</span></p>
+        <div id="tpwwIntroG1"></div>
+        <div id="tpwwIntroG2"></div>
     </div>
-    <div id="tpwwContent" style="display:none;">
+</div>
+
+<!-- TPWW Home Page -->
+<div id="tpwwHome" style="display: none;">
+    <!-- Left Sidebar -->
+    <div class="sidebar">
+        <h2>Side Box 1</h2>
+        <p>
+            Additional content or navigation could go here.
+        </p>
+    </div>
+    
+    <!-- Main Central Column -->
+    <div class="main-column">
         <h2>About TPWW</h2>
-        <p>TPWW is a project that explores the journey of growing up through the lens of adorable animals. Each path represents different challenges and experiences that shape us.</p>
+        <p>
+            TPWW is a project that explores the journey of growing up through the lens of adorable animals.
+            Each path represents different challenges and experiences that shape us.
+        </p>
+        <img src="tpwwImages/ponder1.gif">
+        <hr style="border: 0; height: 1px; background: #000; margin-top: 20px;">
     </div>
+    
+    <!-- Right Sidebar -->
+    <div class="sidebar">
+        <h2>Side Box 2</h2>
+        <p>
+            More information and links can be added here.
+        </p>
+    </div>
+</div>
 </body>
 </html>
