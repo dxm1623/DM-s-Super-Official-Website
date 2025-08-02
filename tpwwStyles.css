@@ -28,7 +28,7 @@ p {
 
 p#hurt {
     color: rgb(238, 34, 34);
-    font-family: 'Pangolin', cursive;
+    font-family: 'Hedvig', serif;
     font-weight: bold;
     position: relative;
     animation: hurt 0.15s infinite, hurtShadow 0.05s infinite;
@@ -118,7 +118,26 @@ p#hurt {
     margin: 10px;
     border: 8px ridge #ffffff;
     padding: 10px;
-    background-image: linear-gradient(135deg, #cfa600 0%, #ad0000 100%);
+    background-color:#35008b
+}
+
+.sidebar#folks {
+    background-color: transparent;
+    border: none;
+}
+
+.folk {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.folk img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    border-style: ridge;
+    border-color: #ffffff;
 }
 
 .main-column {
@@ -128,6 +147,7 @@ p#hurt {
     padding: 10px;
     background-image: linear-gradient(135deg, #260057 0%, #520000 100%);
 }
+
 
 .main-column hr {
     background: #ffffff;
@@ -163,6 +183,22 @@ button:hover {
     box-shadow: 5px 5px 0 black;
 }
 
+.highlight {
+    color: rgb(255, 225, 225);
+}
+
+.highlight:hover {
+    color: rgb(255, 185, 185);
+}
+
+.highlightBox {
+    background-color: rgba(255, 0, 0, 0.5);
+    border: 2px solid #ff0000;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 3px 3px 0 black;
+}
+
 @keyframes hurt {
     0%, 100% { transform: rotate(0deg); }
     25% { transform: rotate(1deg); }
@@ -191,4 +227,10 @@ button:hover {
 @font-face {
     font-family: 'Pangolin';
     src: url('https://fonts.gstatic.com/s/pangolin/v12/6xK3c4a5f1d7e6f9c5b0e4c5f1d7e6f.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Hedvig';
+    src: url('https://fonts.gstatic.com/s/hedvignlettersserif/v1/3q8b2c4a5f1d7e6f9c5b0e4c5f1d7e6f.woff2') format('woff2');
+    font-optical-sizing: auto;
 }
