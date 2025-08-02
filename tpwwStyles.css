@@ -130,6 +130,9 @@ p#hurt {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+    background-color: wheat;
+    color: black;
+    padding: 5px;
 }
 
 .folk img {
