@@ -59,6 +59,13 @@ p#hurt {
     box-shadow: 3px 3px 0 #22184e;
 }
 
+#tpwwIntro h1 {
+    text-align: center;
+    font-size: 36px;
+    color: #cc228b;
+    text-shadow: 2px 2px 0 #000;
+}
+
 #tpwwIntroG1,
 #tpwwIntroG2 {
     width: 100%;
@@ -93,6 +100,19 @@ p#hurt {
     flex-direction: row;
 }
 
+#tpwwHome p {
+    text-align: left;
+    font-family: "Pangolin", cursive;
+    font-size: 16px;
+}
+
+#tpwwHome h2 {
+    font-family: "Sue Ellen Francisco", cursive;
+    font-size: 24px;
+    color: #ffffff;
+    text-shadow: 1px 1px 0 #CCCCCC;
+}
+
 .sidebar {
     flex: 1;
     margin: 10px;
@@ -107,6 +127,18 @@ p#hurt {
     border: 8px ridge #ffffff;
     padding: 10px;
     background-image: linear-gradient(135deg, #260057 0%, #520000 100%);
+}
+
+.main-column hr {
+    background: #ffffff;
+}
+
+.main-column img {
+    float: left;
+    margin: 0 15px 15px 0;
+    border: 2px ridge #ffffff;
+    max-width: 33%;
+    height: auto;
 }
 
 button {
