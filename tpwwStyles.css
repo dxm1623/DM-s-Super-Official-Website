@@ -28,7 +28,7 @@ p {
 
 p#hurt {
     color: rgb(238, 34, 34);
-    font-family: 'Hedvig', serif;
+    font-family: 'Hedvig Letters Serif', serif;
     font-weight: bold;
     position: relative;
     animation: hurt 0.15s infinite, hurtShadow 0.05s infinite;
@@ -124,14 +124,23 @@ p#hurt {
 .sidebar#folks {
     background-color: transparent;
     border: none;
+    scrollbar-color: black transparent;
+
 }
 
 .folk {
     display: flex;
     margin-bottom: 10px;
-    background-color: wheat;
-    color: black;
+    background-color: rgba(245, 222, 179, 0.774);
     padding: 5px;
+    max-height: 125.46px;
+    overflow: hidden;
+}
+
+.folk p{
+    color: black;
+    font-size: smaller;
+    overflow-y: scroll;
 }
 
 .folk img {
@@ -151,7 +160,7 @@ p#hurt {
     margin-right: 10px;
 }
 
-#ginniFolk {
+#ginniFolk, #gabeFolk, #saulFolk {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -205,15 +214,25 @@ button:hover {
 }
 
 .highlight:hover {
+    cursor: pointer;
     color: rgb(255, 185, 185);
 }
 
 .highlightBox {
-    background-color: rgba(255, 0, 0, 0.5);
-    border: 2px solid #ff0000;
-    padding: 10px;
-    border-radius: 8px;
-    box-shadow: 3px 3px 0 black;
+    position: fixed;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    max-width: 300px;
+    width: max-content;
+    z-index: 9999;
+    pointer-events: none;
+    font-size: 14px;
+    line-height: 1.4;
+    white-space: normal;
+    overflow: visible;
 }
 
 @keyframes hurt {
@@ -247,7 +266,7 @@ button:hover {
 }
 
 @font-face {
-    font-family: 'Hedvig';
+    font-family: 'Hedvig Letters Serif';
     src: url('https://fonts.gstatic.com/s/hedvignlettersserif/v1/3q8b2c4a5f1d7e6f9c5b0e4c5f1d7e6f.woff2') format('woff2');
     font-optical-sizing: auto;
 }
