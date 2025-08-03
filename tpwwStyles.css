@@ -87,6 +87,7 @@ p#hurt {
     background: linear-gradient(135deg, #ac0000 0%, #35008b 100%);
 }
 
+
 @keyframes fadeOut120 {
     from { opacity: 1; }
     to   { opacity: 0; }
@@ -111,6 +112,17 @@ p#hurt {
     font-size: 24px;
     color: #ffffff;
     text-shadow: 1px 1px 0 #CCCCCC;
+}
+
+.banner {
+    display: block;
+    padding: 10px;
+    align-self: flex-start;
+}
+
+.banner img {
+    width: 100%;
+    height: auto;
 }
 
 .sidebar {
@@ -172,6 +184,7 @@ p#hurt {
     border: 8px ridge #ffffff;
     padding: 10px;
     background-image: linear-gradient(135deg, #260057 0%, #520000 100%);
+    width: 500px;
 }
 
 
@@ -185,6 +198,20 @@ p#hurt {
     border: 2px ridge #ffffff;
     max-width: 33%;
     height: auto;
+}
+
+#left-wrapper, #right-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 450px;
+}
+
+#left-wrapper {
+    float: left;
+}
+
+#right-wrapper {
+    float: right;
 }
 
 button {

@@ -24,7 +24,7 @@
         <p>Welcome to TPWW (The Paths We Walk).</p>
         <p>A reflection on coming of age, and the challenges that come with it,</p>
         <p>from the perspective of cute, cuddly critters!</p>
-        <button id="tpwwIntroButton" onclick="document.getElementById('tpwwHome').style.display='flex'; document.getElementById('tpww1').style.display='none'; document.getElementById('tpwwAudio').play(); new Audio('audio/tpwwButtonClick.ogg').play();" style="align-self: center;">Walk the Path!</button>
+        <button id="tpwwIntroButton" onclick="document.getElementById('tpwwHome').style.display='flex'; document.getElementById('tpww1').style.display='none'; document.getElementById('tpwwAudio').play(); new Audio('audio/tpwwIntroButton.ogg').play();" style="align-self: center;">Walk the Path!</button>
         <p id="hurt"><span id="pain">The hurt is normal.</span></p>
         <p id="hurt"><span id="pain">The pain is worth it.</span></p>
         <div id="tpwwIntroG1"></div>
@@ -34,15 +34,21 @@
 
 <!-- TPWW Home Page -->
 <div id="tpwwHome" style="display: none;">
-<audio id="tpwwAudio" src="audio/tpwwHome.ogg" autoplay loop></audio>
-    <!-- Left Sidebar -->
-    <div class="sidebar">
-        <h2>Side Box 1</h2>
-        <p>
-            Additional content or navigation could go here.
-        </p>
+    <audio id="tpwwAudio" src="audio/tpwwHome.ogg" autoplay loop></audio>
+
+    <!-- Left Column Wrapper (contains banner and sidebar) -->
+    <div id="left-wrapper">
+        <div class="banner">
+            <img src="images/tpwwImages/tpwwBannerHome.gif" alt="TPWW Banner" />
+        </div>
+        <div class="sidebar">
+            <h2>Side Box 1</h2>
+            <p>
+                Additional content or navigation could go here.
+            </p>
+        </div>
     </div>
-    
+
     <!-- Main Central Column -->
     <div class="main-column">
         <h2>About TPWW</h2>
@@ -74,11 +80,12 @@
             When she finally gets the opportunity to scratch a persistent itch -- that nagging feeling -- to see the mythical <strong>ARBOR</strong> at the <strong>Saccharine Fields</strong>, and reconnect with her best friend, she can barely keep her cousin's satchel around her shoulders as she bids farewell to Uncle and Auntie in the early morning light and sets off on her journey.
         </p>
         <p>
-            If only she didn't.
+            <span class="highlight" data-tooltip-content="... I remember telling you, when I saw you after my graduation, that I'd lend you a hand if and when the time came. Well, now's the time ...">If only she didn't.</span>
         </p>
     </div>
     
     <!-- Right Sidebar -->
+    <div id="right-wrapper">
     <div class="sidebar" id="folks">
         <h2>Friends</h2>
         <p>
@@ -113,6 +120,8 @@
             </p>
         </div>
     </div>
+    </div>
+</div>
 </body>
 
    <!-- SCRIPTS -->
