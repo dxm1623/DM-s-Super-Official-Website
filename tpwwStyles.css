@@ -332,6 +332,10 @@ button:hover {
     border-image: linear-gradient(to right, transparent, #ffeac9, transparent) 50
 }
 
+.diaryContent img#fullPageImg {
+    margin-top: -54.55px; /* adjusting for header space */
+}
+
 .bookSpread img {
     max-width: 100%;
     height: auto;
