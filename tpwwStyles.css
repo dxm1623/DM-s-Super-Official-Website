@@ -1,6 +1,7 @@
 html {
     height: 100%;
     background-image: url('images/tpwwBG.gif');
+    background-color: black;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -109,7 +110,7 @@ p#hurt {
 }
 
 #tpwwHome h2 {
-    font-family: "Sue Ellen Francisco", cursive;
+    font-family: "Schoolbell", cursive;
     font-size: 24px;
     color: #ffffff;
     text-shadow: 1px 1px 0 #CCCCCC;
@@ -280,6 +281,77 @@ button:hover {
 @keyframes painReveal {
     0%   { opacity: 0; }
     100% { opacity: 1; }
+}
+
+#boDiary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#boDiary img {
+    transition: transform 0.2s ease;
+    content: url('images/tpwwImages/boDiary.gif');
+}
+
+#boDiary img:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+    content: url('images/tpwwImages/boDiaryOpen.gif');
+}
+
+.bookSpread {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    background: radial-gradient(circle, #d5b892 30%, #7e5e3d 100%);
+    border: 2px solid #d3b483; /* diary binding color */
+    border-radius: 8px;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    margin: auto;
+    width: 875px;
+    height: 600px;
+}
+
+.bookSpread #leftPage,
+.bookSpread #rightPage {
+    text-align: left;
+    width: 50%;
+    padding: 15px;
+}
+
+.bookSpread #leftPage {
+    border-right: 5px solid;
+    border-image: linear-gradient(to left, transparent, #ffeac9, transparent) 100;
+}
+
+.bookSpread #rightPage {
+    border-left: 5px solid;
+    border-image: linear-gradient(to right, transparent, #ffeac9, transparent) 50
+}
+
+.bookSpread img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.bookSpread h2.diaryHeader {
+    font-family: 'Sue Ellen Francisco', cursive;
+    font-size: 28px;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.bookSpread p{
+    font-family: 'Pangolin', cursive;
+    font-size: 16px;
+    line-height: 1.33;
+    color: #150770;
+    text-align: left;
 }
 
 /* FONTS */
