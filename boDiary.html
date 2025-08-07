@@ -26,7 +26,7 @@
         <div class="highlightBox" style="display: none;"></div>
 
         <!-- Page 1 -->
-        <div class="bookSpread" id="diaryPage1">
+        <div class="bookSpread" id="diarySpread1">
             <div id="leftPage">
                 <h2 class="diaryHeader">1</h2>
                 <div class="diaryContent">
@@ -44,11 +44,66 @@
                     <img id="fullPageImg" src="images/tpwwImages/boDrawing.png">
             </div>
         </div>
+        </div>
+
+        <!-- Page 2 -->
+        <div class="bookSpread" id="diarySpread2" style="display: none;">
+            <div id="leftPage">
+                <h2 class="diaryHeader">3</h2>
+                <div class="diaryContent">
+                    <p>Strawberry carrot oatmeal cake.</p>
+                    <p>How much do I LOVE strawberry carrot oatmeal cake? It is sweet, and <oops>cruncy</oops> crunchy, and moist!</p>
+                    <p>Auntie Woolie made it for dessert tonight, and I had two slices. I think I could have eaten a third, but Uncle Sonny said I should save some for tomorrow</p>
+                    <p>“Unless you want to fatten yourself to a ball.”</p>
+                    <p>Well, what if I <i>want</i> to?</p>
+                    <p>What if I want to be a ball?</p>
+                    <p>What if I want to be a big, round, bouncy ball of fluff?</p>
+                    <p>Anyway, I'm thinking about going over to <oops>Paul</oops> Saul Pitchkins' place to see if he has any spare bolts. Uncle's misplaced his pack of them. <i>Again</i>.</p>
+                </div>
+            </div>
+            <div id="rightPage">
+                <h2 class="diaryHeader">4</h2>
+                <div class="diaryContent">
+                    <img id="fullPageImg" src="images/tpwwImages/boDrawing_cake.png">
+            </div>
+        </div>
+        </div>
+
+        <!-- Page 3 -->
+        <div class="bookSpread" id="diarySpread3" style="display: none;">
+            <div id="leftPage">
+                <h2 class="diaryHeader">5</h2>
+                <div class="diaryContent">
+                    <p>Today was a good day! I spent the morning helping Auntie Woolie in the garden, and we planted some new flowers. I can't wait to see them bloom!</p>
+                    <p>In the afternoon, I visited <oops>Paul</oops> Saul Pitchkins and he did have some spare bolts! I helped him fix his cart, and he wasn't too grumpy about it.</p>
+                    <p>This time.</p>
+                    <p>Uncle Sonny used to be very good friends with <oops>P<i>a</i></oops> Saul Pitchkins. Said he was one of the first folks besides himself and Auntie to get to see me after I was born.</p>
+                    <p>They haven't been as close though since Saul lost his folks <oops>and especially not after his gr<i>and</i></oops></p>
+                    <p>I think it'd be really good for Saul if he went out more like he used to. He's got that groundskeeping job at Saccharine Fields but he still seems a bit lonely.</p>
+                    <p>Maybe he's met Ginni there? I should ask him if he knows how she's doing.</p>
+                </div>
+            </div>
+            <div id="rightPage">
+                <h2 class="diaryHeader">6</h2>
+                <div class="diaryContent">
+                    <img id="fullPageImg" src="images/tpwwImages/boDrawing_saul.png">
+                </div>
+            </div>
+        </div>
+        <!-- AMBIENCE -->
         <audio id="tpwwAudio" src="audio/tpwwDiaryAmbient.ogg" autoplay loop preload="auto"></audio>
         <!-- AUDIO MANAGER -->
+        <audio id="pageFlipNext" src="audio/tpwwDiaryNext.ogg" preload="auto"></audio>
+        <audio id="pageFlipPrev" src="audio/tpwwDiaryPrev.ogg" preload="auto"></audio>
+        <!-- Book Navigator -->
+        <div class="bookNavigator">
+            <button id="prevPage">Back</button>
+            <button id="nextPage">Next</button>
+        </div>
 
-
+        <!-- END BOOK CONTAINER -->
     </div>
+
 
     <!-- SCRIPTS -->
     <script src="tpwwScripts.js"></script>
@@ -58,6 +113,43 @@
             document.getElementById('bookContainer').style.display = 'flex';
             document.getElementById('tpwwAudio').play();
         });
+
+        // Page navigation logic
+        let currentSpread = 1;
+        const totalSpreads = 3; // Update this if more spreads are added
+
+        function updateNavigator() {
+            document.getElementById('prevPage').disabled = (currentSpread === 1);
+            document.getElementById('nextPage').disabled = (currentSpread === totalSpreads);
+        }
+
+        function updateSpreadDisplay() {
+            for (let i = 1; i <= totalSpreads; i++) {
+            document.getElementById('diarySpread' + i).style.display = (i === currentSpread) ? 'flex' : 'none';
+            }
+        }
+
+        document.getElementById('prevPage').addEventListener('click', function() {
+            if (currentSpread > 1) {
+            currentSpread--;
+            document.getElementById('pageFlipPrev').play();
+            updateSpreadDisplay();
+            updateNavigator();
+            }
+        });
+
+        document.getElementById('nextPage').addEventListener('click', function() {
+            if (currentSpread < totalSpreads) {
+            currentSpread++;
+            document.getElementById('pageFlipNext').play();
+            updateSpreadDisplay();
+            updateNavigator();
+            }
+        });
+
+        // Initialize display and navigation state
+        updateSpreadDisplay();
+        updateNavigator();
     </script>
 </body>
 </html>

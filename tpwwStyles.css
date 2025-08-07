@@ -19,6 +19,9 @@ body {
     flex-direction: column;
 }
 
+oops {
+    text-decoration: line-through;
+}
 
 p {
     color: white;
@@ -359,10 +362,31 @@ button:hover {
 }
 
 #bookContainer {
+    display: flex;
+    flex-direction: column;
     width: 100vw;
     height: 100vh;
     margin: 0;
     padding: 0;
+}
+
+.bookNavigator {
+    margin: 20px auto 0;
+    display: flex;
+    gap: 20px;
+    z-index: 1000;
+}
+
+.bookNavigator button {
+    background-color: #35008b;
+    border: 2px solid #22184e;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 3px 3px 0 #22184e;
+    text-shadow: 1px 1px 0 black;
 }
 
 audio#tpwwAudio {
