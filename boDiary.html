@@ -3,45 +3,57 @@
 <head>
     <meta charset="UTF-8" />
     <title>TPWW - Bo's Diary</title>
-
     <link rel="stylesheet" href="tpwwStyles.css" />
 
     <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link href="https://fonts.googleapis.com/css2?family=Hedvig+Letters+Serif:opsz@12..24&family=Pangolin&family=Schoolbell&family=Sue+Ellen+Francisco&display=swap" rel="stylesheet">
-
-    
 </head>
 <body>
-<audio id="tpwwAudio" src="audio/tpwwDiaryAmbient.ogg" autoplay loop></audio>
 
-<!-- Highlight Box -->
-<div class="highlightBox" style="display: none;"></div>
-
-<!-- Page 1 -->
-<div class="bookSpread" id="diaryPage1">
-    <div id="leftPage">
-        <h2 class="diaryHeader">1</h2>
-        <div class="diaryContent">
-            <p>Dear Diary,</p>
-            <p>This shall be the first entry of my third journal, which I bought from <strong>Otis Dammer</strong> just this morning, and it is the most official looking one I have owned so far. I like the preprinted entry spaces and drawing margins. It will makes things a lot more organized in the future, especially compared to my previous two journals.</p>
-            <p>Asides from the purchase of this journal, today was rather mundane. I helped Auntie Woolie replant some of the wheat that got ruined from the rainstorm over the week's end. I hate the mudslides and the flooding, but I can't complain when the air smells so fresh the days after.</p>
-            <p>May my home be forever be blessed with petrichor.</p>
-            <p>Afterward I finished up cleaning the porch on the homestead for Uncle Sonny and we had mushroom stew with mashed potatoes for supper. No dessert today, because Auntie Woolie has something special planned for tomorrow. I can't wait!</p>
-            <p>That's all. Here's to tomorrow!</p>
+    <!-- Intro -->
+    <div id="intro">
+        <h1>Welcome to Bo's Diary</h1>
+        <div id="boDiary">
+            <img id="startDiary" src="images/tpwwImages/boDiary.gif" alt="Enter Diary" onclick="new Audio('audio/tpwwIntroButton.ogg').play();">
         </div>
     </div>
-    <div id="rightPage">
-        <h2 class="diaryHeader">2</h2>
+
+    <!-- Book Container (initially hidden)-->
+    <div id="bookContainer" style="display: none;">
+        <!-- Highlight Box -->
+        <div class="highlightBox" style="display: none;"></div>
+
+        <!-- Page 1 -->
+        <div class="bookSpread" id="diaryPage1">
+            <div id="leftPage">
+                <h2 class="diaryHeader">1</h2>
+                <div class="diaryContent">
+                    <p>Dear Diary,</p>
+                    <p>This shall be the first entry of my third journal, which I bought from <strong>Otis Dammer</strong> just this morning, and it is the most official looking one I have owned so far. I like the preprinted entry spaces and drawing margins. It will make things a lot more organized in the future, especially compared to my past journals.</p>
+                    <p>Asides from the purchase of this journal, today was rather mundane. I helped Auntie Woolie replant some of the wheat that got ruined from the rainstorm over the week's end. I hate the mudslides and the flooding, but I can't complain when the air smells so fresh the days after.</p>
+                    <p>May my home be forever be blessed with petrichor.</p>
+                    <p>Afterward I finished up cleaning the porch on the homestead for Uncle Sonny and we had mushroom stew with mashed potatoes for supper. No dessert today, but Auntie Woolie has something special planned for tomorrow. I can't wait!</p>
+                    <p>That's all. Here's to tomorrow!</p>
+                </div>
+            </div>
+            <div id="rightPage">
+                <h2 class="diaryHeader">2</h2>
+            </div>
+        </div>
+        <audio id="tpwwAudio" src="audio/tpwwDiaryAmbient.ogg" autoplay loop preload="auto"></audio>
+
     </div>
-</div>
 
-</body>
-
-   <!-- SCRIPTS -->
+    <!-- SCRIPTS -->
     <script src="tpwwScripts.js"></script>
-
-
+    <script>
+        document.getElementById('startDiary').addEventListener('click', function(){
+            document.getElementById('intro').style.display = 'none';
+            document.getElementById('bookContainer').style.display = 'flex';
+            document.getElementById('tpwwAudio').play();
+        });
+    </script>
+</body>
 </html>

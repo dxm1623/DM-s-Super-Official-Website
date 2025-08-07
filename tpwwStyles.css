@@ -290,12 +290,12 @@ button:hover {
     margin-bottom: 10px;
 }
 
-#boDiary img {
+#boDiary img{
     transition: transform 0.2s ease;
     content: url('images/tpwwImages/boDiary.gif');
 }
 
-#boDiary img:hover {
+#boDiary img:hover{
     transform: scale(1.05);
     cursor: pointer;
     content: url('images/tpwwImages/boDiaryOpen.gif');
@@ -352,6 +352,17 @@ button:hover {
     line-height: 1.33;
     color: #150770;
     text-align: left;
+}
+
+#bookContainer {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+audio#tpwwAudio {
+    display: block;
 }
 
 /* FONTS */
