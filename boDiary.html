@@ -90,8 +90,6 @@
                 </div>
             </div>
         </div>
-        <!-- AMBIENCE -->
-        <audio id="tpwwAudio" src="audio/tpwwDiaryAmbient.ogg" autoplay loop preload="auto"></audio>
         <!-- AUDIO MANAGER -->
         <audio id="pageFlipNext" src="audio/tpwwDiaryNext.ogg" preload="auto"></audio>
         <audio id="pageFlipPrev" src="audio/tpwwDiaryPrev.ogg" preload="auto"></audio>
@@ -111,7 +109,14 @@
         document.getElementById('startDiary').addEventListener('click', function(){
             document.getElementById('intro').style.display = 'none';
             document.getElementById('bookContainer').style.display = 'flex';
-            document.getElementById('tpwwAudio').play();
+            let ambientAudio = document.createElement('audio');
+            ambientAudio.id = 'tpwwAudio';
+            ambientAudio.src = 'audio/tpwwDiaryAmbient.ogg';
+            ambientAudio.autoplay = true;
+            ambientAudio.loop = true;
+            ambientAudio.preload = 'auto';
+            document.body.appendChild(ambientAudio);
+            ambientAudio.play();
         });
 
         // Page navigation logic
