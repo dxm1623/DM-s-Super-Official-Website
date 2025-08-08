@@ -371,22 +371,44 @@ button:hover {
 }
 
 .bookNavigator {
-    margin: 20px auto 0;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-51%);
+    bottom: 5%;
     display: flex;
     gap: 20px;
     z-index: 1000;
 }
 
 .bookNavigator button {
-    background-color: #35008b;
-    border: 2px solid #22184e;
-    color: white;
+    background: linear-gradient(to bottom, #e0e0e0, #bdbdbd);
+    border: 2px outset #808080;
+    color: #000;
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-    border-radius: 8px;
-    box-shadow: 3px 3px 0 #22184e;
-    text-shadow: 1px 1px 0 black;
+    border-radius: 0;
+    box-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+    text-shadow: 1px 1px 0 #fff;
+}
+
+.bookNavigator button:disabled {
+    background: linear-gradient(to bottom, #f0f0f0, #d3d3d3);
+    border: 2px inset #c0c0c0;
+    color: #888;
+    cursor: not-allowed;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+.bookNavigator button:hover:not(:disabled) {
+    background: linear-gradient(to bottom, #d0d0d0, #a0a0a0);
+    box-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+}
+
+.bookNavigator button:active:not(:disabled) {
+    border: 2px inset #808080;
+    box-shadow: none;
 }
 
 audio#tpwwAudio {
