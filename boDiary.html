@@ -13,7 +13,7 @@
 <body>
 
     <!-- Intro -->
-    <div id="intro">
+    <div id="diaryIntro">
         <h1>Welcome to Bo's Diary</h1>
         <div id="boDiary">
             <img id="startDiary" src="images/tpwwImages/boDiary.gif" alt="Enter Diary" onclick="new Audio('audio/tpwwIntroButton.ogg').play();">
@@ -25,7 +25,12 @@
         <!-- Highlight Box -->
         <div class="highlightBox" style="display: none;"></div>
 
-        <!-- Page 1 -->
+        <!-- Home Button -->
+        <div class="bookHome">
+            <button id="homeButton" onclick="location.href='tpwwHome.html'">Home</button>
+        </div>
+
+        <!-- Spread 1 -->
         <div class="bookSpread" id="diarySpread1">
             <div id="leftPage">
                 <h2 class="diaryHeader">1</h2>
@@ -46,7 +51,7 @@
         </div>
         </div>
 
-        <!-- Page 2 -->
+        <!-- Spread 2 -->
         <div class="bookSpread" id="diarySpread2" style="display: none;">
             <div id="leftPage">
                 <h2 class="diaryHeader">3</h2>
@@ -69,7 +74,7 @@
         </div>
         </div>
 
-        <!-- Page 3 -->
+        <!-- Spread 3 -->
         <div class="bookSpread" id="diarySpread3" style="display: none;">
             <div id="leftPage">
                 <h2 class="diaryHeader">5</h2>
@@ -90,6 +95,31 @@
                 </div>
             </div>
         </div>
+
+        <!-- Spread 4-->
+        <div class="bookSpread" id="diarySpread4" style="display: none;">
+            <div id="leftPage">
+                <h2 class="diaryHeader">223</h2>
+                <div class="diaryContent">
+                    <p>Ginni finally wrote back to me after a month of waiting! I was so sure she had either not gotten it or that maybe I had somehow written it wrong. Seems so silly now!</p>
+                    <p>She is doing well working on the Arch (or rather, the "Arbor", to be official) and was able to forward my request to Ovsr. Abemann - and he said YES!</p>
+                    <p>I'm going to Saccharine Fields!
+                        <br><br>
+                    <i>I'm going to Saccharine Fields!</i></p>
+                    <p>I can't think straight, let alone write!</p>
+                    <p>I have a week for myself and then I have to make sure to catch the train there! I might even have time to spare for a chance to stop by <strong>Ashen</strong>. I haven't been there since I was a lil' lamb, and I hardly remember it!</p>
+                    <p>I'm going to go out now for a walk with Auntie Woolie and then maybe I'll try and schedule something with Long Ears before I leave. Maybe a stop at the diner for some shakes!</p>
+                    <p>I have so much to say to Ginni when I see her! I hope she still remembers me!</p>
+                </div>
+            </div>
+            <div id="rightPage">
+                <h2 class="diaryHeader">224</h2>
+                <div class="diaryContent">
+                    <p></p>
+                </div>
+            </div>
+        </div>
+
         <!-- AUDIO MANAGER -->
         <audio id="pageFlipNext" src="audio/tpwwDiaryNext.ogg" preload="auto"></audio>
         <audio id="pageFlipPrev" src="audio/tpwwDiaryPrev.ogg" preload="auto"></audio>
@@ -107,7 +137,7 @@
     <script src="tpwwScripts.js"></script>
     <script>
         document.getElementById('startDiary').addEventListener('click', function(){
-            document.getElementById('intro').style.display = 'none';
+            document.getElementById('diaryIntro').style.display = 'none';
             document.getElementById('bookContainer').style.display = 'flex';
             let ambientAudio = document.createElement('audio');
             ambientAudio.id = 'tpwwAudio';
@@ -121,7 +151,7 @@
 
         // Page navigation logic
         let currentSpread = 1;
-        const totalSpreads = 3; // Update this if more spreads are added
+        const totalSpreads = 4; // remember to update if/when more spreads are added
 
         function updateNavigator() {
             document.getElementById('prevPage').disabled = (currentSpread === 1);

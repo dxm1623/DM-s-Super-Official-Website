@@ -286,6 +286,15 @@ button:hover {
     100% { opacity: 1; }
 }
 
+#diaryIntro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    padding-bottom: 50px;
+}
+
 #boDiary {
     display: flex;
     flex-direction: column;
@@ -408,6 +417,38 @@ button:hover {
 
 .bookNavigator button:active:not(:disabled) {
     border: 2px inset #808080;
+    box-shadow: none;
+}
+
+.bookHome {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-51%);
+    bottom: 89.5%;
+    display: flex;
+    gap: 20px;
+    z-index: 1000;
+}
+
+.bookHome button#homeButton {
+    background: linear-gradient(to bottom, #ffcc00, #ff9900);
+    border: 2px outset #cc6600;
+    color: #000;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+    text-shadow: 1px 1px 0 #fff;
+}
+
+.bookHome button#homeButton:hover {
+    background: linear-gradient(to bottom, #ffdd33, #ffbb33);
+    box-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+}
+
+.bookHome button#homeButton:active {
+    border: 2px inset #cc6600;
     box-shadow: none;
 }
 
