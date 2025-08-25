@@ -12,8 +12,10 @@
             color: #333;
         }
         h1, h2, h3 {
-            font-family: Georgia, serif;
-            color: #1B1750;
+            /* sans serif font for headers */
+            font-family: "Trebuchet MS", Arial, sans-serif;
+            color: #D9A026;
+            text-shadow: 3px 3px 1px #1B1750;
         }
         p, ul, li {
             margin-bottom: 15px;
@@ -35,6 +37,7 @@
             overflow: hidden;
         }
         .image-column {
+            display: grid;
             flex: 1;
             min-width: 200px;
             padding: 10px;
@@ -99,9 +102,9 @@
             
             <hr>
 
-            <p>Answer Campus uses a custom built conversation system, primarily based around a ConversationManager script. Initially the writing team would finalize scripts and publish them onto the Answer Campus shared drive to be referenced by the project leads and the coding team, but it was later decided that the writers themselves should be able to directly implement their scripts into the dialogue codebase and then export a scene with their implemented dialogue. While this helped expedite the writing-to-dialogue process, it also meant that the writing team would also have to familiarize themselves with the dialogue codebase itself and, importantly, map each individual line of dialogue into the dialogue system (which manages the dialogue by line) as well as ensuring the conversation doesn’t loop or softlock at any point. This takes time and, again, you can’t see how your conversation will play out in game until you implement it. It also means you have to download, and open, Unity yourself.</p>
+            <p>Answer Campus uses a custom built conversation system, primarily based around individual nodes. Initially the writing team would finalize scripts and publish them onto the Answer Campus shared drive to be referenced by the project leads and the coding team, but it was later decided that the writers themselves should be able to directly implement their scripts into the dialogue codebase and then export a scene with their implemented dialogue. While this helped expedite the writing-to-dialogue process, it also meant that the writing team would also have to familiarize themselves with the dialogue codebase itself and, importantly, map each individual line of dialogue into the dialogue system (without overflowing the text box) as well as ensuring the conversation doesn’t loop or softlock at any point. This takes time and, again, you can’t see how your conversation will play out in game until you implement it. It also means you have to download, and open, Unity yourself.</p>
             
-            <p>During my time writing for Answer Campus, while I initially relied on scriptwriting, I started to instead ditch the scriptwriting process altogether in favor of working directly within the dialogue codebase. I would plan and write my dialogue inside the code while working off of a general idea of how things would go, while letting the dialogue itself flow naturally. This was great at expediting the implementation, since I was implementing the dialogue live, but it also meant that I would have to concern myself with the pacing and the layout of the conversation as it was being written while dealing with the intricacies of the codebase. This, very often, would result in burnout–especially when dealing with some of the bigger conversations planned.</p>
+            <p>During my time writing for Answer Campus, while I initially relied on scriptwriting, I started to instead ditch the scriptwriting process altogether in favor of working directly within the dialogue codebase. I would plan and write my dialogue inside the code while working off of a general idea of how things would go, while letting the dialogue itself flow naturally. This was great at expediting the implementation, since I was implementing the dialogue live, but it also meant that I would have to concern myself with the pacing and the layout of the conversation as it was being written while dealing with the intricacies of the codebase. This, very often, would result in burnout, especially when dealing with some of the bigger conversations planned.</p>
             
             <hr>
 
