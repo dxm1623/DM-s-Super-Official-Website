@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Designing Virtual Worlds</title>
+    <style>
+        body {
+            font-family: "Trebuchet MS", Arial, sans-serif;
+            background-color: #5D96DB;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        h1, h2, h3 {
+            /* sans serif font for headers */
+            font-family: "Trebuchet MS", Arial, sans-serif;
+            color: #D9A026;
+            text-shadow: 3px 3px 1px #1B1750;
+        }
+        p, ul, li {
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: #D9A026;
+        }
+        a {
+            color: #1B1750;
+            text-decoration: none;
+        }
+        .container {
+            display: flex;
+            max-width: 960px;
+            margin: 20px auto;
+            background: linear-gradient(135deg, #fff 0%, #e9e9e9 100%);
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        .image-column {
+            display: grid;
+            flex: 1;
+            min-width: 200px;
+            padding: 10px;
+            background-color: #d9eaff;
+        }
+        .image-column img {
+            width: 100%;
+            border: 3px solid #6196DC;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+        .text-column {
+            flex: 2;
+            padding: 20px;
+            background-color: #1B1750;
+        }
+        .overlay img {
+            max-width: 90%;
+            max-height: 80%;
+            border: 5px solid #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+        }
+        .overlay {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .overlay-caption {
+            margin-top: 15px;
+            font-size: 16px;
+            color: #fff;
+            text-align: center;
+            max-width: 80%;
+        }
+
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Designing Virtual Worlds</h1>
+    <h2 style="text-align: center;">Showcasing Selected Works</h2>
+    <div class="container">
+        <div class="image-column">
+            <!-- Replace with your desired image sources -->
+            <img src="images/projectImages/acImgs/ac_scriptwriting.PNG" alt="A screenshot of one of my original deliverables for Answer Campus 1's narrative design; specifically for Cramming, one of Breanna's major story beats.">
+            <img src="images/projectImages/acImgs/ac_dialoguesystem.PNG" alt="A screenshot of the latest iteration of the Answer Campus dialogue system in Unity">
+            <img src="images/projectImages/acImgs/ac_dialoguesystem2.PNG" alt="The previous excerpt of Cramming as it appears in Unity's scene view via the dialogue system.">
+            <img src="images/projectImages/acImgs/ac_sheet.PNG" alt="A screenshot of the Google Sheets document used for writing and exporting Answer Campus 2's dialogue.">
+        </div>
+        <div class="image-column" id="studyOne">
+            <img id="workImage-studyOne" src="images/projectImages/virtualWorldImgs/dvw-1.png" alt="Designing Virtual Worlds" style="width: 100%; max-width: 600px;">
+            <button class="left" onclick="changeWorkImage('studyOne', -1)">←</button>
+            <button class="right" onclick="changeWorkImage('studyOne', 1)">→</button>
+        </div>
+    </div>
+    <div id="overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; align-items:center; justify-content:center; background: rgba(0,0,0,0.8);">
+    <img id="overlay-img" src="" alt="" style="cursor: zoom-in;">
+    <div id="overlay-caption" style="color:#fff; margin-top:10px;"></div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+    const overlay = document.getElementById('overlay');
+    const overlayImg = document.getElementById('overlay-img');
+    const overlayCaption = document.getElementById('overlay-caption');
+
+    // Select the images inside the image-column section of your container
+    document.querySelectorAll('.image-column img').forEach(image => {
+        image.addEventListener('click', function(event) {
+            overlayImg.src = event.target.src;
+            overlayImg.alt = event.target.alt;
+            // If you want to use a caption other than the alt, add a data attribute e.g. data-caption on your <img> tag.
+            overlayCaption.textContent = image.getAttribute('data-caption') || event.target.alt;
+            overlayImg.style.width = '33%';
+            overlayImg.style.cursor = 'zoom-in';
+            overlay.style.display = 'flex';
+            overlay.style.flexDirection = 'column';
+            overlayImg.style.transform = 'translate(0, 0)'; // Reset position on open
+        });
+    });
+
+    // Hide the overlay when clicking outside the image
+    overlay.addEventListener('click', function(event) {
+        if (event.target !== overlayImg) {
+            overlay.style.display = 'none';
+            overlayImg.style.transform = 'translate(0, 0)'; // Reset position on close
+        }
+    });
+
+    // Toggle zoom on the overlay image
+    overlayImg.addEventListener('click', function() {
+        if (overlayImg.style.width === '33%') {
+            overlayImg.style.width = 'fit-content';
+            overlayImg.style.maxWidth = '95%';
+            overlayImg.style.maxHeight = '95%';
+            overlayImg.style.cursor = 'zoom-out';
+        } else {
+            overlayImg.style.width = '33%';
+            overlayImg.style.maxWidth = 'fit-content';
+            overlayImg.style.maxHeight = 'fit-content';
+            overlayImg.style.transform = 'translate(0, 0)'; // Reset position
+            overlayImg.style.cursor = 'zoom-in';
+        }
+    });
+
+    // Pan the zoomed-in image using mouse movement
+    overlayImg.addEventListener('mousemove', function(event) {
+        if (overlayImg.style.width === 'fit-content') { // Only pan if zoomed in
+            const rect = overlay.getBoundingClientRect();
+            const offsetX = Math.min(Math.max((event.clientX - rect.left) / rect.width, 0), 1) * 100;
+            const offsetY = Math.min(Math.max((event.clientY - rect.top) / rect.height, 0), 1) * 100;
+            overlayImg.style.transform = `translate(${50 - offsetX}%, ${50 - offsetY}%)`;
+        }
+    });
+});
+</script>
+<script>
+    const imageSets = {
+        studyOne: [
+            "images/projectImages/virtualWorldImgs/dvw-1.png",
+            "images/projectImages/virtualWorldImgs/dvw-2.png",
+            "images/projectImages/virtualWorldImgs/dvw-3.png",
+            "images/projectImages/virtualWorldImgs/dvw-4.png",
+            "images/projectImages/virtualWorldImgs/dvw-5.png"
+        ]
+    };
+
+    let currentImageIndices = {
+        studyOne: 0,
+    };
+
+    function changeWorkImage(study, direction) {
+        currentImageIndices[study] = (currentImageIndices[study] + direction + imageSets[study].length) % imageSets[study].length;
+        document.querySelector(`#${study} #workImage-${study}`).src = imageSets[study][currentImageIndices[study]];
+    }
+    function showHomeAlert() {
+        alert("Don't worry, you're already home!");
+    }
+
+    function showContent(id) {
+        const content = document.getElementById(id);
+        if (content.style.display === "none") {
+            content.style.display = "block";
+        } else {
+            content.style.display = "none";
+        }
+    }
+</script>
+
+</body>
+</html>
