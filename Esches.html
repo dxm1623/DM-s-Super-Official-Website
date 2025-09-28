@@ -3,30 +3,95 @@
 <head>
     <meta charset="UTF-8" />
     <title>Eschés</title>
+    <style>
+        #chessIntro {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 95vh;
+            width: 95vw;
+            background-color: #ffffff;
+            animation: fadeIn 3s ease-in-out;
+            box-sizing: border-box;
+            margin: 0 auto;
+        }
+        
+        #chessPage1 {
+            display: grid;
+            justify-items: center;
+            align-items: center;
+            height: 95vh;
+            width: 95vw;
+            background-color: #f0f0f0; /* sample new background */
+            box-sizing: border-box;
+            margin: 0 auto;
+            text-align: left;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+        
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to   { opacity: 0; }
+        }
+
+        button {
+            /* early 2000s button styles with a gradient */
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background: linear-gradient(to bottom, #e0e0e0, #a9a9a9);
+            color: rgb(0, 0, 0);
+            border: 1px solid #7a7a7a;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .headerDiv {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
-<style>
-    #chessIntro {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 200px;
-        background-color: #1B1750;
-        animation: fadeIn 1s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-        }
-        to {
-            opacity: 1;
-        }
-    }
-
-</style>
 <body>
     <div id="chessIntro">
-        <img src="images/Esches.gif" alt="Chess Logo" style="max-width: 100%; max-height: 100%;" />
+        <img src="images/chess/Esches.gif" alt="Chess Logo" style="max-width: 90%; max-height: 90%;" />
     </div>
+    
+    <div id="chessPage1">
+        <div class="headerDiv">
+        <h1>Welcome to the world of Eschés</h1>
+        <p>Peruse at your discretion.</p>
+        <hr>
+        </div>
+        <div class="leftDiv" id="glossaryMenu">
+            <h2>Glossary</h2>
+            <p>Learn about the pieces, variants, intricacies, and more.</p>
+            <hr>
+            <button onclick="location.href='Eches-Glossary.html'">Open the Glossary</button>
+        </div>
+    </div>
+    
+    <script>
+        window.onload = function() {
+            var introDiv = document.getElementById('chessIntro');
+            // Wait for the fadeIn and an additional delay (total 5 seconds here)
+            setTimeout(function() {
+                // Start fade-out animation
+                introDiv.style.animation = 'fadeOut 3s ease-in-out';
+                // Once fadeOut completes, show newContent
+                introDiv.addEventListener('animationend', function() {
+                    introDiv.style.display = 'none';
+                    var newDiv = document.getElementById('chessPage1');
+                    newDiv.style.display = 'grid';
+                    newDiv.style.animation = 'fadeIn 3s ease-in-out';
+                }, { once: true });
+            }, 5000);
+        };
+    </script>
 </body>
 </html>
