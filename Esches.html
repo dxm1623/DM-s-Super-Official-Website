@@ -4,14 +4,38 @@
     <meta charset="UTF-8" />
     <title>Eschés</title>
     <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        
+        body {
+            background-image: url("images/chess/checkerBg.gif");
+            background-repeat: repeat;
+        }
+
+        #chessIntro,
+        #chessPage1 {
+            /* Replace fixed 95vh / 95vw */
+            min-height: 100vh;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Optional: if you want the intro image perfectly centered */
+        #chessIntro img {
+            max-width: 90%;
+            max-height: 90%;
+            display: block;
+        }
+
         #chessIntro {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 95vh;
-            width: 95vw;
-            background-color: #ffffff;
             animation: fadeIn 3s ease-in-out;
+            background: rgba(240, 240, 240, 0.4);
             box-sizing: border-box;
             margin: 0 auto;
         }
@@ -20,9 +44,7 @@
             display: grid;
             justify-items: center;
             align-items: center;
-            height: 95vh;
-            width: 95vw;
-            background-color: #f0f0f0; /* sample new background */
+            background: rgba(240, 240, 240, 0.8);
             box-sizing: border-box;
             margin: 0 auto;
             text-align: left;
@@ -62,7 +84,7 @@
         <img src="images/chess/Esches.gif" alt="Chess Logo" style="max-width: 90%; max-height: 90%;" />
     </div>
     
-    <div id="chessPage1">
+    <div id="chessPage1" style="display: none;">
         <div class="headerDiv">
         <h1>Welcome to the world of Eschés</h1>
         <p>Peruse at your discretion.</p>
@@ -82,13 +104,13 @@
             // Wait for the fadeIn and an additional delay (total 5 seconds here)
             setTimeout(function() {
                 // Start fade-out animation
-                introDiv.style.animation = 'fadeOut 3s ease-in-out';
+                introDiv.style.animation = 'fadeOut 1s ease-in-out';
                 // Once fadeOut completes, show newContent
                 introDiv.addEventListener('animationend', function() {
                     introDiv.style.display = 'none';
                     var newDiv = document.getElementById('chessPage1');
                     newDiv.style.display = 'grid';
-                    newDiv.style.animation = 'fadeIn 3s ease-in-out';
+                    newDiv.style.animation = 'fadeIn 1s ease-in-out';
                 }, { once: true });
             }, 5000);
         };

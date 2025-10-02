@@ -3,46 +3,223 @@
 <head>
     <meta charset="UTF-8" />
     <title>Eschés Glossary</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        body {
+            font-family: "Times New Roman", Georgia, serif;
+            margin: 20px;
+            background: linear-gradient(to bottom, #ffffff, #e6e6e6);
+            color: #000;
+        }
+        h1, h2, h3, h4 {
+            color: #2c3e50;
+            text-shadow: 1px 1px 0px #ccc;
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            background: #2c3e50;
+            margin: 20px 0;
+        }
+        /* Container for the pieces boxes */
+        .glossaryCategory ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+            padding: 0;
+            list-style: none;
+        }
+        /* Each piece becomes a box */
+        .glossaryCategory li {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 200px; /* adjust this for number of columns desired */
+            border: 1px solid #ccc;
+            background-color: #fff;
+            border-radius: 4px;
+            padding: 10px;
+            box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        /* Special fairy styling (if needed) */
+        .glossaryCategory li#fairy {
+            background-color: #fffbdd;
+            border-color: #f1c40f;
+            box-shadow: 2px 2px 5px rgba(241,196,15,0.4);
+        }
+        /* Image styling for the icons */
+        .piece-icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+        .glossaryCategory {
+            margin-bottom: 30px;
+            border: 1px solid #aaa;
+            background-color: #f0f0f0;
+            padding: 15px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+        }
+        .glossaryCategory h3 {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 5px;
+            margin-top: 0;
+        }
+        /* Ensure the category itself is always block */
+        .glossaryCategory#piecesGlossary {
+            display: block;
+        }
+    </style>
 </head>
 <body>
     <h1>Eschés Glossary</h1>
     <p>Welcome to the Eschés glossary. Here you can find definitions and explanations of various terms related to the game.</p>
     <hr>
     <h2>Glossary Terms</h2>
-    <ul>
-        <li>
-            <div class="glossaryCategory">
-                <h3>Pieces</h3>
-                <h4>Lower Pieces</h4>
-                <p>Occupying the forward rank(s) of an army's starting formation, these pieces are typically the first line of defense and offense. Upon reaching the opposite end of the board, they can be promoted to higher pieces.</p>
-                <ul>
-                    <li><strong>Pawn:</strong> The most basic piece, moves forward one square but captures diagonally.<br><br> On its initial move, a pawn can advance two squares.</li>
-                    <li id="fairy"><strong>Squire:</strong> Can move one square in front of itself either diagonally or vertically, and can capture pieces on those squares.<br><br>Squires are promoted on the 2nd to last rank instead, but cannot be promoted to Queens or higher.</li>
-                    <li id="fairy"><strong>Lancer:</strong> Moves any number of squares forward in a straight line, but cannot move backward or sideways.</li>
-                    <li id="fairy"><strong>Steward:</strong> Moves one square in any direction, but cannot capture pieces.</li>
-                    <li id="fairy"><strong>Soldier:</strong> Moves like a pawn, but can only capture pieces directly in front of it.<br><br> At any point after being captured, a turn can be used to "recruit" it back onto the board on its starting square if it is free.</li>
-                    <li id="fairy"><strong>Ferz:</strong> Moves one square diagonally in any direction.</li>
-                </ul>
-                <h4>Higher Pieces</h4>
-                <p>These pieces are more powerful and versatile, often combining the movement abilities of lower pieces. These contain more specialized movement patterns and abilities.</p>
-                <ul>
-                    <li><strong>Rook:</strong> Moves any number of squares along a row or column.</li>
-                    <li><strong>Knight:</strong> Moves in an "L" shape: two squares in one direction and then one square perpendicular.<br><br>Knights can <i>jump</i> over other pieces.</li>
-                    <li><strong>Bishop:</strong> Moves diagonally any number of squares.</li>
-                    <li id="fairy"><strong>Camel:</strong> Moves like a knight, except it moves three squares in one direction and then one square perpendicular.</li>
-                    <li id="fairy"><strong>Tower:</strong> Moves one square diagonally and then any number of squares horizontally or vertically away from its starting position.</li>
-                    <li id="fairy"><strong>Cannon:</strong> Moves like a rook, but can only capture pieces by jumping over another piece; this includes friendly pieces.</li>
-                </ul>
-                <h4>Royal Pieces</h4>
-                <p>These pieces are the most powerful and critical to the game's outcome. Losing a royal piece, without a quick recovery, can lead to a significant disadvantage. Among them is the King whose capture ends the game for an army.</p>
-                <ul>
-                    <li><strong>King:</strong> The most important piece, moves one square in any direction.<br><br> On its initial move, provided no other pieces are blocking its path and either rook has also not yet moved, the king can <i>castle</i> with either rook.<br><br> The king can be placed in check by other pieces; normally, the game ends if the king is checkmated.</li>
-                    <li><strong>Queen:</strong> Combines the power of the rook and bishop, moving any number of squares in any direction.</li>
-                    <li id="fairy"><strong>Empress:</strong> Combines the power of the queen and knight, moving any number of squares in any direction or in an "L" shape.<br><br> Can <i>jump</i> over other pieces but only when following the "L" path.</li>
-                    <li id="fairy"><strong>Princeling:</strong> Combines the power of the bishop and knight, moving any number of squares diagonally or in an "L" shape.<br><br> Can <i>jump</i> over other pieces but only when following the "L" path.</li>
-                </ul>
-            </div>
-        </li>
-    </ul>
+    <button id="showFairies" onclick="toggleFairyTerms()">Fairies</button>
+    <div>
+        <div class="glossaryCategory" id="piecesGlossary">
+            <h3>Pieces</h3>
+            <h4>Lower Pieces</h4>
+            <p>Occupying the forward rank(s) of an army's starting formation, these pieces are typically the first line of defense and offense. Upon reaching the opposite end of the board, they can be promoted to higher pieces.</p>
+            <ul>
+                <li>
+                    <img class="piece-icon" src="images/pawn.png" alt="Pawn Icon" />
+                    <strong>Pawn:</strong>
+                    <p>The most basic piece, moves forward one square but captures diagonally. On its initial move, a pawn can advance two squares.</p>
+                </li>
+                <li id="fairy">
+                    <img class="piece-icon" src="images/squire.png" alt="Squire Icon" />
+                    <strong>Squire:</strong>
+                    <p>A faithful companion to the Knight, the Squire moves and captures one square forward orthogonally. Squires are promoted on the 3rd to last rank, but cannot be promoted to a Royal piece.</p>
+                </li>
+                <li id="fairy">
+                    <img class="piece-icon" src="images/lancer.png" alt="Lancer Icon" />
+                    <strong>Lancer:</strong>
+                    <p>Bold and a little reckless, the Lancer charges forward and only forward. It will move any number of squares in a straight line, but can only capture pieces that are directly in its path and cannot move sideways or backward.</p>
+                </li>
+                <li id="fairy">
+                    <img class="piece-icon" src="images/steward.png" alt="Steward Icon" />
+                    <strong>Steward:</strong>
+                    <p>Moves one square in any direction, but cannot capture pieces.</p>
+                </li>
+                <li id="fairy">
+                    <img class="piece-icon" src="images/soldier.png" alt="Soldier Icon" />
+                    <strong>Soldier:</strong>
+                    <p>Moves like a pawn, but can only capture pieces directly in front of it. At any point after being captured, a turn can be used to "recruit" it back onto the board if its starting square is free.</p>
+                </li>
+                <li id="fairy">
+                    <img class="piece-icon" src="images/ferz.png" alt="Ferz Icon" />
+                    <strong>Ferz:</strong>
+                    <p>Moves one square diagonally in any direction.</p>
+                </li>
+            </ul>
+            <h4>Middle Pieces</h4>
+            <p>These pieces are more powerful and versatile, often combining the movement abilities of lower pieces.</p>
+            <ul>
+                <li>
+                    <img class="piece-icon" src="images/rook.png" alt="Rook Icon" />
+                    <strong>Rook:</strong>
+                    <p>Moves any number of squares along a row or column. Provided it is both its first move and the king's first move, the rook and king can <i>castle</i> together.</p>
+                </li>
+                <li>
+                    <img class="piece-icon" src="images/knight.png" alt="Knight Icon" />
+                    <strong>Knight:</strong>
+                    <p>Moves in an "L" shape: two squares in one direction and then one square perpendicular. Knights can <i>jump</i> over other pieces.</p>
+                </li>
+                <li>
+                    <img class="piece-icon" src="images/bishop.png" alt="Bishop Icon" />
+                    <strong>Bishop:</strong>
+                    <p>Seeking to spread the good word of .</p>
+                </li>
+                <li id="fairy">
+                    <img class="piece-icon" src="images/camel.png" alt="Camel Icon" />
+                    <strong>Camel:</strong>
+                    <p>This stubborn steed moves like a knight, except it advances three squares in one direction and then one square perpendicular.</p>
+                </li>
+                <li id="fairy">
+                    <img class="piece-icon" src="images/tower.png" alt="Tower Icon" />
+                    <strong>Tower:</strong>
+                    <p>The imposing tower moves any number of squares along a row or column like a rook, or one square diagonally. It is also capable of <i>castling</i> with the king.</p>
+                </li>
+                <li id="fairy">
+                    <img class="piece-icon" src="images/cannon.png" alt="Cannon Icon" />
+                    <strong>Cannon:</strong>
+                    <p>A hefty cannon can be moved like a rook, but it can only capture pieces by jumping over another piece, although it doesn't necessarily need to jump over an opponent's piece to make a capture.</p>
+                </li>
+                <li id="fairy">
+                    <img class="piece-icon" src="images/jester.png" alt="Jester Icon" />
+                    <strong>Jester:</strong>
+                    <p>This trickster moves once in any direction, with a killing joke: rather than capturing a piece, it will swap places with it.</p>
+                </li>
+                <li id="fairy">
+                    <img class="piece-icon" src="images/unicorn.png" alt="Unicorn Icon" />
+                    <strong>Unicorn:</strong>
+                    <p>The mythical steed gallops like that of a knight, but for an unlimited number of steps in any direction in a chain of "L" jumps.</p>
+                </li>
+                <li id="fairy">
+                    <img class="piece-icon" src="images/chamberlain.png" alt="Chamberlain Icon" />
+                    <strong>Chamberlain:</strong>
+                    <p>The resident treasurer and housesitter for the royal family, the Chamberlain moves two spaces either horizontally or vertically, but captures pieces diagonally. If it is on the same row as another Middle or higher piece, it can swap places with it as long as it is not blocked by other pieces.</p>
+                </li>
+            </ul>
+            <h4>High Pieces</h4>
+            <p>These pieces are the most powerful and critical to the game. Losing one can mean a significant disadvantage.</p>
+            <ul>
+                <li>
+                    <img class="piece-icon" src="images/queen.png" alt="Queen Icon" />
+                    <strong>Queen:</strong>
+                    <p>Combines the power of the rook and bishop, moving any number of squares in any direction.</p>
+                </li>
+                <li id="fairy">
+                    <img class="piece-icon" src="images/empress.png" alt="Empress Icon" />
+                    <strong>Empress:</strong>
+                    <p>Combines the power of the queen and knight, moving any number of squares in any direction or in an "L" shape. It can <i>jump</i> over pieces when moving in an "L" shape.</p>
+                </li>
+                <li id="fairy">
+                    <img class="piece-icon" src="images/princeling.png" alt="Princeling Icon" />
+                    <strong>Princeling:</strong>
+                    <p>Combines the power of the bishop and knight, moving any number of squares diagonally or in an "L" shape. It can <i>jump</i> over pieces while following the "L" pattern.</p>
+                </li>
+            </ul>
+            <h4>Royal Pieces</h4>
+            <p>The most crucial pieces in the game, whose capture typically results in the end of the game. As hedgemons over their armies, they are subject to check and checkmate.</p>
+            <ul>
+                <li>
+                    <img class="piece-icon" src="images/king.png" alt="King Icon" />
+                    <strong>King:</strong>
+                    <p>Moves one square in any direction. On its initial move (with a rook that hasn’t moved yet and no pieces blocking its path), the king can <i>castle</i>. The king can be placed in check; normally, checkmate means the game ends.</p>
+                </li>
+                <li id="fairy">
+                    <img class="piece-icon" src="images/archduke.png" alt="Archduke Icon" />
+                    <strong>Archduke:</strong>
+                    <p>Moves one square in any direction, but can also move two squares diagonally. The Archduke can <i>jump</i> over pieces when moving two squares diagonally.</p>
+                </li>
+            </ul>
+            <h4>Miscellaneous</h4>
+            <p>Oddballs and misfits of the world, who rarely hold allegiances yet often play crucial roles in the game.</p>
+            <ul>
+                <li>
+                    <img class="piece-icon" src="images/duck.png" alt="Duck Icon" />
+                    <strong>Duck:</strong>
+                    <p>Owing to a clerical error long ago, this elegant yet territorial swan was misclassified as a duck. Rather than an actual duck, this one is annoying and feckless. It can only be moved at the end of every player's turn</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        function toggleFairyTerms() {
+            const fairyTerms = document.querySelectorAll('.glossaryCategory li#fairy');
+            fairyTerms.forEach(term => {
+                term.style.display = term.style.display === 'none' ? 'flex' : 'none';
+            });
+        }
+    </script>
 </body>
 </html>
