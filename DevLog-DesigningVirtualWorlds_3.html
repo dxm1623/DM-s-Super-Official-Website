@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8" />
-    <title>Designing Virtual Worlds - Interactables Demo</title>
+    <title>Designing Virtual Worlds - Scene Transitions Demo</title>
     <style>
         body {
             font-family: "Trebuchet MS", Arial, sans-serif;
@@ -34,6 +34,7 @@
             overflow: hidden;
             flex-direction: column;
         }
+        
         .text-column {
             flex: 2;
             display: flex;
@@ -43,71 +44,70 @@
             background-color: #1B1750;
             border-radius: 10px;
         }
-        .text-column ul { list-style-type: none; padding: 0; text-align: center; }
-        .text-column a { font-weight: bold; text-decoration: underline; transition: all 0.2s; }
-        .text-column a:hover { font-style: italic; font-size: 1.1em; transition: all 0.2s; }
-        .text-column a:active { font-size: 0.9em; transition: all 0.1s; }
 
-        .image-navigation {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            margin-top: 10px;
-            gap: 8px;
-        }
-        .image-navigation button {
-            background: linear-gradient(to bottom, #81c0ff, #1B3A7A);
-            border: 1px solid #0e2f5e;
-            color: #fff;
-            padding: 10px 15px;
-            margin: 0 10px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
-            text-shadow: 1px 1px 0 rgba(0,0,0,0.4);
-        }
-        .image-navigation button:hover {
-            background: linear-gradient(to bottom, #1B3A7A, #81c0ff);
-        }
-        .image-navigation button:active {
-            transform: translateY(2px);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+        .text-column ul { list-style-type: none; padding: 0; text-align: center;
         }
 
-        /* Thumbnails */
-        #videoThumbs-studyOne { 
-            flex-wrap: wrap; 
-            gap: 8px;
-            border: 3px solid #D9A026;
-            border-radius: 12px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.5);
-            padding: 4px;
-        }
-        #videoThumbs-studyOne .thumb {
-            display: inline-block;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        #videoThumbs-studyOne img {
-            width: 80px; height: auto; cursor: pointer; opacity: 0.8;
-            border-radius: 6px; transition: opacity .15s, box-shadow .15s;
-        }
-        #videoThumbs-studyOne img:hover { opacity: 1; }
-        #videoThumbs-studyOne .active img {
-            opacity: 1; box-shadow: 0 0 0 2px #F3C969;
+        .text-column a { font-weight: bold; text-decoration: underline; transition: all 0.2s;
         }
 
-        /* Box around video */
-        #workVideo-studyOne {
-            border: 3px solid #D9A026;
-            border-radius: 12px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        .text-column a:hover { font-style: italic; font-size: 1.1em; transition: all 0.2s;
         }
 
-        /* Secondary white panel for assets */
-        .assets-panel { background-color: #ffffff; color:#1B1750; border-radius: 10px; margin-top: 16px; padding-bottom: 8px; }
+        .text-column a:active { font-size: 0.9em; transition: all 0.1s;
+        }
 
+        .assets-panel {
+            background:#ffffff;
+            color:#1B1750;
+            border-radius:10px;
+            margin-top:16px;
+            padding:20px 28px 24px;
+            width:100%;
+            max-width:900px;
+            box-sizing:border-box;
+            text-align:center;
+        }
+        .assets-panel h3 {
+            margin:0 0 4px;
+            font-size:30px;
+            letter-spacing:.5px;
+            color:#1B1750;
+            text-shadow:1px 1px 0 rgba(0,0,0,0.15);
+        }
+        .assets-panel .assets-sub {
+            margin:0 0 14px;
+            font-size:14px;
+            font-style:italic;
+            color:#555;
+        }
+        .assets-panel ul {
+            list-style:none;
+            padding:0;
+            margin:0;
+        }
+        .assets-panel li { margin:6px 0; }
+        .assets-panel a {
+            display:inline-block;
+            padding:6px 10px;
+            border-radius:6px;
+            background:linear-gradient(to bottom,#F3C969,#B87333);
+            color:#1B1750;
+            font-weight:bold;
+            text-decoration:none;
+            box-shadow:0 2px 4px rgba(0,0,0,0.25);
+            transition:all .18s;
+        }
+        .assets-panel a:hover {
+            background:linear-gradient(to bottom,#B87333,#F3C969);
+            transform:translateY(-2px);
+        }
+        .assets-panel a:active {
+            transform:translateY(1px);
+            box-shadow:0 1px 2px rgba(0,0,0,0.3);
+        }
+
+        /* Restored caption styling (same as DevLog 2) */
         .video-caption {
             margin-top: 8px;
             font-size: 18px;
@@ -115,6 +115,7 @@
             color: #F3C969;
             text-shadow: 1px 1px 0 #1B1750;
             letter-spacing: .5px;
+            text-align: center;
         }
     </style>
 </head>
@@ -124,109 +125,40 @@
 
     <div class="container">
         <div class="text-column">
-            <div id="studyOne">
-                <!-- Main video player + caption -->
-                <figure class="video-wrapper" style="margin:0; text-align:center; width:100%; max-width:900px;">
-                    <video id="workVideo-studyOne"
-                           controls
-                           preload="metadata"
-                           style="width: 100%;"
-                           poster="images/projectImages/virtualWorldsImgs/transitions/transitionImg.png">
-                    </video>
-                    <figcaption id="videoCaption-studyOne" class="video-caption"></figcaption>
-                </figure>
+            <figure class="video-wrapper" style="margin:0; text-align:center; width:100%; max-width:900px;">
+                <video id="workVideo-studyOne"
+                       controls
+                       preload="metadata"
+                       playsinline
+                       style="width:100%; border:3px solid #D9A026; border-radius:12px; box-shadow:0 0 10px rgba(0,0,0,0.5);"
+                       poster="images/projectImages/virtualWorldsImgs/transitions/transitionImg.png">
+                    <source src="videos/projectVideos/virtualWorldsVideos/transitions/dvwTrans.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <figcaption id="videoCaption-studyOne" class="video-caption">
+                    Implementing basic scene transitions and a control tutorial.
+                </figcaption>
+            </figure>
 
-            <div class="text-column assets-panel">
-                <div>
-                    <strong style="font-size: xx-large; margin: 0;">Assets Used</strong>
-                    <p style="margin-top: 0px;">Click to view store page</p>
-                    <ul>
-                        <li><a href="https://assetstore.unity.com/packages/3d/environments/simplepoly-city-low-poly-assets-58899">&#8594; SimplePoly City - Low Poly Assets &#8592;</a></li>
-                        <li><a href="https://assetstore.unity.com/packages/3d/environments/landscapes/low-poly-simple-nature-pack-162153">&#8594; Low-Poly Simple Nature Pack &#8592;</a></li>
-                        <li><a href="https://assetstore.unity.com/packages/2d/textures-materials/sky/allsky-free-10-sky-skybox-set-146014">&#8594; AllSky Free - 10 Sky / Skybox Set &#8592;</a></li>
-                    </ul>
-                </div>
+            <div class="assets-panel">
+                <h3>Assets Used</h3>
+                <p class="assets-sub">Click to view store page</p>
+                <ul>
+                    <li><a href="https://assetstore.unity.com/packages/3d/environments/simplepoly-city-low-poly-assets-58899">SimplePoly City - Low Poly Assets</a></li>
+                    <li><a href="https://assetstore.unity.com/packages/3d/environments/landscapes/low-poly-simple-nature-pack-162153">Low-Poly Simple Nature Pack</a></li>
+                    <li><a href="https://assetstore.unity.com/packages/2d/textures-materials/sky/allsky-free-10-sky-skybox-set-146014">AllSky Free - 10 Sky / Skybox Set</a></li>
+                </ul>
             </div>
         </div>
     </div>
 
+    <!-- Minimal script (kept only if you want to programmatically ensure caption or future extensibility) -->
     <script>
     document.addEventListener('DOMContentLoaded', function () {
-        var study = 'studyOne';
-        var player = document.getElementById('workVideo-' + study);
-        var prevBtn = document.getElementById('prevVideoStudyOne');
-        var nextBtn = document.getElementById('nextVideoStudyOne');
-        var thumbs = document.getElementById('videoThumbs-' + study);
-        var captionEl = document.getElementById('videoCaption-' + study);
-
-        // Playlist: add as many videos as you want
-        var videoSets = {
-            studyOne: [
-                { src: 'videos/projectVideos/virtualWorldsVideos/transitions/dvwTrans.mp4', poster: 'images/projectImages/virtualWorldsImgs/transitions/transitionImg.png', caption: 'Implementing basic scene transitions and a control tutorial.' }
-            ]
-        };
-
-        var idx = 0;
-
-        function loadVideo(i, autoplay) {
-            autoplay = !!autoplay;
-            var list = videoSets[study];
-            if (!list || !list.length) return;
-
-            idx = (i + list.length) % list.length;
-            var item = list[idx];
-
-            player.pause();
-            player.src = item.src;
-            if (item.poster) { player.poster = item.poster; } else { player.removeAttribute('poster'); }
-            player.load();
-            if (captionEl) {
-                captionEl.textContent = item.caption || '';
-            }
-            if (autoplay) {
-                player.play().catch(function () {});
-            }
-            updateThumbActive();
+        var captionEl = document.getElementById('videoCaption-studyOne');
+        if (captionEl && !captionEl.textContent.trim()) {
+            captionEl.textContent = 'Implementing basic scene transitions and a control tutorial.';
         }
-
-        function updateThumbActive() {
-            if (!thumbs) return;
-            Array.prototype.slice.call(thumbs.children).forEach(function (wrap, i) {
-                if (i === idx) wrap.classList.add('active'); else wrap.classList.remove('active');
-            });
-        }
-
-        function renderThumbs() {
-            if (!thumbs) return;
-            thumbs.innerHTML = '';
-            (videoSets[study] || []).forEach(function (v, i) {
-                var wrap = document.createElement('div');
-                wrap.className = 'thumb';
-                var t = document.createElement('img');
-                if (v.poster) t.src = v.poster;
-                t.alt = v.caption || ('Video ' + (i + 1));
-                t.addEventListener('click', function () { loadVideo(i, true); });
-                wrap.appendChild(t);
-                thumbs.appendChild(wrap);
-            });
-            updateThumbActive();
-        }
-
-        prevBtn.addEventListener('click', function () { loadVideo(idx - 1, true); });
-        nextBtn.addEventListener('click', function () { loadVideo(idx + 1, true); });
-
-        // Auto-advance on end
-        player.addEventListener('ended', function () { loadVideo(idx + 1, true); });
-
-        // Keyboard arrows (optional)
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'ArrowLeft') prevBtn.click();
-            if (e.key === 'ArrowRight') nextBtn.click();
-        });
-
-        // Init
-        renderThumbs();
-        loadVideo(0, false);
     });
     </script>
 </body>

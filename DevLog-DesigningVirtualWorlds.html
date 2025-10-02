@@ -12,7 +12,6 @@
             color: #333;
         }
         h1, h2, h3 {
-            /* sans serif font for headers */
             font-family: "Trebuchet MS", Arial, sans-serif;
             color: #D9A026;
             text-shadow: 3px 3px 1px #1B1750;
@@ -22,10 +21,8 @@
             font-size: 14px;
             color: #D9A026;
         }
-        a {
-            color: #1B1750;
-            text-decoration: none;
-        }
+        a { color: #1B1750; text-decoration: none; }
+
         .container {
             display: flex;
             max-width: 1200px;
@@ -37,74 +34,13 @@
             overflow: hidden;
             flex-direction: column;
         }
-        .image-column {
-            display: grid;
-            flex: 1;
-            min-width: 200px;
-            padding: 10px;
-            background-color: #d9eaff;
-        }
-        .image-column img {
-            width: 100%;
-            border: 3px solid #6196DC;
-            border-radius: 4px;
-            margin-bottom: 10px;
-            cursor: pointer;
-        }
-        .text-column {
-            flex: 2;
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-            padding: 10px 50px;
-            background-color: #1B1750;
-            border-radius: 10px;
-        }
-        .text-column ul {
-            list-style-type: none;
-            padding: 0;
-            text-align: center;
-        }
-        .text-column a {
-            font-weight: bold;
-            text-decoration: underline;
-            transition: all 0.2s;
-        }
-        .text-column a:hover {
-            font-style: italic;
-            font-size: 1.1em;
-            transition: all 0.2s;
-        }
-        .text-column a:active {
-            font-size: 0.9em;
-            transition: all 0.1s;
-        }
-        .overlay img {
-            max-width: 90%;
-            max-height: 80%;
-            border: 5px solid #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.5);
-        }
-        .overlay {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        .overlay-caption {
-            margin-top: 15px;
-            font-size: 16px;
-            color: #fff;
-            text-align: center;
-            max-width: 80%;
-        }
 
         .image-navigation {
             flex: 1;
             display: flex;
             justify-content: center;
             margin-top: 10px;
+            gap: 8px;
         }
         .image-navigation button {
             background: linear-gradient(to bottom, #81c0ff, #1B3A7A);
@@ -126,31 +62,116 @@
             box-shadow: 0 1px 3px rgba(0,0,0,0.5);
         }
 
-        /* Default look when it says "Show Video" */
-        #showVideoStudyOne {
-            background: linear-gradient(to bottom, #F3C969, #B87333);
-            border: 1px solid #7a4a10;
-            color: #1B1750;
-            text-shadow: 1px 1px 0 rgba(255,255,255,0.3);
-            transition: background 0.2s ease, transform 0.05s ease, box-shadow 0.2s ease;
+        /* Thumbnails */
+        #videoThumbs-studyOne { 
+            flex-wrap: wrap; 
+            gap: 8px;
+            border: 3px solid #D9A026;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            padding: 4px;
         }
-        #showVideoStudyOne:hover {
-            background: linear-gradient(to bottom, #B87333, #F3C969);
+        #videoThumbs-studyOne .thumb {
+            display: inline-block;
+            border-radius: 8px;
+            overflow: hidden;
         }
-        #showVideoStudyOne:active {
-            transform: translateY(2px);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+        #videoThumbs-studyOne img {
+            width: 80px; height: auto; cursor: pointer; opacity: 0.8;
+            border-radius: 6px; transition: opacity .15s, box-shadow .15s;
+        }
+        #videoThumbs-studyOne img:hover { opacity: 1; }
+        #videoThumbs-studyOne .active img {
+            opacity: 1; box-shadow: 0 0 0 2px #F3C969;
         }
 
-        /* Alternate look when video is currently showing (button says "Show Images") */
-        #showVideoStudyOne.is-video {
-            background: linear-gradient(to bottom, #A166FF, #3B1F7A);
-            border: 1px solid #2a1255;
-            color: #ffffff;
-            text-shadow: 1px 1px 0 rgba(0,0,0,0.4);
+        /* Box around video */
+        #workVideo-studyOne {
+            border: 3px solid #D9A026;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
         }
-        #showVideoStudyOne.is-video:hover {
-            background: linear-gradient(to bottom, #3B1F7A, #A166FF);
+
+        /* Secondary white panel for assets */
+        .text-column {
+            flex: 2;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            padding: 10px 50px;
+            background-color: #1B1750;
+            border-radius: 10px;
+        }
+
+        .text-column ul { list-style-type: none; padding: 0; text-align: center;
+        }
+
+        .text-column a { font-weight: bold; text-decoration: underline; transition: all 0.2s;
+        }
+
+        .text-column a:hover { font-style: italic; font-size: 1.1em; transition: all 0.2s;
+        }
+
+        .text-column a:active { font-size: 0.9em; transition: all 0.1s;
+        }
+
+        .assets-panel {
+            background:#ffffff;
+            color:#1B1750;
+            border-radius:10px;
+            margin-top:16px;
+            padding:20px 28px 24px;
+            width:100%;
+            max-width:900px;
+            box-sizing:border-box;
+            text-align:center;
+        }
+        .assets-panel h3 {
+            margin:0 0 4px;
+            font-size:30px;
+            letter-spacing:.5px;
+            color:#1B1750;
+            text-shadow:1px 1px 0 rgba(0,0,0,0.15);
+        }
+        .assets-panel .assets-sub {
+            margin:0 0 14px;
+            font-size:14px;
+            font-style:italic;
+            color:#555;
+        }
+        .assets-panel ul {
+            list-style:none;
+            padding:0;
+            margin:0;
+        }
+        .assets-panel li { margin:6px 0; }
+        .assets-panel a {
+            display:inline-block;
+            padding:6px 10px;
+            border-radius:6px;
+            background:linear-gradient(to bottom,#F3C969,#B87333);
+            color:#1B1750;
+            font-weight:bold;
+            text-decoration:none;
+            box-shadow:0 2px 4px rgba(0,0,0,0.25);
+            transition:all .18s;
+        }
+        .assets-panel a:hover {
+            background:linear-gradient(to bottom,#B87333,#F3C969);
+            transform:translateY(-2px);
+        }
+        .assets-panel a:active {
+            transform:translateY(1px);
+            box-shadow:0 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .video-caption {
+            margin-top: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #F3C969;
+            text-shadow: 1px 1px 0 #1B1750;
+            letter-spacing: .5px;
         }
     </style>
 </head>
@@ -169,7 +190,7 @@
             <button class="buttons" id="showVideoStudyOne">Show Video</button>
             </div>
         </div>
-            <div class="text-column" style="background-color: #ffffff; color:#1B1750;">
+            <div class="text-column assets-panel" style="background-color: #ffffff; color:#1B1750;">
                 <p>
                     <strong style="font-size: xx-large; margin: 0;">Assets Used</strong>
                     <p style="margin-top: 0px;">Click to view store page</p>
