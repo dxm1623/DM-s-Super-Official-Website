@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Designing Virtual Worlds</title>
+    <style>
+        body {
+            font-family: "Trebuchet MS", Arial, sans-serif;
+            background-color: #5D96DB;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        h1, h2, h3 {
+            font-family: "Trebuchet MS", Arial, sans-serif;
+            color: #D9A026;
+            text-shadow: 3px 3px 1px #1B1750;
+        }
+        p, ul, li {
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: #D9A026;
+        }
+        a { color: #1B1750; text-decoration: none; }
+
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 20px auto;
+            background: linear-gradient(135deg, #fff 0%, #e9e9e9 100%);
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+            overflow: hidden;
+            flex-direction: column;
+        }
+
+        .image-navigation {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+            gap: 8px;
+        }
+        .image-navigation button {
+            background: linear-gradient(to bottom, #81c0ff, #1B3A7A);
+            border: 1px solid #0e2f5e;
+            color: #fff;
+            padding: 10px 15px;
+            margin: 0 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+            text-shadow: 1px 1px 0 rgba(0,0,0,0.4);
+        }
+        .image-navigation button:hover {
+            background: linear-gradient(to bottom, #1B3A7A, #81c0ff);
+        }
+        .image-navigation button:active {
+            transform: translateY(2px);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+        }
+
+        /* Thumbnails */
+        #videoThumbs-studyOne { 
+            flex-wrap: wrap; 
+            gap: 8px;
+            border: 3px solid #D9A026;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            padding: 4px;
+        }
+        #videoThumbs-studyOne .thumb {
+            display: inline-block;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        #videoThumbs-studyOne img {
+            width: 80px; height: auto; cursor: pointer; opacity: 0.8;
+            border-radius: 6px; transition: opacity .15s, box-shadow .15s;
+        }
+        #videoThumbs-studyOne img:hover { opacity: 1; }
+        #videoThumbs-studyOne .active img {
+            opacity: 1; box-shadow: 0 0 0 2px #F3C969;
+        }
+
+        /* Box around video */
+        #workVideo-studyOne {
+            border: 3px solid #D9A026;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        /* Secondary white panel for assets */
+        .text-column {
+            flex: 2;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            padding: 10px 50px;
+            background-color: #1B1750;
+            border-radius: 10px;
+        }
+
+        .text-column ul { list-style-type: none; padding: 0; text-align: center;
+        }
+
+        .text-column a { font-weight: bold; text-decoration: underline; transition: all 0.2s;
+        }
+
+        .text-column a:hover { font-style: italic; font-size: 1.1em; transition: all 0.2s;
+        }
+
+        .text-column a:active { font-size: 0.9em; transition: all 0.1s;
+        }
+
+        .assets-panel {
+            background:#ffffff;
+            color:#1B1750;
+            border-radius:10px;
+            margin-top:16px;
+            padding:20px 28px 24px;
+            width:100%;
+            max-width:900px;
+            box-sizing:border-box;
+            text-align:center;
+        }
+        .assets-panel h3 {
+            margin:0 0 4px;
+            font-size:30px;
+            letter-spacing:.5px;
+            color:#1B1750;
+            text-shadow:1px 1px 0 rgba(0,0,0,0.15);
+        }
+        .assets-panel .assets-sub {
+            margin:0 0 14px;
+            font-size:14px;
+            font-style:italic;
+            color:#555;
+        }
+        .assets-panel ul {
+            list-style:none;
+            padding:0;
+            margin:0;
+        }
+        .assets-panel li { margin:6px 0; }
+        .assets-panel a {
+            display:inline-block;
+            padding:6px 10px;
+            border-radius:6px;
+            background:linear-gradient(to bottom,#F3C969,#B87333);
+            color:#1B1750;
+            font-weight:bold;
+            text-decoration:none;
+            box-shadow:0 2px 4px rgba(0,0,0,0.25);
+            transition:all .18s;
+        }
+        .assets-panel a:hover {
+            background:linear-gradient(to bottom,#B87333,#F3C969);
+            transform:translateY(-2px);
+        }
+        .assets-panel a:active {
+            transform:translateY(1px);
+            box-shadow:0 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .video-caption {
+            margin-top: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #F3C969;
+            text-shadow: 1px 1px 0 #1B1750;
+            letter-spacing: .5px;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Designing Virtual Worlds</h1>
+    <h2 style="text-align: center;">MUD Foundation Showcase -- Islamic Art</h2>
+    <div class="container">
+        <div class="text-column">
+            <div id="studyOne">
+            <img id="workImage-studyOne" src="images/projectImages/virtualWorldsImgs/MUD/MUD_img1.png" alt="Designing Virtual Worlds" style="width: 100%; max-width: 900px;">
+            <div class="image-navigation">
+            <button class="left" onclick="changeWorkImage('studyOne', -1)">←</button>
+            <button class="right" onclick="changeWorkImage('studyOne', 1)">→</button>
+            </div>
+            <div class="image-navigation" style="margin-bottom: 10px;">
+            <button class="buttons" id="showVideoStudyOne">Show Video</button>
+            </div>
+        </div>
+            <div class="text-column assets-panel" style="background-color: #ffffff; color:#1B1750;">
+                <p>
+                    <strong style="font-size: xx-large; margin: 0;">"Fuente de Los Leones" Attribution</strong>
+                    <p style="margin-top: 0px;">"Fuente de Los Leones" by Ignacio Farias (EternalEchoesVR), licensed under CC BY 4.0</p>
+                    <ul>
+                        <li><a href="https://sketchfab.com/3d-models/palacio-de-la-alhambra-fuente-b7bdacc4201347cfafe0e92c0b3f94c7">&#8594; Fuente de Los Leones &#8592;</a></li>
+                    </ul>
+                    <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="font-size: 12px; color: #555;">(CC BY 4.0 License Details)</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div id="overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; align-items:center; justify-content:center; background: rgba(0,0,0,0.8);">
+    <img id="overlay-img" src="" alt="" style="cursor: zoom-in;">
+    <div id="overlay-caption" style="color:#fff; margin-top:10px;"></div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+    const overlay = document.getElementById('overlay');
+    const overlayImg = document.getElementById('overlay-img');
+    const overlayCaption = document.getElementById('overlay-caption');
+
+    // Select the images inside the image-column section of your container
+    document.querySelectorAll('.image-column img').forEach(image => {
+        image.addEventListener('click', function(event) {
+            overlayImg.src = event.target.src;
+            overlayImg.alt = event.target.alt;
+            // If you want to use a caption other than the alt, add a data attribute e.g. data-caption on your <img> tag.
+            overlayCaption.textContent = image.getAttribute('data-caption') || event.target.alt;
+            overlayImg.style.width = '33%';
+            overlayImg.style.cursor = 'zoom-in';
+            overlay.style.display = 'flex';
+            overlay.style.flexDirection = 'column';
+            overlayImg.style.transform = 'translate(0, 0)'; // Reset position on open
+        });
+    });
+
+    // Hide the overlay when clicking outside the image
+    overlay.addEventListener('click', function(event) {
+        if (event.target !== overlayImg) {
+            overlay.style.display = 'none';
+            overlayImg.style.transform = 'translate(0, 0)'; // Reset position on close
+        }
+    });
+
+    // Toggle zoom on the overlay image
+    overlayImg.addEventListener('click', function() {
+        if (overlayImg.style.width === '33%') {
+            overlayImg.style.width = 'fit-content';
+            overlayImg.style.maxWidth = '95%';
+            overlayImg.style.maxHeight = '95%';
+            overlayImg.style.cursor = 'zoom-out';
+        } else {
+            overlayImg.style.width = '33%';
+            overlayImg.style.maxWidth = 'fit-content';
+            overlayImg.style.maxHeight = 'fit-content';
+            overlayImg.style.transform = 'translate(0, 0)'; // Reset position
+            overlayImg.style.cursor = 'zoom-in';
+        }
+    });
+
+    // Pan the zoomed-in image using mouse movement
+    overlayImg.addEventListener('mousemove', function(event) {
+        if (overlayImg.style.width === 'fit-content') { // Only pan if zoomed in
+            const rect = overlay.getBoundingClientRect();
+            const offsetX = Math.min(Math.max((event.clientX - rect.left) / rect.width, 0), 1) * 100;
+            const offsetY = Math.min(Math.max((event.clientY - rect.top) / rect.height, 0), 1) * 100;
+            overlayImg.style.transform = `translate(${50 - offsetX}%, ${50 - offsetY}%)`;
+        }
+    });
+});
+</script>
+<script>
+    const imageSets = {
+        studyOne: [
+            "images/projectImages/virtualWorldsImgs/MUD/MUD_img1.png",
+            "images/projectImages/virtualWorldsImgs/MUD/MUD_img2.png",
+            "images/projectImages/virtualWorldsImgs/MUD/MUD_code.png",
+            "images/projectImages/virtualWorldsImgs/MUD/MUD_testing.png",
+            "images/projectImages/virtualWorldsImgs/MUD/MUD_testing2.png"
+        ]
+    };
+
+    let currentImageIndices = {
+        studyOne: 0,
+    };
+
+    function changeWorkImage(study, direction) {
+        currentImageIndices[study] = (currentImageIndices[study] + direction + imageSets[study].length) % imageSets[study].length;
+        document.querySelector(`#${study} #workImage-${study}`).src = imageSets[study][currentImageIndices[study]];
+    }
+    function showHomeAlert() {
+        alert("Don't worry, you're already home!");
+    }
+
+    function showContent(id) {
+        const content = document.getElementById(id);
+        if (content.style.display === "none") {
+            content.style.display = "block";
+        } else {
+            content.style.display = "none";
+        }
+    }
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const studyId = 'studyOne';
+    const toggleBtn = document.getElementById('showVideoStudyOne');
+    const mainImg = document.getElementById(`workImage-${studyId}`);
+    const navRows = document.querySelectorAll(`#${studyId} .image-navigation`);
+    const arrowsRow = navRows[0];
+
+    let videoEl = null;
+    let showingVideo = false;
+
+    toggleBtn.addEventListener('click', function () {
+        if (!showingVideo) {
+            // Show video
+            if (!videoEl) {
+                videoEl = document.createElement('video');
+                videoEl.id = `workVideo-${studyId}`;
+                videoEl.src = 'videos/projectVideos/virtualWorldsVideos/MUD/MUD_demo.mp4';
+                videoEl.controls = true;
+                videoEl.preload = 'metadata';
+                videoEl.style.width = '100%';
+                videoEl.style.maxWidth = '900px';
+                videoEl.style.display = 'block';
+                mainImg.parentNode.insertBefore(videoEl, arrowsRow);
+            } else {
+                videoEl.style.display = 'block';
+            }
+            mainImg.style.display = 'none';
+            if (arrowsRow) arrowsRow.style.display = 'none';
+            toggleBtn.textContent = 'Show Images';
+            toggleBtn.classList.add('is-video'); // <- add state class
+            showingVideo = true;
+        } else {
+            // Show images
+            if (videoEl) {
+                videoEl.pause();
+                videoEl.currentTime = 0;
+                videoEl.style.display = 'none';
+            }
+            mainImg.style.display = 'block';
+            if (arrowsRow) arrowsRow.style.display = 'flex';
+            toggleBtn.textContent = 'Show Video';
+            toggleBtn.classList.remove('is-video'); // <- remove state class
+            showingVideo = false;
+        }
+    });
+});
+</script>
+
+</body>
+</html>
