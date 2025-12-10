@@ -10,6 +10,7 @@
             margin: 0;
             padding: 20px;
             color: #333;
+            height: 700px;
         }
         h1, h2, h3 {
             font-family: "Trebuchet MS", Arial, sans-serif;
@@ -32,6 +33,33 @@
             border-radius: 8px;
             box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
             overflow: hidden;
+            flex-direction: column;
+        }
+
+        /* Two-column layout for content row */
+        .content-row {
+            display: flex;
+            gap: 20px;
+            align-items: stretch; /* make columns equal height and prevent overflow */
+            flex-wrap: nowrap;    /* keep columns on one row */
+        }
+        .left-column, .right-column {
+            flex: 1;
+        }
+        .left-column {
+            flex: 0 0 50%;       /* fixed half width for media column */
+            max-width: 600px;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; /* center media vertically when space allows */
+            min-height: 500px; /* ensure enough height for vertical centering */
+            overflow: hidden;     /* prevent content from spilling over */
+        }
+        .right-column {
+            flex: 1 0 0;          /* take remaining space */
+            display: flex;
             flex-direction: column;
         }
 
@@ -90,6 +118,7 @@
             border: 3px solid #D9A026;
             border-radius: 12px;
             box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            margin-top: 34%;
         }
 
         /* Secondary white panel for assets */
@@ -173,6 +202,26 @@
             text-shadow: 1px 1px 0 #1B1750;
             letter-spacing: .5px;
         }
+
+        #studyOne {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100%;
+            width: 100%;
+        }
+        #studyOne #workImage-studyOne {
+            max-width: 100%;      /* scale within column */
+            height: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+            object-fit: contain;  /* prevent distortion */
+        }
+
+        .controls-container {
+            margin-top: auto; /* stays at bottom inside #studyOne */
+        }
+        .controls-container .image-navigation { justify-content: center; }
     </style>
 </head>
 <body>
@@ -180,25 +229,49 @@
     <h2 style="text-align: center;">MUD Foundation Showcase -- Islamic Art</h2>
     <div class="container">
         <div class="text-column">
-            <div id="studyOne">
-            <img id="workImage-studyOne" src="images/projectImages/virtualWorldsImgs/MUD/MUD_img1.png" alt="Designing Virtual Worlds" style="width: 100%; max-width: 900px;">
-            <div class="image-navigation">
-            <button class="left" onclick="changeWorkImage('studyOne', -1)">←</button>
-            <button class="right" onclick="changeWorkImage('studyOne', 1)">→</button>
-            </div>
-            <div class="image-navigation" style="margin-bottom: 10px;">
-            <button class="buttons" id="showVideoStudyOne">Show Video</button>
-            </div>
-        </div>
-            <div class="text-column assets-panel" style="background-color: #ffffff; color:#1B1750;">
-                <p>
-                    <strong style="font-size: xx-large; margin: 0;">"Fuente de Los Leones" Attribution</strong>
-                    <p style="margin-top: 0px;">"Fuente de Los Leones" by Ignacio Farias (EternalEchoesVR), licensed under CC BY 4.0</p>
-                    <ul>
-                        <li><a href="https://sketchfab.com/3d-models/palacio-de-la-alhambra-fuente-b7bdacc4201347cfafe0e92c0b3f94c7">&#8594; Fuente de Los Leones &#8592;</a></li>
-                    </ul>
-                    <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="font-size: 12px; color: #555;">(CC BY 4.0 License Details)</a>
-                </p>
+            <!-- ...existing header intro text if any... -->
+            <div class="content-row">
+                <div class="left-column">
+                    <div id="studyOne">
+                        <img id="workImage-studyOne" src="images/projectImages/virtualWorldsImgs/MUD/MUD_img1.png" alt="Designing Virtual Worlds - MUD Foundation Showcase - Islamic Art" data-caption="MUD Foundation Showcase - Islamic Art" />
+                        <!-- Controls pinned to bottom -->
+                        <div class="controls-container">
+                            <div class="image-navigation">
+                                <button class="left" onclick="changeWorkImage('studyOne', -1)">←</button>
+                                <button class="right" onclick="changeWorkImage('studyOne', 1)">→</button>
+                            </div>
+                            <div class="image-navigation" style="margin-bottom: 10px;">
+                                <button class="buttons" id="showVideoStudyOne">Show Video</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-column">
+                    <div class="text-column assets-panel" style="background-color: #ffffff; color:#1B1750;">
+                        <p>
+                            This was a project created as part of my coursework for Designing Virtual Worlds, in collaboration with the MUD Foundation and the Islamic Arts class at UM, which was among a number of others created by my fellow VW students.
+                            <br><br>
+                            The goal was to create an interactive virtual environment showcasing Islamic art within MUD Foundation's Javascript-based development platform for the Metaverse.
+                            <br><br>
+                            Collaborating with a fellow VW student (who helped procure the models) and an art history student (who provided the context and narration for the exhibit), I developed the virtual space and integrated multimedia elements to showcase various Islamic sculptures and their significance.
+                        </p>
+                        <p>
+                            You can explore the exhibit here in your web browser via MUD Foundation's platform:
+                            <ul>
+                                <li><a href="https://verse.mud.foundation/EbAauxA/designing-virtual-worlds-x-islamic-arts-dm-se-ah" target="_blank">↗ Check it out!</a></li>
+                            </ul>
+                        </p>
+                        <hr>
+                        <p>
+                            <strong>"Fuente de Los Leones" Attribution</strong>
+                            <p style="margin-top: 0px;">The "Fuente de Los Leones" was sourced from Sketchfab and was created by Ignacio Farias (EternalEchoesVR), licensed under CC BY 4.0</p>
+                            <ul>
+                                <li><a href="https://sketchfab.com/3d-models/palacio-de-la-alhambra-fuente-b7bdacc4201347cfafe0e92c0b3f94c7">↗ Fuente de Los Leones</a></li>
+                            </ul>
+                            <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" style="font-size: 12px; color: #555;">(CC BY 4.0 License Details)</a>
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -214,20 +287,20 @@ document.addEventListener('DOMContentLoaded', function() {
     const overlayImg = document.getElementById('overlay-img');
     const overlayCaption = document.getElementById('overlay-caption');
 
-    // Select the images inside the image-column section of your container
-    document.querySelectorAll('.image-column img').forEach(image => {
-        image.addEventListener('click', function(event) {
+    // Target the actual gallery image inside #studyOne
+    const galleryImg = document.querySelector('#studyOne #workImage-studyOne');
+    if (galleryImg) {
+        galleryImg.addEventListener('click', function(event) {
             overlayImg.src = event.target.src;
-            overlayImg.alt = event.target.alt;
-            // If you want to use a caption other than the alt, add a data attribute e.g. data-caption on your <img> tag.
-            overlayCaption.textContent = image.getAttribute('data-caption') || event.target.alt;
+            overlayImg.alt = event.target.alt || '';
+            overlayCaption.textContent = galleryImg.getAttribute('data-caption') || event.target.alt || '';
             overlayImg.style.width = '33%';
             overlayImg.style.cursor = 'zoom-in';
             overlay.style.display = 'flex';
             overlay.style.flexDirection = 'column';
             overlayImg.style.transform = 'translate(0, 0)'; // Reset position on open
         });
-    });
+    }
 
     // Hide the overlay when clicking outside the image
     overlay.addEventListener('click', function(event) {
@@ -302,7 +375,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const toggleBtn = document.getElementById('showVideoStudyOne');
     const mainImg = document.getElementById(`workImage-${studyId}`);
     const navRows = document.querySelectorAll(`#${studyId} .image-navigation`);
-    const arrowsRow = navRows[0];
 
     let videoEl = null;
     let showingVideo = false;
@@ -319,14 +391,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 videoEl.style.width = '100%';
                 videoEl.style.maxWidth = '900px';
                 videoEl.style.display = 'block';
-                mainImg.parentNode.insertBefore(videoEl, arrowsRow);
+                // Insert video directly after the image so it appears in the media column
+                mainImg.insertAdjacentElement('afterend', videoEl);
             } else {
                 videoEl.style.display = 'block';
             }
             mainImg.style.display = 'none';
-            if (arrowsRow) arrowsRow.style.display = 'none';
+            // Keep controls at the bottom; no need to hide them
             toggleBtn.textContent = 'Show Images';
-            toggleBtn.classList.add('is-video'); // <- add state class
+            toggleBtn.classList.add('is-video');
             showingVideo = true;
         } else {
             // Show images
@@ -336,9 +409,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 videoEl.style.display = 'none';
             }
             mainImg.style.display = 'block';
-            if (arrowsRow) arrowsRow.style.display = 'flex';
             toggleBtn.textContent = 'Show Video';
-            toggleBtn.classList.remove('is-video'); // <- remove state class
+            toggleBtn.classList.remove('is-video');
             showingVideo = false;
         }
     });
