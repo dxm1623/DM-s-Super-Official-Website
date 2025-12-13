@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Designing Virtual Worlds - Final Project\: "lost my book."</title>
+    <style>
+        body {
+            font-family: "Trebuchet MS", Arial, sans-serif;
+            background-color: #5D96DB;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            height: 700px;
+        }
+        h1, h2, h3 {
+            font-family: "Trebuchet MS", Arial, sans-serif;
+            color: #D9A026;
+            text-shadow: 3px 3px 1px #1B1750;
+        }
+        p, ul, li {
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: #D9A026;
+        }
+        /* More visible links */
+        a {
+            color: #F3C969;
+            text-decoration: underline;
+        }
+        a:hover {
+            color: #FFD884;
+            text-decoration-thickness: 2px;
+        }
+
+        /* Adopt AC layout styles */
+        .container { 
+            display: flex; 
+            max-width: 1200px; 
+            margin: 20px auto; 
+            background: linear-gradient(135deg, #fff 0%, #e9e9e9 100%); 
+            border: 1px solid #ccc; 
+            border-radius: 8px; 
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.2); 
+            overflow: hidden; 
+        }
+        .image-column { 
+            display: grid; 
+            grid-template-columns: 1fr; 
+            gap: 10px; 
+            flex: 1; 
+            min-width: 260px; 
+            padding: 10px; 
+            background-color: #d9eaff; 
+        }
+        .image-column img { 
+            width: 100%; 
+            border: 3px solid #6196DC; 
+            border-radius: 4px; 
+            cursor: pointer; 
+        }
+        .text-column { 
+            flex: 2; 
+            padding: 20px; 
+            background-color: #1B1750; 
+        }
+
+        /* Hide old two-column specific classes to avoid conflicts */
+        .content-row, .left-column, .right-column { display: none; }
+
+        /* Thumbnails */
+        #videoThumbs-studyOne { 
+            flex-wrap: wrap; 
+            gap: 8px;
+            border: 3px solid #D9A026;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            padding: 4px;
+        }
+        #videoThumbs-studyOne .thumb {
+            display: inline-block;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        #videoThumbs-studyOne img {
+            width: 80px; height: auto; cursor: pointer; opacity: 0.8;
+            border-radius: 6px; transition: opacity .15s, box-shadow .15s;
+        }
+        #videoThumbs-studyOne img:hover { opacity: 1; }
+        #videoThumbs-studyOne .active img {
+            opacity: 1; box-shadow: 0 0 0 2px #F3C969;
+        }
+
+        /* Box around video */
+        #workVideo-studyOne {
+            border: 3px solid #D9A026;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            margin-top: 6px; /* keep video close to controls when shown */
+        }
+
+        .assets-panel {
+            background:#ffffff;
+            color:#1B1750;
+            border-radius:10px;
+            margin-top:16px;
+            padding:20px 28px 24px;
+            width:100%;
+            max-width:900px;
+            box-sizing:border-box;
+            text-align:center;
+        }
+        .assets-panel h3 {
+            margin:0 0 4px;
+            font-size:30px;
+            letter-spacing:.5px;
+            color:#1B1750;
+            text-shadow:1px 1px 0 rgba(0,0,0,0.15);
+        }
+        .assets-panel .assets-sub {
+            margin:0 0 14px;
+            font-size:14px;
+            font-style:italic;
+            color:#555;
+        }
+        .assets-panel ul {
+            list-style:none;
+            padding:0;
+            margin:0;
+        }
+        .assets-panel li { margin:6px 0; }
+        .assets-panel a {
+            display:inline-block;
+            padding:6px 10px;
+            border-radius:6px;
+            background:linear-gradient(to bottom,#F3C969,#B87333);
+            color:#1B1750;
+            font-weight:bold;
+            text-decoration:none;
+            box-shadow:0 2px 4px rgba(0,0,0,0.25);
+            transition:all .18s;
+        }
+        .assets-panel a:hover {
+            background:linear-gradient(to bottom,#B87333,#F3C969);
+            transform:translateY(-2px);
+        }
+        .assets-panel a:active {
+            transform:translateY(1px);
+            box-shadow:0 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .video-caption {
+            margin-top: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #F3C969;
+            text-shadow: 1px 1px 0 #1B1750;
+            letter-spacing: .5px;
+        }
+
+        #studyOne {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100%;
+            width: 100%;
+        }
+        #studyOne #workImage-studyOne {
+            max-width: 100%;      /* scale within column */
+            height: auto;
+            margin-top: auto;
+            margin-bottom: auto;
+            object-fit: contain;  /* prevent distortion */
+        }
+
+        .controls-container {
+            margin-top: auto; /* stays at bottom inside #studyOne */
+        }
+        .controls-container .image-navigation { justify-content: center; }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Designing Virtual Worlds</h1>
+    <h2 style="text-align: center;">Final Project:</h2>
+    <h3 style="text-align: center;">"lost my book."</h3>
+    <div class="container">
+        <div class="image-column">
+            <!-- Main slider + controls -->
+            <div id="studyOne" style="margin-bottom: 8px;">
+                <img id="workImage-studyOne" src="images/projectImages/virtualWorldsImgs/FINAL/FINAL_concept1.PNG" alt="Designing Virtual Worlds - Final Project: 'lost my book.'" data-caption="Final Project: 'lost my book.'" style="width:100%; border:3px solid #6196DC; border-radius:4px;" />
+                <!-- Controls immediately under media -->
+                <div class="image-navigation" style="margin-bottom: 6px;">
+                    <button class="left" onclick="changeWorkImage('studyOne', -1)">←</button>
+                    <button class="right" onclick="changeWorkImage('studyOne', 1)">→</button>
+                </div>
+                <div class="image-navigation" style="margin-bottom: 6px;">
+                    <button class="buttons" id="showVideoStudyOne">Show Video</button>
+                </div>
+            </div>
+        </div>
+        <div class="text-column">
+            <!-- Add headings for readability -->
+            <h3 style="color:#F3C969; margin-top:0;">Overview</h3>
+            <p>
+                This final project for the Designing Virtual Worlds course involved expanding on what I had learned from my midterm project into a more complete experience. I elected to use the opportunity to expand on the atmosphere I envisioned with <i>Lonely Road</i>, only this time instead of relying on the occasional animation and sound effect to convey mood, I created a more immersive environment with a focus on exploration, environmental design, and impactful choices.
+            </p>
+            <h3 style="color:#F3C969;">Concept & Goals</h3>
+            <p>
+                It was my first real foray into narrative game design within a 3D space, and in VR no less. The experience is centered around a lost notebook that the (somewhat blaise) protagonist must find in a park they had just visited with their friend. I imagined it as a short, contemplative experience about common-sense, as well as our tendency (especially as gamers) to go on autopilot and do anything to "win" without stopping to think about the consequences of our actions.
+            </p>
+            <h3 style="color:#F3C969;">Design Decisions</h3>
+            <p>
+                I imagined initially the experience as a short walk in a park, with the player going up to a cabin in the woods and making certain choices that would affect how the cabin itself would appear. However, as I developed the experience further, and I became more familiar with my limits as well as those of the engine, I decided to focus more on environmental storytelling and atmosphere rather than branching narratives. The final experience is more linear than my original concept, but it did enable me to more focus on how to implement the various interactions I had planned.
+            </p>
+            <h3 style="color:#F3C969;">Interactions & Endings</h3>
+            <p>
+                The player would have the opportunity to break three main things in the environment: a gate at the entrance of the park, a bridge, and another gate leading up to where they (might) find their notebook. Each broken object would be tracked an run up a score (represented within a script called "FlagsStore") and at the end of the experience, the player would be shown a different ending based on how many things they had broken. The endings were meant to reflect the idea that while breaking things may seem inconsequential in the moment, there are always consequences to our actions, and sometimes those consequences can be significant.
+            </p>
+            <p>
+                The interactions themselves were implemented using simple raycasting from the player's hand controllers, allowing them to point and click on objects to interact with them. I also added audio cues and visual feedback to make the interactions feel more satisfying, as well as incorporating more complex animations to enhance the overall experience. Tracking the broken objects and determining the ending was handled through a combination of scripts that held and read certain variables like "gateBroken" and "bridgeBroken" to keep track of the player's actions throughout the experience.
+            </p>
+            <h3 style="color:#F3C969;">Movement & Comfort</h3>
+            <p>
+                Movement, unlike in my midterm project, was implemented using teleportation to reduce motion sickness in VR and to better control the player's perspective. I thought of how games like <i>Myst</i> handled limited movement to put they player in specific vantage points to take in the environment and showcase puzzle areas, and I wanted to replicate that (the best I could) in VR.
+            </p>
+            <p>
+                I set up specific teleportation nodes throughout the environment that the player could use to move around, ensuring that they would always have a clear view of their surroundings and be able to take in the atmosphere I had worked hard to create. This also allowed me to control the pacing of the experience, guiding the player through the environment in a way that felt natural and immersive. These teleport nodes could teleport you directly to other nodes, or to a proxy node in moments where direct teleportation wasn't possible due to environmental constraints or would be too disorienting or difficult as a player. They would also only ever show up when the player was on a neighboring node and if/when they had met certain conditions to access them, pulled from the aforementioned "FlagsStore" script.
+            </p>
+            <h3 style="color:#F3C969;">Reflection</h3>
+            <p>
+                All in all, considering the time constraints, my still somewhat limited knowledge of Unity and C#, the challenges of working in VR, and a fair number of unexpected technical issues, I am fairly satisfied with how the final project turned out. It has deepened my understanding of VR development, environmental storytelling, and player interaction design, all of which I plan to carry forward into future projects.
+            </p>
+            <h3>Asset Credits</h3>
+            <p class="assets-sub">3D Models and Textures Used in This Project:
+                <ul>
+                    <li><a href="https://assetstore.unity.com/packages/2d/textures-materials/sky/allsky-free-10-sky-skybox-set-146014">AllSky Free 10 Sky Skybox Set</a></li>
+                    <li><a href="https://assetstore.unity.com/packages/2d/textures-materials/wood/plank-textures-pbr-72318">Plank Textures PBR</a></li>
+                    <li><a href="https://assetstore.unity.com/packages/3d/props/tools/post-apo-survival-tools-free-331744">Post-Apo Survival Tools Free</a></li>
+                    <li><a href="https://assetstore.unity.com/packages/3d/props/interior/house-interior-free-258782">House Interior Free</a></li>
+                    <li><a href="https://assetstore.unity.com/packages/3d/props/wooden-street-bench-289333">Wooden Street Bench</a></li>
+                </ul>
+            </p>
+            <h3>Check it out, and try it out?</h3>
+            <p>You can look through the scripts I used, and try a (still somewhat buggy) APK <a href="https://drive.google.com/drive/folders/1ffKNj31hGKD5qfqqvp2WkW1bu1LYqYnE?usp=sharing" style="color:#F3C969;text-decoration: underline;">here</a>!</p>
+        </div>
+    </div>
+    <div id="overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; align-items:center; justify-content:center; background: rgba(0,0,0,0.8);">
+    <img id="overlay-img" src="" alt="" style="cursor: zoom-in;">
+    <div id="overlay-caption" style="color:#fff; margin-top:10px;"></div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+    const overlay = document.getElementById('overlay');
+    const overlayImg = document.getElementById('overlay-img');
+    const overlayCaption = document.getElementById('overlay-caption');
+
+    // Target the actual gallery image inside #studyOne
+    const galleryImg = document.querySelector('#studyOne #workImage-studyOne');
+    if (galleryImg) {
+        galleryImg.addEventListener('click', function(event) {
+            overlayImg.src = event.target.src;
+            overlayImg.alt = event.target.alt || '';
+            overlayCaption.textContent = galleryImg.getAttribute('data-caption') || event.target.alt || '';
+            overlayImg.style.width = '33%';
+            overlayImg.style.cursor = 'zoom-in';
+            overlay.style.display = 'flex';
+            overlay.style.flexDirection = 'column';
+            overlayImg.style.transform = 'translate(0, 0)'; // Reset position on open
+        });
+    }
+
+    // Hide the overlay when clicking outside the image
+    overlay.addEventListener('click', function(event) {
+        if (event.target !== overlayImg) {
+            overlay.style.display = 'none';
+            overlayImg.style.transform = 'translate(0, 0)'; // Reset position on close
+        }
+    });
+
+    // Toggle zoom on the overlay image
+    overlayImg.addEventListener('click', function() {
+        if (overlayImg.style.width === '33%') {
+            overlayImg.style.width = 'fit-content';
+            overlayImg.style.maxWidth = '95%';
+            overlayImg.style.maxHeight = '95%';
+            overlayImg.style.cursor = 'zoom-out';
+        } else {
+            overlayImg.style.width = '33%';
+            overlayImg.style.maxWidth = 'fit-content';
+            overlayImg.style.maxHeight = 'fit-content';
+            overlayImg.style.transform = 'translate(0, 0)'; // Reset position
+            overlayImg.style.cursor = 'zoom-in';
+        }
+    });
+
+    // Pan the zoomed-in image using mouse movement
+    overlayImg.addEventListener('mousemove', function(event) {
+        if (overlayImg.style.width === 'fit-content') { // Only pan if zoomed in
+            const rect = overlay.getBoundingClientRect();
+            const offsetX = Math.min(Math.max((event.clientX - rect.left) / rect.width, 0), 1) * 100;
+            const offsetY = Math.min(Math.max((event.clientY - rect.top) / rect.height, 0), 1) * 100;
+            overlayImg.style.transform = `translate(${50 - offsetX}%, ${50 - offsetY}%)`;
+        }
+    });
+});
+</script>
+<script>
+    const imageSets = {
+        studyOne: [
+            "images/projectImages/virtualWorldsImgs/FINAL/FINAL_concept1.PNG",
+            "images/projectImages/virtualWorldsImgs/FINAL/FINAL_concept2.png",
+            "images/projectImages/virtualWorldsImgs/FINAL/FINAL_concept3.png",
+            "images/projectImages/virtualWorldsImgs/FINAL/FINAL_concept4.PNG",
+            "images/projectImages/virtualWorldsImgs/FINAL/FINAL_nodes.png",
+            "images/projectImages/virtualWorldsImgs/FINAL/FINAL_nodes2.png",
+            "images/projectImages/virtualWorldsImgs/FINAL/FINAL_title.png",
+            "images/projectImages/virtualWorldsImgs/FINAL/FINAL_intro.png",
+            "images/projectImages/virtualWorldsImgs/FINAL/FINAL_gate.png",
+            "images/projectImages/virtualWorldsImgs/FINAL/FINAL_bridge.png",
+            "images/projectImages/virtualWorldsImgs/FINAL/FINAL_stairs1.png",
+            "images/projectImages/virtualWorldsImgs/FINAL/FINAL_stairs2.png",
+            "images/projectImages/virtualWorldsImgs/FINAL/FINAL_stairs3.png",
+            "images/projectImages/virtualWorldsImgs/FINAL/FINAL_stairs4.png",
+            "images/projectImages/virtualWorldsImgs/FINAL/FINAL_bench1.png",
+            "images/projectImages/virtualWorldsImgs/FINAL/FINAL_end1.png"
+        ]
+    };
+
+    let currentImageIndices = {
+        studyOne: 0,
+    };
+
+    function changeWorkImage(study, direction) {
+        currentImageIndices[study] = (currentImageIndices[study] + direction + imageSets[study].length) % imageSets[study].length;
+        document.querySelector(`#${study} #workImage-${study}`).src = imageSets[study][currentImageIndices[study]];
+    }
+    function showHomeAlert() {
+        alert("Don't worry, you're already home!");
+    }
+
+    function showContent(id) {
+        const content = document.getElementById(id);
+        if (content.style.display === "none") {
+            content.style.display = "block";
+        } else {
+            content.style.display = "none";
+        }
+    }
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const studyId = 'studyOne';
+    const toggleBtn = document.getElementById('showVideoStudyOne');
+    const mainImg = document.getElementById(`workImage-${studyId}`);
+    const navRows = document.querySelectorAll(`#${studyId} .image-navigation`);
+
+    let videoEl = null;
+    let showingVideo = false;
+
+    toggleBtn.addEventListener('click', function () {
+        if (!showingVideo) {
+            // Show video
+            if (!videoEl) {
+                videoEl = document.createElement('video');
+                videoEl.id = `workVideo-${studyId}`;
+                videoEl.src = 'videos/projectVideos/virtualWorldsVideos/FINAL/FINAL_demo.mp4';
+                videoEl.controls = true;
+                videoEl.preload = 'metadata';
+                videoEl.style.width = '100%';
+                videoEl.style.maxWidth = '900px';
+                videoEl.style.display = 'block';
+                // Insert video directly after the image so it appears in the media column
+                mainImg.insertAdjacentElement('afterend', videoEl);
+            } else {
+                videoEl.style.display = 'block';
+            }
+            mainImg.style.display = 'none';
+            // Keep controls at the bottom; no need to hide them
+            toggleBtn.textContent = 'Show Images';
+            toggleBtn.classList.add('is-video');
+            showingVideo = true;
+        } else {
+            // Show images
+            if (videoEl) {
+                videoEl.pause();
+                videoEl.currentTime = 0;
+                videoEl.style.display = 'none';
+            }
+            mainImg.style.display = 'block';
+            toggleBtn.textContent = 'Show Video';
+            toggleBtn.classList.remove('is-video');
+            showingVideo = false;
+        }
+    });
+});
+</script>
+
+</body>
+</html>
