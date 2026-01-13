@@ -1,4 +1,4 @@
-        const tabs = {
+const tabs = {
             index: {
                 sectionId: 'index-section',
                 contentId: 'index-content',
@@ -112,3 +112,37 @@
 
         // Ensure the initializePage function runs after the DOM is fully loaded
         window.addEventListener('load', initializePage);
+
+        // Keyboard controls for sliders
+        window.addEventListener('keydown', (e) => {
+            const active = document.activeElement;
+            const inStudyOne = document.getElementById('studyOne');
+            const inStudyTwo = document.getElementById('studyTwo');
+            if (!inStudyOne && !inStudyTwo) return;
+            if (e.key === 'ArrowLeft') {
+                if (inStudyTwo && active.closest && active.closest('#studyTwo')) changeWorkImage('studyTwo', -1);
+                else changeWorkImage('studyOne', -1);
+            }
+            if (e.key === 'ArrowRight') {
+                if (inStudyTwo && active.closest && active.closest('#studyTwo')) changeWorkImage('studyTwo', 1);
+                else changeWorkImage('studyOne', 1);
+            }
+        });
+
+        // Lazy-load images via IntersectionObserver
+        window.addEventListener('load', () => {
+            const imgs = document.querySelectorAll('img');
+            const io = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const el = entry.target;
+                        const src = el.getAttribute('data-src');
+                        if (src) { el.src = src; el.removeAttribute('data-src'); }
+                        obs.unobserve(el);
+                    }
+                });
+            }, { rootMargin: '200px' });
+            imgs.forEach(img => io.observe(img));
+        });
+
+        // Add ARIA live region for ticker already in HTML

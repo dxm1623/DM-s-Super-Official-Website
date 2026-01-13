@@ -9,40 +9,59 @@
     <!--SITE PUSH ACTING WEIRD-->
 </head>
 <body>
-    <div id="main-content">
-        <h2 class="dms-header">Here's some fun things!</h2>
-        <div id="container">
-            <div id="tabs-content">
-                <div id="miscMenu">
-                    <div style="background-color: white; color: black; border-radius: 10px; padding: 10px; margin-bottom: 10px; text-align: center;">
-                        <h1 style="font-size: 2rem; font-weight: bolder;">Fun Stuff</h1>
-                        <div id="bio-content" class="tabs-stuff">
-                            <p>Here are some fun things I have made! Click on the buttons to check them out!</p>
+    <div class="scanlines" aria-hidden="true"></div>
+    <div class="center-strip">
+        <div class="content-grid">
+            <div id="main-content" role="main">
+                <h2 class="dms-header">Here's some fun things!</h2>
+                <div id="container">
+                    <div id="tabs-content">
+                        <div id="misc-section" class="section">
+                            <div id="miscMenu">
+                                <div style="background-color: white; color: black; border-radius: 10px; padding: 10px; margin-bottom: 10px; text-align: center;">
+                                    <h1 style="font-size: 2rem; font-weight: bolder;">Fun Stuff</h1>
+                                    <div id="bio-content" class="tabs-stuff">
+                                        <p>Here are some fun things I have made! Click on the buttons to check them out!</p>
+                                    </div>
+                                </div>
+                                <div class="miscContainerParent">
+                                    <div class="miscContainer" style="text-align: center;">
+                                        <img src="images/thumbnails/quizImg.gif" alt="Quiz Preview" style="width: 150px; height: auto; margin-bottom: 10px;">
+                                        <button class="buttons" id="butQuiz" onclick="location.href='quiz.html';">Go to Quiz</button>
+                                    </div>
+                                    <div class="miscContainer" style="text-align: center;">
+                                        <img src="images/thumbnails/mouseFunImg.gif" alt="Mouse Fun Preview" style="width: 150px; height: auto; margin-bottom: 10px;">
+                                        <button class="buttons" id="butCursor" onclick="location.href='mouseFun.html';">Go to Mouse Fun</button>
+                                    </div>
+                                    <div class="miscContainer" style="text-align: center;">
+                                        <img src="images/thumbnails/butterflyImg.gif" alt="Butterfly Preview" style="width: 150px; height: auto; margin-bottom: 10px;">
+                                        <button class="buttons" id="butButterfly" onclick="location.href='butterfly.html';">Go to Butterfly Effect</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="miscContainerParent">
-                        <div class="miscContainer" style="text-align: center;">
-                            <img src="images/thumbnails/quizImg.gif" alt="Quiz Preview" style="width: 150px; height: auto; margin-bottom: 10px;">
-                            <button class="buttons" id="butQuiz" onclick="location.href='quiz.html';">Go to Quiz</button>
-                        </div>
-                        <div class="miscContainer" style="text-align: center;">
-                            <img src="images/thumbnails/mouseFunImg.gif" alt="Mouse Fun Preview" style="width: 150px; height: auto; margin-bottom: 10px;">
-                            <button class="buttons" id="butCursor" onclick="location.href='mouseFun.html';">Go to Mouse Fun</button>
-                        </div>
-                        <div class="miscContainer" style="text-align: center;">
-                            <img src="images/thumbnails/butterflyImg.gif" alt="Butterfly Preview" style="width: 150px; height: auto; margin-bottom: 10px;">
-                            <button class="buttons" id="butButterfly" onclick="location.href='butterfly.html';">Go to Butterfly Effect</button>
                     </div>
                 </div>
+                <br>
+                <hr>
+                <p style="text-align: center;">Want to contact me? I am available at <span style="font-style: italic;">dxm1623@gmail.com</span>.</p>
+                <p style="text-align: center;">Want to connect? Check me out on <span class="externalLink" id="LinkedIn" onclick="window.location.href='https://www.linkedin.com/in/daniele-montefiori-97a358369';" style="cursor: pointer;">LinkedIn</span>!</p>
+                <br><br><br>
             </div>
+            <aside class="right-nav" aria-label="Site navigation">
+                <nav class="site-navbar vertical" aria-label="Main navigation">
+                    <a href="index.html">Home</a>
+                    <a href="persona.html">About</a>
+                    <a href="misc.html" class="current" aria-current="page" tabindex="-1">Misc</a>
+                </nav>
+            </aside>
         </div>
-    </div>
-</body>
     </div>
     <div id="logo-container" style="cursor: pointer;" onclick="location.href='index.html';">
         <div id="logo">
             <img src="images/PersonalLogo.gif" alt="DM's Logo">
         </div>
     </div>
-    <script src="functions.js"></script></body>
+    <script src="functions.js"></script>
+</body>
 </html>

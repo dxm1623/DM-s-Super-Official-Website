@@ -1,102 +1,135 @@
-<!DOCTYPE html>
-<html lang="en"> 
-    <!-- Github please -->
-<head>
+<html lang="en"><!-- Github please --><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DM's Website</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div id="main-content">
-        <h2 class="dms-header">DM's Website</h2>
-        <div id="index-section" class="section">
-            <div id="index-content">
-                <br>
-                <div id="container">
-                    <p class="subtitle">
-                        This is my website, coded in conjunction with my studies at the <strong>University of Miami</strong> as part of both my Front End Fundamentals and Studio / Portfolio courses.
-                        <br><br>
-                        I am diving head first into the world of <strong>game design and development</strong>, on a mission to <strong>communicate engaging and deeply introspective messages</strong> through the ever enthralling medium of <strong>gaming</strong>. Beyond that, I have an affinity for <strong>graphic design and web design</strong>, and always <strong>willing to learn</strong> in any field I approach.
-                        <br><br>
-                        This website is a work in progress, to be completed <strong style="font-size: 1rem; color: pink; text-shadow: red;"><i>never</i></strong>. It shall be updated as I build my repertoire.
-                        <br><br>
-                        Please, feel free to look around!
-                    </p>
-                    <hr>
-                    <p class="toPersona" onClick="location.href='persona.html'">
-                        <strong>WANT TO LEARN MORE ABOUT ME?</strong>
-                    </p>
-                </div>
-                <!-- <br> -->
-            </div>
-        </div>
-        <!-- <br> -->
-        <!-- <div id="container">
-            <div id="tabs-container" display="block">
-            <input type="button" id="but1" class="buttons" onclick="showContent('tabs-content')" value="My Work">
-            </div>
-        </div> -->
-            <!-- <br> -->
-            <div id="tabs-content" style="display: block;">
-                <div id="my-work-section" class="section">
-                    <h3>My Work</h3>
-                    <div id="my-work-content" class="tabs-stuff">
-                        <div class="studyShowcase" id="studyOne">
-                            <h4>"Own Goal" & "Nautilus's Conundrum"</h4>
-                            <div id="workImageContainer">
-                                <img id="workImage-studyOne" src="images/projectImages/dpeImgs/Project 2 FINAL pic1.PNG" alt="Own Goal" style="width: 100%; max-width: 600px;">
-                                <button class="left" onclick="changeWorkImage('studyOne', -1)">←</button>
-                                <button class="right" onclick="changeWorkImage('studyOne', 1)">→</button>
-                            </div>
-                            <div>
-                                <button class="buttons" id="toCaseStudy" onclick="location.href='caseGoalAndSpace.html'" style="margin-top: 20px;">Explore!</button>
-                            </div>
-                            <p>These were my second and third projects for my Designing Playful Experiences course at UM, which were designed and coded in GameSalad. These functional prototypes are among some of my first forays into game design and development.
+<body style="background-image: url(&quot;images/indexBackground.gif&quot;);">
+    <div class="scanlines" aria-hidden="true"></div>
+    <div class="center-strip">
+        <div class="content-grid">
+            <div id="main-content" role="main">
+                <h2 class="dms-header">DM's Website</h2>
+                <div id="index-section" class="section">
+                    <div id="index-content">
+                        <br>
+                        <div id="container">
+                            <p class="subtitle">
+                                This is my website, coded in conjunction with my studies at the <strong>University of Miami</strong> as part of both my Front End Fundamentals and Studio / Portfolio courses.
                                 <br><br>
-                                <strong>Own Goal</strong> is a game where the player controls a 'goal' and is tasked with making sure the ball does not go past them.
+                                I am diving head first into the world of <strong>game design and development</strong>, on a mission to <strong>communicate engaging and deeply introspective messages</strong> through the ever enthralling medium of <strong>gaming</strong>. Beyond that, I have an affinity for <strong>graphic design and web design</strong>, and always <strong>willing to learn</strong> in any field I approach.
                                 <br><br>
-                                <strong>Nautilus's Conundrum</strong> is a game where the player is a canine astronaut traversing an interstellar maze using only their head and a webcam.
+                                This website is a work in progress, to be completed <strong style="font-size: 1rem; color: pink; text-shadow: red;"><i>never</i></strong>. It shall be updated as I build my repertoire.
+                                <br><br>
+                                Please, feel free to look around!
+                            </p>
+                            <hr>
+                            <p class="toPersona" onclick="location.href='persona.html'">
+                                <strong>WANT TO LEARN MORE ABOUT ME?</strong>
                             </p>
                         </div>
-                        <br>
-                        <div class="studyShowcase" id="studyTwo">
-                            <h4>"Answer Campus - First Semester"</h4>
-                            <div id="workImageContainer">
-                                <img id="workImage-studyTwo" src="images/projectImages/acImgs/ac img0.png" alt="Answer Campus" style="width: 100%; max-width: 600px;">
-                                <button class="left" onclick="changeWorkImage('studyTwo', -1)">←</button>
-                                <button class="right" onclick="changeWorkImage('studyTwo', 1)">→</button>
-                            </div>
-                            <div>
-                                <button class="buttons" id="toCaseStudy" onclick="location.href='caseAnswerCampus.html'" style="margin-top: 20px;">Explore!</button>
-                            </div>
-                            <p><strong>Answer Campus</strong> is an interactive visual novel developed by NERDLab as part of their in-house game development initiative, as part of their writing team. It is a game that explores the themes of mental health and the college experience.
-                            <br><br>
-                            Since Spring of 2024, I have helped develop the narrative and dialogue for the game, as well as expanding some of the characters, as part of the writing team. Currently, development is ongoing for the first semester edition.
-                            </p>
+                        <!-- <br> -->
                     </div>
                 </div>
-            </div>
+                <!-- <br> -->
+                <!-- <div id="container">
+                    <div id="tabs-container" display="block">
+                    <input type="button" id="but1" class="buttons" onclick="showContent('tabs-content')" value="My Work">
+                    </div>
+                </div> -->
+                    <!-- <br> -->
+                    <div id="tabs-content" style="display: block;">
+                        <div id="my-work-section" class="section" role="region" aria-label="My Work">
+                            <h3>My Work</h3>
+                            <div id="my-work-content" class="tabs-stuff">
+                                <div class="studyShowcase" id="studyOne">
+                                    <div class="window-bar">
+                                        <span class="window-dot dot-red"></span>
+                                        <span class="window-dot dot-yellow"></span>
+                                        <span class="window-dot dot-green"></span>
+                                        <span class="window-title">Own Goal &amp; Nautilus's Conundrum</span>
+                                    </div>
+                                    <div class="window-body">
+                                        <div id="workImageContainer">
+                                            <img id="workImage-studyOne" src="images/projectImages/dpeImgs/Project 2 FINAL pic1.PNG" alt="Own Goal">
+                                        </div>
+                                        <div class="control-bar" aria-label="Image controls">
+                                            <div class="control-group left">
+                                                <button class="control" aria-label="Previous image" onclick="changeWorkImage('studyOne', -1)">←</button>
+                                                <button class="control" aria-label="Next image" onclick="changeWorkImage('studyOne', 1)">→</button>
+                                            </div>
+                                            <div class="control-group right">
+                                                <button class="button-glossy" onclick="location.href='caseGoalAndSpace.html'">EXPLORE!</button>
+                                            </div>
+                                        </div>
+                                        <p>These were my second and third projects for my Designing Playful Experiences course at UM, which were designed and coded in GameSalad. These functional prototypes are among some of my first forays into game design and development.
+                                            <br><br>
+                                            <strong>Own Goal</strong> is a game where the player controls a 'goal' and is tasked with making sure the ball does not go past them.
+                                            <br><br>
+                                            <strong>Nautilus's Conundrum</strong> is a game where the player is a canine astronaut traversing an interstellar maze using only their head and a webcam.
+                                        </p>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="studyShowcase" id="studyTwo">
+                                    <div class="window-bar">
+                                        <span class="window-dot dot-red"></span>
+                                        <span class="window-dot dot-yellow"></span>
+                                        <span class="window-dot dot-green"></span>
+                                        <span class="window-title">Answer Campus - First Semester</span>
+                                    </div>
+                                    <div class="window-body">
+                                        <div id="workImageContainer">
+                                            <img id="workImage-studyTwo" src="images/projectImages/acImgs/ac img0.png" alt="Answer Campus">
+                                        </div>
+                                        <div class="control-bar" aria-label="Image controls">
+                                            <div class="control-group left">
+                                                <button class="control" aria-label="Previous image" onclick="changeWorkImage('studyTwo', -1)">←</button>
+                                                <button class="control" aria-label="Next image" onclick="changeWorkImage('studyTwo', 1)">→</button>
+                                            </div>
+                                            <div class="control-group right">
+                                                <button class="button-glossy" onclick="location.href='caseAnswerCampus.html'">EXPLORE!</button>
+                                            </div>
+                                        </div>
+                                        <p><strong>Answer Campus</strong> is an interactive visual novel developed by NERDLab as part of their in-house game development initiative, as part of their writing team. It is a game that explores the themes of mental health and the college experience.
+                                        <br><br>
+                                        Since Spring of 2024, I have helped develop the narrative and dialogue for the game, as well as expanding some of the characters, as part of the writing team. Currently, development is ongoing with a demo build for the first semester edition available via NERDLab's Itch.io page. A second semester edition is also in the works as of 2026.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <br><br><div id="misc-tabs-container">
+                    <input type="button" id="butMisc" class="buttons" onclick="location.href='misc.html'" value="Miscellaneous Projects">
+                </div><br><hr><p style="text-align: center;">Want to contact me? I am available at <span style="font-style: italic;">dxm1623@gmail.com</span>.</p><p style="text-align: center;">Want to connect? Check me out on <span class="externalLink" id="LinkedIn" onclick="window.location.href='https://www.linkedin.com/in/daniele-montefiori-97a358369';" style="cursor: pointer;">LinkedIn</span>!</p><br><br><br></div>
+                
+                
+                
+                
+                
+                
+                <!--         <p style="text-align: center;">Want to connect? Check me out on <span class="externalLink" id="LinkedIn" onclick="window.location.href='https://www.linkedin.com/in/dannym2025/';" style="cursor: pointer;">LinkedIn</span>!</p>
+                         
+                but linkedin decided to restrict this account for no reason and I don't have high hopes of getting it back, so I made a new one for now. Leaving in case I do get it back. Otherwise, this is a memorial to the old one.-->
+                
+            <aside class="right-nav" aria-label="Site navigation">
+                <!-- <div class="ticker" aria-live="polite"><span>Welcome to DM's site • New dev logs posted • APK builds available • Thanks for visiting!</span></div> -->
+                <nav class="site-navbar vertical" aria-label="Main navigation">
+                    <a href="index.html" class="current" aria-current="page" tabindex="-1">Home</a>
+                    <a href="persona.html">About</a>
+                    <a href="misc.html">Misc</a>
+                </nav>
+            </aside></div>
+            
         </div>
-        <br><br>
-        <div id="misc-tabs-container">
-            <input type="button" id="butMisc" class="buttons" onclick="location.href='misc.html'" value="Miscellaneous Projects">
-        </div>
-        <br>
-        <hr>
-        <p style="text-align: center;">Want to contact me? I am available at <span style="font-style: italic;">danielemontefiori03@gmail.com</span>.</p>
-        <p style="text-align: center;">Want to connect? Check me out on <span class="externalLink" id="LinkedIn" onclick="window.location.href='https://www.linkedin.com/in/daniele-montefiori-97a358369';" style="cursor: pointer;">LinkedIn</span>!</p>
-        <!--         <p style="text-align: center;">Want to connect? Check me out on <span class="externalLink" id="LinkedIn" onclick="window.location.href='https://www.linkedin.com/in/dannym2025/';" style="cursor: pointer;">LinkedIn</span>!</p>
-                 
-        but linkedin decided to restrict this account for no reason and I don't have high hopes of getting it back, so I made a new one for now. Leaving in case I do get it back. Otherwise, this is a memorial to the old one.-->
-        <br><br><br>
-    </div>
+    
     <div id="logo-container" style="cursor: pointer;" onclick="showHomeAlert()">
         <div id="logo">
-            <img src="images/PersonalLogo.gif" alt="DM's Logo">
+            <img src="images/PersonalLogo.gif" alt="DM's Logo" class="" style="display: block;">
         </div>
     </div>
-</body>
+
 <script src="functions.js"></script>
 <script>
     const imageSets = {
@@ -137,4 +170,5 @@
         }
     }
 </script>
-</html>
+
+</body></html>
