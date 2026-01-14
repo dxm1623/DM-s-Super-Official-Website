@@ -1559,8 +1559,8 @@ button:hover * {
 a { color: #0047FF; text-decoration: underline; }
 a:hover, a:focus { color: #1a66ff; }
 
-.site-navbar a { font-weight: 600; }
-/* Make center strip span full viewport so right nav hits window edge */
+.site-navbar a { font-weight: 600; } /* HELLO? GITHUB? ADD THIS*/
+
 .center-strip { width: 100vw; margin: 0; }
 .center-strip .content-grid {padding-right: 0;}
 
