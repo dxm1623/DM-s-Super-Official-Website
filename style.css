@@ -113,13 +113,8 @@ body#imgChurch {
 
 
 .section {
-    padding: 50px 0;
-    /* background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 10px; */
     margin: 20px;
-    padding: 20px;
+    padding: 5px;
 }
 
 #index-section {
@@ -152,7 +147,6 @@ body#imgChurch {
     /* Center vertically */
     width: 80%;
     margin: 0 auto;
-    /* Center horizontally */
 }
 
 #case-study-content {
@@ -272,8 +266,35 @@ body#imgChurch {
 .studyShowcase {
     /* background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px); */
-    border-radius: 10px;
+    border: 3px double #7a7a7a;
+    border-radius: 12px;
+    background: linear-gradient(to bottom, #fff, #e2e2e2);
+    box-shadow: 0 10px 18px rgba(0,0,0,0.45), inset 0 1px 0 #fff;
+    overflow: hidden;
 }
+
+/* Early-2000s makeover for study showcases */
+.studyShowcase .window-bar { display: flex; align-items: center; gap: 10px; padding: 8px 12px; background: linear-gradient(to bottom, #fefefe, #d0d0d0); border-bottom: 3px ridge #9a9a9a; box-shadow: inset 0 1px 0 #fff; }
+.studyShowcase .window-dot { width: 14px; height: 14px; border-radius: 50%; border: 1px solid #555; box-shadow: inset 0 1px 0 #fff, 0 1px 0 rgba(0,0,0,0.2); }
+.studyShowcase .window-title { flex: 1; text-align: center; font-family: National-Park, sans-serif; color: #111; text-shadow: 1px 1px 0 #fff; letter-spacing: 0.5px; }
+.studyShowcase .window-body { padding: 14px; background: linear-gradient(to bottom, #ffffff, #f1f1f1); display: flex; flex-direction: column; align-items: center; flex-wrap: nowrap; border-top: 1px solid #cfcfcf; }
+.studyShowcase .window-body h4 { margin-top: 0; color: #000; text-shadow: 1px 1px 0 #fff; }
+.studyShowcase .window-body p { color: #000 !important; }
+
+/* Control bar: glossy controls with beveled frame */
+.studyShowcase .control-bar { display: flex; align-items: center; justify-content: space-between; gap: 10px; width: -webkit-fill-available; margin-top: 10px; padding: 10px 12px; background: linear-gradient(to bottom, #fefefe, #d7d7d7); border: 3px ridge #9a9a9a; border-radius: 10px; box-shadow: inset 0 1px 0 #fff; }
+.studyShowcase .control { padding: 8px 12px; border-radius: 8px; border: 2px solid #888; background: linear-gradient(to bottom, #ffffff, #cfcfcf); color: #111; font-weight: 700; text-shadow: 1px 1px 0 #fff; box-shadow: none; }
+.studyShowcase .control:hover { background: linear-gradient(to bottom, #ffffff, #bfbfbf); }
+.studyShowcase .control:active { background: linear-gradient(to bottom, #bfbfbf, #ffffff); border-style: inset; }
+
+/* Explore button: red glossy 00s vibe */
+.studyShowcase .button-glossy { padding: 8px 12px; border-radius: 8px; border: 2px solid #cc0000; background: linear-gradient(to bottom, #ff6666, #ff0000); color: #ffffff; font-weight: 800; text-shadow: 0 1px 0 rgba(0,0,0,0.25); box-shadow: none; }
+.studyShowcase .button-glossy:hover { background: linear-gradient(to bottom, #ff8888, #ff1a1a); }
+.studyShowcase .button-glossy:active { background: linear-gradient(to bottom, #ff0000, #ff6666); border-style: inset; }
+
+/* Image container frame inside showcase */
+.studyShowcase #workImageContainer { background: linear-gradient(to bottom, #ffffff, #ededed); border: 2px solid #9a9a9a; border-radius: 10px; padding: 8px; box-shadow: none; }
+.studyShowcase #workImageContainer img { border-color: #bdbdbd; box-shadow: inset 0 1px 0 #fff; }
 
 /* Retro browser window styling for study showcases */
 .studyShowcase { border: 2px solid #8a8a8a; border-radius: 12px; background: linear-gradient(to bottom, #fafafa, #e6e6e6); box-shadow: 0 8px 16px rgba(0,0,0,0.35); overflow: hidden; }
@@ -489,9 +510,26 @@ a:focus {
 }
 .site-navbar a:hover,
 .site-navbar a:focus {
-    outline: 2px dashed #333;
-    outline-offset: 2px;
     background: linear-gradient(to bottom, #ffffff, #bfbfbf);
+}
+
+.site-navbar h3 {
+    font-family: National-Park-Heavy, sans-serif;
+    color: #ffffff;
+    padding: 0px 8px;
+    margin: 0;
+}
+
+.site-navbar a.scrollA {
+    font-size: 12px;
+    background: none !important;
+    padding: 0px 8px !important;
+    margin: 0 !important;
+    color: white !important;
+    text-decoration: underline;
+    text-shadow: none !important;
+    box-shadow: none !important;
+
 }
 
 .site-header {
@@ -1532,18 +1570,6 @@ a:hover, a:focus { color: #1a66ff; }
 /* Prevent overflow: wrap nav button text fully */
 .site-navbar.vertical a {white-space: normal;overflow: visible;text-overflow: clip;}
 
-/* Retro framed center content: constrain for readability */
-.center-strip {max-width: 1100px;width: 100vw;}
-
-/* Flush right nav to window edge */
-.right-nav {margin-right: 0;}
-@media (min-width: 1100px) {
-  .center-strip { width: 100vw; }
-}
-
-/* Ensure nav buttons never clip and wrap nicely */
-.site-navbar.vertical a {white-space: normal;word-wrap: break-word;overflow: visible;}
-
 /* Retro header banner aesthetic */
 .retro-banner {
   position: sticky; top: 0; z-index: 4; margin: 0 0 12px 0; padding: 8px 12px;
@@ -1557,4 +1583,40 @@ a:hover, a:focus { color: #1a66ff; }
 /* Reduce redundant shadows to avoid heavy visuals on small screens */
 @media (max-width: 600px) {
   #main-content, .right-nav { box-shadow: 0 2px 6px rgba(0,0,0,0.25); }
+}
+
+/* Hover study showcase -> highlight matching navbar case-study link (modern browsers) */
+@supports selector(body:has(.studyShowcase:hover)) {
+  body:has(#studyOne:hover) .right-nav .site-navbar a.scrollA[href="#studyOne"],
+  body:has(#studyTwo:hover) .right-nav .site-navbar a.scrollA[href="#studyTwo"] {
+    color: #ffd24a !important;
+    font-weight: 800;
+    font-size: 14px;
+  }
+}
+
+/* Fallback: if :has() isn't supported, at least highlight the Case Studies links when any showcase is hovered */
+@supports not selector(body:has(.studyShowcase:hover)) {
+  .studyShowcase:hover ~ .right-nav .site-navbar a.scrollA,
+  #main-content:focus-within ~ .right-nav .site-navbar a.scrollA {
+    color: #ffd24a !important;
+    font-weight: 800;
+  }
+}
+
+/* JS-driven active Case Studies link */
+.right-nav .site-navbar a.scrollA.scrollA-active {
+  color: #ffd24a !important;
+  font-weight: 800;
+  font-size: 14px;
+}
+
+/* Generic container class */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    height: auto;
 }

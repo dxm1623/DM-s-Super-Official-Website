@@ -146,3 +146,73 @@ const tabs = {
         });
 
         // Add ARIA live region for ticker already in HTML
+
+        // Highlight Case Studies nav links based on which showcase is closest to viewport center
+window.addEventListener('load', () => {
+    const studyEls = Array.from(document.querySelectorAll('.studyShowcase[id]'));
+    const nav = document.querySelector('.right-nav .site-navbar');
+    if (!studyEls.length || !nav) return;
+
+    const linkById = new Map(
+        Array.from(nav.querySelectorAll('a.scrollA[href^="#"]')).map(a => [a.getAttribute('href')?.slice(1), a])
+    );
+
+    const visible = new Set();
+    let rafId = 0;
+
+    const applyActive = () => {
+        rafId = 0;
+        const viewportCenter = window.innerHeight / 2;
+
+        // Only consider currently-visible showcases
+        const candidates = studyEls
+            .filter(el => visible.has(el))
+            .map(el => {
+                const rect = el.getBoundingClientRect();
+                const elCenter = rect.top + rect.height / 2;
+                const dist = Math.abs(elCenter - viewportCenter);
+                return { el, dist };
+            })
+            .sort((a, b) => a.dist - b.dist);
+
+        // Clear previous
+        linkById.forEach(a => a.classList.remove('scrollA-active'));
+
+        // Activate closest if within threshold
+        if (!candidates.length) return;
+
+        const { el, dist } = candidates[0];
+        const threshold = Math.min(260, window.innerHeight * 0.25);
+        if (dist <= threshold) {
+            const a = linkById.get(el.id);
+            if (a) a.classList.add('scrollA-active');
+        }
+    };
+
+    const schedule = () => {
+        if (rafId) return;
+        rafId = window.requestAnimationFrame(applyActive);
+    };
+
+    const io = new IntersectionObserver(
+        (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) visible.add(entry.target);
+                else visible.delete(entry.target);
+            });
+            schedule();
+        },
+        {
+            root: null,
+            // "visible" a bit before/after entering so center selection feels natural
+            rootMargin: '35% 0px 35% 0px',
+            threshold: [0, 0.05, 0.15, 0.3]
+        }
+    );
+
+    studyEls.forEach(el => io.observe(el));
+
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    schedule();
+});

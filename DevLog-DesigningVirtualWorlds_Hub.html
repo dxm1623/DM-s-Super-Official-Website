@@ -211,6 +211,7 @@
             object-fit: cover;
             border-bottom: 2px solid #D9A026;
             flex-shrink: 0;
+            cursor: pointer;
         }
 
         .devlog-content {
@@ -278,6 +279,29 @@
         .download-button:active {
             transform: translateY(0);
             box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* Overlay styles */
+        #overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            z-index: 9999;
+        }
+        #overlay-img {
+            cursor: zoom-in;
+            max-width: 95%;
+            max-height: 95%;
+            transform: translate(0, 0);
+        }
+        #overlay-caption {
+            color: #fff;
+            margin-top: 10px;
+            text-align: center;
         }
     </style>
 </head>
@@ -357,5 +381,74 @@
         </div>
     </div>
 
+    <!-- Overlay for full image view -->
+    <div id="overlay" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); align-items:center; justify-content:center; flex-direction:column; z-index:9999;">
+        <img id="overlay-img" alt="" style="cursor:zoom-in; max-width:95%; max-height:95%; transform:translate(0,0);" />
+        <div id="overlay-caption" style="color:#fff; margin-top:10px; text-align:center;"></div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Overlay elements
+        var overlay = document.getElementById('overlay');
+        var overlayImg = document.getElementById('overlay-img');
+        var overlayCaption = document.getElementById('overlay-caption');
+
+        // Clickable thumbnails in the hub cards
+        var thumbs = document.querySelectorAll('.devlog-card .devlog-thumbnail');
+        thumbs.forEach(function (img) {
+            img.addEventListener('click', function () {
+                overlayImg.src = img.src;
+                overlayImg.alt = img.alt || '';
+                // Use the card title as caption if available
+                var titleEl = img.closest('.devlog-card')?.querySelector('.devlog-title');
+                overlayCaption.textContent = titleEl ? titleEl.textContent : (img.alt || '');
+
+                // Reset zoom state
+                overlayImg.style.cursor = 'zoom-in';
+                overlayImg.style.width = 'auto';
+                overlayImg.style.maxWidth = '95%';
+                overlayImg.style.maxHeight = '95%';
+                overlayImg.style.transform = 'translate(0,0)';
+
+                overlay.style.display = 'flex';
+            });
+        });
+
+        // Close overlay when clicking outside the image
+        overlay.addEventListener('click', function (e) {
+            if (e.target !== overlayImg) {
+                overlay.style.display = 'none';
+                overlayImg.style.transform = 'translate(0,0)';
+            }
+        });
+
+        // Toggle zoom on image
+        overlayImg.addEventListener('click', function () {
+            var zoomedIn = (overlayImg.style.cursor === 'zoom-out');
+            if (!zoomedIn) {
+                overlayImg.style.cursor = 'zoom-out';
+                overlayImg.style.width = 'fit-content';
+                overlayImg.style.maxWidth = 'none';
+                overlayImg.style.maxHeight = 'none';
+            } else {
+                overlayImg.style.cursor = 'zoom-in';
+                overlayImg.style.width = 'auto';
+                overlayImg.style.maxWidth = '95%';
+                overlayImg.style.maxHeight = '95%';
+                overlayImg.style.transform = 'translate(0,0)';
+            }
+        });
+
+        // Pan when zoomed in
+        overlayImg.addEventListener('mousemove', function (event) {
+            if (overlayImg.style.cursor !== 'zoom-out') return; // only when zoomed
+            var rect = overlay.getBoundingClientRect();
+            var offsetX = Math.min(Math.max((event.clientX - rect.left) / rect.width, 0), 1) * 100;
+            var offsetY = Math.min(Math.max((event.clientY - rect.top) / rect.height, 0), 1) * 100;
+            overlayImg.style.transform = 'translate(' + (50 - offsetX) + '%, ' + (50 - offsetY) + '%)';
+        });
+    });
+    </script>
 </body>
 </html>

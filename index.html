@@ -13,7 +13,7 @@
                 <div id="index-section" class="section">
                     <div id="index-content">
                         <br>
-                        <div id="container">
+                        <div class="container">
                             <p class="subtitle">
                                 This is my website, coded in conjunction with my studies at the <strong>University of Miami</strong> as part of both my Front End Fundamentals and Studio / Portfolio courses.
                                 <br><br>
@@ -97,6 +97,34 @@
                                         </p>
                                     </div>
                                 </div>
+                                <br>
+                                <div class="studyShowcase" id="studyThree">
+                                    <div class="window-bar">
+                                        <div class="window-dot" style="background: #FF605C;"></div>
+                                        <div class="window-dot" style="background: #FFBD44;"></div>
+                                        <div class="window-dot" style="background: #00C781;"></div>
+                                        <div class="window-title">Lonely Road & Lost My Book</div>
+                                    </div>
+                                    <div class="window-body">
+                                        <div id="workImageContainer">
+                                            <img id="workImage-studyThree" src="images/projectImages/virtualWorldsImgs/FINAL/FINAL_title.png" alt="Lonely Road & Lost My Book">
+                                        </div>
+                                        <div class="control-bar" aria-label="Image controls">
+                                            <div class="control-group left">
+                                                <button class="control" aria-label="Previous image" onclick="changeWorkImage('studyThree', -1)">←</button>
+                                                <button class="control" aria-label="Next image" onclick="changeWorkImage('studyThree', 1)">→</button>
+                                            </div>
+                                            <div class="control-group right">
+                                                <button class="button-glossy" onclick="location.href='DevLog-DesigningVirtualWorlds_Hub.html'">EXPLORE Lonely Road</button>
+                                                <button class="button-glossy" onclick="location.href='DevLog-DesigningVirtualWorlds_FINAL.html'">EXPLORE Lost My Book</button>
+                                            </div>
+                                        </div>
+                                        <p><strong>Lonely Road & Lost My Book</strong> were two interactive virtual reality experiences I developed individually as part of my senior year undergraduate studies for my Designing Virtual Worlds course. The projects focused on immersive storytelling and user interaction within virtual environments, with an emphasis on creating a rich and engaging atmosphere.
+                                        </p>
+                                        <p>These were among the first realized game experiences that I had the opportunity to develop, allowing me to explore the potential of virtual reality as a medium for storytelling and further my own skills in game design and development.
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -119,6 +147,11 @@
                     <a href="index.html" class="current" aria-current="page" tabindex="-1">Home</a>
                     <a href="persona.html">About</a>
                     <a href="misc.html">Misc</a>
+                    <hr>
+                    <h3>Case Studies</h3>
+                    <a class="scrollA" href="#studyOne">→ Own Goal+Nautilus's Conundrum</a>
+                    <a class="scrollA" href="#studyTwo">→ Writing for Answer Campus</a>
+                    <a class="scrollA" href="#studyThree">→ Lonely Road & Lost My Book</a>
                 </nav>
             </aside></div>
             
@@ -145,12 +178,18 @@
             "images/projectImages/acImgs/ac img0.png",
             "images/projectImages/acImgs/ac img2.png",
             "images/projectImages/acImgs/ac img1.png"
+        ],
+        studyThree: [
+            "images/projectImages/virtualWorldsImgs/FINAL/FINAL_title.png",
+            "images/projectImages/virtualWorldsImgs/transitions/transitionImg.png",
+            "images/projectImages/virtualWorldsImgs/dvw-5.png"
         ]
     };
 
     let currentImageIndices = {
         studyOne: 0,
-        studyTwo: 0
+        studyTwo: 0,
+        studyThree: 0
     };
 
     function changeWorkImage(study, direction) {
