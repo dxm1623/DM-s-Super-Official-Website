@@ -1585,17 +1585,16 @@ a:hover, a:focus { color: #1a66ff; }
   #main-content, .right-nav { box-shadow: 0 2px 6px rgba(0,0,0,0.25); }
 }
 
-/* Hover study showcase -> highlight matching navbar case-study link (modern browsers) */
 @supports selector(body:has(.studyShowcase:hover)) {
   body:has(#studyOne:hover) .right-nav .site-navbar a.scrollA[href="#studyOne"],
-  body:has(#studyTwo:hover) .right-nav .site-navbar a.scrollA[href="#studyTwo"] {
+  body:has(#studyTwo:hover) .right-nav .site-navbar a.scrollA[href="#studyTwo"],
+  body:has(#studyThree:hover) .right-nav .site-navbar a.scrollA[href="#studyThree"] {
     color: #ffd24a !important;
     font-weight: 800;
     font-size: 14px;
   }
 }
 
-/* Fallback: if :has() isn't supported, at least highlight the Case Studies links when any showcase is hovered */
 @supports not selector(body:has(.studyShowcase:hover)) {
   .studyShowcase:hover ~ .right-nav .site-navbar a.scrollA,
   #main-content:focus-within ~ .right-nav .site-navbar a.scrollA {
@@ -1604,14 +1603,12 @@ a:hover, a:focus { color: #1a66ff; }
   }
 }
 
-/* JS-driven active Case Studies link */
 .right-nav .site-navbar a.scrollA.scrollA-active {
   color: #ffd24a !important;
   font-weight: 800;
   font-size: 14px;
 }
 
-/* Generic container class */
 .container {
     display: flex;
     flex-direction: column;
