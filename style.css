@@ -676,6 +676,14 @@ body {
     background-image: url('images/shoreChurchBackground.gif');
 }
 
+#imgLibrary {
+    background-image: url('images/libraryBackground.gif');
+}
+
+#imgJournal {
+    background-image: url('images/journalBackground.gif');
+}
+
 img {
     border: 1px solid black;
     width: 160px;
@@ -742,6 +750,23 @@ img {
 }
 
 /*For Case Studies*/
+.case-panel {
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 10px;
+    padding: 12px;
+}
+
+.case-panel p, .case-panel li { color: black !important; }
+
+.case-panel-header {
+    background-color: black;
+    border-radius: 8px;
+    padding: 4px 8px;
+}
+
+.case-panel-header h3, h2, h1, p {
+    color: white !important;
+}
 
 .case-point {
     background: rgba(255, 255, 255, 0.2);
@@ -814,6 +839,10 @@ p:hover {
     background: white;
     border-radius: 10px;
     padding: 10px;
+}
+
+#question {
+    color: black !important;
 }
 
 #ques-count {

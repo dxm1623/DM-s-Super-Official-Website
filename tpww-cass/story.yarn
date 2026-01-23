@@ -1,0 +1,83 @@
+// The Paths We Walk
+// Cass
+// A prequel to TPWW & TPWW -- The Visit
+
+// When Cass Felynschilde, the somewhat disturbed but well-mannered scion of Merritown's wealthiest family, finds themselves left alone within the family estate in the midst of a historic blizzard, they are forced to confront the unknowable and inconceivable. If they can't trust their own mind, how can they trust that the dangers lurking in the shadows are real?
+
+title: intro
+---
+// heading: "Evening -- Felynschilde Estate -- 2 inches"
+[b]Evening -- Felynschilde Estate -- 2 inches[/b]
+// background: estate_interior_evening
+// music: eerie_ambient_loop
+// sound: wind_howl
+They were late.
+The snowstorm had come on faster than anyone had expected, and now the roads were apparently impassable. Cass Felynschilde sat alone in their room within the main residence the Felynschilde estate, the flickering light of the fireplace casting long shadows across the ornate furnishings.
+The storm hadn't yet reached Merritown, but the howling wind outside suggested it was only a matter of time. Cass glanced at the clock on the mantelpiece; it was nearly 9 o'clock in the evening.
+Father and Mother had gone to a charity gala in the city along with those of Cass's siblings who hadn't already left for higher education or work. The rest of the household staff had been sent home the hour prior by phone. Cass had been asleep by then, the bout of illness that had kept them bedridden for the past week finally abating.
+They had awoken to an empty estate.
+It was times like these that Cass wished they were normal.
+Not that the excuse for solitude was unappreciated, no, not at all, but for the peace and quiet to be so absolute, so complete, that it bordered on oppressive.
+Cass shivered, pulling their shawl tighter around their shoulders. The fire crackled, but it did little to dispel the chill that had settled in the room.
+A sudden gust of wind [b]rattled[/b] the windows, making Cass jump. They stood up, walking towards the window to peer outside.
+The snow was starting to fall quicker, heavier, little pricks of white that danced in the wind before settling on the ground. The streetlights outside that illuminated the driveway were beginning to blur, their light diffused by the thickening snowfall.
+Asides from the whistling of the wind and the occasional creak of the old house settling, there was an eerie silence.
+...
+Cass wished they had slept through the whole night.
+// choice: [Sleep] [Stay Awake]
+-> Go back to bed
+    The bed was not the worst. It was a bit too hard, a few too many blankets, a foot or so too wide, but it was still a bed.
+    Cass wasn't about to complain. Not to the empty room.
+    Certainly not to Father or Mother.
+    Certainly not...
+    Cass sighed, glancing back at the window. The snow was falling thicker now, and the wind had picked up, howling like a wounded animal.
+    They climbed back into bed, pulling the covers up to their chin.
+    Just a few more hours, surely. By morning, the storm would have passed. By midday, Father and Mother and all the others would be back.
+    The warmth of the blankets and the rhythmic sound of the wind outside tempted Cass's eyelids to close.
+    And they did.
+    <<wait 5>>
+    [jump intro_cantsleep]
+-> Stay awake
+    No. Sleep would not come so easily tonight.
+    Not with the storm outside, not with the oppressive silence of the empty house.
+    They moved away from the window, returning to their seat by the fireplace.
+    The firelight flickered, casting dancing shadows on the walls. Cass wrapped their shawl tighter around their shoulders, trying to stave off the chill that had settled in the room.
+    They pulled a book from the nearby shelf, hoping to distract themselves from the growing unease that gnawed at their mind.
+    But as they opened the book and began to read, their thoughts kept drifting back to the storm outside, to the isolation of the empty house, to the creeping feeling that something was not quite right.
+    Hours passed, or maybe it was only minutes. Time seemed to stretch and warp in the dim light of the parlor.
+    The wind howled louder now, rattling the windows and making the old house creak and groan.
+    Cass closed their book, setting it aside. They couldn't focus on reading anymore. Their mind was too restless, too filled with unease.
+    They stood up, moving towards the window once more.
+    The snow was falling thick now, obscuring everything outside. The streetlights were little more than hazy glows in the blizzard.
+    Cass shivered again, pulling their shawl tighter around them.
+    They couldn't shake the feeling that they were being watched.
+    Sleep, at this point, would have been a blessing.
+    <<wait 5>>
+    [jump intro_cantsleep]
+===
+
+title: intro_cantsleep
+---
+// sound: wind_howl_louder
+<<once>>
+Sleep never came.
+The storm outside raged on, the wind howling like a banshee, rattling the windows and making the old house creak and groan.
+Cass had to double-check that they weren't hearing things, not again. That hail hadn't started coming done, as that was surely what the banging on the windows started to sound like.
+It only got worse and worse and worse.
+The lights outside were but dim glows now, barely visible through the thickening snowfall. Merritown itself, far off in the distance, was almost completely obscured, now merely faint pinpricks of light in the blizzard.
+The chill was seeping deeper into the room, despite the fire burning in the hearth.
+Was the heater out? Had it broken down in the storm? Would they have to go down to the basement to fix it?
+What of the servants in their residences on the estate grounds? Were they safe? Had they made it home before the storm hit?
+Cass's mind raced with worry and unease.
+They couldn't shake the feeling that something was wrong, going wrong, terribly wrong, unfathomably wrong.
+<<wait 3>>
+They couldn't take it anymore.
+They couldn't just [i]wait[/i] here, alone, in the dark, with the storm raging outside and the oppressive silence of the empty house pressing in on them.
+With the cold, the icy cold, creeping in through the walls, through the windows, through the very air itself.
+They had to do something.
+The heater, they had to check the heater. To fix it.
+In the basement.
+<<endonce>>
+They swallowed.
+-> Look around
+===

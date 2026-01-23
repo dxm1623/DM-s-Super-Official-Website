@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+        <!-- Github please -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DM's Website</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Page-local styling for the 5-image carousel */
+        .carousel-row {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .carousel-images {
+            flex: 1 1 auto;
+            min-width: 0;
+        }
+
+        .image-navigation {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: stretch;
+            justify-content: flex-start;
+            padding: 10px;
+            border-radius: 10px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.08), rgba(0,0,0,0.02));
+            border: 2px solid rgba(0,0,0,0.15);
+            position: sticky;
+            top: 16px;
+            height: fit-content;
+        }
+
+        .nav-button {
+            font-family: National-Park, sans-serif;
+            font-weight: 800;
+            padding: 10px 12px;
+            border-radius: 10px;
+            border: 2px solid #888;
+            background: linear-gradient(to bottom, #ffffff, #d7d7d7);
+            color: #111;
+            cursor: pointer;
+            box-shadow: inset 0 1px 0 #fff, 0 2px 3px rgba(0,0,0,0.2);
+        }
+
+        .nav-button:hover { background: linear-gradient(to bottom, #ffffff, #c9c9c9); }
+        .nav-button.active {
+            background: linear-gradient(to bottom, #ff6666, #ff0000);
+            border-color: #cc0000;
+            color: #fff;
+            text-shadow: 0 1px 0 rgba(0,0,0,0.35);
+            box-shadow: none;
+        }
+
+        @media (max-width: 900px) {
+            .carousel-row { flex-direction: column; }
+            .image-navigation {
+                position: static;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="scanlines" aria-hidden="true"></div>
+    <div class="center-strip">
+        <div class="content-grid">
+            <div id="main-content" role="main">
+                <h2 class="dms-header">DM's Website</h2>
+                <div id="case-study-section" class="section">
+                    <div id="case-study-content">
+                        <div id="tabs-content">
+                            <div id="container" style="text-align: left; margin: 0 auto;">
+                                <h3 style="width: -webkit-fill-available;
+                                ">Case Study: "(Re)Designing My 2D Characters"</h3>
+                                <div class="case-panel" id="own-goal" style="text-align: left; background-color: rgba(255, 255, 255, 0.85); border-radius: 10px; padding: 10px;">
+                                    <div class="case-panel-header"><p style="color: white !important;">Type: <strong>Solo Design & Development</strong> |  Duration: <strong>3 Months</strong></p><p style="color: white !important;">Product: <strong>2D Renders of Multiple, Stylistically and Narratively Connected Characters</strong></p></div>
+                                    <hr>
+                                    <span style="color: black;">
+                                    <p>Since the Summer of 2023, I have been conceptualizing my first real design of a game, designing a stylized cartoon world of anthropomorphic animals who ultimately end up realizing and tackling both the hidden darkness that lies beneath their world as well as that which lies within themselves in what I'm ultimately envisioning as a metaphor for the <strong>coming of age</strong> and <strong>the long and arduous journey of self-discovery</strong> that often follows for better or worse as one view of themselves and the world matures with them.</p>
+                                    <div class="image-container" style="text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px;">
+                                        <img class="case-study-image" src="images/projectImages/2DImgs/2Dproj/2D_initial.png" alt="Case Study Image" style="width: 100%; height: auto;">
+                                        <hr style="color: black;">
+                                        <p class="case-study-caption">My first drawing of three of my 2D characters, as I had initially designed them.</p>
+                                    </div>
+                                    <p>Hoping to further develop the visual design and aesthetic of these characters, I enrolled in the Spring of 2025 <strong>2D Character Design</strong> course at the University of Miami. Over the course of the semester, I worked on refining their designs, exploring different styles, and ultimately creating a cohesive visual language for what would hopefully be the main design of the game. This process included studying and implementing shape language--like making friendly characters soft and round, and making more menacing or duplicitous characters angular and sharp--color theory, outfits, and more to better communicate the personalities of my characters before any expositional or narrative elements were introduced.</p>
+                                    <div class="image-container" style="text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px;">
+                                        <img class="case-study-image" src="images/projectImages/2DImgs/2Dproj/Bo_Thumbnail.jpeg" alt="Case Study Image" style="width: 100%; height: auto;">
+                                        <hr style="color: black;">
+                                        <p class="case-study-caption">The initial thumbnails for the redesign of my main character, Bo, to help visualize a silhouette + pose.</p>
+                                    </div>
+                                    <p>As part of my initial redesigns utilizing the techniques and principles learned in the course, I focused on refining the design of my main character, Bo the Sheep (who I'd give the last name Lanolidaughter during the process), to better fit both what I imagined her personality to be as well as in the context of the eventual narrative and gameplay. She was imagined as a <strong>curious and adventurous</strong> character, always eager to explore her surroundings and uncover the mysteries of her world--to a fault--who nonetheless begins the story in a completely naive and <strong>unaware</strong> state. Despite being a young adult, Bo is still very much a child at heart and even somewhat in mind--and the story I imagined for her would focus on that sense of naivete being stripped away as she is confronted with the often harsh realities of her world. Importantly, though, she starts the journey in a state of blissful unawareness--save for some underlying, repressed fears and trauma--and so much of my work was spent making her as friendly and approachable as possible, even bouncy.</p>
+                                    <p>This redesign proved to be a very pivotal moment in my journey as a game designer and as a character artist. I documented the design process for Bo's redesign alone very extensively, and I would end up referring back to it after the fact from time to time. More impactfuly for me personally, it was this project that I would end up choosing to present at the <strong>2025 Interactive Media Annual Showcase</strong> at the School of Communication of the University of Miami--where it would end up winning the Undergraduate Award for 2D & 3D Art by the judges present!</p>
+                                    <div class="carousel-row">
+                                        <div class="carousel-images" data-carousel="bo-midterm">
+                                            <!-- the five image-container blocks remain here -->
+                                            <div class="image-container" style="display: block; text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px;">
+                                                <img class="case-study-image" src="images/projectImages/2DImgs/2Dproj/Bo_SketchLine.jpeg" alt="Case Study Image" style="width: 100%; height: auto;">
+                                                <hr style="color: black;">
+                                                <p class="case-study-caption">Further refinement of Bo's design based on one of the thumbnails, including the initial sketching and the linework.</p>
+                                            </div>
+                                            <div class="image-container" style="display: none; text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px;">
+                                                <img class="case-study-image" src="images/projectImages/2DImgs/2Dproj/Midterm Expressions.png" alt="Case Study Image" style="width: 100%; height: auto;">
+                                                <hr style="color: black;">
+                                                <p class="case-study-caption">Various expressions for Bo, showcasing her personality and emotional range.</p>
+                                            </div>
+                                            <div class="image-container" style="display: none; text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px;">
+                                                <img class="case-study-image" src="images/projectImages/2DImgs/2Dproj/Midterm Colors.png" alt="Case Study Image" style="width: 100%; height: auto;">
+                                                <hr style="color: black;">
+                                                <p class="case-study-caption">Color exploration for Bo, to see how different palettes affect her design.</p>
+                                            </div>
+                                            <div class="image-container" style="display: none; text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px;">
+                                                <img class="case-study-image" src="images/projectImages/2DImgs/2Dproj/MidtermRender.png" alt="Case Study Image" style="width: 100%; height: auto;">
+                                                <hr style="color: black;">
+                                                <p class="case-study-caption">The finalized render for Bo's redesign, which would later be displayed at the 2025 Interactive Media Annual Showcase.</p>
+                                            </div>
+                                            <div class="image-container" style="display: none; text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px;">
+                                                <img class="case-study-image" src="images/projectImages/2DImgs/2Dproj/MidtermShowcase.png" alt="Case Study Image" style="width: 100%; height: auto;">
+                                                <hr style="color: black;">
+                                                <p class="case-study-caption">The final showcase for Bo's redesign, presented at the 2025 Interactive Media Annual Showcase.</p>
+                                            </div>
+                                        </div>
+
+                                        <!-- buttons to switch between images -->
+                                        <div class="image-navigation" role="navigation" aria-label="Bo redesign image steps" data-controls="bo-midterm">
+                                            <button class="nav-button" onclick="showImage('bo-midterm','Bo_SketchLine', this)">1</button>
+                                            <button class="nav-button" onclick="showImage('bo-midterm','Midterm Expressions', this)">2</button>
+                                            <button class="nav-button" onclick="showImage('bo-midterm','Midterm Colors', this)">3</button>
+                                            <button class="nav-button" onclick="showImage('bo-midterm','MidtermRender', this)">4</button>
+                                            <button class="nav-button" onclick="showImage('bo-midterm','MidtermShowcase', this)">5</button>
+                                        </div>
+                                    </div>
+                                    <p>As well as redesigning Bo, I had also elected to take the opportunity to design four more characters that I had previously conceptualized but either never had the chance to set down on paper or had but in a much more limited capacity. These ended up being <strong>Ginni Brightfields</strong>, <strong>Saul Pitchkins</strong>, <strong>Gabe Mounde</strong>, and <strong>Bonnie</strong>. It would be these four characters who would be rendered as part of my final presentation for the course, showcasing their unique designs and personalities--as well as formulating aspects like props and outfits. It also lent me the opportunity to learn how to incorporate everything I had learned in redesigning Bo at a larger scale and within a tighter timeframe, as I had to sketch out all four of their designs more fully and integrate them into the overall narrative (as well as outline details like specific props and items, like Ginni's watch and Saul's shotgun) in roughly the same time it originally took me to redesign Bo.</p>
+                                    <div class="carousel-row">
+                                        <div class="carousel-images" data-carousel="final-characters">
+                                            <!-- the five image-container blocks remain here -->
+                                            <div class="image-container" style="display: block; text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px;">
+                                                <img class="case-study-image" src="images/projectImages/2DImgs/2Dproj/2D_final_Sketch.jpeg" alt="Case Study Image" style="width: 100%; height: auto;">
+                                                <hr style="color: black;">
+                                                <p class="case-study-caption">The initial sketch of Ginni, Saul, Gabe, and Bonnie.</p>
+                                            </div>
+                                            <div class="image-container" style="display: none; text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px;">
+                                                <img class="case-study-image" src="images/projectImages/2DImgs/2Dproj/2D_final_Line.jpeg" alt="Case Study Image" style="width: 100%; height: auto;">
+                                                <hr style="color: black;">
+                                                <p class="case-study-caption">The line art for the final render.</p>
+                                            </div>
+                                            <div class="image-container" style="display: none; text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px;">
+                                                <img class="case-study-image" src="images/projectImages/2DImgs/2Dproj/2D_final_Flat.jpeg" alt="Case Study Image" style="width: 100%; height: auto;">
+                                                <hr style="color: black;">
+                                                <p class="case-study-caption">The flat color for the final render, showing the color palettes.</p>
+                                            </div>
+                                            <div class="image-container" style="display: none; text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px;">
+                                                <img class="case-study-image" src="images/projectImages/2DImgs/2Dproj/2D_final_Render.png" alt="Case Study Image" style="width: 100%; height: auto;">
+                                                <hr style="color: black;">
+                                                <p class="case-study-caption">The final render, shown off as part of my final presentation.</p>
+                                            </div>
+                                            <div class="image-container" style="display: none; text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px;">
+                                                <img class="case-study-image" src="images/projectImages/2DImgs/2Dproj/trio.jpeg" alt="Case Study Image" style="width: 100%; height: auto;">
+                                                <hr style="color: black;">
+                                                <p class="case-study-caption">An ancillary sketch showing Gabe, Bo, and Bonnie.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="image-navigation" role="navigation" aria-label="Final character render steps" data-controls="final-characters">
+                                            <button class="nav-button" onclick="showImage('final-characters','2D_final_Sketch', this)">1</button>
+                                            <button class="nav-button" onclick="showImage('final-characters','2D_final_Line', this)">2</button>
+                                            <button class="nav-button" onclick="showImage('final-characters','2D_final_Flat', this)">3</button>
+                                            <button class="nav-button" onclick="showImage('final-characters','2D_final_Render', this)">4</button>
+                                            <button class="nav-button" onclick="showImage('final-characters','trio', this)">5</button>
+                                        </div>
+                                    </div>
+                                    <p>In the end, this project not only allowed me to expand my design skills but also deepened my understanding of character development and storytelling through visual art. This redesign, and the lessons I learned during the process, have been unambiguously valuable as I have continued to work and rework these characters and their stories.</p>
+                                    <p>This study has far from all of the various pieces I created during this process; You can view all of my work with these characters (including some other pieces I worked on during my time in the 2D Character Design course) in the <strong><a href="gallery.html">Gallery</a></strong>!</p>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div class="right-nav" aria-label="Site navigation">
+                    <nav class="site-navbar vertical" aria-label="Main navigation">
+                        <a href="index.html">Home</a>
+                        <a href="persona.html">About</a>
+                        <a href="misc.html">Misc</a>
+                        <hr>
+                        <a href="gallery.html">Gallery</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="logo-container" style="cursor: pointer; text-align: center; flex-direction: column;">
+        <div id="logo">
+            <img src="images/PersonalLogo.gif" alt="DM's Logo" onclick="location.href='index.html';">
+        </div>
+    </div>
+    <div id="overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); justify-content: center; align-items: center; z-index: 1000;">
+        <img id="overlay-img" style="max-width: 90%; max-height: 90%; cursor: zoom-in;" alt="Zoomed Image">
+        <p id="overlay-caption" style="color: white; text-align: center; margin-top: 10px;"></p>
+    </div>
+    <script src="functions.js"></script>
+    <script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const ownGoalEl = document.getElementById('own-goal');
+        if (ownGoalEl) ownGoalEl.style.display = "block";
+        const nautilusEl = document.getElementById('nautilus-conundrum');
+        if (nautilusEl) nautilusEl.style.display = "none";
+        document.body.style.backgroundImage = "url('images/2DBackground.gif')";
+
+        const overlay = document.getElementById('overlay');
+        const overlayImg = document.getElementById('overlay-img');
+        const overlayCaption = document.getElementById('overlay-caption');
+
+        if (!overlay || !overlayImg || !overlayCaption) return;
+
+        const bindOverlayClicks = () => {
+            // Remove duplicate listeners by re-binding via cloning? Keep simple: just bind once per image using a marker
+            document.querySelectorAll('.case-study-image').forEach(img => {
+                if (img.dataset.overlayBound === '1') return;
+                img.dataset.overlayBound = '1';
+                img.style.cursor = 'pointer';
+
+                img.addEventListener('click', function(event) {
+                    overlayImg.src = event.currentTarget.src;
+                    overlayImg.alt = event.currentTarget.alt || '';
+                    const caption = event.currentTarget.parentElement?.querySelector('.case-study-caption');
+                    overlayCaption.textContent = caption ? caption.textContent : '';
+
+                    overlayImg.dataset.zoomed = '0';
+                    overlayImg.style.transform = 'translate(0, 0) scale(1)';
+                    overlayImg.style.width = '';
+                    overlayImg.style.maxWidth = '92vw';
+                    overlayImg.style.maxHeight = '86vh';
+                    overlayImg.style.objectFit = 'contain';
+                    overlayImg.style.cursor = 'zoom-in';
+
+                    overlay.style.display = 'flex';
+                    overlay.style.flexDirection = 'column';
+                });
+            });
+        };
+
+        bindOverlayClicks();
+
+        overlay.addEventListener('click', function(event) {
+            if (event.target !== overlayImg) {
+                overlay.style.display = 'none';
+                overlayImg.dataset.zoomed = '0';
+                overlayImg.style.transform = 'translate(0, 0) scale(1)';
+            }
+        });
+
+        overlayImg.addEventListener('click', function() {
+            const zoomed = overlayImg.dataset.zoomed === '1';
+            if (!zoomed) {
+                overlayImg.dataset.zoomed = '1';
+                overlayImg.style.transformOrigin = 'center center';
+                overlayImg.style.transform = 'translate(0, 0) scale(2)';
+                overlayImg.style.cursor = 'zoom-out';
+            } else {
+                overlayImg.dataset.zoomed = '0';
+                overlayImg.style.transform = 'translate(0, 0) scale(1)';
+                overlayImg.style.cursor = 'zoom-in';
+            }
+        });
+
+        overlayImg.addEventListener('mousemove', function(event) {
+            if (overlayImg.dataset.zoomed === '1') {
+                const rect = overlay.getBoundingClientRect();
+                const offsetX = Math.min(Math.max((event.clientX - rect.left) / rect.width, 0), 1);
+                const offsetY = Math.min(Math.max((event.clientY - rect.top) / rect.height, 0), 1);
+                const panX = (0.5 - offsetX) * 60;
+                const panY = (0.5 - offsetY) * 60;
+                overlayImg.style.transform = `translate(${panX}%, ${panY}%) scale(2)`;
+            }
+        });
+
+        // Only cache/switch the containers inside the specific carousel, not the whole page
+        const carousels = new Map();
+        document.querySelectorAll('[data-carousel]').forEach(wrap => {
+            const key = wrap.getAttribute('data-carousel');
+            const containers = Array.from(wrap.querySelectorAll('.image-container'));
+            containers.forEach(container => {
+                const img = container.querySelector('.case-study-image');
+                if (!img) return;
+                const file = (img.getAttribute('src') || '').split('/').pop() || '';
+                const base = file.replace(/\.[^/.]+$/, '');
+                container.dataset.name = base;
+                img.decoding = 'async';
+            });
+            carousels.set(key, containers);
+        });
+
+        // Global for inline onclick: showImage(carouselKey, imageName, buttonEl)
+        window.showImage = function(carouselKey, imageName, btn) {
+            const containers = carousels.get(carouselKey);
+            if (!containers) return;
+
+            containers.forEach(container => {
+                container.style.display = (container.dataset.name === imageName) ? 'block' : 'none';
+            });
+
+            // Active button styling
+            const nav = document.querySelector(`.image-navigation[data-controls="${carouselKey}"]`);
+            if (nav) {
+                nav.querySelectorAll('.nav-button').forEach(b => b.classList.remove('active'));
+                if (btn) btn.classList.add('active');
+            }
+
+            // Ensure overlay handlers are bound for any newly-revealed images
+            bindOverlayClicks();
+        };
+
+        // Set default active state for carousel nav buttons
+        const firstNav = document.querySelector('.image-navigation[data-controls="bo-midterm"] .nav-button');
+        if (firstNav) firstNav.classList.add('active');
+
+        const secondNav = document.querySelector('.image-navigation[data-controls="final-characters"] .nav-button');
+        if (secondNav) secondNav.classList.add('active');
+    });
+    </script>
+</body>
+</html>

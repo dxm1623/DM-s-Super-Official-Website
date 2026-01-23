@@ -77,37 +77,92 @@ const tabs = {
                 function initializePage() {
                     const currentPage = window.location.pathname.split('/').pop();
                     const pageConfig = pages[currentPage];
-
                     if (!pageConfig) return;
 
-                    const observerOptions = {
-                    root: null,
-                    rootMargin: '0px',
-                    threshold: 0.25
+                    const sectionEls = pageConfig.tabs
+                        .map(k => tabs[k])
+                        .filter(Boolean)
+                        .map(t => document.getElementById(t.sectionId))
+                        .filter(Boolean);
+
+                    if (!sectionEls.length) return;
+
+                    const resolveTabForElement = (el) => {
+                        if (!el || !el.id) return null;
+                        return Object.values(tabs).find(t => t.sectionId === el.id) || null;
                     };
 
-                    let initialLoad = {};
-                    pageConfig.tabs.forEach(tabKey => {
-                    if (tabs[tabKey]) {
-                        initialLoad[tabs[tabKey].sectionId] = true;
-                    }
-                    });
-
-                    const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        const tab = Object.values(tabs).find(tab => tab.sectionId === entry.target.id || tab.contentId === entry.target.id);
-                        if (entry.isIntersecting && tab) {
-                        if (initialLoad[tab.sectionId]) {
-                            initialLoad[tab.sectionId] = false;
-                            return;
-                        }
+                    const applyTab = (tab) => {
+                        if (!tab) return;
                         document.body.style.backgroundImage = tab.backgroundImage;
                         changeLogo(tab.logoSrc, tab.logoAlt);
-                        }
-                    });
-                    }, observerOptions);
+                    };
 
-                    document.querySelectorAll('.section, .tabs-stuff').forEach(element => observer.observe(element));
+                    // Track intersection state for deterministic selection
+                    const stateByEl = new Map(sectionEls.map(el => [el, { isIntersecting: false, ratio: 0 }]));
+                    let lastAppliedId = null;
+                    let rafId = 0;
+
+                    const pickBestSection = () => {
+                        const viewportCenter = window.innerHeight / 2;
+
+                        // Consider sections that are at least a little visible
+                        const candidates = sectionEls
+                            .map(el => {
+                                const st = stateByEl.get(el);
+                                const rect = el.getBoundingClientRect();
+                                const visible = rect.bottom > 0 && rect.top < window.innerHeight;
+                                const center = rect.top + rect.height / 2;
+                                const dist = Math.abs(center - viewportCenter);
+                                return { el, st, rect, visible, dist };
+                            })
+                            .filter(x => x.visible && (x.st?.ratio ?? 0) >= 0.1);
+
+                        if (!candidates.length) return null;
+
+                        // Prefer the one closest to center; tie-break by larger intersectionRatio
+                        candidates.sort((a, b) => (a.dist - b.dist) || ((b.st?.ratio ?? 0) - (a.st?.ratio ?? 0)));
+                        return candidates[0].el;
+                    };
+
+                    const update = () => {
+                        rafId = 0;
+                        const bestEl = pickBestSection();
+                        if (!bestEl) return;
+                        const tab = resolveTabForElement(bestEl);
+                        if (!tab) return;
+                        if (lastAppliedId === tab.sectionId) return;
+                        lastAppliedId = tab.sectionId;
+                        applyTab(tab);
+                    };
+
+                    const schedule = () => {
+                        if (rafId) return;
+                        rafId = window.requestAnimationFrame(update);
+                    };
+
+                    const io = new IntersectionObserver(
+                        (entries) => {
+                            entries.forEach(entry => {
+                                if (!stateByEl.has(entry.target)) return;
+                                stateByEl.set(entry.target, { isIntersecting: entry.isIntersecting, ratio: entry.intersectionRatio || 0 });
+                            });
+                            schedule();
+                        },
+                        {
+                            root: null,
+                            rootMargin: '0px 0px 0px 0px',
+                            threshold: [0, 0.1, 0.2, 0.35, 0.5, 0.65, 0.8]
+                        }
+                    );
+
+                    sectionEls.forEach(el => io.observe(el));
+
+                    window.addEventListener('scroll', schedule, { passive: true });
+                    window.addEventListener('resize', schedule);
+
+                    // Initial set
+                    schedule();
                 }
 
         // Ensure the initializePage function runs after the DOM is fully loaded
@@ -204,7 +259,6 @@ window.addEventListener('load', () => {
         },
         {
             root: null,
-            // "visible" a bit before/after entering so center selection feels natural
             rootMargin: '35% 0px 35% 0px',
             threshold: [0, 0.05, 0.15, 0.3]
         }
