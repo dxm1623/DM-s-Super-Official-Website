@@ -102,7 +102,7 @@
     </div>
     <!-- Preserve overlay and scripts -->
     <div id="overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); justify-content: center; align-items: center; z-index: 1000;">
-        <img id="overlay-img" style="max-width: 90%; max-height: 90%; cursor: zoom-in;" alt="Zoomed Image">
+        <img id="overlay-img" draggable="false" style="max-width: 90%; max-height: 90%; cursor: zoom-in;" alt="Zoomed Image">
         <p id="overlay-caption" style="color: white; text-align: center; margin-top: 10px;"></p>
     </div>
     <script src="functions.js"></script>
@@ -134,53 +134,25 @@
         document.getElementById('nautilus-conundrum').style.display = "none";
         document.body.style.backgroundImage = "url('images/projectImages/dpeImgs/ogBackground.gif')";
 
-        const overlay = document.getElementById('overlay');
-        const overlayImg = document.getElementById('overlay-img');
-        const overlayCaption = document.getElementById('overlay-caption');
+        if (window.initImageOverlay) {
+            window.initImageOverlay({ overlayId: 'overlay', imageId: 'overlay-img', captionId: 'overlay-caption' });
+        }
 
-        document.querySelectorAll('.case-study-image').forEach(image => {
-            image.addEventListener('click', function(event) {
-                overlayImg.src = event.target.src;
-                overlayImg.alt = event.target.alt;
+        const bindOverlayClicks = () => {
+            document.querySelectorAll('.case-study-image').forEach(img => {
+                if (img.dataset.overlayBound === '1') return;
+                img.dataset.overlayBound = '1';
+                img.style.cursor = 'pointer';
 
-                const caption = event.target.parentElement.querySelector('.case-study-caption');
-                overlayCaption.textContent = caption ? caption.textContent : '';
-                overlayImg.style.width = '50%';
-                overlayImg.style.cursor = 'zoom-in';
-                overlay.style.display = 'flex';
+                img.addEventListener('click', function(event) {
+                    const target = event.currentTarget;
+                    const caption = target.parentElement?.querySelector('.case-study-caption')?.textContent || '';
+                    if (window.openImageOverlay) window.openImageOverlay(target.src, caption);
+                });
             });
-        });
+        };
 
-        overlay.addEventListener('click', function(event) {
-            if (event.target !== overlayImg) {
-                overlay.style.display = 'none';
-                overlayImg.style.transform = 'translate(0, 0)'; // Reset position
-            }
-        });
-
-        overlayImg.addEventListener('click', function() {
-            if (overlayImg.style.width === '50%') {
-                overlayImg.style.width = 'fit-content';
-                overlayImg.style.maxWidth = '100%';
-                overlayImg.style.maxHeight = '100%';
-                overlayImg.style.cursor = 'zoom-out';
-            } else {
-                overlayImg.style.width = '50%';
-                overlayImg.style.maxWidth = 'fit-content';
-                overlayImg.style.maxHeight = 'fit-content';
-                overlayImg.style.transform = 'translate(0, 0)'; // Reset position
-                overlayImg.style.cursor = 'zoom-in';
-            }
-        });
-
-        overlayImg.addEventListener('mousemove', function(event) {
-            if (overlayImg.style.width === 'fit-content') { // Check for zoomed-in state
-                const rect = overlay.getBoundingClientRect();
-                const offsetX = Math.min(Math.max((event.clientX - rect.left) / rect.width, 0), 1) * 100;
-                const offsetY = Math.min(Math.max((event.clientY - rect.top) / rect.height, 0), 1) * 100;
-                overlayImg.style.transform = `translate(${50 - offsetX}%, ${50 - offsetY}%)`;
-            }
-        });
+        bindOverlayClicks();
     });
     </script>
 </body>

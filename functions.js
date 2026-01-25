@@ -270,3 +270,205 @@ window.addEventListener('load', () => {
     window.addEventListener('resize', schedule);
     schedule();
 });
+
+// Overlay image viewer (wheel-zoom + drag-pan + click-off-to-close)
+// Usage:
+//   initImageOverlay({ overlayId: 'overlay', imageId: 'overlay-img', captionId: 'overlay-caption' });
+//   openImageOverlay('path/to/img.png', 'Caption text');
+(() => {
+    let overlayEl = null;
+    let imgEl = null;
+    let captionEl = null;
+
+    // Pan/zoom state
+    let scale = 1;
+    let tx = 0;
+    let ty = 0;
+
+    // Drag state
+    let isDragging = false;
+    let dragStartX = 0;
+    let dragStartY = 0;
+    let dragOriginTx = 0;
+    let dragOriginTy = 0;
+
+    // rAF smoothing
+    let rafId = 0;
+    let pendingTx = 0;
+    let pendingTy = 0;
+
+    const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
+
+    const scheduleTransform = (nextTx, nextTy) => {
+        pendingTx = nextTx;
+        pendingTy = nextTy;
+        if (rafId) return;
+        rafId = requestAnimationFrame(applyTransform);
+    };
+
+    const setDraggingStyles = (dragging) => {
+        if (!imgEl) return;
+        if (dragging) {
+            imgEl.classList.add('dragging');
+            imgEl.style.transition = 'none';
+            imgEl.style.cursor = 'grabbing';
+        } else {
+            imgEl.classList.remove('dragging');
+            imgEl.style.transition = '';
+            imgEl.style.cursor = scale > 1 ? 'grab' : 'zoom-in';
+        }
+    };
+
+    const applyTransform = () => {
+        rafId = 0;
+        tx = pendingTx;
+        ty = pendingTy;
+        if (!imgEl) return;
+        imgEl.style.transform = `translate3d(${tx}px, ${ty}px, 0) scale(${scale})`;
+    };
+
+    const resetTransform = () => {
+        scale = 1;
+        tx = 0;
+        ty = 0;
+        pendingTx = 0;
+        pendingTy = 0;
+        if (!imgEl) return;
+        imgEl.style.transformOrigin = 'center center';
+        imgEl.style.transform = 'translate3d(0px, 0px, 0) scale(1)';
+        imgEl.style.cursor = 'zoom-in';
+    };
+
+    const close = () => {
+        if (!overlayEl) return;
+        overlayEl.style.display = 'none';
+        resetTransform();
+    };
+
+    const open = (src, caption) => {
+        if (!overlayEl || !imgEl) return;
+        imgEl.src = src;
+        imgEl.alt = caption || '';
+        if (captionEl) captionEl.textContent = caption || '';
+
+        // Normalize open state across pages
+        overlayEl.style.display = 'flex';
+        if (!overlayEl.style.alignItems) overlayEl.style.alignItems = 'center';
+        if (!overlayEl.style.justifyContent) overlayEl.style.justifyContent = 'center';
+        overlayEl.style.flexDirection = 'column';
+
+        resetTransform();
+    };
+
+    const ensureBoundOnce = () => {
+        if (!overlayEl || !imgEl) return;
+        if (overlayEl.dataset.overlayBound === '1') return;
+        overlayEl.dataset.overlayBound = '1';
+
+        // Disable native browser image dragging/selection behaviors that cause ghost-drag
+        imgEl.setAttribute('draggable', 'false');
+        imgEl.style.userSelect = 'none';
+        imgEl.style.webkitUserSelect = 'none';
+        imgEl.style.webkitUserDrag = 'none';
+        imgEl.style.touchAction = 'none';
+        imgEl.style.willChange = 'transform';
+
+        imgEl.addEventListener('dragstart', (e) => e.preventDefault());
+
+        // Click off image to close
+        overlayEl.addEventListener('click', (event) => {
+            if (event.target !== imgEl) close();
+        });
+
+        // Wheel/trackpad zoom
+        overlayEl.addEventListener('wheel', (event) => {
+            if (overlayEl.style.display !== 'flex') return;
+            event.preventDefault();
+
+            const zoomFactor = event.deltaY < 0 ? 1.12 : 0.88;
+            const newScale = clamp(scale * zoomFactor, 1, 5);
+            if (newScale === scale) return;
+
+            const overlayRect = overlayEl.getBoundingClientRect();
+            const px = event.clientX - overlayRect.left - overlayRect.width / 2;
+            const py = event.clientY - overlayRect.top - overlayRect.height / 2;
+
+            const ix = (px - tx) / scale;
+            const iy = (py - ty) / scale;
+
+            scale = newScale;
+            const nextTx = px - ix * scale;
+            const nextTy = py - iy * scale;
+            scheduleTransform(nextTx, nextTy);
+
+            imgEl.style.cursor = scale > 1 ? 'grab' : 'zoom-in';
+        }, { passive: false });
+
+        // Drag to pan
+        imgEl.addEventListener('pointerdown', (e) => {
+            if (overlayEl.style.display !== 'flex') return;
+            e.preventDefault();
+
+            isDragging = true;
+            setDraggingStyles(true);
+            imgEl.setPointerCapture(e.pointerId);
+            dragStartX = e.clientX;
+            dragStartY = e.clientY;
+            dragOriginTx = tx;
+            dragOriginTy = ty;
+        });
+
+        imgEl.addEventListener('pointermove', (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+
+            const dx = e.clientX - dragStartX;
+            const dy = e.clientY - dragStartY;
+
+            scheduleTransform(dragOriginTx + dx, dragOriginTy + dy);
+        }, { passive: false });
+
+        const endDrag = (e) => {
+            if (!isDragging) return;
+            e?.preventDefault?.();
+            isDragging = false;
+            setDraggingStyles(false);
+
+            // Commit any pending rAF update immediately
+            if (rafId) {
+                cancelAnimationFrame(rafId);
+                rafId = 0;
+                tx = pendingTx;
+                ty = pendingTy;
+            }
+        };
+
+        imgEl.addEventListener('pointerup', endDrag);
+        imgEl.addEventListener('pointercancel', endDrag);
+        imgEl.addEventListener('lostpointercapture', endDrag);
+    };
+
+    // Public API
+    window.initImageOverlay = function initImageOverlay(opts = {}) {
+        const overlayId = opts.overlayId || 'overlay';
+        const imageId = opts.imageId || 'overlay-img';
+        const captionId = opts.captionId || 'overlay-caption';
+
+        overlayEl = document.getElementById(overlayId);
+        imgEl = document.getElementById(imageId);
+        captionEl = captionId ? document.getElementById(captionId) : null;
+
+        if (!overlayEl || !imgEl) return false;
+
+        ensureBoundOnce();
+        return true;
+    };
+
+    window.openImageOverlay = function openImageOverlay(src, caption) {
+        open(src, caption);
+    };
+
+    window.closeImageOverlay = function closeImageOverlay() {
+        close();
+    };
+})();

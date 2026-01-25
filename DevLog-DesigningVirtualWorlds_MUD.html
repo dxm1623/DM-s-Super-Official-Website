@@ -279,65 +279,26 @@
         </div>
     </div>
     <div id="overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; align-items:center; justify-content:center; background: rgba(0,0,0,0.8);">
-    <img id="overlay-img" src="" alt="" style="cursor: zoom-in;">
+    <img id="overlay-img" draggable="false" src="" alt="" style="cursor: zoom-in;">
     <div id="overlay-caption" style="color:#fff; margin-top:10px;"></div>
 </div>
 
+<script src="functions.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-
-    const overlay = document.getElementById('overlay');
-    const overlayImg = document.getElementById('overlay-img');
-    const overlayCaption = document.getElementById('overlay-caption');
-
-    // Target the actual gallery image inside #studyOne
-    const galleryImg = document.querySelector('#studyOne #workImage-studyOne');
-    if (galleryImg) {
-        galleryImg.addEventListener('click', function(event) {
-            overlayImg.src = event.target.src;
-            overlayImg.alt = event.target.alt || '';
-            overlayCaption.textContent = galleryImg.getAttribute('data-caption') || event.target.alt || '';
-            overlayImg.style.width = '33%';
-            overlayImg.style.cursor = 'zoom-in';
-            overlay.style.display = 'flex';
-            overlay.style.flexDirection = 'column';
-            overlayImg.style.transform = 'translate(0, 0)'; // Reset position on open
-        });
+    if (window.initImageOverlay) {
+        window.initImageOverlay({ overlayId: 'overlay', imageId: 'overlay-img', captionId: 'overlay-caption' });
     }
 
-    // Hide the overlay when clicking outside the image
-    overlay.addEventListener('click', function(event) {
-        if (event.target !== overlayImg) {
-            overlay.style.display = 'none';
-            overlayImg.style.transform = 'translate(0, 0)'; // Reset position on close
-        }
-    });
-
-    // Toggle zoom on the overlay image
-    overlayImg.addEventListener('click', function() {
-        if (overlayImg.style.width === '33%') {
-            overlayImg.style.width = 'fit-content';
-            overlayImg.style.maxWidth = '95%';
-            overlayImg.style.maxHeight = '95%';
-            overlayImg.style.cursor = 'zoom-out';
-        } else {
-            overlayImg.style.width = '33%';
-            overlayImg.style.maxWidth = 'fit-content';
-            overlayImg.style.maxHeight = 'fit-content';
-            overlayImg.style.transform = 'translate(0, 0)'; // Reset position
-            overlayImg.style.cursor = 'zoom-in';
-        }
-    });
-
-    // Pan the zoomed-in image using mouse movement
-    overlayImg.addEventListener('mousemove', function(event) {
-        if (overlayImg.style.width === 'fit-content') { // Only pan if zoomed in
-            const rect = overlay.getBoundingClientRect();
-            const offsetX = Math.min(Math.max((event.clientX - rect.left) / rect.width, 0), 1) * 100;
-            const offsetY = Math.min(Math.max((event.clientY - rect.top) / rect.height, 0), 1) * 100;
-            overlayImg.style.transform = `translate(${50 - offsetX}%, ${50 - offsetY}%)`;
-        }
-    });
+    const galleryImg = document.querySelector('#studyOne #workImage-studyOne');
+    if (galleryImg && galleryImg.dataset.overlayBound !== '1') {
+        galleryImg.dataset.overlayBound = '1';
+        galleryImg.style.cursor = 'pointer';
+        galleryImg.addEventListener('click', function(event) {
+            const caption = galleryImg.getAttribute('data-caption') || event.currentTarget.alt || '';
+            if (window.openImageOverlay) window.openImageOverlay(event.currentTarget.src, caption);
+        });
+    }
 });
 </script>
 <script>

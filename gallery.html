@@ -123,19 +123,24 @@
         .gallery-grid .thumb:hover { box-shadow: 0 0 20px rgba(255, 210, 74, 0.55); }
 
         /* Overlay viewer */
-        #overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; align-items:center; justify-content:center; background: rgba(0,0,0,0.85); z-index: 1000; }
+        #overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; align-items:center; justify-content:center; background: rgba(0,0,0,0.85); z-index: 1000; cursor: zoom-out; }
         #overlay-img {
             max-width: 92vw;
             max-height: 86vh;
             width: auto;
             height: auto;
             object-fit: contain;
-            cursor: zoom-in;
+            cursor: grab;
             border: 4px solid #fff;
             border-radius: 10px;
             box-shadow: 0 0 18px rgba(0,0,0,0.6);
             transform: translate(0,0) scale(1);
+            transition: transform 120ms ease-out;
+            will-change: transform;
+            user-select: none;
+            -webkit-user-drag: none;
         }
+        #overlay-img.dragging { cursor: grabbing; transition: none; }
         #overlay-caption { color:#fff; margin-top:10px; text-align: center; max-width: 900px; padding: 0 12px; }
 
         @media (max-width: 600px) {
@@ -242,9 +247,10 @@
                                     <img src="images/gallery/study_E.jpeg" alt="Study - E" data-term="Fall 2025">
                                     <img src="images/gallery/study_ForestPath.jpeg" alt="Study - Forest Path" data-term="Fall 2025">
                                     <img src="images/gallery/study_Lighthouse.jpeg" alt="Study - Lighthouse" data-term="Fall 2025">
-                                    <img src="images/gallery/study_BoPortraitOld.jpeg" alt="Study - Bo Portrait (Old)" data-term="Spring 2026">
-                                    <img src="images/gallery/study_GabeBoGinni.png" alt="Study - Gabe, Bo, Ginni" data-term="Spring 2026">
-                                    <img src="images/gallery/study_BoPortraitRe.jpeg" alt="Study - Bo Portrait (Redo)" data-term="Spring 2026">
+                                    <img src="images/gallery/study_BoPortraitOld.jpeg" alt="Study - Bo Portrait (Old)" data-term="Winter 2026">
+                                    <img src="images/gallery/study_GabeBoGinni.png" alt="Study - Gabe, Bo, Ginni" data-term="Winter 2026">
+                                    <img src="images/gallery/study_BoPortraitRe.jpeg" alt="Study - Bo Portrait (Redo)" data-term="Winter 2026">
+                                    <img src="images/gallery/study_ThatLook.jpeg" alt="Study - &quot;I guess I just always had that look.&quot;" data-term="Winter 2026">
                                 </div>
                                 <div id="cat-misc" data-term="Misc">
                                     <img src="images/gallery/trio.jpeg" alt="Trio" data-term="Spring 2025">
@@ -298,15 +304,11 @@
 
             if (!overlay || !overlayImg || !overlayCaption || !filter || !gallery || !sourcesRoot || !viewMode || !timeline) return;
 
+            // Initialize shared overlay helpers (functions.js)
+            if (window.initImageOverlay) window.initImageOverlay({ overlayId: 'overlay', imageId: 'overlay-img', captionId: 'overlay-caption' });
+
             const openOverlay = (src, alt) => {
-                overlayImg.src = src;
-                overlayImg.alt = alt || '';
-                overlayCaption.textContent = alt || '';
-                overlayImg.dataset.zoomed = '0';
-                overlayImg.style.transform = 'translate(0,0) scale(1)';
-                overlayImg.style.cursor = 'zoom-in';
-                overlay.style.display = 'flex';
-                overlay.style.flexDirection = 'column';
+                if (window.openImageOverlay) window.openImageOverlay(src, alt);
             };
 
             const buildThumb = (img) => {
@@ -326,7 +328,7 @@
                 return bucket ? Array.from(bucket.querySelectorAll('img')) : [];
             };
 
-            const termOrder = ['Spring 2025', 'Summer 2025', 'Fall 2025', 'Spring 2026'];
+            const termOrder = ['Spring 2025', 'Summer 2025', 'Fall 2025', 'Winter 2026'];
 
             const getImgTerm = (img) => img.getAttribute('data-term') || img.closest('[data-term]')?.getAttribute('data-term') || 'Misc';
 
@@ -409,31 +411,6 @@
                     overlay.style.display = 'none';
                     overlayImg.dataset.zoomed = '0';
                     overlayImg.style.transform = 'translate(0,0) scale(1)';
-                }
-            });
-
-            overlayImg.addEventListener('click', function() {
-                const zoomed = overlayImg.dataset.zoomed === '1';
-                if (!zoomed) {
-                    overlayImg.dataset.zoomed = '1';
-                    overlayImg.style.transformOrigin = 'center center';
-                    overlayImg.style.transform = 'translate(0,0) scale(2)';
-                    overlayImg.style.cursor = 'zoom-out';
-                } else {
-                    overlayImg.dataset.zoomed = '0';
-                    overlayImg.style.transform = 'translate(0,0) scale(1)';
-                    overlayImg.style.cursor = 'zoom-in';
-                }
-            });
-
-            overlayImg.addEventListener('mousemove', function(event) {
-                if (overlayImg.dataset.zoomed === '1') {
-                    const rect = overlay.getBoundingClientRect();
-                    const offsetX = Math.min(Math.max((event.clientX - rect.left) / rect.width, 0), 1);
-                    const offsetY = Math.min(Math.max((event.clientY - rect.top) / rect.height, 0), 1);
-                    const panX = (0.5 - offsetX) * 60;
-                    const panY = (0.5 - offsetY) * 60;
-                    overlayImg.style.transform = `translate(${panX}%, ${panY}%) scale(2)`;
                 }
             });
 

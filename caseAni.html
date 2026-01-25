@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+        <!-- Github please -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DM's Website</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Page-local styling for the 5-image carousel */
+        .carousel-row {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .carousel-images {
+            flex: 1 1 auto;
+            min-width: 0;
+        }
+
+        .image-navigation {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: stretch;
+            justify-content: flex-start;
+            padding: 10px;
+            border-radius: 10px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.08), rgba(0,0,0,0.02));
+            border: 2px solid rgba(0,0,0,0.15);
+            position: sticky;
+            top: 16px;
+            height: fit-content;
+        }
+
+        .nav-button {
+            font-family: National-Park, sans-serif;
+            font-weight: 800;
+            padding: 10px 12px;
+            border-radius: 10px;
+            border: 2px solid #888;
+            background: linear-gradient(to bottom, #ffffff, #d7d7d7);
+            color: #111;
+            cursor: pointer;
+            box-shadow: inset 0 1px 0 #fff, 0 2px 3px rgba(0,0,0,0.2);
+        }
+
+        .nav-button:hover { background: linear-gradient(to bottom, #ffffff, #c9c9c9); }
+        .nav-button.active {
+            background: linear-gradient(to bottom, #ff6666, #ff0000);
+            border-color: #cc0000;
+            color: #fff;
+            text-shadow: 0 1px 0 rgba(0,0,0,0.35);
+            box-shadow: none;
+        }
+
+        @media (max-width: 900px) {
+            .carousel-row { flex-direction: column; }
+            .image-navigation {
+                position: static;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        #imas-link, #award {
+            position: relative;
+            cursor: help;
+            text-decoration: underline;
+        }
+
+        #imas-link .popup, #award .popup {
+            display: none;
+            position: absolute;
+            left: 50%;
+            bottom: calc(100% + 10px);
+            transform: translateX(-50%);
+            background: white;
+            border: 1px solid #ccc;
+            padding: 12px;
+            z-index: 1000;
+            border-radius: 10px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+            width: min(320px, 80vw);
+            text-align: center;
+            /* active animation */
+            animation: fadeInUp 0.2s ease-out forwards;
+        }
+
+        #imas-link:hover .popup,
+        #imas-link:focus-within .popup,
+        #award:hover .popup,
+        #award:focus-within .popup {
+            display: block;
+        }
+
+        #imas-link .popup img, #award .popup img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+        }
+
+        #imas-link .popup .caption, #award .popup .caption {
+            margin-top: 8px;
+            font-size: 0.95rem;
+            color: #111;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+
+        /* Clean embedded video container (same pattern as caseJournal) */
+        .gallery-media {
+            width: 100%;
+            border-radius: 10px;
+            border: 2px solid rgba(0,0,0,0.25);
+            background: rgba(255,255,255,0.7);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .gallery-media iframe {
+            width: 100%;
+            height: min(70vh, 520px);
+            border: 0;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="scanlines" aria-hidden="true"></div>
+    <div class="center-strip">
+        <div class="content-grid">
+            <div id="main-content" role="main">
+                <div id="case-study-section" class="section">
+                    <div id="case-study-content">
+                        <div id="tabs-content">
+                            <div id="container" style="text-align: left; margin: 0 auto;">
+                                <h3 style="width: -webkit-fill-available;
+                                ">Case Study: "Flying By -- A Short Animation Project"</h3>
+                                <div class="case-panel" id="2dAni" style="text-align: left; background-color: rgba(255, 255, 255, 0.85); border-radius: 10px; padding: 10px;">
+                                    <div class="case-panel-header"><p style="color: white !important;">Type: <strong>Design and Animation</strong> |  Duration: <strong>1 1/2 Months</strong></p><p style="color: white !important;">Product: <strong>Short 2D Animation with Original Character </strong></p></div>
+                                    <hr>
+                                    <div id="final-video" data-type="video" data-drive-id="1LvJpB77-FqDLsGvZAUYcjwczOMlROlFU" data-title="Final Video"></div>
+                                    <p>
+                                        Flying By is a short 2D animation project I created as part of my Intro to 2D Animation course in the Fall of 2024, during I time I elected to focus on Interactive Media studies that focused on topics not immediately related to my interest in Game Design but which I partook in both to hopefully broaden my skill set and understanding of other facets of the field, as well as to learn techniques that I might be able to apply in my work in game design in some capacity. I had done so prior to this project as well as a freshman and sophmore, including taking a filmmaking course to learn about how to craft a compelling narrative, so my main goal for this project was to create a visually engaging story that applied those lessons I had learned while also giving me the opportunity to begin delving into character design and worldbuilding in a much more visual way.
+                                    </p>
+                                    <p>
+                                        The final project was formulated at a time when I was deeply fascinated with birds and their status as the last remaining dinosaurs, which I found to be a solemn metaphor for perseverance and adaptation in the face of adversity. Right from the beginning, I had this idea of my animation starring a small bird surviving the extinction of the (non-avian) dinosaurs and flying through time to arrive in the present day.
+                                    </p>
+                                    <div class="image-container" style="text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px;">
+                                        <img class="case-study-image" src="images/projectImages/aniImgs/aniProj/birdRef.png" alt="Case Study Image" style="width: 100%; height: auto;">
+                                        <hr style="color: black;">
+                                        <p class="case-study-caption">The initial reference for the main character's design.</p>
+                                    </div>
+                                    <p>
+                                        During the production of Flying By, I was able to expand my skills in character design and animation, with the big challenge being the fact that the main character was a small bird that obviously couldn't mimic human expressions. The majority of the work was done in Adobe After Effects, with all of the assets created in Adobe Illustrator and Photoshop. The initial concept art and character designs as well as storyboarding, however, was pencil and paper--and I found that this traditional approach allowed for more organic and fluid designs to emerge, as well as personally helped to ground me to the project itself before overwhelming myself with digital tools. When I did move to the digital phase, I found that having that solid, paper foundation made the process much smoother.
+                                    </p>
+                                    <div class="carousel-row" data-carousel="storyboards">
+                                        <div class="carousel-images">
+                                            <div class="image-container" style="text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px; display: block;">
+                                                <img class="case-study-image" src="images/projectImages/aniImgs/aniProj/storyboard1.png" alt="1" style="width: 100%; height: auto;">
+                                                <hr style="color: black;">
+                                                <p class="case-study-caption">Storyboarding for the main character's flight through time.</p>
+                                            </div>
+
+                                            <div class="image-container" style="text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px; display: none;">
+                                                <img class="case-study-image" src="images/projectImages/aniImgs/aniProj/storyboard2.png" alt="2" style="width: 100%; height: auto;">
+                                                <hr style="color: black;">
+                                                <p class="case-study-caption">Further storyboarding for the main character's journey.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="image-navigation" data-controls="storyboards" aria-label="Storyboard carousel navigation">
+                                            <button class="nav-button active" onclick="showImage('storyboards','storyboard1', this)" type="button">1</button>
+                                            <button class="nav-button" onclick="showImage('storyboards','storyboard2', this)" type="button">2</button>
+                                        </div>
+                                    </div>
+                                    <p>
+                                        Once I outlined all of the scenes, I went about creating the various assets needed for the animation, including backgrounds and grouped elements for complicated designs and actions (i.e., characters such as the bird and the prehistoric man; or interactions such as the bird perching on an arm). I would include all relevant environmental elements for a scene in the same Illustrator file and then import that file into After Effects where I could then animate each element of the scene individually. This allowed me to create a more dynamic and engaging animation, as I could manipulate each element separately to create depth and movement--and was ultimately more efficient than animating everything from scratch as I could pre-compose the elements rather than having to create each one individually on the fly so long as I knew what elements and interactions would be in a scene ahead of time.
+                                    </p>
+                                    <div class="carousel-row" data-carousel="elements">
+                                        <div class="carousel-images">
+                                            <div class="image-container" style="text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px; display: block;">
+                                                <img class="case-study-image" src="images/projectImages/aniImgs/aniProj/bgScene1.png" alt="1" style="width: 100%; height: auto;">
+                                                <hr style="color: black;">
+                                                <p class="case-study-caption">The first background scene, covering the title and the meteor impact.</p>
+                                            </div>
+                                            <div class="image-container" style="text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px; display: none;">
+                                                <img class="case-study-image" src="images/projectImages/aniImgs/aniProj/bgSceneDisaster.png" alt="2" style="width: 100%; height: auto;">
+                                                <hr style="color: black;">
+                                                <p class="case-study-caption">The second background scene, depicting the aftermath of the meteor impact.</p>
+                                            </div>
+                                            <div class="image-container" style="text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px; display: none;">
+                                                <img class="case-study-image" src="images/projectImages/aniImgs/aniProj/bgScene4.png" alt="3" style="width: 100%; height: auto;">
+                                                <hr style="color: black;">
+                                                <p class="case-study-caption">The third background scene, where the bird would fly over an ocean landscape.</p>
+                                            </div>
+                                            <div class="image-container" style="text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px; display: none;">
+                                                <img class="case-study-image" src="images/projectImages/aniImgs/aniProj/bgSceneField.png" alt="4" style="width: 100%; height: auto;">
+                                                <hr style="color: black;">
+                                                <p class="case-study-caption">The fourth background scene, featuring a lush field environment.</p>
+                                            </div>
+                                            <div class="image-container" style="text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px; display: none;">
+                                                <img class="case-study-image" src="images/projectImages/aniImgs/aniProj/bgSceneCliff.png" alt="5" style="width: 100%; height: auto;">
+                                                <hr style="color: black;">
+                                                <p class="case-study-caption">The fifth background scene, showcasing a dramatic cliffside view as the bird flies down to escape a storm.</p>
+                                            </div>
+                                            <div class="image-container" style="text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px; display: none;">
+                                                <img class="case-study-image" src="images/projectImages/aniImgs/aniProj/bgSceneCamp.png" alt="6" style="width: 100%; height: auto;">
+                                                <hr style="color: black;">
+                                                <p class="case-study-caption">The sixth background scene, depicting the bird encountering pre-historical humans.</p>
+                                            </div>
+                                            <div class="image-container" style="text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px; display: none;">
+                                                <img class="case-study-image" src="images/projectImages/aniImgs/aniProj/bgFinalScene.png" alt="7" style="width: 100%; height: auto;">
+                                                <hr style="color: black;">
+                                                <p class="case-study-caption">The final background scene, where the bird finally arrives home.</p>
+                                            </div>
+                                        </div>
+                                        <div class="image-navigation" data-controls="elements" aria-label="Element carousel navigation">
+                                            <button class="nav-button active" onclick="showImage('elements','bgScene1', this)" type="button">1</button>
+                                            <button class="nav-button" onclick="showImage('elements','bgSceneDisaster', this)" type="button">2</button>
+                                            <button class="nav-button" onclick="showImage('elements','bgScene4', this)" type="button">3</button>
+                                            <button class="nav-button" onclick="showImage('elements','bgSceneField', this)" type="button">4</button>
+                                            <button class="nav-button" onclick="showImage('elements','bgSceneCliff', this)" type="button">5</button>
+                                            <button class="nav-button" onclick="showImage('elements','bgSceneCamp', this)" type="button">6</button>
+                                            <button class="nav-button" onclick="showImage('elements','bgFinalScene', this)" type="button">7</button>
+                                        </div>
+                                    </div>
+                                    <p>
+                                        The end product was a minute-and-a-half long animation that I was very proud of, especially considering the limited time frame I had to complete it in alongside my other coursework--with the entire process from initial concept to final render taking roughly a month and a half--and the fact that it was my very first animation project. The final animation can be viewed above!
+                                    </p>
+                                    <p>
+                                        The various sound effects and background music were all sourced from Freesound.org.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div class="right-nav" aria-label="Site navigation">
+                    <nav class="site-navbar vertical" aria-label="Main navigation">
+                        <a href="index.html">Home</a>
+                        <a href="persona.html">About</a>
+                        <a href="misc.html">Misc</a>
+                        <hr>
+                        <a href="gallery.html">Gallery</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="logo-container" style="cursor: pointer; text-align: center; flex-direction: column;">
+        <div id="logo">
+            <img src="images/PersonalLogo.gif" alt="DM's Logo" onclick="location.href='index.html';">
+        </div>
+    </div>
+    <div id="overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); justify-content: center; align-items: center; z-index: 1000;">
+        <img id="overlay-img" draggable="false" style="max-width: 90%; max-height: 90%; cursor: zoom-in;" alt="Zoomed Image">
+        <p id="overlay-caption" style="color: white; text-align: center; margin-top: 10px;"></p>
+    </div>
+    <script src="functions.js"></script>
+    <script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const ownGoalEl = document.getElementById('own-goal');
+        if (ownGoalEl) ownGoalEl.style.display = "block";
+        const nautilusEl = document.getElementById('nautilus-conundrum');
+        if (nautilusEl) nautilusEl.style.display = "none";
+        document.body.style.backgroundImage = "url('images/aniBackground.gif')";
+
+        if (window.initImageOverlay) {
+            window.initImageOverlay({ overlayId: 'overlay', imageId: 'overlay-img', captionId: 'overlay-caption' });
+        }
+
+        const bindOverlayClicks = () => {
+            document.querySelectorAll('.case-study-image').forEach(img => {
+                if (img.dataset.overlayBound === '1') return;
+                img.dataset.overlayBound = '1';
+                img.style.cursor = 'pointer';
+
+                img.addEventListener('click', function(event) {
+                    const target = event.currentTarget;
+                    const caption = target.parentElement?.querySelector('.case-study-caption')?.textContent || '';
+                    if (window.openImageOverlay) window.openImageOverlay(target.src, caption);
+                });
+            });
+        };
+
+        bindOverlayClicks();
+
+        // Only cache/switch the containers inside the specific carousel, not the whole page
+        const carousels = new Map();
+        document.querySelectorAll('[data-carousel]').forEach(wrap => {
+            const key = wrap.getAttribute('data-carousel');
+            const containers = Array.from(wrap.querySelectorAll('.image-container'));
+            containers.forEach(container => {
+                const img = container.querySelector('.case-study-image');
+                if (!img) return;
+                const file = (img.getAttribute('src') || '').split('/').pop() || '';
+                const base = file.replace(/\.[^/.]+$/, '');
+                container.dataset.name = base;
+                img.decoding = 'async';
+            });
+            carousels.set(key, containers);
+        });
+
+        // Global for inline onclick: showImage(carouselKey, imageName, buttonEl)
+        window.showImage = function(carouselKey, imageName, btn) {
+            const containers = carousels.get(carouselKey);
+            if (!containers) return;
+
+            containers.forEach(container => {
+                container.style.display = (container.dataset.name === imageName) ? 'block' : 'none';
+            });
+
+            // Active button styling
+            const nav = document.querySelector(`.image-navigation[data-controls="${carouselKey}"]`);
+            if (nav) {
+                nav.querySelectorAll('.nav-button').forEach(b => b.classList.remove('active'));
+                if (btn) btn.classList.add('active');
+            }
+
+            // Ensure overlay handlers are bound for any newly-revealed images
+            bindOverlayClicks();
+        };
+
+        // Render Drive video (same approach as caseJournal)
+        const videoBucket = document.getElementById('final-video');
+        if (videoBucket) {
+            const driveId = videoBucket.getAttribute('data-drive-id');
+            const title = videoBucket.getAttribute('data-title') || 'Video';
+            if (driveId) {
+                const wrapper = document.createElement('div');
+                wrapper.className = 'gallery-media';
+
+                const iframe = document.createElement('iframe');
+                iframe.src = `https://drive.google.com/file/d/${driveId}/preview`;
+                iframe.title = title;
+                iframe.allow = 'autoplay; fullscreen';
+                iframe.allowFullscreen = true;
+
+                wrapper.appendChild(iframe);
+                videoBucket.appendChild(wrapper);
+            }
+        }
+    });
+    </script>
+</body>
+</html>

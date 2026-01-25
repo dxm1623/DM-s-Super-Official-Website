@@ -66,6 +66,61 @@
                 justify-content: center;
             }
         }
+
+        #imas-link, #award {
+            position: relative;
+            cursor: help;
+            text-decoration: underline;
+        }
+
+        #imas-link .popup, #award .popup {
+            display: none;
+            position: absolute;
+            left: 50%;
+            bottom: calc(100% + 10px);
+            transform: translateX(-50%);
+            background: white;
+            border: 1px solid #ccc;
+            padding: 12px;
+            z-index: 1000;
+            border-radius: 10px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+            width: min(320px, 80vw);
+            text-align: center;
+            /* active animation */
+            animation: fadeInUp 0.2s ease-out forwards;
+        }
+
+        #imas-link:hover .popup,
+        #imas-link:focus-within .popup,
+        #award:hover .popup,
+        #award:focus-within .popup {
+            display: block;
+        }
+
+        #imas-link .popup img, #award .popup img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+        }
+
+        #imas-link .popup .caption, #award .popup .caption {
+            margin-top: 8px;
+            font-size: 0.95rem;
+            color: #111;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
     </style>
 </head>
 <body>
@@ -73,7 +128,6 @@
     <div class="center-strip">
         <div class="content-grid">
             <div id="main-content" role="main">
-                <h2 class="dms-header">DM's Website</h2>
                 <div id="case-study-section" class="section">
                     <div id="case-study-content">
                         <div id="tabs-content">
@@ -97,7 +151,18 @@
                                         <p class="case-study-caption">The initial thumbnails for the redesign of my main character, Bo, to help visualize a silhouette + pose.</p>
                                     </div>
                                     <p>As part of my initial redesigns utilizing the techniques and principles learned in the course, I focused on refining the design of my main character, Bo the Sheep (who I'd give the last name Lanolidaughter during the process), to better fit both what I imagined her personality to be as well as in the context of the eventual narrative and gameplay. She was imagined as a <strong>curious and adventurous</strong> character, always eager to explore her surroundings and uncover the mysteries of her world--to a fault--who nonetheless begins the story in a completely naive and <strong>unaware</strong> state. Despite being a young adult, Bo is still very much a child at heart and even somewhat in mind--and the story I imagined for her would focus on that sense of naivete being stripped away as she is confronted with the often harsh realities of her world. Importantly, though, she starts the journey in a state of blissful unawareness--save for some underlying, repressed fears and trauma--and so much of my work was spent making her as friendly and approachable as possible, even bouncy.</p>
-                                    <p>This redesign proved to be a very pivotal moment in my journey as a game designer and as a character artist. I documented the design process for Bo's redesign alone very extensively, and I would end up referring back to it after the fact from time to time. More impactfuly for me personally, it was this project that I would end up choosing to present at the <strong>2025 Interactive Media Annual Showcase</strong> at the School of Communication of the University of Miami--where it would end up winning the Undergraduate Award for 2D & 3D Art by the judges present!</p>
+                                    <p>This redesign proved to be a very pivotal moment in my journey as a game designer and as a character artist. I documented the design process for Bo's redesign alone very extensively, and I would end up referring back to it after the fact from time to time. I'd end up choosing this project to present at the <strong id="imas-link"><a href="https://www.facebook.com/UMSoC/videos/come-with-gracie-to-experience-the-2025interactive-media-showcasewearesoc-umiami/1415562059599273/">2025 Interactive Media Annual Showcase</a>
+                                        <span class="popup" role="tooltip" aria-label="2025 IMAS preview">
+                                            <img src="images/projectImages/2DImgs/2Dproj/IMASBo.PNG" alt="IMAS Showcase preview image">
+                                            <span class="caption">Hey! Look who it is!</span>
+                                        </span>
+                                    </strong> at the School of Communication of the University of Miami--where it would end up winning the <strong id="award">Undergraduate Award for 2D & 3D Art
+                                        <span class="popup" role="tooltip" aria-label="2025 IMAS 2D/3D Art award">
+                                            <img src="images/projectImages/2DImgs/2Dproj/2DAward.png" alt="2025 IMAS 2D/3D Art award">
+                                            <span class="caption">Someone's definitely taken a better picture of this thing, but I didn't think to give them my phone then. Oops.</span>
+                                        </span>
+                                    </strong>  by the judges present!
+                                    </p>
                                     <div class="carousel-row">
                                         <div class="carousel-images" data-carousel="bo-midterm">
                                             <!-- the five image-container blocks remain here -->
@@ -202,7 +267,7 @@
         </div>
     </div>
     <div id="overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); justify-content: center; align-items: center; z-index: 1000;">
-        <img id="overlay-img" style="max-width: 90%; max-height: 90%; cursor: zoom-in;" alt="Zoomed Image">
+        <img id="overlay-img" draggable="false" style="max-width: 90%; max-height: 90%; cursor: zoom-in;" alt="Zoomed Image">
         <p id="overlay-caption" style="color: white; text-align: center; margin-top: 10px;"></p>
     </div>
     <script src="functions.js"></script>
@@ -215,73 +280,25 @@
         if (nautilusEl) nautilusEl.style.display = "none";
         document.body.style.backgroundImage = "url('images/2DBackground.gif')";
 
-        const overlay = document.getElementById('overlay');
-        const overlayImg = document.getElementById('overlay-img');
-        const overlayCaption = document.getElementById('overlay-caption');
-
-        if (!overlay || !overlayImg || !overlayCaption) return;
+        if (window.initImageOverlay) {
+            window.initImageOverlay({ overlayId: 'overlay', imageId: 'overlay-img', captionId: 'overlay-caption' });
+        }
 
         const bindOverlayClicks = () => {
-            // Remove duplicate listeners by re-binding via cloning? Keep simple: just bind once per image using a marker
             document.querySelectorAll('.case-study-image').forEach(img => {
                 if (img.dataset.overlayBound === '1') return;
                 img.dataset.overlayBound = '1';
                 img.style.cursor = 'pointer';
 
                 img.addEventListener('click', function(event) {
-                    overlayImg.src = event.currentTarget.src;
-                    overlayImg.alt = event.currentTarget.alt || '';
-                    const caption = event.currentTarget.parentElement?.querySelector('.case-study-caption');
-                    overlayCaption.textContent = caption ? caption.textContent : '';
-
-                    overlayImg.dataset.zoomed = '0';
-                    overlayImg.style.transform = 'translate(0, 0) scale(1)';
-                    overlayImg.style.width = '';
-                    overlayImg.style.maxWidth = '92vw';
-                    overlayImg.style.maxHeight = '86vh';
-                    overlayImg.style.objectFit = 'contain';
-                    overlayImg.style.cursor = 'zoom-in';
-
-                    overlay.style.display = 'flex';
-                    overlay.style.flexDirection = 'column';
+                    const target = event.currentTarget;
+                    const caption = target.parentElement?.querySelector('.case-study-caption')?.textContent || '';
+                    if (window.openImageOverlay) window.openImageOverlay(target.src, caption);
                 });
             });
         };
 
         bindOverlayClicks();
-
-        overlay.addEventListener('click', function(event) {
-            if (event.target !== overlayImg) {
-                overlay.style.display = 'none';
-                overlayImg.dataset.zoomed = '0';
-                overlayImg.style.transform = 'translate(0, 0) scale(1)';
-            }
-        });
-
-        overlayImg.addEventListener('click', function() {
-            const zoomed = overlayImg.dataset.zoomed === '1';
-            if (!zoomed) {
-                overlayImg.dataset.zoomed = '1';
-                overlayImg.style.transformOrigin = 'center center';
-                overlayImg.style.transform = 'translate(0, 0) scale(2)';
-                overlayImg.style.cursor = 'zoom-out';
-            } else {
-                overlayImg.dataset.zoomed = '0';
-                overlayImg.style.transform = 'translate(0, 0) scale(1)';
-                overlayImg.style.cursor = 'zoom-in';
-            }
-        });
-
-        overlayImg.addEventListener('mousemove', function(event) {
-            if (overlayImg.dataset.zoomed === '1') {
-                const rect = overlay.getBoundingClientRect();
-                const offsetX = Math.min(Math.max((event.clientX - rect.left) / rect.width, 0), 1);
-                const offsetY = Math.min(Math.max((event.clientY - rect.top) / rect.height, 0), 1);
-                const panX = (0.5 - offsetX) * 60;
-                const panY = (0.5 - offsetY) * 60;
-                overlayImg.style.transform = `translate(${panX}%, ${panY}%) scale(2)`;
-            }
-        });
 
         // Only cache/switch the containers inside the specific carousel, not the whole page
         const carousels = new Map();

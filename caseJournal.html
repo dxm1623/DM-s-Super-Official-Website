@@ -181,9 +181,11 @@
                                         <img src="images/projectImages/3DImgs/3Dproj/FinalScene/showcase/IntroTo3D Final Render 2.png" alt="Final Scene Render, alternative angle">
                                     </div>
                                     <!-- video -->
-                                    <div id="final-video" data-type="video" data-drive-id="1-TtkuN1GbnHLFvujTl30bKQlAxKBGoaH" data-title="Final Video"></div>
+                                    <div id="final-video" data-type="video" data-drive-id="1-TtkuN1GbnHLFvujTl30bKQlAxKBGoaH" data-title="Final Video">
+                                    </div>
                                 </div>
-                                <ul id="gallery" class="gallery" aria-label="Image gallery"></ul>                                <hr>
+                                <ul id="gallery" class="gallery" aria-label="Image gallery"></ul>
+                                <hr>
 
                                 <p>
                                     During my final semester of my undergraduate studies, I partaked in an extensive project that involved crafting a 3D scene from scratch, utilizing a combination of Maya for modeling, Substance Painter for texturing, and Unity for scene assembly and rendering. The project was structured around the creation of a cohesive scene that, by the end of my ideation process, would included a journal as the "hero" asset, and a pencil and table as supporting elements.
@@ -266,32 +268,25 @@
     </div>
 
     <div id="overlay">
-        <img id="overlay-img" src="" alt="" style="cursor: zoom-in;">
+        <img id="overlay-img" draggable="false" src="" alt="" style="cursor: zoom-in;">
         <div id="overlay-caption"></div>
     </div>
 
     <script src="functions.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const overlay = document.getElementById('overlay');
-            const overlayImg = document.getElementById('overlay-img');
-            const overlayCaption = document.getElementById('overlay-caption');
             const filter = document.getElementById('gallery-filter');
             const gallery = document.getElementById('gallery');
             const sourcesRoot = document.getElementById('image-sources');
 
-            if (!overlay || !overlayImg || !overlayCaption || !filter || !gallery || !sourcesRoot) return;
+            if (!filter || !gallery || !sourcesRoot) return;
+
+            if (window.initImageOverlay) {
+                window.initImageOverlay({ overlayId: 'overlay', imageId: 'overlay-img', captionId: 'overlay-caption' });
+            }
 
             const openOverlay = (src, alt) => {
-                overlayImg.src = src;
-                overlayImg.alt = alt || '';
-                overlayCaption.textContent = alt || '';
-                overlayImg.dataset.zoomed = '0';
-                overlayImg.style.transform = 'translate(0, 0)';
-                overlayImg.style.objectFit = 'contain';
-                overlayImg.style.cursor = 'zoom-in';
-                overlay.style.display = 'flex';
-                overlay.style.flexDirection = 'column';
+                if (window.openImageOverlay) window.openImageOverlay(src, alt || '');
             };
 
             const buildThumb = (img) => {
@@ -336,7 +331,6 @@
 
                 let imgs = [];
                 if (key === 'all') {
-                    // Exclude any images that might be inside the video bucket
                     const videoBucket = document.getElementById('final-video');
                     imgs = Array.from(sourcesRoot.querySelectorAll('img')).filter(img => {
                         return !videoBucket || !videoBucket.contains(img);
@@ -348,43 +342,6 @@
 
                 imgs.forEach(img => gallery.appendChild(buildThumb(img)));
             };
-
-            // Overlay close
-            overlay.addEventListener('click', function(event) {
-                if (event.target !== overlayImg) {
-                    overlay.style.display = 'none';
-                    overlayImg.dataset.zoomed = '0';
-                    overlayImg.style.transform = 'translate(0, 0) scale(1)';
-                }
-            });
-
-            // Toggle zoom (scale instead of changing width, to avoid cropping tall images)
-            overlayImg.addEventListener('click', function() {
-                const zoomed = overlayImg.dataset.zoomed === '1';
-                if (!zoomed) {
-                    overlayImg.dataset.zoomed = '1';
-                    overlayImg.style.objectFit = 'contain';
-                    overlayImg.style.transformOrigin = 'center center';
-                    overlayImg.style.transform = 'scale(2)';
-                    overlayImg.style.cursor = 'zoom-out';
-                } else {
-                    overlayImg.dataset.zoomed = '0';
-                    overlayImg.style.transform = 'translate(0, 0) scale(1)';
-                    overlayImg.style.cursor = 'zoom-in';
-                }
-            });
-
-            // Pan when zoomed (translate while preserving scale)
-            overlayImg.addEventListener('mousemove', function(event) {
-                if (overlayImg.dataset.zoomed === '1') {
-                    const rect = overlay.getBoundingClientRect();
-                    const offsetX = Math.min(Math.max((event.clientX - rect.left) / rect.width, 0), 1);
-                    const offsetY = Math.min(Math.max((event.clientY - rect.top) / rect.height, 0), 1);
-                    const panX = (0.5 - offsetX) * 60; // %
-                    const panY = (0.5 - offsetY) * 60; // %
-                    overlayImg.style.transform = `translate(${panX}%, ${panY}%) scale(2)`;
-                }
-            });
 
             filter.addEventListener('change', () => renderGallery(filter.value));
 

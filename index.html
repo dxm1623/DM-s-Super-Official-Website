@@ -121,8 +121,10 @@
                                         </div>
                                         <p><strong>Lonely Road & Lost My Book</strong> were two interactive virtual reality experiences I developed individually as part of my senior year undergraduate studies for my Designing Virtual Worlds course. The projects focused on immersive storytelling and user interaction within virtual environments, with an emphasis on creating a rich and engaging atmosphere.
                                         </p>
-                                        <p>These were among the first realized game experiences that I had the opportunity to develop, allowing me to explore the potential of virtual reality as a medium for storytelling and further my own skills in game design and development.
+                                        <p>These were among the first realized game experiences that I had the opportunity to develop from start to finish, allowing me to explore the potential of virtual reality as a medium for storytelling and further my own skills in game design and development. Importantly, it helped build on my prior experience developing 2D games and assets (i.e. Own Goal and Nautilus's Conundrum from my Designing Playful Experiences course), reinforcing the lessons I learned in pushing a workable <strong>design</strong> out the door rather than immediately getting stuck in the details. It also helped expose me to the various nuances related to transferring my skills and knowledge from 2D to 3D game development.
                                         </p>
+                                        <p>In lieu of my usual case study format, I have instead provided two links to the original documentation for each project, since as part of my coursework I created detailed documentation on both projects. Lonely Road's documentation will contain a hub page linking to various videos and images showcasing various stages of its development, while Lost My Book's documentation is a straightforward overview of its design and implementation process. I have elected to present these cases as such to allow for a more in-depth exploration of how I often document and track my work!</p>
+                                        <p>To explore these projects, click on the buttons above!</p>
                                     </div>
                                 </div>
                                 <br>
@@ -186,6 +188,40 @@
                                     </p>
                                 </div>
                                 </div>
+                                <br>
+                                <div class="studyShowcase" id="studySix">
+                                    <div class="window-bar">
+                                        <div class="window-dot" style="background: #FF605C;"></div>
+                                        <div class="window-dot" style="background: #FFBD44;"></div>
+                                        <div class="window-dot" style="background: #00CA4E;"></div>
+                                        <div class="window-title">Flying By -- A Short Animation Project</div>
+                                    </div>
+                                    <div class="window-body">
+                                        <div id="workImageContainer">
+                                        <img id="workImage-studySix" src="images/projectImages/aniImgs/aniImg1.png" alt="Modeling With Maya, Substance Painter, & Unity">
+                                        </div>
+                                    <div class="control-bar" aria-label="Image controls">
+                                        <div class="control-group left">
+                                            <button class="control" aria-label="Previous image" onclick="changeWorkImage('studySix', -1)">←</button>
+                                            <button class="control" aria-label="Next image" onclick="changeWorkImage('studySix', 1)">→</button>
+                                        </div>
+                                        <div class="control-group right">
+                                            <button class="button-glossy" onclick="location.href='caseAni.html'">EXPLORE!</button>
+                                        </div>
+                                    </div>
+                                    <p>
+                                        Flying By is a short 2D animation project I created as part of my Intro to 2D Animation course in the Fall of 2024, where I was introduced to the fundamentals of animation, including timing, spacing, and other principles such as squash and stretch. Beyond hoping to apply these concepts to my own personal projects within the realm of game design, I had also sought to explore animation itself as a storytelling medium, experimenting with visual language and character performance to convey emotions and narrative without relying on dialogue. It also was an opportunity for me to push my creative boundaries and try my hand at a new form of artistic expression while also expanding my Interactive Media skillset.
+                                    </p>
+                                    <p>
+                                        At the time, I had a fascination with birds and their status as the last remaining dinosaurs, a sort of solemn metaphor for perseverance and adaptation in the face of adversity. This inspired me to create a short animation centered around a small bird flying to bring a stick to a new nest after the dinosaur-killing asteroid impact destroys its original home, taking it on a million-year journey through a changing world before finally reaching its destination in the present day.
+                                    </p>
+                                    <p>
+                                        During the production of Flying By, I was able to expand my skills in character design and animation, with the big challenge being the fact that the main character was a small bird that obviously couldn't mimic human expressions. The majority of the work was done in Adobe After Effects, with all of the assets created in Adobe Illustrator and Photoshop.
+                                    </p>
+                                </div>
+                                </div>
+
+
                         </div>
                     </div>
                 <br><br><div id="misc-tabs-container">
@@ -216,6 +252,7 @@
                     <a class="scrollA" href="#studyThree">→ Lonely Road & Lost My Book</a>
                     <a class="scrollA" href="#studyFour">→ Modeling With Maya, SP3D, Unity</a>
                     <a class="scrollA" href="#studyFive">→ (Re)Designing My Game Characters</a>
+                    <a class="scrollA" href="#studySix">→ Flying By -- Adobe AE Animation</a>
                 </nav>
             </aside>
         </div>
@@ -258,6 +295,11 @@
             "images/projectImages/2DImgs/2DImg3.png",
             "images/projectImages/2DImgs/2DImg4.png",
             "images/projectImages/2DImgs/2DImg5.png"
+        ],
+        studySix: [
+            "images/projectImages/aniImgs/aniImg1.png",
+            "images/projectImages/aniImgs/aniImg2.png",
+            "images/projectImages/aniImgs/aniImg3.png"
         ]
     };
 
@@ -266,7 +308,8 @@
         studyTwo: 0,
         studyThree: 0,
         studyFour: 0,
-        studyFive: 0
+        studyFive: 0,
+        studySix: 0
     };
 
     function changeWorkImage(study, direction) {

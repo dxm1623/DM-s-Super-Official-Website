@@ -250,6 +250,14 @@ body#imgChurch {
     cursor: zoom-in
 }
 
+/* Overlay image: prevent native browser drag/selection (fixes ghost image + cancel cursor) */
+#overlay-img {
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+}
+
 #overlay-img:active {
     cursor: grabbing;
 }
