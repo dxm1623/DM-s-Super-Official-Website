@@ -12,7 +12,6 @@
             color: #333;
         }
         h1, h2, h3 {
-            /* sans serif font for headers */
             font-family: "Trebuchet MS", Arial, sans-serif;
             color: #D9A026;
             text-shadow: 3px 3px 1px #1B1750;
@@ -76,21 +75,138 @@
             max-width: 80%;
         }
 
+        .ac-devlog-nav {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .ac-devlog-nav .ac-devlog-nav-btn {
+            display: inline-block;
+            padding: 10px 16px;
+            border-radius: 10px;
+            border: 2px solid rgba(0,0,0,0.25);
+            background: linear-gradient(to bottom, #F3C969, #B87333);
+            color: #1B1750;
+            font-weight: 800;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+            transition: transform 0.15s ease, filter 0.15s ease;
+        }
+        .ac-devlog-nav .ac-devlog-nav-btn:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.05);
+        }
+        .ac-devlog-nav .ac-devlog-nav-btn:active {
+            transform: translateY(0px);
+            filter: brightness(0.98);
+        }
+
+        .right-nav {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 260px;
+            height: 100vh;
+            box-sizing: border-box;
+            padding: 16px 14px;
+            z-index: 2000;
+
+            background: linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.25));
+            border-left: 3px solid rgba(243, 201, 105, 0.55);
+            box-shadow: -8px 0 18px rgba(0,0,0,0.35);
+        }
+
+        .right-nav .nav-logo {
+            display: flex;
+            justify-content: center;
+            padding: 6px 0 14px;
+        }
+
+        .right-nav .nav-logo img {
+            width: min(190px, 92%);
+            height: auto;
+            cursor: pointer;
+            filter: drop-shadow(0 8px 14px rgba(0,0,0,0.85));
+            transition: transform 0.2s ease;
+        }
+        .right-nav .nav-logo img:hover { transform: scale(1.05); }
+
+        .right-nav .site-navbar {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 10px;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.08);
+            border: 2px solid rgba(243, 201, 105, 0.35);
+        }
+
+        .right-nav .site-navbar a {
+            display: block;
+            padding: 10px 12px;
+            border-radius: 10px;
+            font-family: "Trebuchet MS", Arial, sans-serif;
+            font-weight: 800;
+            letter-spacing: 0.2px;
+            text-decoration: none;
+
+            color: #F3C969;
+            background: rgba(27, 23, 80, 0.65);
+            border: 2px solid rgba(243, 201, 105, 0.25);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+            transition: transform 0.12s ease, filter 0.12s ease, background 0.12s ease;
+        }
+
+        .right-nav .site-navbar a:hover {
+            transform: translateY(-1px);
+            filter: brightness(1.06);
+            background: rgba(27, 23, 80, 0.78);
+        }
+
+        .right-nav .site-navbar a:active {
+            transform: translateY(0px);
+            filter: brightness(0.98);
+        }
+
+        .right-nav .site-navbar hr {
+            width: 100%;
+            border: 0;
+            border-top: 2px solid rgba(243, 201, 105, 0.35);
+            margin: 4px 0;
+        }
+
+        body { padding-right: 300px; }
+
+        @media (max-width: 1000px) {
+            body { padding-right: 20px; }
+            .right-nav {
+                position: static;
+                width: auto;
+                height: auto;
+                margin: 18px auto 0;
+                border-left: none;
+                border-top: 3px solid rgba(243, 201, 105, 0.55);
+                border-radius: 14px;
+            }
+        }
     </style>
 </head>
 <body>
     <h1 style="text-align: center;">Writing for Answer Campus</h1>
     <h2 style="text-align: center;">Daniele Montefiori's Dev Log for AC 1 & 2; Log 1</h2>
+
+    <div class="ac-devlog-nav">
+        <a href="DevLog-AnswerCampus-WritingForAnswerCampus_2.html" class="ac-devlog-nav-btn">Next Log →</a>
+    </div>
+
     <div class="container">
         <div class="image-column">
-            <!-- Replace with your desired image sources -->
             <img src="images/projectImages/acImgs/ac_scriptwriting.PNG" alt="A screenshot of one of my original deliverables for Answer Campus 1's narrative design; specifically for Cramming, one of Breanna's major story beats.">
             <img src="images/projectImages/acImgs/ac_dialoguesystem.PNG" alt="A screenshot of the latest iteration of the Answer Campus dialogue system in Unity">
             <img src="images/projectImages/acImgs/ac_dialoguesystem2.PNG" alt="The previous excerpt of Cramming as it appears in Unity's scene view via the dialogue system.">
             <img src="images/projectImages/acImgs/ac_sheet.PNG" alt="A screenshot of the Google Sheets document used for writing and exporting Answer Campus 2's dialogue.">
         </div>
         <div class="text-column">
-            <p>As part of the writing team for Answer Campus for the better part of a year now, one of the most significant considerations during the various stages of design for each new (or revised) narrative beat is how such beats are implemented into the existing dialogue system. During the initial development of Answer Campus (now Answer Campus: The First Semester), the writing-to-dialogue pipeline was straightforward:</p>
+            <p>As part of the writing team for Answer Campus for over a year and a half, one of the most significant considerations during the various stages of design for each new (or revised) narrative beat is how such beats are implemented into the existing dialogue system. During the initial development of Answer Campus (now Answer Campus: The First Semester), the writing-to-dialogue pipeline was straightforward:</p>
             
             <ul>
                 <li>The writing team would consult with the lead developers and the project head(s) about potential conflicts, anecdotal experiences, and community outreach to ideate on potential topics and scenes to be explored in game. These concepts were usually mapped onto specific characters, and in some cases, a character's behavior directly inspired a potential story beat.</li>
@@ -136,6 +252,19 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
+
+<aside class="right-nav" aria-label="Site navigation">
+        <div class="nav-logo" aria-label="Home">
+            <img src="images/PersonalLogo.gif" alt="DM's Logo" onclick="location.href='index.html';">
+        </div>
+        <nav class="site-navbar" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="persona.html">About</a>
+            <a href="misc.html">Misc</a>
+            <hr>
+            <a href="gallery.html">Gallery</a>
+        </nav>
+    </aside>
 
 </body>
 </html>

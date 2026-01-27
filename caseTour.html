@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+        <!-- Github please -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DM's Website</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Page-local styling for the 5-image carousel */
+        .carousel-row {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .carousel-images {
+            flex: 1 1 auto;
+            min-width: 0;
+        }
+
+        .image-navigation {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: stretch;
+            justify-content: flex-start;
+            padding: 10px;
+            border-radius: 10px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.08), rgba(0,0,0,0.02));
+            border: 2px solid rgba(0,0,0,0.15);
+            position: sticky;
+            top: 16px;
+            height: fit-content;
+        }
+
+        .nav-button {
+            font-family: National-Park, sans-serif;
+            font-weight: 800;
+            padding: 10px 12px;
+            border-radius: 10px;
+            border: 2px solid #888;
+            background: linear-gradient(to bottom, #ffffff, #d7d7d7);
+            color: #111;
+            cursor: pointer;
+            box-shadow: inset 0 1px 0 #fff, 0 2px 3px rgba(0,0,0,0.2);
+        }
+
+        .nav-button:hover { background: linear-gradient(to bottom, #ffffff, #c9c9c9); }
+        .nav-button.active {
+            background: linear-gradient(to bottom, #ff6666, #ff0000);
+            border-color: #cc0000;
+            color: #fff;
+            text-shadow: 0 1px 0 rgba(0,0,0,0.35);
+            box-shadow: none;
+        }
+
+        @media (max-width: 900px) {
+            .carousel-row { flex-direction: column; }
+            .image-navigation {
+                position: static;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        #imas-link, #award {
+            position: relative;
+            cursor: help;
+            text-decoration: underline;
+        }
+
+        #imas-link .popup, #award .popup {
+            display: none;
+            position: absolute;
+            left: 50%;
+            bottom: calc(100% + 10px);
+            transform: translateX(-50%);
+            background: white;
+            border: 1px solid #ccc;
+            padding: 12px;
+            z-index: 1000;
+            border-radius: 10px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+            width: min(320px, 80vw);
+            text-align: center;
+            /* active animation */
+            animation: fadeInUp 0.2s ease-out forwards;
+        }
+
+        #imas-link:hover .popup,
+        #imas-link:focus-within .popup,
+        #award:hover .popup,
+        #award:focus-within .popup {
+            display: block;
+        }
+
+        #imas-link .popup img, #award .popup img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+        }
+
+        #imas-link .popup .caption, #award .popup .caption {
+            margin-top: 8px;
+            font-size: 0.95rem;
+            color: #111;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+
+        .gallery-media {
+            width: 100%;
+            border-radius: 10px;
+            border: 2px solid rgba(0,0,0,0.25);
+            background: rgba(255,255,255,0.7);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .gallery-media iframe {
+            width: 100%;
+            height: min(70vh, 520px);
+            border: 0;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="scanlines" aria-hidden="true"></div>
+    <div class="center-strip">
+        <div class="content-grid">
+            <div id="main-content" role="main">
+                <div id="case-study-section" class="section">
+                    <div id="case-study-content">
+                        <div id="tabs-content">
+                            <div id="container" style="text-align: left; margin: 0 auto;">
+                                <h3 style="width: -webkit-fill-available;
+                                ">Case Study: "A Cane's Look at the School of Communication"</h3>
+                                <div class="case-panel" id="2dAni" style="text-align: left; background-color: rgba(255, 255, 255, 0.85); border-radius: 10px; padding: 10px;">
+                                    <div class="case-panel-header"><p style="color: white !important;">Type: <strong>Collaborative Development & Design</strong> |  Duration: <strong>3 Months</strong></p><p style="color: white !important;">Product: <strong>Virtual Reality Showcase  </strong></p></div>
+                                    <hr>
+                                    <div id="final-video" data-type="video" data-drive-id="1N6NF9296taaCTLRobZatb_o12ar8knoC" data-title="Final Video"></div>
+                                    <p>
+                                        As I entered the latter half of my B.S.C. studies, I started looking for opportunities to apply my skills in a more practical setting. In Fall of 2024, I enrolled in an Immersive Storytelling course where I had the opportunity to ideate, design, and develop for virtual reality. As part of my coursework, I collaborated with a four-person team to create an expansive VR experience that would utilize virtual reality to immerse users in the School of Communication and its various facets. I served an informal role as the team lead, coordinating our efforts and ensuring that we met our project milestones on time while also providing feedback on our design and development processes, as well as providing assistance with Unity development in coordination with the primary coder on our team.
+                                    </p>
+                                    <div class="image-container" style="text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px;">
+                                        <img class="case-study-image" src="images/projectImages/tourImgs/tourImg1.png" alt="Case Study Image" style="width: 100%; height: auto;">
+                                        <hr style="color: black;">
+                                        <p class="case-study-caption">The exterior of the School of Communication, as captured from some of our drone footage.</p>
+                                    </div>
+                                    <p>
+                                        During the initial ideation phase of the project, we were tasked with ensuring that there was both an engaging user experience as well as a narrative or otherwise meaningful context for the virtual reality experience. This involved an extensive period of ideation where I collaborated closely with my team to brainstorm and refine our concepts. As all of us were then students under the School of Communication, we imagined our experience as an in-depth exploration of the school the school itself in VR--something that could be used to guide prospective students through its various offerings before they even set foot on campus.
+                                    </p>
+                                    <p>
+                                        Much of the inspiration for this project came from our own experiences as students within the School of Communication. We wanted to create a virtual reality experience that not only showcased the school's facilities and programs but also conveyed the unique atmosphere and culture of the school. It was also an opportunity to improve the onboarding process for new students, as typically they have to navigate the campus and its resources on their own though either in-person tours that would have to be scheduled or through the School of Communication website which at the time was very text-heavy and not particularly engaging. A freely-available virtual reality experience could provide a more immersive and engaging way for prospective students to explore the school and its offerings, especially as VR technology continues to advance and become more accessible.
+                                    </p>
+                                    <p>
+                                        The project's main goal would be to serve as an immersive tour of the School of Communication, allowing users to explore its facilities. The narrative component would come from a narrator character (voiced by one of our team members), framed as a soon-to-be graduating student at the school guiding the user through the school while occassionally providing insights and anecdotes about his experiences.
+                                    </p>
+                                    <div class="carousel-row" data-carousel="ideation">
+                                        <div class="carousel-images">
+                                            <div class="image-container" style="text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px; display: block;">
+                                                <img class="case-study-image" src="images/projectImages/tourImgs/tourProj/tourPlan1.png" alt="1" style="width: 100%; height: auto;">
+                                                <hr style="color: black;">
+                                                <p class="case-study-caption">Storyboarding for the final version of the virtual reality experience.</p>
+                                            </div>
+
+                                            <div class="image-container" style="text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px; display: none;">
+                                                <img class="case-study-image" src="images/projectImages/tourImgs/tourProj/tourPlan2.png" alt="2" style="width: 100%; height: auto;">
+                                                <hr style="color: black;">
+                                                <p class="case-study-caption">Storyboarding for the final version of the virtual reality experience.</p>
+                                            </div>
+
+                                            <div class="image-container" style="text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px; display: none;">
+                                                <img class="case-study-image" src="images/projectImages/tourImgs/tourProj/tourPlan3.png" alt="3" style="width: 100%; height: auto;">
+                                                <hr style="color: black;">
+                                                <p class="case-study-caption">Storyboarding for the final version of the virtual reality experience.</p>
+                                            </div>
+
+                                            <div class="image-container" style="text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px; display: none;">
+                                                <img class="case-study-image" src="images/projectImages/tourImgs/tourProj/tourPlan4.png" alt="4" style="width: 100%; height: auto;">
+                                                <hr style="color: black;">
+                                                <p class="case-study-caption">Storyboarding for the final version of the virtual reality experience.</p>
+                                            </div>
+
+                                            <div class="image-container" style="text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px; display: none;">
+                                                <img class="case-study-image" src="images/projectImages/tourImgs/tourProj/tourPlan5.png" alt="5" style="width: 100%; height: auto;">
+                                                <hr style="color: black;">
+                                                <p class="case-study-caption">Storyboarding for the final version of the virtual reality experience.</p>
+                                            </div>
+
+                                            <div class="image-container" style="text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px; display: none;">
+                                                <img class="case-study-image" src="images/projectImages/tourImgs/tourProj/tourPlan6.png" alt="6" style="width: 100%; height: auto;">
+                                                <hr style="color: black;">
+                                                <p class="case-study-caption">Storyboarding for the final version of the virtual reality experience.</p>
+                                            </div>
+
+                                            <div class="image-container" style="text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px; display: none;">
+                                                <img class="case-study-image" src="images/projectImages/tourImgs/tourProj/tourPlan7.png" alt="7" style="width: 100%; height: auto;">
+                                                <hr style="color: black;">
+                                                <p class="case-study-caption">Storyboarding for the final version of the virtual reality experience.</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="image-navigation" data-controls="ideation" aria-label="Storyboard carousel navigation">
+                                            <button class="nav-button active" onclick="showImage('ideation','tourPlan1', this)" type="button">1</button>
+                                            <button class="nav-button" onclick="showImage('ideation','tourPlan2', this)" type="button">2</button>
+                                            <button class="nav-button" onclick="showImage('ideation','tourPlan3', this)" type="button">3</button>
+                                            <button class="nav-button" onclick="showImage('ideation','tourPlan4', this)" type="button">4</button>
+                                            <button class="nav-button" onclick="showImage('ideation','tourPlan5', this)" type="button">5</button>
+                                            <button class="nav-button" onclick="showImage('ideation','tourPlan6', this)" type="button">6</button>
+                                            <button class="nav-button" onclick="showImage('ideation','tourPlan7', this)" type="button">7</button>
+                                        </div>
+                                    </div>
+                                    <p>
+                                        During this project, we had initially imagined the experience to be mostly constructed within Unity, with potentially a 3D recreation of the School of Communication's itself as well as the surrounding city of Miami, with some secondary video content recorded on location through both traditional filming and drone footage (the latter of which was cleared with the Office of Risk Management and UMPD prior to any filming). However, as we progressed through the development process, we repeatedly ran into technical limitations and performance issues--most notably that the headset we were using, the Meta Quest 2, lagged to the point of being unresponsive at times and otherwise too nauseating to use for extended periods due to stuttering. It was determined that this was, for the most part, due to the heavy performance demands of the 3D environment. As the project lead, I had to make the difficult decision to pivot our approach and focus on creating a more streamlined experience that would still effectively convey our narrative without overwhelming the user.
+                                    </p>
+                                    <p>
+                                        The pivot involved shifting our focus from a fully immersive 3D environment to a more guided experience that utilized the already existing materials we had gathered, most notably the various videos we had captured of the School of Communication and its surroundings. Instead of relying solely on real-time 3D rendering, we expanded the scope of the video component to the entire experience, renting out a 360-degree camera and shooting on-location across all of the desired locales we were to cover.
+                                    </p>
+                                    <div class="carousel-row" data-carousel="tourPics">
+                                        <div class="carousel-images">
+                                            <div class="image-container" style="text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px; display: block;">
+                                                <img class="case-study-image" src="images/projectImages/tourImgs/tourProj/tourPic1.png" alt="1" style="width: 100%; height: auto;">
+                                                <hr style="color: black;">
+                                                <p class="case-study-caption">A shot from the first area of the tour, in the school's plaza.</p>
+                                            </div>
+
+                                            <div class="image-container" style="text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px; display: none;">
+                                                <img class="case-study-image" src="images/projectImages/tourImgs/tourProj/tourPic2.png" alt="2" style="width: 100%; height: auto;">
+                                                <hr style="color: black;">
+                                                <p class="case-study-caption">A shot from the elevator area, demonstrating the navigation buttons.</p>
+                                            </div>
+
+                                            <div class="image-container" style="text-align: center; margin-top: 20px; padding: 10px; background-color: rgba(255, 255, 255, 0.45); border-radius: 10px; display: none;">
+                                                <img class="case-study-image" src="images/projectImages/tourImgs/tourProj/tourPic3.png" alt="3" style="width: 100%; height: auto;">
+                                                <hr style="color: black;">
+                                                <p class="case-study-caption">Another angle from the plaza area, with one of the available nodes in green to indicate it's already been visited.</p>
+                                            </div>
+                                        </div>
+                                        <div class="image-navigation" data-controls="tourPics" aria-label="Element carousel navigation">
+                                            <button class="nav-button active" onclick="showImage('tourPics','tourPic1', this)" type="button">1</button>
+                                            <button class="nav-button" onclick="showImage('tourPics','tourPic2', this)" type="button">2</button>
+                                            <button class="nav-button" onclick="showImage('tourPics','tourPic3', this)" type="button">3</button>
+                                        </div>
+                                    </div>
+                                    <p>
+                                        The decision to pivot our approach was not made lightly. It required extensive discussions with my team and a thorough analysis of our progress and the technical limitations we were facing during playtesting. Ultimately, it enabled the project to evolve into a more feasible and engaging experience that still met our original goals within the material and time constraints we had.
+                                    </p>
+                                    <p>
+                                        Despite the difficulties in the project's development, the final product was received well by both the faculty and students who participated in the playtesting sessions as well as during final presentations. This project would later be showcased at the 2025 Miami XR event to similar acclaim. While there are certainly areas for improvement, namely the composition of a few shots as well as the variation in weather across shots (which was largely out of our control), the project itself was a valuable learning experience that pushed the boundaries of what we thought was possible within the constraints we faced and, in the end, came together to create a memorable and engaging virtual reality experience.
+                                    </p>
+                                    <p>
+                                        Two presentation slides were created during the development of this project to help pitch our ideas and showcase our progress to both our classmates and faculty, which also provide links to the various resources we utilized as well as our design process. These slides can be viewed below:
+                                    </p>
+                                    <ul>
+                                        <li><a href="https://docs.google.com/presentation/d/1YnYoFwO3qWLnXTm6vvHcXL6vBBRqNMGz78J58cSimh4/edit?usp=sharing" target="_blank">Ideation & Brainstorming Presentation</a></li>
+                                        <li><a href="https://docs.google.com/presentation/d/1nxQeSfZCrxH4v942QPBqbaEyOdWtY20ewFZGdbkie1Y/edit?usp=sharing" target="_blank">Final Presentation</a></li>
+                                    </ul>
+                                    <p>
+                                        Some of the original shared documents and resources can be referenced in the links below:
+                                    </p>
+                                    <ul>
+                                        <li><a href="https://www.figma.com/board/Wt9x4Y8u1X1imDqkp593mD/CIM-458-Storyboard?node-id=118-1390" target="_blank">Figma Map of Experience</a></li>
+                                        <li><a href="https://docs.google.com/spreadsheets/d/18Xcp-u-MWJC6mKAIbbv0anx0VX44MGFndc-RuzRxYss/edit?usp=sharing" target="_blank">Experience Planning Sheet</a></li>
+                                        <li><a href="https://docs.google.com/spreadsheets/d/1EcHH4Bm8TH_QTtx13FeIs5Y6hEAg6E_63VKarAKgB9Y/edit?usp=sharing" target="_blank">Timeline & Roles</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div class="right-nav" aria-label="Site navigation">
+                    <nav class="site-navbar vertical" aria-label="Main navigation">
+                        <a href="index.html">Home</a>
+                        <a href="persona.html">About</a>
+                        <a href="misc.html">Misc</a>
+                        <hr>
+                        <a href="gallery.html">Gallery</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="logo-container" style="cursor: pointer; text-align: center; flex-direction: column;">
+        <div id="logo">
+            <img src="images/PersonalLogo.gif" alt="DM's Logo" onclick="location.href='index.html';">
+        </div>
+    </div>
+    <div id="overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); justify-content: center; align-items: center; z-index: 1000;">
+        <img id="overlay-img" draggable="false" style="max-width: 90%; max-height: 90%; cursor: zoom-in;" alt="Zoomed Image">
+        <p id="overlay-caption" style="color: white; text-align: center; margin-top: 10px;"></p>
+    </div>
+    <script src="functions.js"></script>
+    <script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+        document.body.style.backgroundImage = "url('images/tourBackground.gif')";
+
+        if (window.initImageOverlay) {
+            window.initImageOverlay({ overlayId: 'overlay', imageId: 'overlay-img', captionId: 'overlay-caption' });
+        }
+
+        const bindOverlayClicks = () => {
+            document.querySelectorAll('.case-study-image').forEach(img => {
+                if (img.dataset.overlayBound === '1') return;
+                img.dataset.overlayBound = '1';
+                img.style.cursor = 'pointer';
+
+                img.addEventListener('click', function(event) {
+                    const target = event.currentTarget;
+                    const caption = target.parentElement?.querySelector('.case-study-caption')?.textContent || '';
+                    if (window.openImageOverlay) window.openImageOverlay(target.src, caption);
+                });
+            });
+        };
+
+        bindOverlayClicks();
+
+        const carousels = new Map();
+        document.querySelectorAll('[data-carousel]').forEach(wrap => {
+            const key = wrap.getAttribute('data-carousel');
+            const containers = Array.from(wrap.querySelectorAll('.image-container'));
+            containers.forEach(container => {
+                const img = container.querySelector('.case-study-image');
+                if (!img) return;
+                const file = (img.getAttribute('src') || '').split('/').pop() || '';
+                const base = file.replace(/\.[^/.]+$/, '');
+                container.dataset.name = base;
+                img.decoding = 'async';
+            });
+            carousels.set(key, containers);
+        });
+
+        window.showImage = function(carouselKey, imageName, btn) {
+            const containers = carousels.get(carouselKey);
+            if (!containers) return;
+
+            containers.forEach(container => {
+                container.style.display = (container.dataset.name === imageName) ? 'block' : 'none';
+            });
+
+            // Active button styling
+            const nav = document.querySelector(`.image-navigation[data-controls="${carouselKey}"]`);
+            if (nav) {
+                nav.querySelectorAll('.nav-button').forEach(b => b.classList.remove('active'));
+                if (btn) btn.classList.add('active');
+            }
+
+            bindOverlayClicks();
+        };
+
+        const videoBucket = document.getElementById('final-video');
+        if (videoBucket) {
+            const driveId = videoBucket.getAttribute('data-drive-id');
+            const title = videoBucket.getAttribute('data-title') || 'Video';
+            if (driveId) {
+                const wrapper = document.createElement('div');
+                wrapper.className = 'gallery-media';
+
+                const iframe = document.createElement('iframe');
+                iframe.src = `https://drive.google.com/file/d/${driveId}/preview`;
+                iframe.title = title;
+                iframe.allow = 'autoplay; fullscreen';
+                iframe.allowFullscreen = true;
+
+                wrapper.appendChild(iframe);
+                videoBucket.appendChild(wrapper);
+            }
+        }
+    });
+    </script>
+</body>
+</html>

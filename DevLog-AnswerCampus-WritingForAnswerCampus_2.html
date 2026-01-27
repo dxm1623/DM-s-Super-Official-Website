@@ -12,7 +12,6 @@
             color: #333;
         }
         h1, h2, h3 {
-            /* sans serif font for headers */
             font-family: "Trebuchet MS", Arial, sans-serif;
             color: #D9A026;
             text-shadow: 3px 3px 1px #1B1750;
@@ -76,14 +75,142 @@
             max-width: 80%;
         }
 
+        .ac-devlog-nav {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .ac-devlog-nav .ac-devlog-nav-btn {
+            display: inline-block;
+            padding: 10px 16px;
+            border-radius: 10px;
+            border: 2px solid rgba(0,0,0,0.25);
+            background: linear-gradient(to bottom, #F3C969, #B87333);
+            color: #1B1750;
+            font-weight: 800;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+            transition: transform 0.15s ease, filter 0.15s ease;
+        }
+        .ac-devlog-nav .ac-devlog-nav-btn:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.05);
+        }
+        .ac-devlog-nav .ac-devlog-nav-btn:active {
+            transform: translateY(0px);
+            filter: brightness(0.98);
+        }
+
+        .right-nav {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 260px;
+            height: 100vh;
+            box-sizing: border-box;
+            padding: 16px 14px;
+            z-index: 2000;
+
+            background: linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.25));
+            border-left: 3px solid rgba(243, 201, 105, 0.55);
+            box-shadow: -8px 0 18px rgba(0,0,0,0.35);
+        }
+
+        .right-nav .nav-logo {
+            display: flex;
+            justify-content: center;
+            padding: 6px 0 14px;
+        }
+
+        .right-nav .nav-logo img {
+            width: min(190px, 92%);
+            height: auto;
+            cursor: pointer;
+            filter: drop-shadow(0 8px 14px rgba(0,0,0,0.85));
+            transition: transform 0.2s ease;
+        }
+        .right-nav .nav-logo img:hover { transform: scale(1.05); }
+
+        .right-nav .site-navbar {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 10px;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.08);
+            border: 2px solid rgba(243, 201, 105, 0.35);
+        }
+
+        .right-nav .site-navbar a {
+            display: block;
+            padding: 10px 12px;
+            border-radius: 10px;
+            font-family: "Trebuchet MS", Arial, sans-serif;
+            font-weight: 800;
+            letter-spacing: 0.2px;
+            text-decoration: none;
+
+            color: #F3C969;
+            background: rgba(27, 23, 80, 0.65);
+            border: 2px solid rgba(243, 201, 105, 0.25);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+            transition: transform 0.12s ease, filter 0.12s ease, background 0.12s ease;
+        }
+
+        .right-nav .site-navbar a:hover {
+            transform: translateY(-1px);
+            filter: brightness(1.06);
+            background: rgba(27, 23, 80, 0.78);
+        }
+
+        .right-nav .site-navbar a:active {
+            transform: translateY(0px);
+            filter: brightness(0.98);
+        }
+
+        .right-nav .site-navbar hr {
+            width: 100%;
+            border: 0;
+            border-top: 2px solid rgba(243, 201, 105, 0.35);
+            margin: 4px 0;
+        }
+
+        body { padding-right: 300px; }
+
+
+        #writer-guide {
+            color: #F3C969;
+            text-decoration: underline;
+        }
+
+        #writer-guide:hover {
+            color: rgb(250, 252, 160);
+            text-shadow: 0 1px 0 rgba(247, 245, 144, 0.87);
+        }
+
+        @media (max-width: 1000px) {
+            body { padding-right: 20px; }
+            .right-nav {
+                position: static;
+                width: auto;
+                height: auto;
+                margin: 18px auto 0;
+                border-left: none;
+                border-top: 3px solid rgba(243, 201, 105, 0.55);
+                border-radius: 14px;
+            }
+        }
     </style>
 </head>
 <body>
     <h1 style="text-align: center;">Writing for Answer Campus</h1>
     <h2 style="text-align: center;">Daniele Montefiori's Dev Log for AC 1 & 2; Log 2</h2>
+
+    <div class="ac-devlog-nav">
+        <a href="DevLog-AnswerCampus-WritingForAnswerCampus.html" class="ac-devlog-nav-btn">← Previous Log</a>
+    </div>
+
     <div class="container">
         <div class="image-column">
-            <!-- Replace with your desired image sources -->
             <img src="images/projectImages/acImgs/ac2_img0.png" alt="A scene from one of the new conversations I wrote for Answer Campus Second Semester, this one serving as an introduction to the main conflict starring Breanna, who I wrote for during previous development cycles." data-caption="A scene from one of the new conversations I wrote for Answer Campus Second Semester, this one serving as an introduction to the main conflict starring Breanna, who I wrote for during previous development cycles.">
             <img src="images/projectImages/acImgs/ac2_img1.png" alt="Another conversation scene from Answer Campus Second Semester, showcasing a prototype interaction with a new character using a placeholder art asset." data-caption="Another conversation scene from Answer Campus Second Semester, showcasing a prototype interaction with a new character using a placeholder art asset.">
             <img src="images/projectImages/acImgs/ac2_img2.png" alt="Another snippet of the new character as seen in a different part of the conversation tree." data-caption="Another snippet of the new character as seen in a different part of the conversation tree.">
@@ -112,12 +239,29 @@
             <hr>
 
             <p>Much of the challenges being faced throughout these iterations and revisions is what can be describe as an expansion on an existing challenge; conversations needed to fit with each other across arcs and with the underlying themes of Answer Campus. Now, with development of Second Semester underway, that has expanded to making sure that this narrative cohesion is maintained across two different experiences. This period of ideation, revising old conversations and building entirely new ones, all has to be done in the span of around two months in time for the November playtests. Certainly a time crunch, especially given the limited resources and manpower provided to NERDLab!</p>
+
+            <p>One of my final deliverables for the Second Semester was to create a comprehensive writer's guide for the Unity template and associate pipeline we developed for integrating new conversations into the project. In putting together this guide, I documented the process for creating and implementing new dialogue trees within the template as well as provided a basic overview of Unity's interface and tools relevant to our work for writers who may not have used Unity or any other game development software before. The guide also details some best practices for writing interactive dialogue and utilizing the Unity tools effectively.</p>
+
+            <p style="text-align: center;">You can view the guide <strong><a id="writer-guide" href="https://docs.google.com/document/d/17vYQ3DEOb6ngf77j7bIlQrL1nLB2MltTCN_G_3mDNVQ/edit?usp=sharing">here</a>!</strong></p>
         </div>
     </div>
     <div id="overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; align-items:center; justify-content:center; background: rgba(0,0,0,0.8);">
     <img id="overlay-img" draggable="false" src="" alt="" style="cursor: zoom-in;">
     <div id="overlay-caption" style="color:#fff; margin-top:10px;"></div>
 </div>
+
+<aside class="right-nav" aria-label="Site navigation">
+        <div class="nav-logo" aria-label="Home">
+            <img src="images/PersonalLogo.gif" alt="DM's Logo" onclick="location.href='index.html';">
+        </div>
+        <nav class="site-navbar" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="persona.html">About</a>
+            <a href="misc.html">Misc</a>
+            <hr>
+            <a href="gallery.html">Gallery</a>
+        </nav>
+    </aside>
 
 <script src="functions.js"></script>
 <script>

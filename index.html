@@ -88,12 +88,15 @@
                                                 <button class="control" aria-label="Next image" onclick="changeWorkImage('studyTwo', 1)">→</button>
                                             </div>
                                             <div class="control-group right">
-                                                <button class="button-glossy" onclick="location.href='caseAnswerCampus.html'">EXPLORE!</button>
+                                                <button class="button-glossy" onclick="location.href='caseAnswerCampus.html'">EXPLORE Answer Campus!</button>
+                                                <button class="button-glossy" onclick="location.href='DevLog-AnswerCampus-WritingForAnswerCampus.html'">EXPLORE Answer Campus: First Semester & Second Semester</button>
                                             </div>
                                         </div>
                                         <p><strong>Answer Campus</strong> is an interactive visual novel developed by NERDLab as part of their in-house game development initiative, as part of their writing team. It is a game that explores the themes of mental health and the college experience.
                                         <br><br>
                                         Since Spring of 2024, I have helped develop the narrative and dialogue for the game, as well as expanding some of the characters, as part of the writing team. Currently, development is ongoing with a demo build for the first semester edition available via NERDLab's Itch.io page. A second semester edition is also in the works as of 2026.
+                                        <br><br>
+                                        Included are both my case study for my initial work on <strong>Answer Campus</strong> during Fall 2024 and Spring 2025, as well as two development logs that detail my process and experiences working on the game's narrative design and dialogue system during the Fall 2025 term when development on the playtest build of Answer Campus: First Semester was underway and development on Answer Campus: Second Semester began.
                                         </p>
                                     </div>
                                 </div>
@@ -220,8 +223,38 @@
                                     </p>
                                 </div>
                                 </div>
-
-
+                                <br>
+                                <div class="studyShowcase" id="studySeven">
+                                    <div class="window-bar">
+                                        <div class="window-dot" style="background: #FF605C;"></div>
+                                        <div class="window-dot" style="background: #FFBD44;"></div>
+                                        <div class="window-dot" style="background: #00CA4E;"></div>
+                                        <div class="window-title">A Cane's Look at the School of Communication</div>
+                                    </div>
+                                    <div class="window-body">
+                                        <div id="workImageContainer">
+                                        <img id="workImage-studySeven" src="images/projectImages/tourImgs/tourImg4.png" alt="Modeling With Maya, Substance Painter, & Unity">
+                                        </div>
+                                    <div class="control-bar" aria-label="Image controls">
+                                        <div class="control-group left">
+                                            <button class="control" aria-label="Previous image" onclick="changeWorkImage('studySeven', -1)">←</button>
+                                            <button class="control" aria-label="Next image" onclick="changeWorkImage('studySeven', 1)">→</button>
+                                        </div>
+                                        <div class="control-group right">
+                                            <button class="button-glossy" onclick="location.href='caseTour.html'">EXPLORE!</button>
+                                        </div>
+                                    </div>
+                                    <p>
+                                        <strong>A Cane's Look at the School of Communication</strong> was a collaborative project done in tandem with my Immersive Storytelling course in the Fall of 2024, where I coordinated a team of fellow students at the School of Communication to imagine, ideate, design, and develop a virtual tour of the school itself with the aim of creating a short experience that would be more engaging and insightful for prospective students or applicants than the existing web information available at the time. The project was designed and developed for VR, with a focus on <strong>immersing</strong> the user within the School of Communication while both <strong>informing</strong> them of the various locales in the school and providing a sympathetic voice to narrate the experience to better connect with the audience.
+                                    </p>
+                                    <p>
+                                        The project was developed over the course of the semester, with regular check-ins and feedback sessions to ensure that the final product met the needs of both the school and its prospective students. This included a total overhaul of the project when initial testing and ideation showed the initial scope was too ambitious, whereafter we refined the experience to focus solely on the most essential elements--namely <strong>the key locations and features of the School of Communication</strong> and their presentation within the VR environment to free up development resources within the limited timeframe provided.
+                                    </p>
+                                    <p>
+                                        The final project was well-received, with positive feedback from both the School of Communication and users, including those who playtested the experience during the Fall 2024 semester as well as those who experienced it later when the project was showcased at the Miami XR 2025 exposition hosted by the University of Miami. The project not only demonstrated my ability to work collaboratively within a team to deliver a polished and engaging experience under pressure, but also highlighted my skills in project management, user experience design, and immersive storytelling.
+                                    </p>
+                                </div>
+                                </div>
                         </div>
                     </div>
                 <br><br><div id="misc-tabs-container">
@@ -253,6 +286,7 @@
                     <a class="scrollA" href="#studyFour">→ Modeling With Maya, SP3D, Unity</a>
                     <a class="scrollA" href="#studyFive">→ (Re)Designing My Game Characters</a>
                     <a class="scrollA" href="#studySix">→ Flying By -- Adobe AE Animation</a>
+                    <a class="scrollA" href="#studySeven">→ A Cane's Look at the Comm School</a>
                 </nav>
             </aside>
         </div>
@@ -300,6 +334,12 @@
             "images/projectImages/aniImgs/aniImg1.png",
             "images/projectImages/aniImgs/aniImg2.png",
             "images/projectImages/aniImgs/aniImg3.png"
+        ],
+        studySeven: [
+            "images/projectImages/tourImgs/tourImg4.png",
+            "images/projectImages/tourImgs/tourImg2.png",
+            "images/projectImages/tourImgs/tourImg1.png",
+            "images/projectImages/tourImgs/tourImg3.png"
         ]
     };
 
@@ -309,7 +349,8 @@
         studyThree: 0,
         studyFour: 0,
         studyFive: 0,
-        studySix: 0
+        studySix: 0,
+        studySeven: 0
     };
 
     function changeWorkImage(study, direction) {
