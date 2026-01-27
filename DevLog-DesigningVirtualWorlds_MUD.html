@@ -36,29 +36,28 @@
             flex-direction: column;
         }
 
-        /* Two-column layout for content row */
         .content-row {
             display: flex;
             gap: 20px;
-            align-items: stretch; /* make columns equal height and prevent overflow */
-            flex-wrap: nowrap;    /* keep columns on one row */
+            align-items: stretch;
+            flex-wrap: nowrap;
         }
         .left-column, .right-column {
             flex: 1;
         }
         .left-column {
-            flex: 0 0 50%;       /* fixed half width for media column */
+            flex: 0 0 50%;
             max-width: 600px;
             width: 50%;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center; /* center media vertically when space allows */
-            min-height: 500px; /* ensure enough height for vertical centering */
-            overflow: hidden;     /* prevent content from spilling over */
+            justify-content: center;
+            min-height: 500px;
+            overflow: hidden;
         }
         .right-column {
-            flex: 1 0 0;          /* take remaining space */
+            flex: 1 0 0;
             display: flex;
             flex-direction: column;
         }
@@ -90,7 +89,6 @@
             box-shadow: 0 1px 3px rgba(0,0,0,0.5);
         }
 
-        /* Thumbnails */
         #videoThumbs-studyOne { 
             flex-wrap: wrap; 
             gap: 8px;
@@ -113,7 +111,6 @@
             opacity: 1; box-shadow: 0 0 0 2px #F3C969;
         }
 
-        /* Box around video */
         #workVideo-studyOne {
             border: 3px solid #D9A026;
             border-radius: 12px;
@@ -121,7 +118,6 @@
             margin-top: 34%;
         }
 
-        /* Secondary white panel for assets */
         .text-column {
             flex: 2;
             display: flex;
@@ -211,15 +207,15 @@
             width: 100%;
         }
         #studyOne #workImage-studyOne {
-            max-width: 100%;      /* scale within column */
+            max-width: 100%;
             height: auto;
             margin-top: auto;
             margin-bottom: auto;
-            object-fit: contain;  /* prevent distortion */
+            object-fit: contain;
         }
 
         .controls-container {
-            margin-top: auto; /* stays at bottom inside #studyOne */
+            margin-top: auto;
         }
         .controls-container .image-navigation { justify-content: center; }
     </style>
@@ -229,12 +225,10 @@
     <h2 style="text-align: center;">MUD Foundation Showcase -- Islamic Art</h2>
     <div class="container">
         <div class="text-column">
-            <!-- ...existing header intro text if any... -->
             <div class="content-row">
                 <div class="left-column">
                     <div id="studyOne">
                         <img id="workImage-studyOne" src="images/projectImages/virtualWorldsImgs/MUD/MUD_img1.PNG" alt="Designing Virtual Worlds - MUD Foundation Showcase - Islamic Art" data-caption="MUD Foundation Showcase - Islamic Art" />
-                        <!-- Controls pinned to bottom -->
                         <div class="controls-container">
                             <div class="image-navigation">
                                 <button class="left" onclick="changeWorkImage('studyOne', -1)">←</button>
@@ -345,7 +339,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     toggleBtn.addEventListener('click', function () {
         if (!showingVideo) {
-            // Show video
             if (!videoEl) {
                 videoEl = document.createElement('video');
                 videoEl.id = `workVideo-${studyId}`;
@@ -355,18 +348,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 videoEl.style.width = '100%';
                 videoEl.style.maxWidth = '900px';
                 videoEl.style.display = 'block';
-                // Insert video directly after the image so it appears in the media column
                 mainImg.insertAdjacentElement('afterend', videoEl);
             } else {
                 videoEl.style.display = 'block';
             }
             mainImg.style.display = 'none';
-            // Keep controls at the bottom; no need to hide them
             toggleBtn.textContent = 'Show Images';
             toggleBtn.classList.add('is-video');
             showingVideo = true;
         } else {
-            // Show images
             if (videoEl) {
                 videoEl.pause();
                 videoEl.currentTime = 0;

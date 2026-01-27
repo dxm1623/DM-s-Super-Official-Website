@@ -22,7 +22,7 @@
             font-size: 14px;
             color: #D9A026;
         }
-        /* More visible links */
+
         a {
             color: #F3C969;
             text-decoration: underline;
@@ -32,7 +32,6 @@
             text-decoration-thickness: 2px;
         }
 
-        /* Adopt AC layout styles */
         .container { 
             display: flex; 
             max-width: 1200px; 
@@ -64,10 +63,8 @@
             background-color: #1B1750; 
         }
 
-        /* Hide old two-column specific classes to avoid conflicts */
         .content-row, .left-column, .right-column { display: none; }
 
-        /* Thumbnails */
         #videoThumbs-studyOne { 
             flex-wrap: wrap; 
             gap: 8px;
@@ -90,12 +87,11 @@
             opacity: 1; box-shadow: 0 0 0 2px #F3C969;
         }
 
-        /* Box around video */
         #workVideo-studyOne {
             border: 3px solid #D9A026;
             border-radius: 12px;
             box-shadow: 0 0 10px rgba(0,0,0,0.5);
-            margin-top: 6px; /* keep video close to controls when shown */
+            margin-top: 6px;
         }
 
         .assets-panel {
@@ -165,40 +161,156 @@
             width: 100%;
         }
         #studyOne #workImage-studyOne {
-            max-width: 100%;      /* scale within column */
+            max-width: 100%;
             height: auto;
             margin-top: auto;
             margin-bottom: auto;
-            object-fit: contain;  /* prevent distortion */
+            object-fit: contain;
         }
 
         .controls-container {
-            margin-top: auto; /* stays at bottom inside #studyOne */
+            margin-top: auto;
         }
         .controls-container .image-navigation { justify-content: center; }
+
+        .image-navigation {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        .image-navigation button {
+            appearance: none;
+            border: 2px solid rgba(0,0,0,0.25);
+            border-radius: 12px;
+            padding: 10px 14px;
+            font-family: "Trebuchet MS", Arial, sans-serif;
+            font-weight: 800;
+            font-size: 16px;
+            letter-spacing: 0.2px;
+            cursor: pointer;
+
+            color: #1B1750;
+            background: linear-gradient(to bottom, #F3C969, #B87333);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+            transition: transform 0.12s ease, filter 0.12s ease, box-shadow 0.12s ease;
+            user-select: none;
+        }
+
+        .image-navigation button:hover {
+            transform: translateY(-1px);
+            filter: brightness(1.06);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.28);
+        }
+
+        .image-navigation button:active {
+            transform: translateY(0px);
+            filter: brightness(0.98);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.22);
+        }
+
+        .image-navigation button:focus-visible {
+            outline: 3px solid rgba(255, 216, 132, 0.95);
+            outline-offset: 3px;
+        }
+
+        /* Special styling for the video toggle mode */
+        .image-navigation button.is-video {
+            background: linear-gradient(to bottom, #81c0ff, #1B3A7A);
+            color: #fff;
+            border-color: rgba(14, 47, 94, 0.85);
+            text-shadow: 0 1px 0 rgba(0,0,0,0.35);
+        }
+
+        /* Slightly tighter on small screens */
+        @media (max-width: 600px) {
+            .image-navigation button {
+                width: 100%;
+                max-width: 320px;
+                justify-content: center;
+            }
+        }
+
+        /* Clean media column stack: image/video + controls with tight spacing */
+        .media-stack {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .media-stack .media {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+        }
+
+        /* Remove large default top margin for controls inside the media column */
+        .media-stack .image-navigation { margin-top: 0; }
+
+        /* Top home logo (sticky, top-right) */
+        .top-home {
+            position: fixed;
+            top: 10px;
+            right: 12px;
+            z-index: 5000;
+            margin: 0;
+            padding: 0;
+            float: none;
+        }
+        .top-home:hover img {
+            transform: scale(1.1);
+        }
+        .top-home a { display: inline-block; text-decoration: none; }
+        .top-home img {
+            width: 120px;
+            height: auto;
+            cursor: pointer;
+            filter: drop-shadow(0 8px 14px rgba(0,0,0,0.55));
+            transition: transform 0.18s ease, filter 0.18s ease;
+        }
+
+        /* Ensure content never hides under the fixed home logo */
+        body { padding-top: 70px; }
+
+        @media (max-width: 600px) {
+            body { padding-top: 60px; }
+            .top-home { top: 8px; right: 10px; }
+        }
     </style>
 </head>
 <body>
+    <div class="top-home" aria-label="Home">
+        <a href="index.html" aria-label="Return to Home">
+            <img src="images/PersonalLogo.gif" alt="DM's Logo">
+        </a>
+    </div>
+
     <h1 style="text-align: center;">Designing Virtual Worlds</h1>
     <h2 style="text-align: center;">Final Project:</h2>
     <h3 style="text-align: center;">"lost my book."</h3>
     <div class="container">
         <div class="image-column">
-            <!-- Main slider + controls -->
             <div id="studyOne" style="margin-bottom: 8px;">
-                <img id="workImage-studyOne" src="images/projectImages/virtualWorldsImgs/FINAL/FINAL_concept1.PNG" alt="Designing Virtual Worlds - Final Project: 'lost my book.'" data-caption="Final Project: 'lost my book.'" style="width:100%; border:3px solid #6196DC; border-radius:4px;" />
-                <!-- Controls immediately under media -->
-                <div class="image-navigation" style="margin-bottom: 6px;">
-                    <button class="left" onclick="changeWorkImage('studyOne', -1)">←</button>
-                    <button class="right" onclick="changeWorkImage('studyOne', 1)">→</button>
-                </div>
-                <div class="image-navigation" style="margin-bottom: 6px;">
-                    <button class="buttons" id="showVideoStudyOne">Show Video</button>
+                <div class="media-stack" id="studyOne-media">
+                    <img id="workImage-studyOne" class="media" src="images/projectImages/virtualWorldsImgs/FINAL/FINAL_concept1.PNG" alt="Designing Virtual Worlds - Final Project: 'lost my book.'" data-caption="Final Project: 'lost my book.'" style="width:100%; border:3px solid #6196DC; border-radius:4px;" />
+
+                    <div class="image-navigation" style="margin-bottom: 0;">
+                        <button class="left" onclick="changeWorkImage('studyOne', -1)">←</button>
+                        <button class="right" onclick="changeWorkImage('studyOne', 1)">→</button>
+                    </div>
+                    <div class="image-navigation" style="margin-bottom: 0;">
+                        <button class="buttons" id="showVideoStudyOne">Show Video</button>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="text-column">
-            <!-- Add headings for readability -->
             <h3 style="color:#F3C969; margin-top:0;">Overview</h3>
             <p>
                 This final project for the Designing Virtual Worlds course involved expanding on what I had learned from my midterm project into a more complete experience. I elected to use the opportunity to expand on the atmosphere I envisioned with <i>Lonely Road</i>, only this time instead of relying on the occasional animation and sound effect to convey mood, I created a more immersive environment with a focus on exploration, environmental design, and impactful choices.
@@ -313,42 +425,42 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function () {
     const studyId = 'studyOne';
     const toggleBtn = document.getElementById('showVideoStudyOne');
+    const mediaStack = document.getElementById('studyOne-media');
     const mainImg = document.getElementById(`workImage-${studyId}`);
-    const navRows = document.querySelectorAll(`#${studyId} .image-navigation`);
 
     let videoEl = null;
     let showingVideo = false;
 
     toggleBtn.addEventListener('click', function () {
         if (!showingVideo) {
-            // Show video
             if (!videoEl) {
                 videoEl = document.createElement('video');
                 videoEl.id = `workVideo-${studyId}`;
+                videoEl.className = 'media';
                 videoEl.src = 'videos/projectVideos/virtualWorldsVideos/FINAL/FINAL_demo.mp4';
                 videoEl.controls = true;
                 videoEl.preload = 'metadata';
-                videoEl.style.width = '100%';
-                videoEl.style.maxWidth = '900px';
                 videoEl.style.display = 'block';
-                // Insert video directly after the image so it appears in the media column
-                mainImg.insertAdjacentElement('afterend', videoEl);
+
+                // Insert video right after the image inside the same stack
+                if (mediaStack && mainImg) {
+                    mainImg.insertAdjacentElement('afterend', videoEl);
+                }
             } else {
                 videoEl.style.display = 'block';
             }
-            mainImg.style.display = 'none';
-            // Keep controls at the bottom; no need to hide them
+
+            if (mainImg) mainImg.style.display = 'none';
             toggleBtn.textContent = 'Show Images';
             toggleBtn.classList.add('is-video');
             showingVideo = true;
         } else {
-            // Show images
             if (videoEl) {
                 videoEl.pause();
                 videoEl.currentTime = 0;
                 videoEl.style.display = 'none';
             }
-            mainImg.style.display = 'block';
+            if (mainImg) mainImg.style.display = 'block';
             toggleBtn.textContent = 'Show Video';
             toggleBtn.classList.remove('is-video');
             showingVideo = false;

@@ -182,7 +182,6 @@
     <div class="container">
         <div class="text-column">
             <div id="studyOne">
-                <!-- Main video player + caption -->
                 <figure class="video-wrapper" style="margin:0; text-align:center; width:100%; max-width:900px;">
                     <video id="workVideo-studyOne"
                            controls
@@ -193,11 +192,8 @@
                     <figcaption id="videoCaption-studyOne" class="video-caption"></figcaption>
                 </figure>
 
-
-                <!-- Thumbnails (optional) -->
                 <div class="image-navigation" id="videoThumbs-studyOne"></div>
 
-                <!-- Prev/Next -->
                 <div class="image-navigation">
                     <button class="left" id="prevVideoStudyOne">←</button>
                     <button class="right" id="nextVideoStudyOne">→</button>
@@ -227,7 +223,6 @@
         var thumbs = document.getElementById('videoThumbs-' + study);
         var captionEl = document.getElementById('videoCaption-' + study);
 
-        // Playlist: add as many videos as you want
         var videoSets = {
             studyOne: [
                 { src: 'videos/projectVideos/virtualWorldsVideos/interactables/interactStart.mp4', poster: 'images/projectImages/virtualWorldsImgs/interactables/interactStart.png', caption: 'Start Menu UI & Intro' },
@@ -287,10 +282,8 @@
         prevBtn.addEventListener('click', function () { loadVideo(idx - 1, true); });
         nextBtn.addEventListener('click', function () { loadVideo(idx + 1, true); });
 
-        // Auto-advance on end
         player.addEventListener('ended', function () { loadVideo(idx + 1, true); });
 
-        // Keyboard arrows (optional)
         document.addEventListener('keydown', function (e) {
             if (e.key === 'ArrowLeft') prevBtn.click();
             if (e.key === 'ArrowRight') nextBtn.click();

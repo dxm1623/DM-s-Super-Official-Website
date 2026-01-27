@@ -299,6 +299,12 @@ window.addEventListener('load', () => {
 
     const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
 
+    // Cursor policy: overlay image should only ever show grab/grabbing.
+    const setOverlayCursor = (dragging) => {
+        if (!imgEl) return;
+        imgEl.style.cursor = dragging ? 'grabbing' : 'grab';
+    };
+
     const scheduleTransform = (nextTx, nextTy) => {
         pendingTx = nextTx;
         pendingTy = nextTy;
@@ -311,11 +317,11 @@ window.addEventListener('load', () => {
         if (dragging) {
             imgEl.classList.add('dragging');
             imgEl.style.transition = 'none';
-            imgEl.style.cursor = 'grabbing';
+            setOverlayCursor(true);
         } else {
             imgEl.classList.remove('dragging');
             imgEl.style.transition = '';
-            imgEl.style.cursor = scale > 1 ? 'grab' : 'zoom-in';
+            setOverlayCursor(false);
         }
     };
 
@@ -336,7 +342,7 @@ window.addEventListener('load', () => {
         if (!imgEl) return;
         imgEl.style.transformOrigin = 'center center';
         imgEl.style.transform = 'translate3d(0px, 0px, 0) scale(1)';
-        imgEl.style.cursor = 'zoom-in';
+        setOverlayCursor(false);
     };
 
     const close = () => {
@@ -351,7 +357,6 @@ window.addEventListener('load', () => {
         imgEl.alt = caption || '';
         if (captionEl) captionEl.textContent = caption || '';
 
-        // Normalize open state across pages
         overlayEl.style.display = 'flex';
         if (!overlayEl.style.alignItems) overlayEl.style.alignItems = 'center';
         if (!overlayEl.style.justifyContent) overlayEl.style.justifyContent = 'center';
@@ -365,7 +370,6 @@ window.addEventListener('load', () => {
         if (overlayEl.dataset.overlayBound === '1') return;
         overlayEl.dataset.overlayBound = '1';
 
-        // Disable native browser image dragging/selection behaviors that cause ghost-drag
         imgEl.setAttribute('draggable', 'false');
         imgEl.style.userSelect = 'none';
         imgEl.style.webkitUserSelect = 'none';
@@ -373,14 +377,16 @@ window.addEventListener('load', () => {
         imgEl.style.touchAction = 'none';
         imgEl.style.willChange = 'transform';
 
+        // Force cursor baseline immediately.
+        setOverlayCursor(false);
+
         imgEl.addEventListener('dragstart', (e) => e.preventDefault());
 
-        // Click off image to close
         overlayEl.addEventListener('click', (event) => {
             if (event.target !== imgEl) close();
         });
 
-        // Wheel/trackpad zoom
+        // Wheel/trackpad zoom (cursor remains grab)
         overlayEl.addEventListener('wheel', (event) => {
             if (overlayEl.style.display !== 'flex') return;
             event.preventDefault();
@@ -401,7 +407,7 @@ window.addEventListener('load', () => {
             const nextTy = py - iy * scale;
             scheduleTransform(nextTx, nextTy);
 
-            imgEl.style.cursor = scale > 1 ? 'grab' : 'zoom-in';
+            setOverlayCursor(false);
         }, { passive: false });
 
         // Drag to pan
@@ -434,7 +440,6 @@ window.addEventListener('load', () => {
             isDragging = false;
             setDraggingStyles(false);
 
-            // Commit any pending rAF update immediately
             if (rafId) {
                 cancelAnimationFrame(rafId);
                 rafId = 0;
@@ -448,7 +453,6 @@ window.addEventListener('load', () => {
         imgEl.addEventListener('lostpointercapture', endDrag);
     };
 
-    // Public API
     window.initImageOverlay = function initImageOverlay(opts = {}) {
         const overlayId = opts.overlayId || 'overlay';
         const imageId = opts.imageId || 'overlay-img';

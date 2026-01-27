@@ -588,7 +588,6 @@ a:focus {
 
 .right-nav {position: sticky;top: 0;height: 100vh;display: flex;flex-direction: column;}
 
-/* .right-nav { position: fixed; right: calc((100vw - 60vw)/2); top: 20px; width: 14vw; min-width: 220px; } */
 
 @media (max-width: 1000px) {
   .center-strip { width: 100vw; }

@@ -176,6 +176,18 @@
 
         body { padding-right: 300px; }
 
+        /* Overlay should sit above the fixed right-nav */
+        #overlay { z-index: 5000 !important; }
+
+        /* Constrain overlay image to the visible viewport (account for sidebar via body padding-right) */
+        #overlay-img {
+            max-width: calc(100vw - 340px);
+            max-height: 86vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
         @media (max-width: 1000px) {
             body { padding-right: 20px; }
             .right-nav {
@@ -187,6 +199,7 @@
                 border-top: 3px solid rgba(243, 201, 105, 0.55);
                 border-radius: 14px;
             }
+            #overlay-img { max-width: 92vw; }
         }
     </style>
 </head>
@@ -231,7 +244,7 @@
         </div>
     </div>
     <div id="overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; align-items:center; justify-content:center; background: rgba(0,0,0,0.8);">
-    <img id="overlay-img" draggable="false" src="" alt="" style="cursor: zoom-in;">
+    <img id="overlay-img" draggable="false" src="" alt="">
     <div id="overlay-caption" style="color:#fff; margin-top:10px;"></div>
 </div>
 

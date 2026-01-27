@@ -62,7 +62,6 @@
             box-shadow: 0 1px 3px rgba(0,0,0,0.5);
         }
 
-        /* Thumbnails */
         #videoThumbs-studyOne { 
             flex-wrap: wrap; 
             gap: 8px;
@@ -85,14 +84,12 @@
             opacity: 1; box-shadow: 0 0 0 2px #F3C969;
         }
 
-        /* Box around video */
         #workVideo-studyOne {
             border: 3px solid #D9A026;
             border-radius: 12px;
             box-shadow: 0 0 10px rgba(0,0,0,0.5);
         }
 
-        /* Secondary white panel for assets */
         .text-column {
             flex: 2;
             display: flex;
@@ -174,7 +171,6 @@
             letter-spacing: .5px;
         }
 
-        /* Hub-specific styles */
         .devlog-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -211,7 +207,6 @@
             object-fit: cover;
             border-bottom: 2px solid #D9A026;
             flex-shrink: 0;
-            cursor: pointer;
         }
 
         .devlog-content {
@@ -280,29 +275,6 @@
             transform: translateY(0);
             box-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
-
-        /* Overlay styles */
-        #overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.85);
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            z-index: 9999;
-        }
-        #overlay-img {
-            cursor: zoom-in;
-            max-width: 95%;
-            max-height: 95%;
-            transform: translate(0, 0);
-        }
-        #overlay-caption {
-            color: #fff;
-            margin-top: 10px;
-            text-align: center;
-        }
     </style>
 </head>
 <body>
@@ -316,9 +288,7 @@
                 Click on any devlog below to see detailed progress updates.
             </p>
 
-            <!-- Devlog Cards Grid -->
             <div class="devlog-grid">
-                <!-- Devlog 1: Initial World Design -->
                 <a href="DevLog-DesigningVirtualWorlds.html" class="devlog-card" style="text-decoration: none;">
                     <img src="images/projectImages/virtualWorldsImgs/dvw-1.png" alt="Initial World Design" class="devlog-thumbnail">
                     <div class="devlog-content">
@@ -327,7 +297,6 @@
                     </div>
                 </a>
 
-                <!-- Devlog 2: Showcasing Interactables -->
                 <a href="DevLog-DesigningVirtualWorlds_2.html" class="devlog-card" style="text-decoration: none;">
                     <img src="images/projectImages/virtualWorldsImgs/interactables/interactStart.png" alt="Showcasing Interactables" class="devlog-thumbnail">
                     <div class="devlog-content">
@@ -336,7 +305,6 @@
                     </div>
                 </a>
 
-                <!-- Devlog 3: Scene Transitions -->
                 <a href="DevLog-DesigningVirtualWorlds_3.html" class="devlog-card" style="text-decoration: none;">
                     <img src="images/projectImages/virtualWorldsImgs/transitions/transitionImg.png" alt="Scene Transitions" class="devlog-thumbnail">
                     <div class="devlog-content">
@@ -346,7 +314,6 @@
                 </a>
             </div>
 
-            <!-- Download Section -->
             <div class="download-section">
                 <h3 class="download-title">Download Lonely Road</h3>
                 <p class="download-description">
@@ -358,7 +325,6 @@
                 <p style="font-size: 12px; color: #D9A026; margin-top: 15px; font-style: italic;">
                     Note: It is a .zip file, so you will have to unzip it first. You may also need to enable installation from unknown sources.
                 </p>
-                <!-- Link to GitHub -->
             <div style="margin-top: 30px; text-align: center;">
                 <a href="https://github.com/dxm1623/VWFall2025" target="_blank" style="font-size: 16px; color: #F3C969; text-decoration: underline;">
                     View the full project on GitHub
@@ -381,74 +347,5 @@
         </div>
     </div>
 
-    <!-- Overlay for full image view -->
-    <div id="overlay" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); align-items:center; justify-content:center; flex-direction:column; z-index:9999;">
-        <img id="overlay-img" alt="" style="cursor:zoom-in; max-width:95%; max-height:95%; transform:translate(0,0);" />
-        <div id="overlay-caption" style="color:#fff; margin-top:10px; text-align:center;"></div>
-    </div>
-
-    <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Overlay elements
-        var overlay = document.getElementById('overlay');
-        var overlayImg = document.getElementById('overlay-img');
-        var overlayCaption = document.getElementById('overlay-caption');
-
-        // Clickable thumbnails in the hub cards
-        var thumbs = document.querySelectorAll('.devlog-card .devlog-thumbnail');
-        thumbs.forEach(function (img) {
-            img.addEventListener('click', function () {
-                overlayImg.src = img.src;
-                overlayImg.alt = img.alt || '';
-                // Use the card title as caption if available
-                var titleEl = img.closest('.devlog-card')?.querySelector('.devlog-title');
-                overlayCaption.textContent = titleEl ? titleEl.textContent : (img.alt || '');
-
-                // Reset zoom state
-                overlayImg.style.cursor = 'zoom-in';
-                overlayImg.style.width = 'auto';
-                overlayImg.style.maxWidth = '95%';
-                overlayImg.style.maxHeight = '95%';
-                overlayImg.style.transform = 'translate(0,0)';
-
-                overlay.style.display = 'flex';
-            });
-        });
-
-        // Close overlay when clicking outside the image
-        overlay.addEventListener('click', function (e) {
-            if (e.target !== overlayImg) {
-                overlay.style.display = 'none';
-                overlayImg.style.transform = 'translate(0,0)';
-            }
-        });
-
-        // Toggle zoom on image
-        overlayImg.addEventListener('click', function () {
-            var zoomedIn = (overlayImg.style.cursor === 'zoom-out');
-            if (!zoomedIn) {
-                overlayImg.style.cursor = 'zoom-out';
-                overlayImg.style.width = 'fit-content';
-                overlayImg.style.maxWidth = 'none';
-                overlayImg.style.maxHeight = 'none';
-            } else {
-                overlayImg.style.cursor = 'zoom-in';
-                overlayImg.style.width = 'auto';
-                overlayImg.style.maxWidth = '95%';
-                overlayImg.style.maxHeight = '95%';
-                overlayImg.style.transform = 'translate(0,0)';
-            }
-        });
-
-        // Pan when zoomed in
-        overlayImg.addEventListener('mousemove', function (event) {
-            if (overlayImg.style.cursor !== 'zoom-out') return; // only when zoomed
-            var rect = overlay.getBoundingClientRect();
-            var offsetX = Math.min(Math.max((event.clientX - rect.left) / rect.width, 0), 1) * 100;
-            var offsetY = Math.min(Math.max((event.clientY - rect.top) / rect.height, 0), 1) * 100;
-            overlayImg.style.transform = 'translate(' + (50 - offsetX) + '%, ' + (50 - offsetY) + '%)';
-        });
-    });
-    </script>
 </body>
 </html>
