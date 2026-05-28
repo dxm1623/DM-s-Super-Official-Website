@@ -227,6 +227,8 @@
                                     <img src="images/gallery/Bo_SketchLine.jpeg" alt="Bo - Sketch Line" data-term="Spring 2025">
                                     <img src="images/gallery/Bo_OldRef.jpg" alt="Bo - Old Reference" data-term="Spring 2025">
                                     <img src="images/gallery/Bo_Ref.jpeg" alt="Bo - Reference" data-term="Fall 2025">
+                                    <img src="images/gallery/Bo_Yippie.jpg" alt="Bo - &quot;YIPPIE!&quot;" data-term="Spring 2026">
+                                    <img src="images/gallery/Bo_Pensive.jpg" alt="Bo - Pensive" data-term="Spring 2026">
                                 </div>
                                 <div id="cat-gabe" data-term="Spring 2025">
                                     <img src="images/gallery/gabe_Sketch.jpeg" alt="Gabe - Sketch">
@@ -247,14 +249,22 @@
                                     <img src="images/gallery/study_E.jpeg" alt="Study - E" data-term="Fall 2025">
                                     <img src="images/gallery/study_ForestPath.jpeg" alt="Study - Forest Path" data-term="Fall 2025">
                                     <img src="images/gallery/study_Lighthouse.jpeg" alt="Study - Lighthouse" data-term="Fall 2025">
-                                    <img src="images/gallery/study_BoPortraitOld.jpeg" alt="Study - Bo Portrait (Old)" data-term="Winter 2026">
-                                    <img src="images/gallery/study_GabeBoGinni.png" alt="Study - Gabe, Bo, Ginni" data-term="Winter 2026">
-                                    <img src="images/gallery/study_BoPortraitRe.jpeg" alt="Study - Bo Portrait (Redo)" data-term="Winter 2026">
-                                    <img src="images/gallery/study_ThatLook.jpeg" alt="Study - &quot;I guess I just always had that look.&quot;" data-term="Winter 2026">
-                                    <img src="images/gallery/study_BoSkip.gif" alt="Study (Blender) - Bo Skipping" data-term="Winter 2026">
-                                    <img src="images/gallery/study_Campfire.jpeg" alt="Study - Campfire" data-term="Winter 2026">
-                                    <img src="images/gallery/study_BoSkip2.gif" alt="Study (Blender) - Bo Skipping 2" data-term="Winter 2026">
-                                    <img src="images/gallery/study_Townhouse.jpeg" alt="Study - Townhouse" data-term="Winter 2026">
+                                    <img src="images/gallery/study_BoPortraitOld.jpeg" alt="Study - Bo Portrait (Old)" data-term="Spring 2026">
+                                    <img src="images/gallery/study_GabeBoGinni.png" alt="Study - Gabe, Bo, Ginni" data-term="Spring 2026">
+                                    <img src="images/gallery/study_BoPortraitRe.jpeg" alt="Study - Bo Portrait (Redo)" data-term="Spring 2026">
+                                    <img src="images/gallery/study_ThatLook.jpeg" alt="Study - &quot;I guess I just always had that look.&quot;" data-term="Spring 2026">
+                                    <img src="images/gallery/study_BoSkip.gif" alt="Study (Blender) - Bo Skipping" data-term="Spring 2026">
+                                    <img src="images/gallery/study_Campfire.jpeg" alt="Study - Campfire" data-term="Spring 2026">
+                                    <img src="images/gallery/study_BoSkip2.gif" alt="Study (Blender) - Bo Skipping 2" data-term="Spring 2026">
+                                    <img src="images/gallery/study_Townhouse.jpeg" alt="Study - Townhouse" data-term="Spring 2026">
+                                    <img src="images/gallery/Bo_Yippie.jpg" alt="Study - &quot;YIPPIE!&quot;" data-term="Spring 2026">
+                                    <img src="images/gallery/Bo_Pensive.jpg" alt="Study - Bo Pensive" data-term="Spring 2026">
+                                    <img src="images/gallery/study_ImagoDei.png" alt="Study - Imago Dei" data-term="Spring 2026">
+                                    <img src="images/gallery/That_pup.jpg" alt="Study - &quot;That pup's always so bright.&quot;" data-term="Spring 2026">
+                                    <img src="images/gallery/Study_Merritown.jpg" alt="Study - Merritown" data-term="Summer 2026">
+                                </div>
+                                <div id="cat-kewl" data-term="Misc">
+                                    <img src="images/gallery/Kewl_logos.jpg" alt="Concept - Proposals for alternative Kewl Clothes logos.">
                                 </div>
                             </div>
 
@@ -329,7 +339,7 @@
                 return bucket ? Array.from(bucket.querySelectorAll('img')) : [];
             };
 
-            const termOrder = ['Spring 2025', 'Summer 2025', 'Fall 2025', 'Winter 2026'];
+            const termOrder = ['Spring 2025', 'Summer 2025', 'Fall 2025', 'Spring 2026', 'Summer 2026', 'Fall 2026', 'Misc'];
 
             const getImgTerm = (img) => img.getAttribute('data-term') || img.closest('[data-term]')?.getAttribute('data-term') || 'Misc';
 
@@ -344,6 +354,7 @@
                 else if (key === 'gabe') imgs = getBucketImgs('cat-gabe');
                 else if (key === 'studies') imgs = getBucketImgs('cat-studies');
                 else if (key === 'misc') imgs = getBucketImgs('cat-misc');
+                else if (key === 'kewl') imgs = getBucketImgs('cat-kewl');
 
                 // Group by term
                 const groups = new Map();
@@ -388,6 +399,8 @@
                     imgs = getBucketImgs('cat-studies');
                 } else if (key === 'misc') {
                     imgs = getBucketImgs('cat-misc');
+                } else if (key === 'kewl') {
+                    imgs = getBucketImgs('cat-kewl');
                 }
 
                 imgs.forEach(img => gallery.appendChild(buildThumb(img)));
