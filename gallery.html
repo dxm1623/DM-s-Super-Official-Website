@@ -261,9 +261,11 @@
                                     <img src="images/gallery/Bo_Pensive.jpg" alt="Study - Bo Pensive" data-term="Spring 2026">
                                     <img src="images/gallery/study_ImagoDei.png" alt="Study - Imago Dei" data-term="Spring 2026">
                                     <img src="images/gallery/That_pup.jpg" alt="Study - &quot;That pup's always so bright.&quot;" data-term="Spring 2026">
-                                    <img src="images/gallery/Study_Merritown.jpg" alt="Study - Merritown" data-term="Summer 2026">
+                                    <img src="images/gallery/study_BoWalk.gif" alt="Study (Blender) - Bo Walking" data-term="Spring 2026">
+                                    <img src="images/gallery/study_BoSit.gif" alt="Study (Blender) - Bo Sitting" data-term="Spring 2026">
+                                    <img src="images/gallery/Study_Merritown.jpg" alt="Study - Merritown" data-term="Spring 2026">
                                 </div>
-                                <div id="cat-kewl" data-term="Misc">
+                                <div id="cat-kewl" data-term="Spring 2026">
                                     <img src="images/gallery/Kewl_logos.jpg" alt="Concept - Proposals for alternative Kewl Clothes logos.">
                                 </div>
                             </div>
@@ -339,14 +341,17 @@
                 return bucket ? Array.from(bucket.querySelectorAll('img')) : [];
             };
 
-            const termOrder = ['Spring 2025', 'Summer 2025', 'Fall 2025', 'Spring 2026', 'Summer 2026', 'Fall 2026', 'Misc'];
+            const uniqueBySrc = (imgs) => {
+                const seen = new Set();
+                return imgs.filter(img => {
+                    const src = img.getAttribute('src') || '';
+                    if (!src || seen.has(src)) return false;
+                    seen.add(src);
+                    return true;
+                });
+            };
 
-            const getImgTerm = (img) => img.getAttribute('data-term') || img.closest('[data-term]')?.getAttribute('data-term') || 'Misc';
-
-            const renderTimeline = (key) => {
-                timeline.innerHTML = '';
-
-                // Collect imgs by category selection
+            const getImagesForKey = (key) => {
                 let imgs = [];
                 if (key === 'all') imgs = Array.from(sourcesRoot.querySelectorAll('img'));
                 else if (key === '2d') imgs = getBucketImgs('cat-2d');
@@ -355,6 +360,17 @@
                 else if (key === 'studies') imgs = getBucketImgs('cat-studies');
                 else if (key === 'misc') imgs = getBucketImgs('cat-misc');
                 else if (key === 'kewl') imgs = getBucketImgs('cat-kewl');
+
+                return uniqueBySrc(imgs);
+            };
+
+            const termOrder = ['Spring 2025', 'Summer 2025', 'Fall 2025', 'Spring 2026', 'Summer 2026', 'Fall 2026', 'Misc'];
+
+            const getImgTerm = (img) => img.getAttribute('data-term') || img.closest('[data-term]')?.getAttribute('data-term') || 'Misc';
+
+            const renderTimeline = (key) => {
+                timeline.innerHTML = '';
+                const imgs = getImagesForKey(key);
 
                 // Group by term
                 const groups = new Map();
@@ -385,23 +401,7 @@
 
             const renderGallery = (key) => {
                 gallery.innerHTML = '';
-
-                let imgs = [];
-                if (key === 'all') {
-                    imgs = Array.from(sourcesRoot.querySelectorAll('img'));
-                } else if (key === '2d') {
-                    imgs = getBucketImgs('cat-2d');
-                } else if (key === 'bo') {
-                    imgs = getBucketImgs('cat-bo');
-                } else if (key === 'gabe') {
-                    imgs = getBucketImgs('cat-gabe');
-                } else if (key === 'studies') {
-                    imgs = getBucketImgs('cat-studies');
-                } else if (key === 'misc') {
-                    imgs = getBucketImgs('cat-misc');
-                } else if (key === 'kewl') {
-                    imgs = getBucketImgs('cat-kewl');
-                }
+                const imgs = getImagesForKey(key);
 
                 imgs.forEach(img => gallery.appendChild(buildThumb(img)));
             };
