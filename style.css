@@ -691,6 +691,10 @@ body {
     background-image: url('images/journalBackground.gif');
 }
 
+#imgKewl {
+    background-image: url('images/kewlBackground.gif');
+}
+
 img {
     border: 1px solid black;
     width: 160px;

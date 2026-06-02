@@ -248,6 +248,36 @@
                                         </p>
                                     </div>
                                 </div>
+                                <br>
+                                <div class="studyShowcase" id="studyEight">
+                                    <div class="window-bar">
+                                        <div class="window-dot" style="background: #FF605C;"></div>
+                                        <div class="window-dot" style="background: #FFBD44;"></div>
+                                        <div class="window-dot" style="background: #00CA4E;"></div>
+                                        <div class="window-title">Kewl Clothes</div>
+                                </div>
+                                <div class="window-body">
+                                    <div id="workImageContainer">
+                                        <img id="workImage-studyEight" src="images/projectImages/kewlImgs/kewlImg1.png" alt="Kewl Clothes">
+                                    </div>
+                                    <div class="control-bar" aria-label="Image controls">
+                                        <div class="control-group left">
+                                            <button class="control" aria-label="Previous image" onclick="changeWorkImage('studyEight', -1)">←</button>
+                                            <button class="control" aria-label="Next image" onclick="changeWorkImage('studyEight', 1)">→</button>
+                                        </div>
+                                        <div class="control-group right">
+                                            <button class="button-glossy" onclick="location.href='caseKewl.html'">EXPLORE!</button>
+                                        </div>
+                                    </div>
+                                    <p>
+                                        Kewl Clothes is a start-up brand of pop-up clothing stores conceptualized by a friend of mine, of whom I assisted in the design and development of the brand's visual identity, including promotional materials such as posters and social media graphics, as well as in the overseeing of project milestones and deliverables for the durations of the brand's initial launch phase. The brand was focused on providing young adults with a knack for thrifting with cheap options for customizations and alterations to their outfits, such as patches, embroidery, and other DIY techniques.
+                                    </p>
+                                    <p>
+                                        The project served as an opportunity for me to apply my skills in graphic design and project management to a real-world context for the first time, allowing me to gain experience in working with a client and managing a project up to a deadline. I was involved in the project from mid-March to mid-May of 2026, during which I served as one of the primary graphic designers and as a project manager. This was, crucially, my first brush with entrepreneurship and the process of launching a start-up, something which I will myself have to navigate in the future as I pursue my own projects, and the experience (while far from smooth!) was invaluable in giving me a taste of what that process is like and the various challenges and obstacles that can arise along the way.
+                                    </p>
+                                </div>
+                            </div>
+                            <br>
                         </div>
                     </div>
                 <br><br><div id="misc-tabs-container">
@@ -279,6 +309,7 @@
                     <a class="scrollA" href="#studyFive">→ Own Goal+Nautilus's Conundrum</a>
                     <a class="scrollA" href="#studySix">→ A Cane's Look at the Comm School</a>
                     <a class="scrollA" href="#studySeven">→ Flying By -- Adobe AE Animation</a>
+                    <a class="scrollA" href="#studyEight">→ Launching Kewl Clothes</a>
                 </nav>
             </aside>
         </div>
@@ -332,6 +363,11 @@
             "images/projectImages/aniImgs/aniImg1.png",
             "images/projectImages/aniImgs/aniImg2.png",
             "images/projectImages/aniImgs/aniImg3.png"
+        ],
+        studyEight: [
+            "images/projectImages/kewlImgs/KewlImg1.png",
+            "images/projectImages/kewlImgs/KewlImg2.png",
+            "images/projectImages/kewlImgs/KewlImg3.png"
         ]
     };
 
@@ -342,7 +378,8 @@
         studyFour: 0,
         studyFive: 0,
         studySix: 0,
-        studySeven: 0
+        studySeven: 0,
+        studyEight: 0
     };
 
     function changeWorkImage(study, direction) {

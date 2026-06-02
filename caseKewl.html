@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Starting(?) Kewl Clothes</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .case-container { text-align: left; margin: 0 auto; }
+        .case-panel {
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 10px;
+            padding: 12px;
+            color: #111;
+        }
+        .case-panel p, .case-panel li { color: #111; }
+
+        .case-panel h2 { color: black !important; }
+
+        .case-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+            justify-content: space-between;
+            margin: 10px 0 12px 0;
+            padding: 10px;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.35));
+            border: 2px solid rgba(0,0,0,0.2);
+            border-radius: 10px;
+        }
+        .case-toolbar .group { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+        .case-toolbar label { font-family: National-Park, sans-serif; color: #111; font-weight: 700; }
+        .case-toolbar select {
+            padding: 8px 10px;
+            border-radius: 8px;
+            border: 2px solid #888;
+            background: linear-gradient(to bottom, #ffffff, #d7d7d7);
+            color: #111;
+            font-weight: 700;
+        }
+        .case-toolbar .hint { font-size: 0.9rem; color: #222; }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 10px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .gallery .thumb {
+            display: block;
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid rgba(0,0,0,0.3);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+            cursor: pointer;
+            background: #fff;
+        }
+        .gallery .thumb:hover { box-shadow: 0 0 20px rgba(255, 210, 74, 0.55); }
+
+        .gallery-media {
+            width: 100%;
+            border-radius: 10px;
+            border: 2px solid rgba(0,0,0,0.25);
+            background: rgba(255,255,255,0.7);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .gallery-media iframe {
+            width: 100%;
+            height: min(70vh, 520px);
+            border: 0;
+            display: block;
+        }
+
+        /* Reuse overlay ids; tune sizing for this page */
+        #overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; align-items:center; justify-content:center; background: rgba(0,0,0,0.85); z-index: 1000; }
+        #overlay-img {
+            max-width: 92vw;
+            max-height: 86vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            cursor: zoom-in;
+            border: 4px solid #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 18px rgba(0,0,0,0.6);
+        }
+        #overlay-caption { color:#fff; margin-top:10px; text-align: center; max-width: 900px; padding: 0 12px; }
+
+        @media (max-width: 600px) {
+            .gallery { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+        }
+        
+    </style>
+</head>
+<body id="imgKewl">
+    <div class="scanlines" aria-hidden="true"></div>
+
+    <div class="center-strip">
+        <div class="content-grid">
+            <div id="main-content" role="main">
+                <h2 class="dms-header">DM's Website</h2>
+
+                <div id="case-study-section" class="section">
+                    <div id="case-study-content" class="case-container">
+                        <div id="tabs-content">
+                            <h3 style="width: -webkit-fill-available;">Case Study: Kewl Clothes</h3>
+
+                            <div class="case-panel">
+                                <div style="background-color: black; border-radius: 8px; padding: 6px 10px;">
+                                    <div class="case-panel-header"><p style="color: white !important;">Type: <strong>Entrepreneurship, Project Management, & Graphic Design</strong> |  Duration: <strong>2 Months</strong></p><p style="color: white !important;"></p></div>
+                                </div>
+                                <hr>
+
+                                <h2>Gallery</h2>
+
+                                <div class="case-toolbar">
+                                    <div class="hint">Click a thumbnail to enlarge. Click outside the image to close.</div>
+                                </div>
+                                <div id="gallery" class="gallery" role="list" aria-label="Image gallery">
+                                    <img class="thumb" src="images/projectImages/kewlImgs/KewlConcept1.png" alt="The first concept graphic I made for Kewl Clothes prior to my involvement, hence the divergent style." loading="lazy">
+                                    <img class="thumb" src="images/projectImages/kewlImgs/KewlAdPosterFINAL.png" alt="My first finalized poster for Kewl Clothes" loading="lazy">
+                                    <img class="thumb" src="images/projectImages/kewlImgs/KewlShadows.png" alt="A poster I made for Kewl Clothes, featuring one of our friends serving as a model and it gives some advice on how to handle light and shadow in art." loading="lazy">
+                                    <img class="thumb" src="images/projectImages/kewlImgs/Kewl_paperBag.png" alt="A mockup of a paper bag design I made for Kewl Clothes, featuring a yellow &amp; purple pattern of the logo." loading="lazy">
+                                    <img class="thumb" src="images/projectImages/kewlImgs/KewlDIY.png" alt="A poster I made for a proposed promotional campaign for Kewl Clothes, with some basic guidelines for DIY'ing your own clothing as part of a contest." loading="lazy">
+                                </div>
+                                <hr>
+                                <p>
+                                    Kewl Clothes is/was/might still be a small clothing accessory and customization business that was started in early 2026 by a close acquaintance of mine (and very quickly, involved myself as well). I was involved initially in a volunteer capacity, but as with a lot of things I find myself doing, I ended up taking on a lot more responsibility than I expected; I served as one of the main graphic designers for the proposed business, and I also took on a lot of the project management and organizational work such as setting up a calendar on ClickUp, checking up on other team members, and assigning deadlines for various tasks. The inital phase of the launch process was very enthusastic, with the goal of providing South Floridian thrifters with cheap and stylish options to customize their thrifted clothes and accessories.
+                                </p>
+                                <p>
+                                    In hindsight, the project was probably a bit too ambitious for the amount of time and resources we had available. This is especially true considering that no one on the team had <i>any</i> prior experience with running a business, and we were all trying to learn as we went along. It was a very hectic, very stressful, and very all-consuming process, and ultimately, we were not able to get the business off the ground before the initial excitement died down.
+                                </p>
+                                <p>
+                                    All of that being said, I don't regret any of the time or effort I put into the project. It helped me learn a lot about project management, graphic design, and entrepreneurship, and it was a really fun experience overall. I also got to work with some really talented artists and designers, and I got to see some of my work come to life in a way that I hadn't before and in a (somewhat) professional context. I think the experience also helped me learn a lot about my own strengths and weaknesses in regards to working on a team and running a project, time management, and handling stress and deadlines, and I think those are all valuable lessons that I can take with me into future projects and endeavors. This is especially true considering that I have a lot of aspirations to start my own business or work in a startup environment in the future, so it was a really valuable learning experience in that regard as well.
+                                </p>
+                                <p>
+                                    The project itself isn't dead, and there is still a plan to get it off the ground at some point in the future, perhaps in the Summer or Fall of 2026, but for now, it's on an indefinite hiatus. In the two months that I was member, of which I admittedly was the most consistent and involved member besides my friend who started the project, we were able to design a number of stylish posters and promotional materials like the ones shown in the gallery above, and we also designed a logo and some mockups for potential products like paper bags and stickers. We also had a lot of fun brainstorming ideas for potential promotional campaigns, and we had a lot of fun working together as a team to try to make the project a reality. Overall, it was a really fun and rewarding experience, and I'm really glad that I was able to be a part of it, even if the launch didn't exactly go as planned!
+                                </p>
+                                    You can check out the Instagram page for Kewl Clothes <a href="https://www.instagram.com/clothesrkewl/" target="_blank" rel="noopener">here</a>, which has just begun to post promotional materials and updates about the project!
+                                <p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="right-nav" aria-label="Site navigation">
+                <nav class="site-navbar vertical" aria-label="Main navigation">
+                    <a href="index.html">Home</a>
+                    <a href="persona.html">About</a>
+                    <a href="misc.html">Misc</a>
+                    <hr>
+                    <a href="gallery.html">Gallery</a>
+                </nav>
+            </aside>
+        </div>
+    </div>
+
+    <div id="logo-container" style="cursor: pointer;" onclick="location.href='index.html'">
+        <div id="logo">
+            <img src="images/PersonalLogo.gif" alt="DM's Logo" style="display:block;">
+        </div>
+    </div>
+
+    <div id="overlay">
+        <img id="overlay-img" draggable="false" src="" alt="" style="cursor: zoom-in;">
+        <div id="overlay-caption"></div>
+    </div>
+
+    <script src="functions.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (window.initImageOverlay) {
+                window.initImageOverlay({ overlayId: 'overlay', imageId: 'overlay-img', captionId: 'overlay-caption' });
+            }
+            document.querySelectorAll('#gallery .thumb').forEach(function (img) {
+                img.addEventListener('click', function () {
+                    if (window.openImageOverlay) window.openImageOverlay(img.src, img.alt);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
